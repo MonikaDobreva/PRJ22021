@@ -12,3 +12,9 @@
 |Dynamic discounts| Price reduction that can vary depending on some factors (e.g., time left before flight departure).|
 |Flight| One-way connection between two airports at a specific date and time.|
 |Flight ticket| Accreditation that grants access to a specific flight.|
+|Food options| Various meal options that can be decided on within the booking process or at some other time before departure|
+|Hand luggage|Bags that can be taken into the cabin (must fit standard cabin size and weight (+amount)) |
+|Key performance indicators|total revenue, amount of tickets sold per class, statistics, sales personnel cost, costs per route, revenue per route, booked statistics for flights (e.g., to know if successful or not) |
+|Legroom options| Optional extra space between two seats within a class for an additional charge |
+|Luggage |Bags or suitcases that travellers take on board |
+|Luggage options |Amount and weight of additional luggage checked |
