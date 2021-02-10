@@ -6,4 +6,4 @@
 
 #### As a sales officer, I want to enable price reduction so that sales employees can offer cheaper tickets to the customers in order to boost sales.
 
-####
+#### As a sales officer, I want to be able to register new flights to the system so that the sales employee can book these flights for customers.  
