@@ -23,3 +23,7 @@
 |Sale |A monetary transaction between a sales employee and their customer.|
 |Sales employees |An employee, that can look up, book, and customize flights for their customer.|
 |Sales manager |An employee, that overviews the management dashboard.|
+|Sales officer| An employee responsible for registering upcoming flights, starting the sales process, and enabling temporary price reductions.|
+|Seat selection| A booking option for a customer regarding the exact seat for a flight (e.g. window seat vs. Aisle seat).|
+|Static discount| A price reduction that is consistent, under a certain condition (e.g., 10% discount for 24 hours).|
+|User| A person of a specific user group (sales employee, manager & officer), that uses the application.|
