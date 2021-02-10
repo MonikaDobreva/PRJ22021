@@ -7,3 +7,8 @@
 |Availability of seats|	Gives information about all the seats still bookable for an upcoming flight.|
 |Booking|	The process of a buying a ticket for an upcoming flight in advance in form of a ticket.|
 |Booking options|	Options given by the system to customize your booking, like food, hand luggage, class, or extra legroom.|
+|Class| Different categories of seats that can be booked for a flight.|
+|Destination| Location where specific flight is going to.|
+|Dynamic discounts| Price reduction that can vary depending on some factors (e.g., time left before flight departure).|
+|Flight| One-way connection between two airports at a specific date and time.|
+|Flight ticket| Accreditation that grants access to a specific flight.|
