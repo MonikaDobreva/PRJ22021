@@ -27,5 +27,4 @@
 |Seat selection| A booking option for a customer regarding the exact seat for a flight (e.g. window seat vs. Aisle seat).|
 |Static discount| A price reduction that is consistent, under a certain condition (e.g., 10% discount for 24 hours).|
 |User| A person of a specific user group (sales employee, manager & officer), that uses the application.|
-
 |Flight connection| A connection between two airports that may include more than one flight and more than two airports, due to the need to change flights in order to reach the desired connection.|
