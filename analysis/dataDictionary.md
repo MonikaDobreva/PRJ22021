@@ -6,11 +6,11 @@
 |Airport |Location in a city from which aircraft operations, like departure and arrival, take place, also known as the destination of a flight. Can uniquely be identified with a three-letter airport code.|
 |Availability of seats|	Gives information about all the seats still bookable for an upcoming flight.|
 |Booking| Confirmation concerning a sale in form of a certain amount of tickets.|
-|Booking option|	Options given by the system to customize your booking, including food, hand luggage, class, or extra legroom.|
 |Class| Different categories of seats that can be booked for a flight.|
 |Destination| Airport at a certain location where specific flight is going to.|
 |Dynamic discount| Price reduction that can vary depending on some factors (e.g., time left before flight departure).|
 |Flight| One-way connection between two airports at a specific local date and time.|
+|Flight connection| A connection between two airports that may include more than one flight and more than two airports, due to the need to change flights in order to reach the desired connection.|
 |Flight ticket| Accreditation that grants a specific person access to a specific flight.|
 |Food option| Various meal option that can be decided on within the booking process or at some other time before departure.|
 |Hand luggage|Bags that can be taken into the cabin (must fit standard cabin size and weight (+amount)).|
@@ -26,5 +26,6 @@
 |Sales officer| An employee responsible for registering upcoming flights, starting the sales process, and enabling temporary price reductions.|
 |Seat selection| A booking option for a customer regarding the exact seat for a flight (e.g. window seat vs. Aisle seat).|
 |Static discount| A price reduction that is consistent, under a certain condition (e.g., 10% discount for 24 hours).|
+|Ticket option|	Options given by the system to customize your booking, including food, hand luggage, class, or extra legroom.|
 |User| A person of a specific user group (sales employee, manager & officer), that uses the application.|
-|Flight connection| A connection between two airports that may include more than one flight and more than two airports, due to the need to change flights in order to reach the desired connection.|
+
