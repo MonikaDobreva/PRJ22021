@@ -1,16 +1,26 @@
 ## Sales Employee
 -Lookup flight prices, discounts, ...
+
 -Create booking (incl. adding ticket options)
+
 -Edit ticket option(s) later on
+
 -Cancel a reservation
+
 
 ## Sales Officer
 -Register flight
+
 -Edit flight
+
 -Delete flight
+
 -Enable static price reduction
+
 -Disable static price reduction
+
 -Enable dynamic price reduction
+
 -Disable dynamic price reduction
 
 
