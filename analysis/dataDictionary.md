@@ -12,13 +12,13 @@
 |Flight| One-way connection between two airports at a specific local date and time.|
 |Flight connection| A connection between two airports that may include more than one flight and more than two airports, due to the need to change flights in order to reach the desired connection.|
 |Flight ticket| Accreditation that grants a specific person access to a specific flight.|
-|Food option| Various meal option that can be decided on within the booking process or at some other time before departure.|
 |Hand luggage|Bags that can be taken into the cabin (must fit standard cabin size and weight (+amount)).|
 |Key performance indicators|total revenue, amount of tickets sold per class, statistics, sales personnel cost, costs per route, revenue per route, booked statistics for flights (e.g., to know if successful or not).|
 |Legroom option| Optional extra space between two seats within a class for an additional charge.|
 |Luggage |Bags or suitcases that travellers take on board.|
 |Luggage option |Amount and weight of additional luggage checked.|
 |Management dashboard |Can be accessed by the sales managers, is an overview presenting all key performance indicators for each route.|
+|Meal option| Various options in regard to the food served on board that can be decided on within the booking process or at some other time before departure.|
 |Passenger | A person with an assigned seat that reserved a ticket to their name for a specific flight. |
 |Route |A regular flight connection between two destinations.|
 |Sales employee |An employee, that can look up, book, and customize flights for their customer.|
