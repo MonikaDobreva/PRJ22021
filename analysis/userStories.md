@@ -15,4 +15,4 @@ As a sales officer, I want to enable price reduction, so that sales employees ca
 
 As a sales officer, I want to be able to register new flights to the system, so that the sales employee can book these flights for customers.
 
-As a sales officer, I want to be able to adjust details of a registered fligh, so that I can react to potential unexpected changes.
+As a sales officer, I want to be able to adjust details of a registered flight, so that I can react to potential unexpected changes.
