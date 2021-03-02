@@ -1,9 +1,17 @@
 # Analysis
-
 Put in here all analysis artefacts and documentation.
 
-> Below are only examples! You can also use Visual Paradigm Models. Remove this and this text. 
+## User Stories
+![User Stories](userStories.md)
 
+## Data Dictionary
+![Data Dictionary](dataDictionary.md)
+
+## Domain Model
+![Domain Model](domainModel.svg)
+
+
+## Other examples:
 ## Use Case Diagram
 
 ![UC diagram](images/example-uc-diagram.jpg)
