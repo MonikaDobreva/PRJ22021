@@ -20,6 +20,15 @@
 |Extension:|5a.Actor chooses to add bokking options<br>1.System gives the option to <ins>edit ticket options</ins>|
 |Exceptions:||
 |   |   |
+|Name:|Add ticket options|
+|Actor:|Sales employee|
+|Description:|Actor can add options for the customer while  booking|
+|Pre-condition:|A booking has just been made|
+|Scenario:|1.System gives the option to add booking options<br>2.System shows which booking otpions are availbe<br>3.Actor selects which options should be added.<br>4.Systems stores these to the ticket|
+|Result:|Actor has altered the ticket options|
+|Extension:||
+|Exceptions:||
+|   |   |
 |Name:|Edit ticket options|
 |Actor:|Sales employee|
 |Description:|Actor can add options for the customer|
