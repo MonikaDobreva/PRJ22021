@@ -10,6 +10,9 @@ Put in here all analysis artefacts and documentation.
 ## Domain Model
 ![Domain Model](domainModel.svg)
 
+## Use Case Diagram
+![Use Case Diagram](useCaseDiagram.svg)
+
 
 ## Other examples:
 ## Use Case Diagram
