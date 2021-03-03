@@ -14,20 +14,11 @@
 |Name:|Create booking|
 |Actor:|Sales employee|
 |Description:|The sales employee creates a booking for a customer including adding ticket options.|
-|Pre-condition:|flights need to have been added to the system|
-|Scenario:|1. Actor <ins>Looks up a flight</ins><br>2.System gives the option to book this flight<br>3. Actor chooses the option to book this flight<br>4.System prompts the actor for Information(name, id number, birthday…) for the ticket<br>5. Actor inputs the private data from the customer|
+|Pre-condition:|flights need to have been added to the system and the flight needs to have at least one availbe ticket.|
+|Scenario:|1. Actor <ins>Looks up a flight</ins><br>2.System gives the option to book this flight<br>3. Actor chooses the option to book this flight<br>4.System prompts the actor for Information(name, id number, birthday…) for the ticket<br>5. Actor inputs the private data from the customer<br>6. System safes it|
 |Result:|A customer has a booking  that was done thorugh a sales employee|
-|Extension:|5a.Actor chooses to add bokking options<br>1.System gives the option to <ins>edit ticket options</ins>|
-|Exceptions:||
-|   |   |
-|Name:|Add ticket options|
-|Actor:|Sales employee|
-|Description:|Actor can add options for the customer while  booking|
-|Pre-condition:|A booking has just been made|
-|Scenario:|1.System gives the option to add booking options<br>2.System shows which booking otpions are availbe<br>3.Actor selects which options should be added.<br>4.Systems stores these to the ticket|
-|Result:|Actor has altered the ticket options|
-|Extension:||
-|Exceptions:||
+|Extension:|5a.Actor chooses to add booking options<br>1.System gives the option to add Luggage, add handluggage and food options.<br>2.Actor selects which options should be added.<br>returns to step 6.|
+|Exceptions:|6a. User has not inputed all options. <br>6.1.System does not accept and returns to 5.|
 |   |   |
 |Name:|Edit ticket options|
 |Actor:|Sales employee|
