@@ -8,7 +8,7 @@
 |Booking| Confirmation concerning a sale in form of a certain amount of tickets.|
 |Class| Different categories of seats that can be booked for a flight.|
 |Destination| Airport at a certain location where specific flight is going to.|
-|Dynamic discount| Price reduction that can vary depending on some factors (e.g., time left before flight departure).|
+|Dynamic discount| A price reduction that depends on one selected factor, such as: "daily sun hours at destination", "date and time of booking", or "time left before flight departure". It deducts a specified amount or a percentage of money from the original price. Optionally it can be set for a limited amount of time.|
 |Flight| One-way connection between two airports at a specific local date and time.|
 |Flight connection| A connection between two airports that may include more than one flight and more than two airports, due to the need to change flights in order to reach the desired connection.|
 |Flight ticket| Accreditation that grants a specific person access to a specific flight.|
@@ -25,7 +25,7 @@
 |Sales manager |An employee, that overviews the management dashboard.|
 |Sales officer| An employee responsible for registering upcoming flights, starting the sales process, and enabling temporary price reductions.|
 |Seat selection| A booking option for a customer regarding the exact seat for a flight (e.g. window seat vs. Aisle seat).|
-|Static discount| A price reduction that is consistent, under a certain condition (e.g., 10% discount for 24 hours).|
+|Static discount| A consistent temporary price reduction that lasts for a specified amount of time. It can either deduct a set amount or a percentage of money from the original price value.|
 |Ticket option|	Options given by the system to customize your booking, including food, hand luggage, class, or extra legroom.|
 |User| A person of a specific user group (sales employee, manager & officer), that uses the application.|
 
