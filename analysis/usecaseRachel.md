@@ -1,5 +1,7 @@
 ## Use case
 
+|   |   |
+|---|---|
 |Name:|Lookup flights|
 |Actor:|Sales Employee|
 |Description:|Sales employee looks up certain flights to see prices as well as discounts.|
