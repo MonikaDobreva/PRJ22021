@@ -55,7 +55,7 @@ Customer expects:
 **7.	Outline Business Case (B)**
 
 **7.1	Alignment with corporate strategy**
-As quoted above the main business drivers for PRJ2 are:
+As quoted above the main business drivers for PRJ2 G3 are:
 -	Reduce complexity of the flight ticket sale process
 -	Increase efficiency of the flight ticket sale process
 
