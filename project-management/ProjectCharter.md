@@ -4,7 +4,7 @@
 This project charter is about the Project 2 from the software engineering course at Fontys Venlo.
 
 •	Purpose: 
-The charter describes on a high level the purpose of the project 2 and what has to happen to reach an end delivery. Furthermore it will illustrate the goal (section 2) and break down the work structures through the running time of the project (section 3). In section 4 the choice of solution is discussed and the quality criteria are formulated in section 5. Based on these the time and effort is derived and estimated. An outline of the business case is given in section 7 followed by the risk this project underlies. In the last section is the organization listed.
+The charter describes on a high level the purpose of the project 2 and what has to happen to reach an end delivery. Furthermore, it will illustrate the goal (section 2) and break down the work structures through the running time of the project (section 3). In section 4 the choice of solution is discussed, and the quality criteria are formulated in section 5. Based on these the time and effort is derived and estimated. An outline of the business case is given in section 7 followed by the risk this project underlies. In the last section is the organization listed.
 By this setup the Project Charter describes a first full iteration around the “project square” from scope (S), through quality (Q) along time & effort (T) into budget (B). The items Risks (R) and Organization (O) complete the project description in this Project Charter.
 
 •	Advice:  
@@ -14,9 +14,9 @@ The Business and IT costs for <<PRJ G3>> are xxxx, compared to an expected benef
 
 
 **2	Goal of the project (S,Q,T,B)**<br>
-The program goals is to develop a functional airline booking system so that the airline company can boost their income by offering fast and reliable system to book tickets over the sales employes. By having a universal booking system no overlaps will ocuur anymore and all customers will have a very pleaseant experience with flying with this airline. For all  employess the system is ready and easy to use sytsemm so there is no need for long introductions to use it.
-The scope of this project is to design and implement a ully functional booking system that can be used by the airli sales employees to book ticktes for the customer. It wil handle multiplie users and bokking executions at once, have   manager dashboard to look at the most important kpi and show available flights. It also wil dynamically aadapt to price changes that can be inserted by the sales offizer inot the program.
-The quality of this program comes with one high priority which is user friendlynes. The employees should be able to quickly understand the system and start using it. Some graphichs are also included.
+The program goals is to develop a functional airline booking system so that the airline company can boost their income by offering fast and reliable system to book tickets over the sales employees. By having a universal booking system no overlaps will occur anymore and all customers will have a very pleasant experience with flying with this airline. For all  employees the system is ready and easy to use system so there is no need for long introductions to use it.
+The scope of this project is to design and implement a fully functional booking system that can be used by the airline sales employees to book tickets for the customer. It will handle multiple users and booking executions at once, have   manager dashboard to look at the most important kpi and show available flights. It also wil dynamically adapt to price changes that can be inserted by the sales officer not the program.
+The quality of this program comes with one high priority which is user-friendliness. The employees should be able to quickly understand the system and start using it. Some graphics are also included.
 The initial estimate of effort and time of this project will be around 21 weeks with 5 people working on it.
 
 2.1	Background information
