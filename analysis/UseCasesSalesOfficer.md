@@ -72,8 +72,3 @@
 |**Extensions:**|-|
 |**Exceptions:**|5. Sales Officer decides not to delete the displayed discount.<br> 5.1 Use case ends here. |
 
-|Use case Number|x|
-|---|---|
-
-
-
