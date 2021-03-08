@@ -1,6 +1,6 @@
 **Project Charter << PRJ2 G3 >>**
 
-**1	Introduction / Management Summary**
+**1	Introduction / Management Summary**<br>
 This project charter is about the Project 2 from the software engineering course at Fontys Venlo.
 
 •	Purpose: 
@@ -10,10 +10,10 @@ By this setup the Project Charter describes a first full iteration around the �
 •	Advice:  
 Based on the analysis carried for this Project Charter proposal is to go ahead with the project.
 
-TheBusiness and ITcosts for <projectname>> are xxxx, compared to an expected benefit of xxxx .
+The Business and IT costs for <<PRJ G3>> are xxxx, compared to an expected benefit of xxxx.
 
 
-**2	Goal of the project (S,Q,T,B)**
+**2	Goal of the project (S,Q,T,B)**<br>
 The program goals is to develop a functional airline booking system so that the airline company can boost their income by offering fast and reliable system to book tickets over the sales employes. By having a universal booking system no overlaps will ocuur anymore and all customers will have a very pleaseant experience with flying with this airline. For all  employess the system is ready and easy to use sytsemm so there is no need for long introductions to use it.
 The scope of this project is to design and implement a ully functional booking system that can be used by the airli sales employees to book ticktes for the customer. It wil handle multiplie users and bokking executions at once, have   manager dashboard to look at the most important kpi and show available flights. It also wil dynamically aadapt to price changes that can be inserted by the sales offizer inot the program.
 The quality of this program comes with one high priority which is user friendlynes. The employees should be able to quickly understand the system and start using it. Some graphichs are also included.
