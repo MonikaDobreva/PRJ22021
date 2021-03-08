@@ -21,6 +21,6 @@ Customer expects:
 **6. Time and effort (T)**
 |High level project phase|Lead time (start-end)|Business effort (days)|IT effort(days)|
 |---|---|---|---|
-|Start up and Initiation| 4 weeks | 6 | 2 |
-|Design, Realization and Confirmation| 2 weeks | 2 | 2 |
-|Deployment and go live| 6 weeks | 4 | 12 |
+|Start up and Initiation| 4 total weeks | 6 | 2 |
+|Design, Realization and Confirmation| 3 total weeks | 2 | 2 |
+|Deployment and go live| 8 total weeks | 4 | 12 |
