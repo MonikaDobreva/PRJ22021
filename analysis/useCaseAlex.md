@@ -44,11 +44,21 @@
 |   |   |
 |   |   |
 |---|---|
-|**Name:**|**Template**|
-|**Actor:**|Sales Officer|
-|**Description:**|-|
-|**Pre-condition:**|-|
-|**Scenario:**|-|
-|**Result:**|-|
-|**Extensions:**|-|
-|**Exceptions:**|-|
+|**Test scenarios**|**Enable static price reduction**|
+|Actor:|**Sales Officer**|
+|2.|If Sales Officer inputs start date that's after the flight departure, System reports error|
+|3.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
+|4.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
+|5.|If Sales Officer inputs a negative value as the discount value, System reports error|
+|   |   |
+|   |   |
+|**Test scenarios**|**Enable dynamic price reduction**|
+|Actor:|**Sales Officer**|
+|2.|If Sales Officer inputs start date that's after the flight departure, System reports error|
+|3.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
+|4.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
+|5.|If Sales Officer inputs a negative value as the discount value, System reports error|
+|6.|If Sales Officer does not input one of the listed discount types, System reports error|
+
+
+
