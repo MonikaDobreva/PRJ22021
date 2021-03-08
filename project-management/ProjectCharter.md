@@ -55,6 +55,7 @@ Customer expects:
 **7.	Outline Business Case (B)**
 
 **7.1	Alignment with corporate strategy**
+
 As quoted above the main business drivers for PRJ2 G3 are:
 -	Reduce complexity of the flight ticket sale process
 -	Increase efficiency of the flight ticket sale process
@@ -75,16 +76,16 @@ The costs are grouped in these categories:
 - Realization costs
 - Support costs
 
-**9.	Organization (O)**
+9.	Organization (O)
 
-**Initial resourcing of project:**
+Initial resourcing of project:
 -	Project St. Cie:
 -	Executive/Project owner:	Fontys Venlo
 -	User:	Airline company
 -	Supplier: Fontys Venlo
 -	Project Manager:	Richard van den Ham
 
-**Involved people:**
+Involved people:
 -	Clients:	Airline company
 -	End users: Airline company’s employees
 -	Other involved: Project team
