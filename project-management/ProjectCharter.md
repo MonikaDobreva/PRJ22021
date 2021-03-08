@@ -51,3 +51,40 @@ Customer expects:
 |Start up and Initiation| 4 total weeks | 6 | 2 |
 |Design, Realization and Confirmation| 3 total weeks | 2 | 2 |
 |Deployment and go live| 8 total weeks | 4 | 12 |
+
+**7.	Outline Business Case (B)**
+
+**7.1	Alignment with corporate strategy**
+As quoted above the main business drivers for PRJ2 are:
+-	Reduce complexity of the flight ticket sale process
+-	Increase efficiency of the flight ticket sale process
+
+**Benefits**
+- Savings related to process step efficiency
+- Savings on data entry and paper procedures
+-	Enabling new process steps that can make the process easier
+-	Disabling usual process steps that make the process more complicated
+-	Limiting the amount of people involved with the process
+ 
+**Costs**
+
+The costs are grouped in these categories: 
+- Analysis costs
+- Design costs
+- Implementation costs
+- Realization costs
+- Support costs
+
+**9.	Organization (O)**
+
+**Initial resourcing of project:**
+-	Project St. Cie:
+-	Executive/Project owner:	Fontys Venlo
+-	User:	Airline company
+-	Supplier: Fontys Venlo
+-	Project Manager:	Richard van den Ham
+
+**Involved people:**
+-	Clients:	Airline company
+-	End users: Airline company’s employees
+-	Other involved: Project team
