@@ -1,4 +1,4 @@
-**Project Charter << PRJ2 G3 >>**
+## Project Charter << PRJ2 G3 >>
 
 **1	Introduction / Management Summary**<br>
 This project charter is about the Project 2 from the software engineering course at Fontys Venlo.
@@ -23,8 +23,42 @@ The initial estimate of effort and time of this project will be around 21 weeks 
 
 •	[Provide the background information on organizational changes or programs, to allow the placement of this project in the greater picture.]
 
+**3. Project Scope(S)<br>**
 
+**3.1 Project definition<br>**
+The project needs to achieve giving sales employees the opportunity of managing their customers’ demands and requirements regarding the booking of flights under predefined conditions <br>
 
+**3.2 Project scope and exclusions<br>**
+On high level the following aspects of “enterprise architecture” will be impacted by the << PRJ2 G3 >> project: <br>
+
+|Architecture aspect|Involved entities|
+|---|---|
+|Organization||
+|Process||
+|Information||
+|System||
+|Infrastructure||
+
+Core of the project is an application, that should be used by an airline company to manage all flights, bookings and connections in one place. The uses should be able to create, edit and delete flight, as well as manage and handle bookings from customers. A management dashboard should provide the opportunity to oversee certain key performance indicators, that inform the sales manager about relevant business analytics.<br>
+
+**Not in Scope:**<br>
+Due to the lack of high-end programming and software skills the functionalities of the applications are fairly limited and defined. It is not meant to deal with any other additional and unrelated topics that are not mentioned in the case study or project description. This means the final application is not used to handle payment and other transaction processes, as well as an access for the actual customer the flight is being booked for. <br>
+
+**3.3 Relations & interfaces**<br>
+
+**3.4	Products and Services to be delivered** <br>
+The flow of products created during the project startup and initiation phase:<br>
+<p align="center">
+<img src= "https://github.com/FontysVenlo/prj2-2021-prj2-2021-03/blob/c746b7b120e81614d6c041b0389cf799c3b072a3/project-management/WorkBreakdownStructure.svg" />
+ </p>
+
+**4. Approach** <br>
+Various artifacts are made use of in order to analyse the project environment making it easier and more structured to continue with the implementation of the actual application. Since all these artifacts are seen as deliverables which must be prepared by the whole group and completed by a set day, an effective time and task management is essential for the future outcomes of the work. Furthermore, a case study gives a rough outline of a real-word context in which the project should be designed in and mentions additional constraints the team needs to consider. <br>
+
+Ensuring the needed deliverables are handed in every week while continuously updating former artifacts makes the project more likely to be successful. Since help from outside is available questions and unclear situation can be handled fast enough without endangering the work process.<br>
+Prior projects made clear how important it is to make sure that every member of the project team is familiar with the content and context of the tasks and prepared for upcoming tasks. Problems of comprehensions must be tackled as soon as possible to avoid any disturbance inside of the workflow.<br>
+Weekly discussions about different possible methods and techniques as well as docent’s feedback and result evaluations in a collective class lecture are guaranteeing an optimized tactic for the project.<br>
+External knowledge and resources, as long as project-related, can enhance the planning and problem-solving process in the group, although through prior lectures acquired skills should be enough to work with.<br>
 
 
 **5. Quality (Q)**
