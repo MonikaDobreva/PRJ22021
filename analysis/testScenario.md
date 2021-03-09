@@ -14,7 +14,7 @@
 |2.                    |If system has 0 bookings, listing them should report emptiness.|
 |3.                    |When looking for a specific booking that is in the system, using filter/search options, must return desired booking or match results|
 |4.                    |Use filter/search options for looking for a flight with no matching results must report emptiness.|
-|4.                    |Cancelation of a booking must delete booking from the system.|
+|5.                    |Cancelation of a booking must delete booking from the system.|
 
 |Test for<br>Scenario x|Description|
 |----------------------|---|
@@ -27,16 +27,16 @@
 |---|---|
 |**Test scenarios**|**Enable static price reduction**|
 |Actor:|**Sales Officer**|
-|2.|If Sales Officer inputs start date that's after the flight departure, System reports error|
-|3.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
-|4.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
-|5.|If Sales Officer inputs a negative value as the discount value, System reports error|
+|1.|If Sales Officer inputs start date that's after the flight departure, System reports error|
+|2.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
+|3.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
+|4.|If Sales Officer inputs a negative value as the discount value, System reports error|
 |   |   |
 |   |   |
 |**Test scenarios**|**Enable dynamic price reduction**|
 |Actor:|**Sales Officer**|
-|2.|If Sales Officer inputs start date that's after the flight departure, System reports error|
-|3.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
-|4.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
-|5.|If Sales Officer inputs a negative value as the discount value, System reports error|
-|6.|If Sales Officer does not input one of the listed discount types, System reports error|
+|1.|If Sales Officer inputs start date that's after the flight departure, System reports error|
+|2.|If Sales Officer inputs more than 100% or less than 1% as a price reduction, System reports error|
+|3.|If Sales Officer inputs a bigger amount than the original flight price as a discount value, System reports error|
+|4.|If Sales Officer inputs a negative value as the discount value, System reports error|
+|5.|If Sales Officer does not input one of the listed discount types, System reports error|
