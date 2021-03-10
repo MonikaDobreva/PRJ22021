@@ -35,7 +35,7 @@
 5. System does not accept and returns to 5.
 
 
-**Test Scenario 5: The insertted birthdate is before 1900**
+**Test Scenario 5: The inserted birthdate is before 1900**
 
 4. Sales Employee inputs John Smith, 566053978 and 01/11/1775.
 5. System does not accept and returns to 5.
