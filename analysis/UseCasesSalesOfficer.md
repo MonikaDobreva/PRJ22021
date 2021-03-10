@@ -35,6 +35,7 @@
 |**Description:**|A Sales Officer intends to configure and enable a temporary static price reduction for a specific flight or a flight route.|
 |**Pre-condition:**|At least one flight (route) has already been registered in the system.|
 |**Scenario:**|1. Sales Officer selects a flight (route).<br> 2. System displays multiple options for that specific flight (route).<br> 3. Sales Officer selects "Configure static discount".<br> 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.<br> 5. Sales Officer inputs the desired dates and the discount amount and decides to confirm the change.<br> 6. System saves the change and adapts prices accordingly. |
+|**Test Scenarios**|Click [**here**](testScenarios/enableStaticPriceReduction.md)|
 |**Result:**|A Sales Officer has successfully configured and enabled a temporary static price reduction for a specific flight or a flight route.|
 |**Extensions:**|-|
 |**Exceptions:**|4. System finds an existing dynamic discount for this specific flight (route).<br> 4.1 System informs the Sales Officer that they have to delete the dynamic discount before they can enable a static discount.<br> 4.2 Use case ends here.<br> 6. System does not receive an input for both the desired dates and the discount amount.<br> 6.1 Returns to Step 5. |
