@@ -7,14 +7,14 @@ General:
 3. Sales Officer selects "Configure static discount".
 
 
-Test Scenario 1: **Everything works fine (monetary value inserted in €)**
+**Test Scenario 1: Everything works fine (monetary value inserted in €)**
 
 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.
 5. Sales Officer inputs 01/12/2021 - 14/14/2021 and 5€.
 6. System saves the change and adapts prices accordingly.
 
 
-Test Scenario 2: **Everything works fine (monetary value inserted in %)**
+**Test Scenario 2: Everything works fine (monetary value inserted in %)**
 
 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.
 5. Sales Officer inputs 01/12/2021 - 14/14/2021 and 15%.
