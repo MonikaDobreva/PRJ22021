@@ -14,6 +14,7 @@
 2. System promps for input in form of search kewords(time, date, arrival airport, destination airport)
 
 
+
 **Test Scenario 1: Searched Flight exists - Input time, date, arrival airport, destination airport)**
 
 3. Sales employee inputs in the time box "15.00", date box "25.08.2022", arrival Airport "London" and destination airport "Amsterdam"
@@ -54,6 +55,7 @@
 
 
 **Test Scenario 5: Searched Flight exists - Input destination airport**
+
 3. Sales employee inputs in the time box "", date box "", arrival Airport "" and destination airport"Amsterdam"
 4. System shows list of all matches:
   1. time "15.00", date "25.08.2022", arrival airport "London", destination airport "Amsterdam"
@@ -89,5 +91,6 @@
 
 
 **Test Scenario 10: Searched Flight does not exist - Input destination airport**
+
 3. Sales employee inputs in the time box "", date box "", arrival Airport "" and destination airport "Tokyo"
 4. System displays message that no such flights are avaible.
