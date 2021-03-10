@@ -17,10 +17,10 @@
 **Test Scenario 2: Everything works fine with extension**
 
 5. Sales Employee inputs Jane Peters, 355058078 and 06/08/1997.
-5a. Sales Employee chooses to add booking options.
-5a.1. System gives the option to add luggage, add handluggage and food option.
-5a.2. Sales Employee selects add handluggage.
-7. System saves the booking.
+6. Sales Employee chooses to add booking options.
+7. System gives the option to add luggage, add handluggage and food option.
+8. Sales Employee selects add handluggage.
+9. System saves the booking.
 
 
 **Test Scenario 3: Input information incomplete (missing id number)**
