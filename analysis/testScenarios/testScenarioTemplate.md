@@ -1,7 +1,7 @@
-**Test Scenarios for NAME OF USE CASE**
+### **Test Scenarios for NAME OF USE CASE**
 
 
-General:
+**General:**
 
 > All the steps of the Scenario that are exactly the same for all the test scenarios are the general steps. In the following you see an example. These steps of the Scenario always happen, no matter the test.
 
@@ -11,7 +11,7 @@ General:
 
 > This is the first Test Scenario. It has a quick name/description that shows what is being tested.
 
-Test Scenario 1: **Everything works fine (monetary value inserted in €)**
+**Test Scenario 1: Everything works fine (monetary value inserted in €)**
 
 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.
 5. Sales Officer inputs 01/12/2021 - 14/14/2021 and 5€.
@@ -19,7 +19,7 @@ Test Scenario 1: **Everything works fine (monetary value inserted in €)**
 
 > This would be another Test Scenario. You just start from 4. again.
 
-Test Scenario 2: **Everything works fine (monetary value inserted in %)**
+**Test Scenario 2: Everything works fine (monetary value inserted in %)**
 
 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.
 5. Sales Officer inputs 01/12/2021 - 14/14/2021 and 15%.
@@ -27,7 +27,7 @@ Test Scenario 2: **Everything works fine (monetary value inserted in %)**
 
 > Of course there are also Test Scenarios for when errors occur.
 
-Test Scenario 5: **The monetary value inserted equals zero, less than zero or more than the actual price**
+**Test Scenario 5: The monetary value inserted equals zero, less than zero or more than the actual price**
 
 4. System asks for the start and end date of the discount, as well as the amount or percentage of money that should be deducted from the original price value.
 5. Sales Officer inputs 01/12/2021 - 14/14/2021 and -8€.
