@@ -10,3 +10,4 @@
 |**Result**         |Sales Manager is able to check current status of the company by use of KPIs|
 |**Extensions**     |None|
 |**Exceptions**      |None|
+|**Test Scenarios**|Click [**here**](testScenarios/SalesManager/lookupManagementDashboard.md)|
