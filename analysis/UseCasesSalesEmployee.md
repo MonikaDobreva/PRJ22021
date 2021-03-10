@@ -2,7 +2,7 @@
 
 |Use case Number|x|
 |---------------|---|
-|**Name**           |Cancel a booking|
+|**Name**           |Cancel booking|
 |**Actor**          |Sales Employee|
 |**Description**    |A Sales Employee wants to cancel a booking|
 |**Pre-condition**  |-|
@@ -10,6 +10,7 @@
 |**Result**         |Chosen booking is cancelled.|
 |**Extensions**     |3a. Sales Employee apply filter/search options.<br>&nbsp;&nbsp;&nbsp;&nbsp;1. System shows bookings matching with search options. Returns to step 3.<br>|
 |**Exceptions**     |3a.1. System reports not matching booking found.<br> &nbsp;&nbsp;&nbsp;&nbsp;4a.1.1. Return to step 4a.<br><br>2. System reports no bookings available.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.1. Use case ends here.|
+|**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/cancelBooking.md)|
 
 |Use case Number|x|
 |---|---|
@@ -21,6 +22,7 @@
 |**Result**|The sales Employee can look at a certain flight with the prices shown|
 |**Extensions**|-|
 |**Exceptions**|4a. No flights with such keywords<br>1.System displays message that no such flights are avaible. Use case neds here.|
+|**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/lookupFlights.md)|
   
 |Use case Number|x|
 |---|---|
@@ -32,6 +34,7 @@
 |**Result**|A customer has a booking  that was done thorugh a sales Employee|
 |**Extensions**|5a.Actor chooses to add booking options<br>1.System gives the option to add Luggage, add handluggage and food options.<br>2.Actor selects which options should be added.<br>returns to step 6.|
 |**Exceptions**|6a. User has not inputed all options. <br>6.1.System does not accept and returns to 5.|
+|**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/createBooking.md)|
   
 |Use case Number|x|
 |---|---|
@@ -43,3 +46,4 @@
 |**Result**|Actor has altered the ticket options|
 |**Extensions**|-|
 |**Exceptions**|-|
+|**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/editTicketOptions.md)|
