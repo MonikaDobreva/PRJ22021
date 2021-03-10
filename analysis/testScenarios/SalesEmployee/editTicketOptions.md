@@ -6,7 +6,7 @@
 2. System gives the option to add booking options.
 
 
-**Test Scenario 1: Everything works fine **
+**Test Scenario 1: Everything works fine**
 
 3. System shows which booking otpions are availbe.
 4. Actor selects to add food option - vegan meal.
