@@ -1,4 +1,4 @@
-**Test Scenarios for Cancel A Booking**
+**Test Scenarios for Cancel Booking**
 
 Test Scenario 1:
 1.
