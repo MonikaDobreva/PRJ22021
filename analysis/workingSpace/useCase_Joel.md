@@ -6,10 +6,10 @@
 |Actor          |Sales Employee|
 |Description    |A Sales Employee wants to cancel a booking|
 |Pre-condition  |None|
-|Scenario       |1. Sales Employee chooses to manage a booking.<br>2. System displays list of bookings and shows filtering/search options.<br>3. Sales Employee selects desired booking and cancels it.<br>5. System asks for confirmation.<br>6. Sales Employee confirms.<br>7. System cancels booking and shows confirmation message.|
+|Scenario       |1. Sales Employee chooses to manage a booking.<br>2. System displays list of bookings and shows filtering/search options.<br>3. Sales Employee selects desired booking and cancels it.<br>4. System asks for confirmation.<br>5. Sales Employee confirms.<br>6. System cancels booking and shows confirmation message.|
 |Result         |Chosen booking is cancelled.|
 |Extensions     |3a. Sales Employee apply filter/search options.<br>&nbsp;&nbsp;&nbsp;&nbsp;1. System shows bookings matching with search options. Returns to step 3.<br>|
-|Exceptions     |3a.1. System reports not matching booking found.<br> &nbsp;&nbsp;&nbsp;&nbsp;4a.1.1. Return to step 4a.<br><br>2. System reports no bookings available.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.1. Use case ends here.|
+|Exceptions     |3a.1. System reports not matching booking found.<br> &nbsp;&nbsp;&nbsp;&nbsp;4a.1.1. Return to step 3a.<br><br>2. System reports no bookings available.<br>&nbsp;&nbsp;&nbsp;&nbsp;2.1. Use case ends here.|
 
 |Use case Number|x|
 |---------------|---|
