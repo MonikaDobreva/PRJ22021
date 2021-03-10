@@ -55,7 +55,7 @@
 6. System gives an error message and asks for a discount type.
 
 
-**Test Scenario 9: Everything works fine (Sales Officer also gives a start and end date)
+**Test Scenario 9: Everything works fine (Sales Officer also gives a start and end date)**
 
 4. System displays various types of dynamic discounts, including "daily sun hours at destination", "date and time of booking", or "time left before flight departure" and asks the Sales Officer to select the desired type and the amount or percentage that should be deducted.
 5. Sales Officer selects "daily sun hours at destintaion" as discount type and 20% as discount amount and also selects the start date 01/12/2021 and the end date 18/12/2021.
