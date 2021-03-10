@@ -24,7 +24,7 @@ Test Scenario 2: **Everything works fine (monetary value inserted in %)**
 Test Scenario 3: **There is already a dynamic discount for this specific flight**
 
 4. System finds an existing dynamic discount for this specific flight (route).
-4.1 System informs the Sales Officer that they have to delete the dynamic discount before they can enable a static discount.
+5. System informs the Sales Officer that they have to delete the dynamic discount before they can enable a static discount.
 
 
 Test Scenario 4: **The date inserted is not in the future, but in the past**
