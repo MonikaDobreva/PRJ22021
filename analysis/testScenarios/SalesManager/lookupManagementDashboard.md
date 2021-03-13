@@ -1,5 +1,7 @@
 ### **Test Scenarios for Lookup Management Dashboard**
 
+**To read Use Case** Click [**here**]( ../../UseCasesSalesManager.md )
+
 **General:**
 1. Sales Manager chooses to use the Management Dashboard.
 
@@ -23,3 +25,5 @@
 2. System shows KPIs "Monthly Sales" and "Sales per Employee" and asks the Sales Manager to select KPIs to show.
 3. Sales Manager select "Monthly Sales" to lookup into the Management Dashboard and confirms.
 4. System displays "Monthly Sales" and informs Sales Manager that no data is available to display.
+
+**To read the Use Case** Click [**here**]( ../../UseCasesSalesManager.md )
