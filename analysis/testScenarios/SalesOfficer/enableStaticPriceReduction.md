@@ -1,5 +1,7 @@
 ### **Test Scenarios for Enable Static Price Reduction**
 
+To read Use Case click [**here**]( ../../UseCasesSalesOfficer.md )
+
 **General:**
 
 1. Sales Officer selects a flight (route).

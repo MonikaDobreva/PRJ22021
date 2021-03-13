@@ -1,5 +1,7 @@
 ### **Test Scenarios for Edit Ticket Options**
 
+To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
+
 **General:**
 
 1. Actor selects the booked flight.

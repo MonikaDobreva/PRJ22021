@@ -1,5 +1,7 @@
 ### **Test Scenarios for look up flights**
 
+To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
+
 **Flights in database**
 
 1. time "15.00", date "25.08.2022", arrival airport "London", destination airport "Amsterdam"

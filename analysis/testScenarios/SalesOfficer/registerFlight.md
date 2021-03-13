@@ -1,5 +1,7 @@
 ### **Test Scenarios for Register flight**
 
+To read Use Case click [**here**]( ../../UseCasesSalesOfficer.md )
+
 **General**
 
 1. The Sales Officer opens the application

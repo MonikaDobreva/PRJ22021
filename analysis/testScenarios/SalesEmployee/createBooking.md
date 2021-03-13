@@ -1,5 +1,7 @@
 ### **Test Scenarios for Create booking**
 
+To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
+
 **General:**
 
 1. Sales Employee <ins>looks up a flight</ins>.

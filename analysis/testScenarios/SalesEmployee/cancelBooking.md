@@ -1,5 +1,7 @@
 ### **Test Scenarios for Cancel Booking**
 
+To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
+
 **General:**
 1. Sales Employee chooses to manage a booking.
 
