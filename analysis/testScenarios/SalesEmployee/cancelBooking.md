@@ -46,3 +46,5 @@
 6. System cancels booking and shows confirmation message.
 7. Sales Employee chooses to manage more bookings.
 8. System displays bookings ("102", "2021-02-01", "Nikolav Tesla ", ...) and ("103", "2021-03-01", "Anna Frank", ...) and filtering/search options.
+
+**To read the Use Case** Click [**here**]( ../../UseCasesSalesEmployee.md )
