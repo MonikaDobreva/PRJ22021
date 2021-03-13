@@ -1,33 +1,25 @@
-**Test Scenarios for Lookup Management Dashboard**
+### **Test Scenarios for Lookup Management Dashboard**
 
-Test Scenario 1:
-1.
-2.
-3.
-...
+**General:**
+1. Sales Manager chooses to use the Management Dashboard.
 
-Test Scenario 2:
-1.
-2.
-3.
-...
+**Test Scenario 1: System with KPIs {"Monthly Sales", "Sales per Employee"} should display them**
 
+2. System shows KPIs "Monthly Sales" and "Sales per Employee".
 
+**Test Scenario 2: System without KPIs shouldn't display them**
 
-|Use case Number|x|
-|---------------|---|
-|Name           |Lookup Management Dashboard|
-|Actor          |Sales Manager|
-|Description    |Sales Manager uses Management Dashboard to check KPIs|
-|Pre-condition  |KPIs have been already created and defined in the system|
-|Scenario       |1. Sales Manager chooses to use the Management Dashboard.<br>2. System shows list of available KPIs and asks the Sales Manager to select KPIs to show.<br>4. Sales Manager select desired KPIs to lookup into the Management Dashboard and confirms.<br>5. System displays the selected KPIs.|
-|Result         |Sales Manager is able to check current status of the company by use of KPIs|
-|Extensions     |None|
-|Exception      |None|
+2. System tries to show list of available KPIs.
+3. System informs Sales Manager that there are no KPIs available 
 
-|Test for<br>Scenario x|Description|
-|----------------------|---|
-|1.                    |Accessing the Management Dashboard must show available KPI (KPIs have been defined previously).|
-|2.                    |Accessing Management Dashboard with no KPIs should return null - report that there are no KPIs in the system.|
-|3.                    |Selected KPIs must display/show desired information/data.|
-|4.                    |Select KPI without data to make calculations/statistics must report no data available.|
+**Test Scenario 3: System with KPIs {"Monthly Sales", "Sales per Employee"} should display "Monthly Sales" when selected**
+
+2. System shows KPIs "Monthly Sales" and "Sales per Employee" and asks the Sales Manager to select KPIs to show.
+3. Sales Manager select "Monthly Sales" to lookup into the Management Dashboard and confirms.
+4. System displays data for "Monthly Sales" KPI.
+
+**Test Scenario 4: System with KPIs {"Monthly Sales", "Sales per Employee"} and no data to display for "Monthly sales",should display "Monthly Sales" when selected and report no data available**
+
+2. System shows KPIs "Monthly Sales" and "Sales per Employee" and asks the Sales Manager to select KPIs to show.
+3. Sales Manager select "Monthly Sales" to lookup into the Management Dashboard and confirms.
+4. System displays "Monthly Sales" and informs Sales Manager that no data is available to display.
