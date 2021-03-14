@@ -12,9 +12,9 @@ To read Use Case click [**here**]( ../../UseCasesSalesOfficer.md )
 
 5. The Sales Officer edits the needed information
 6. The Sales Officer submits the process
-7. The system displays the changed flight inside of the list
+7. The system displays the changed flight inside the list
 8. The Sales Officer searches for the previously edited flight by the changed information
-9. The system displayes the correct flight.
+9. The system displays the correct flight.
 
 **Test Scenario 2: Necessary information was deleted during the edit**
 
@@ -22,7 +22,7 @@ To read Use Case click [**here**]( ../../UseCasesSalesOfficer.md )
 6. The Sales Officer submits the process
 7. The system complains about insufficient information
 8. The Sales Officer searches for the previously edited flight
-9. The system still displayes the same flight.
+9. The system still displays the same flight.
 
 **Test Scenario 3: Invalid information was added during the edit**
 

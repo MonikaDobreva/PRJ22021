@@ -39,4 +39,4 @@ Management dashboard:
 
 
 ## Constraint for later on:
--We made the decision that the seat and class of a ticket is not editible.
+-We made the decision that the seat and class of a ticket is not editable.

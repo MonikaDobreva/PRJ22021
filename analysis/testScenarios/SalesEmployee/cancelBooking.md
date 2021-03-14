@@ -5,7 +5,7 @@ To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
 **General:**
 1. Sales Employee chooses to manage a booking.
 
-**Test Scenario 1: System shouldn't display booking if there aren't**
+**Test Scenario 1: System shouldn't display booking if they aren't available**
 
 2. System tries to display available bookings and filtering/search options without bookings available.
 3. System informs Sales Employee that there are no bookings available.
@@ -13,7 +13,7 @@ To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
 **Test Scenario 2: System with several bookings must be displayed**
 
 2. System displays list of bookings and filtering/search options.
-3. System displays the bookings inside of it.
+3. System displays the bookings inside it.
 
 **Test Scenario 3: System with bookings {("101", "2021-01-01", "Albert Einstein", ...), ("102", "2021-02-01", "Nikolav Tesla ", ...), ("103", "2021-03-01", "Anna Frank", ...), ("104", "2021-03-10", "Albert Einstein", ...)} must display ("101", "2021-01-01", "Albert Einstein", ...) and ("104", "2021-03-10", "Albert Einstein", ...) when searching for name "Albert Einstein"**
 
@@ -37,7 +37,7 @@ To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
 
 2. System displays list of bookings and filtering/search options.
 3. Sales Employee uses searching options to look for bookings containing order number "105".
-4. System informs Sales Employye that there is no booking matching with searching options.
+4. System informs Sales Employee that there is no booking matching with searching options.
 
 **Test Scenario 7: System with {("101", "2021-01-01", "Albert Einstein", ...), ("102", "2021-02-01", "Nikolav Tesla ", ...), ("103", "2021-03-01", "Anna Frank", ...)} must not display booking ("101", "2021-01-01", "Albert Einstein", ...) when it has been cancelled**
 

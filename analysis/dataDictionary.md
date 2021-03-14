@@ -2,7 +2,7 @@
 
 |Term|Description|
 |---|---|
-|Airline company|A company which maintains aircrafts and provides the opportunity for people to book flights on certain routes to preselected destinations.|
+|Airline company|A company which maintains aircraft and provides the opportunity for people to book flights on certain routes to preselected destinations.|
 |Airport |Location in a city from which aircraft operations, like departure and arrival, take place, also known as the destination of a flight. Can uniquely be identified with a three-letter airport code.|
 |Availability of seats|	Gives information about all the seats still bookable for an upcoming flight.|
 |Booking| Confirmation concerning a sale in form of a certain amount of tickets.|

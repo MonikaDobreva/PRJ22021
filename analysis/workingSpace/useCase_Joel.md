@@ -30,7 +30,7 @@
 |2.                    |If system has 0 bookings, listing them should report emptiness.|
 |3.                    |When looking for a specific booking that is in the system, using filter/search options, must return desired booking or match results|
 |4.                    |Use filter/search options for looking for a flight with no matching results must report emptiness.|
-|4.                    |Cancelation of a booking must delete booking from the system.|
+|4.                    |Cancellation of a booking must delete booking from the system.|
 
 |Test for<br>Scenario x|Description|
 |----------------------|---|
