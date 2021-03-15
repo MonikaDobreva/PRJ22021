@@ -1,43 +1,48 @@
 # PRJ2 - Project 2  
 
-The purpose of this repository is to document your Project work.
 
-***Your group is responsible for the repository structure and content***, but we created some template folders for you. You do not need to stick to this.
+# **Analysis artefacts**
 
-Currently the structure is as follows:
 
-- [Project Management](/project-management) - Put all project management related stuff in here, e.g. meetings outcomes, retrospectives, screenshots, minutes, planning.
-- [Analysis](/analysis) - this is the folder where you should put all analysis artefacts into
-- [Design](/design) - this is the folder where you should put all design artefacts into
-- [Implementation](/implementation) - this is the folder where you should put all analysis artefacts into
+## Week #1
 
-Preferably document with markdown files or AsciiDoc.
+[**User Stories**](userStories.md)
 
-***Feel free to adapt the structure***
+[**Data Dictionary**](dataDictionary.md)
 
-# Github Howto
 
-## Github Markdown (.md-files)
+## Week #2
 
-If you want to write documentatio with markdown:
+[**Domain Model**](domainModel.svg)
 
-Check the github markdown cheatsheet: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links
-to learn how to work with .md files.
 
-Further links for learning github in the [Github Learning Labs](https://lab.github.com):
+## Week #3
 
-- [github introduction from Colloquium](https://fontysvenlo.github.io/Git-and-github-introduction/)
-- [Introduction to Github](https://lab.github.com/githubtraining/introduction-to-github)
-- [Communication using Markdown](https://lab.github.com/githubtraining/communicating-using-markdown)
+[**Use Cases + Test Scenarios: Sales Employee**](UseCasesSalesEmployee.md)
 
-# AsciiDoc Howto (.adoc-files)
+[**Use Cases + Test Scenarios: Sales Officer**](UseCasesSalesOfficer.md)
 
-If you want to choose asciidoctor, see the following link: 
+[**Use Cases + Test Scenarios: Sales Manager**](UseCasesSalesManager.md)
 
-- [Using AsciiDoc and Asciidoctor to write documentation](https://www.vogella.com/tutorials/AsciiDoc/article.html)
+[**Use Cases + Test Scenarios: Fish Level**](UseCasesFishLevel.md)
 
-# UML Howto with PlantUML
+[**Use Case Diagram**](useCaseDiagram.svg)
 
-If you are interested to create your diagrams with PlantUML, see:
 
-- [PlantUML](99-plantuml.md)
+## Week #4
+
+[**Activity Diagram: Sales Employee**](activityDiagrams/ActivityDiagramSalesEmployee.svg)
+
+[**Activity Diagram: Sales Officer**](activityDiagrams/ActivityDiagramSalesOfficer.svg)
+
+[**Activity Diagram: Sales Manager**](activityDiagrams/ActivityDiagramSalesManager.svg)
+
+
+
+# **Design artefacts**
+
+
+## Week #5
+
+...
+
