@@ -10,7 +10,7 @@ By this setup the Project Charter describes a first full iteration around the �
 •	Advice:  
 Based on the analysis carried for this Project Charter proposal is to go ahead with the project.
 
-The Business and IT costs for <<PRJ G3>> are xxxx, compared to an expected benefit of xxxx.
+The Business and IT costs for <<PRJ G3>> are 200.000 Euros, compared to an expected benefit of 50.000 Euros.
 
 
 **2	Goal of the project (S,Q,T,B)**<br>
@@ -20,8 +20,7 @@ The quality of this program comes with one high priority which is user-friendlin
 The initial estimate of effort and time of this project will be around 21 weeks with 5 people working on it.
 
 2.1	Background information
-
-•	[Provide the background information on organizational changes or programs, to allow the placement of this project in the greater picture.]
+We are students from Fontys university that enrolled in the software engineering course. In the scope of Project 2 this application is beeing developt.
 
 **3. Project Scope(S)<br>**
 
