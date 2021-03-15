@@ -1,19 +1,19 @@
-# Analysis artefacts
+## Analysis artefacts
 
 
-## Week #1
+### Week #1
 
 [**User Stories**](userStories.md)
 
 [**Data Dictionary**](dataDictionary.md)
 
 
-## Week #2
+### Week #2
 
 [**Domain Model**](domainModel.svg)
 
 
-## Week #3
+### Week #3
 
 [**Use Cases + Test Scenarios: Sales Employee**](UseCasesSalesEmployee.md)
 
@@ -26,7 +26,7 @@
 [**Use Case Diagram**](useCaseDiagram.svg)
 
 
-## Week #4
+### Week #4
 
 [**Activity Diagram: Sales Employee**](activityDiagrams/ActivityDiagramSalesEmployee.svg)
 
