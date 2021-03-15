@@ -1,24 +1,35 @@
-# Analysis
-Put in here all analysis artefacts and documentation.
-
-## User Stories
-![User Stories](userStories.md)
-
-## Data Dictionary
-![Data Dictionary](dataDictionary.md)
-
-## Domain Model
-![Domain Model](domainModel.svg)
-
-## Use Case Diagram
-![Use Case Diagram](useCaseDiagram.svg)
+# Analysis artefacts
 
 
-## Other examples:
-## Use Case Diagram
+## Week #1
 
-![UC diagram](images/example-uc-diagram.jpg)
+[**User Stories**](userStories.md)
 
-## Domain Model
+[**Data Dictionary**](dataDictionary.md)
 
-![Domain model](images/example-domain-model.jpg)
+
+## Week #2
+
+[**Domain Model**](domainModel.svg)
+
+
+## Week #3
+
+[**Use Cases + Test Scenarios: Sales Employee**](UseCasesSalesEmployee.md)
+
+[**Use Cases + Test Scenarios: Sales Officer**](UseCasesSalesOfficer.md)
+
+[**Use Cases + Test Scenarios: Sales Manager**](UseCasesSalesManager.md)
+
+[**Use Cases + Test Scenarios: Fish Level**](UseCasesFishLevel.md)
+
+[**Use Case Diagram**](useCaseDiagram.svg)
+
+
+## Week #4
+
+[**Activity Diagram: Sales Employee**](activityDiagrams/ActivityDiagramSalesEmployee.svg)
+
+[**Activity Diagram: Sales Officer**](activityDiagrams/ActivityDiagramSalesOfficer.svg)
+
+[**Activity Diagram: Sales Manager**](activityDiagrams/ActivityDiagramSalesManager.svg)
