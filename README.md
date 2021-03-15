@@ -1,22 +1,22 @@
 # PRJ2 - Project 2  
 
 
-# **Analysis artefacts**
+## **Analysis artefacts**
 
 
-## Week #1
+### Week #1
 
 [**User Stories**](analysis/userStories.md)
 
 [**Data Dictionary**](analysis/dataDictionary.md)
 
 
-## Week #2
+### Week #2
 
 [**Domain Model**](analysis/domainModel.svg)
 
 
-## Week #3
+### Week #3
 
 [**Use Cases + Test Scenarios: Sales Employee**](analysis/UseCasesSalesEmployee.md)
 
@@ -29,7 +29,7 @@
 [**Use Case Diagram**](analysis/useCaseDiagram.svg)
 
 
-## Week #4
+### Week #4
 
 [**Activity Diagram: Sales Employee**](analysis/activityDiagrams/ActivityDiagramSalesEmployee.svg)
 
@@ -39,10 +39,10 @@
 
 
 
-# **Design artefacts**
+## **Design artefacts**
 
 
-## Week #5
+### Week #5
 
 ...
 
