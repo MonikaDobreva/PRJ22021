@@ -15,11 +15,11 @@
 |Use case Number|x|
 |---|---|
 |**Name**|Lookup flights|
-|**Actor**|Sales Employee|
-|**Description**|Sales Employee looks up certain flights to see prices as well as discounts.|
+|**Actor**|Sales Employee, Sales Manager|
+|**Description**|User looks up certain flights to see prices as well as discounts.|
 |**Pre-condition**|Flights need to have been added to the system|
-|**Scenario**|1. Sales Employee selects the search option.<br>2. System prompts for input in form of search keywords(time,date,location)<br>3. Sales Employee inputs his search option in form of the key words<br>4. System shows list of all flights that match the keywords<br>5. Sales Employee can select a flight<br>6. System displays all information about the selected flight|
-|**Result**|The sales Employee can look at a certain flight with the prices shown|
+|**Scenario**|1. User selects the search option.<br>2. System prompts for input in form of search keywords(time,date,location)<br>3. User inputs his search option in form of the key words<br>4. System shows list of all flights that match the keywords<br>5. User can select a flight<br>6. System displays all information about the selected flight|
+|**Result**|The User can look at a certain flight with the prices shown|
 |**Extensions**|-|
 |**Exceptions**|4a. No flights with such keywords<br>1. System displays message that no such flights are available. Use case ends here.|
 |**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/lookupFlights.md)|
