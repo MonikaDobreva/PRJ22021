@@ -15,7 +15,7 @@
 |Use case Number|x|
 |---|---|
 |**Name**|Lookup flights|
-|**Actor**|Sales Employee|
+|**Actor**|Sales Employee, Sales Manager|
 |**Description**|Sales Employee looks up certain flights to see prices as well as discounts.|
 |**Pre-condition**|Flights need to have been added to the system|
 |**Scenario**|1. Sales Employee selects the search option.<br>2. System prompts for input in form of search keywords(time,date,location)<br>3. Sales Employee inputs his search option in form of the key words<br>4. System shows list of all flights that match the keywords<br>5. Sales Employee can select a flight<br>6. System displays all information about the selected flight|
