@@ -1,6 +1,7 @@
 package businessentitiesapi;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -23,5 +24,7 @@ public interface FlightManager {
      * @return the added flight
      */
     Flight add(Flight f);
+
+    List<Flight> getFlights();
 
 }

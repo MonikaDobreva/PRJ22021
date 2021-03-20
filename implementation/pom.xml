@@ -15,8 +15,8 @@
         <relativePath/>
     </parent>
     <modules>
-<!--        <module>Assembler</module>-->
-<!--        <module>GUI</module>-->
+        <module>Assembler</module>
+        <module>GUI</module>
         <module>BusinessLogic</module>
         <module>Persistence</module>
         <module>BusinessEntitiesAPI</module>

@@ -3,6 +3,7 @@ package persistence;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     public FlightStorageServiceImpl(FlightManager flightManager) {
         this.flightManager = flightManager;
+        flights = new ArrayList<>();
     }
 
     @Override

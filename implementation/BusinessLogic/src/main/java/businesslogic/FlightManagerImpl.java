@@ -5,6 +5,7 @@ import businessentitiesapi.FlightManager;
 import persistence.FlightStorageService;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -28,5 +29,10 @@ public class FlightManagerImpl implements FlightManager {
     public Flight add(Flight f) {
         flightStorageService.add(f);
         return f;
+    }
+
+    @Override
+    public List<Flight> getFlights() {
+        return flightStorageService.getAll();
     }
 }
