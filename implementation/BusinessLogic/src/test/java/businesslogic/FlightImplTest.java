@@ -1,6 +1,7 @@
 package businesslogic;
 
 import businessentitiesapi.Flight;
+import businessentitiesapi.FlightManager;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,9 @@ import static org.assertj.core.api.Assertions.*;
 
 public class FlightImplTest {
 
-    Flight f = new FlightImpl("LH388", LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-02"));
+    FlightManager fm = new FlightManagerImpl();
+    Flight f = fm.createFlight("LH388", LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-02"));
+
 
     @Test
     public void testToString(){
@@ -29,6 +32,5 @@ public class FlightImplTest {
             s.assertThat(f.getDepartureTime()).isEqualTo("2020-01-01");
             s.assertThat(f.getArrivalTime()).isEqualTo("2020-01-02");
         });
-
     }
 }
