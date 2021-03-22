@@ -37,6 +37,6 @@ public class FlightImpl implements Flight {
 
     @Override
     public String toString(){
-        return "Flight: " + name + " leaving at the " + depTime + " and arriving at the " + arrTime;
+        return name + " leaving at the " + depTime + " and arriving at the " + arrTime;
     }
 }

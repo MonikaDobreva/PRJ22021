@@ -20,7 +20,7 @@ public class GUIApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("flightView"), 640, 480);
+        scene = new Scene(loadFXML("flightView"));
         stage.setScene(scene);
         stage.show();
     }
