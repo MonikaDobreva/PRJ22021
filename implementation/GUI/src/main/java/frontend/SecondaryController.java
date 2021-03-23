@@ -16,7 +16,7 @@ public class SecondaryController {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        GUIApp.setRoot("primary");
+        GUIApp.setRoot("flightView");
     }
 
 

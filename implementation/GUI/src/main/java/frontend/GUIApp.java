@@ -41,6 +41,9 @@ public class GUIApp extends Application {
         if(c.getName().equals("frontend.FlightController")){
             return new FlightController(businessLogicAPI);
         }
+        if(c.getName().equals("frontend.SecondaryController")){
+            return new SecondaryController();
+        }
         return null;
     };
 
