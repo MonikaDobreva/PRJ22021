@@ -2,6 +2,7 @@ package businessentitiesapi;
 
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 /**
  * Flight class, representing the flight of the airline company.
@@ -19,11 +20,17 @@ public interface Flight {
      * Get the departure time of the flight
      * @return date and time of departure
      */
-    LocalDate getDepartureTime();
+    ZonedDateTime getDepartureTime();
 
     /**
      * Get the arrival time of the flight
      * @return date and time of departure
      */
-    LocalDate getArrivalTime();
+    ZonedDateTime getArrivalTime();
+
+    String getAirplane();
+
+    String getStartAirport();
+
+    String getDestAirport();
 }

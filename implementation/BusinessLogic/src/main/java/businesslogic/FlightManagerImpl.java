@@ -5,6 +5,7 @@ import businessentitiesapi.FlightManager;
 import persistence.FlightStorageService;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -21,8 +22,13 @@ public class FlightManagerImpl implements FlightManager {
 
 
     @Override
-    public Flight createFlight(String name, LocalDate departure, LocalDate arrival) {
-        return new FlightImpl(name, departure, arrival);
+    public Flight createFlight(String name,
+                               ZonedDateTime depTime,
+                               ZonedDateTime arrTime,
+                               String airplane,
+                               String startAirport,
+                               String destAirport) {
+        return new FlightImpl(name, depTime, arrTime, airplane, startAirport, destAirport);
     }
 
     @Override
