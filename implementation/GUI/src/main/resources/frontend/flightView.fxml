@@ -54,11 +54,6 @@
             </children>
         </HBox>
       <Label fx:id="flightLabel" alignment="TOP_LEFT" prefHeight="112.0" prefWidth="400.0" style="-fx-border-style: solid;" />
-      <HBox prefHeight="86.0" prefWidth="400.0" spacing="20.0">
-         <padding>
-            <Insets top="20.0" />
-         </padding>
-      </HBox>
         <Button fx:id="primaryButton" onAction="#switchToSecondary" text="Switch to Secondary View" />
     </children>
     <padding>
