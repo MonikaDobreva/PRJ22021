@@ -56,12 +56,13 @@ public class FlightImpl implements Flight {
     public String getStartAirport() { return startAirport; }
 
     @Override
-    public String getDestAirport() { return startAirport; }
+    public String getDestAirport() { return destAirport; }
 
 
 
     @Override
     public String toString() {
-        return name + " leaving at the " + depTime + " and arriving at the " + arrTime;
+        return "Airplane " + airplane + name + " leaving at " + depTime + " and arriving at " +
+                arrTime + " going from " + startAirport + " to " + destAirport;
     }
 }

@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
 public class FlightController {
 
     @FXML
-    TextField flightName, depTime, arrTime;
+    TextField flightName, depTime, arrTime, airplane, startAirport, destAirport;
 
     @FXML
     Button StoreFlight, primaryButton, ShowFlights;
@@ -47,8 +48,11 @@ public class FlightController {
     private void storeFlight() {
         Flight f = businessLogicAPI.getFlightManager().createFlight(
                 flightName.getText(),
-                LocalDate.parse(depTime.getText()),
-                LocalDate.parse(arrTime.getText())
+                ZonedDateTime.parse(depTime.getText()),
+                ZonedDateTime.parse(arrTime.getText()),
+                airplane.getText(),
+                startAirport.getText(),
+                destAirport.getText()
         );
         businessLogicAPI.getFlightManager().add(f);
     }
