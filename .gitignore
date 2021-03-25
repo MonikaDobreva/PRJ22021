@@ -24,3 +24,11 @@ hs_err_pid*
 
 # Intellij imls
 *.iml
+implementation/Assembler/target/classes/.netbeans_automatic_build
+implementation/Assembler/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+implementation/Assembler/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+implementation/Assembler/target/test-classes/.netbeans_automatic_build
+implementation/BusinessLogic/target/classes/.netbeans_automatic_build
+implementation/target/classes/.netbeans_automatic_build
+implementation/BusinessLogic/target/test-classes/.netbeans_automatic_build
+implementation/target/test-classes/.netbeans_automatic_build
