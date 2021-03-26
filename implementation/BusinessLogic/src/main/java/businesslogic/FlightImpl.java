@@ -3,7 +3,9 @@ package businesslogic;
 import businessentitiesapi.Flight;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -12,20 +14,22 @@ import java.time.ZonedDateTime;
 public class FlightImpl implements Flight {
 
     private final String name;
-    private final ZonedDateTime depTime;
-    private final ZonedDateTime arrTime;
+    private final LocalDateTime depTime;
+    private final LocalDateTime arrTime;
     private final String airplane;
     private final String startAirport;
     private final String destAirport;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
-    public FlightImpl(String name,
-                      ZonedDateTime depTime,
-                      ZonedDateTime arrTime,
-                      String airplane,
-                      String startAirport,
-                      String destAirport) {
+    public FlightImpl(
+            String name,
+            LocalDateTime depTime,
+            LocalDateTime arrTime,
+            String airplane,
+            String startAirport,
+            String destAirport
+    ) {
         this.name = name;
         this.depTime = depTime;
         this.arrTime = arrTime;
@@ -40,12 +44,12 @@ public class FlightImpl implements Flight {
     }
 
     @Override
-    public ZonedDateTime getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return depTime;
     }
 
     @Override
-    public ZonedDateTime getArrivalTime() {
+    public LocalDateTime getArrivalTime() {
         return arrTime;
     }
 
@@ -59,10 +63,10 @@ public class FlightImpl implements Flight {
     public String getDestAirport() { return destAirport; }
 
 
-
     @Override
     public String toString() {
-        return "Airplane " + airplane + name + " leaving at " + depTime + " and arriving at " +
-                arrTime + " going from " + startAirport + " to " + destAirport;
+        return depTime.getDayOfMonth() + "." + depTime.getMonth() + ": \n" + "Airplane " + airplane + " on flight "
+                + name + " departing from " + startAirport + " at " + depTime.getHour() + ":" + depTime.getMinute() +
+                "\n" + "and going to " + destAirport + " arriving at " + arrTime.getHour() + ":" + arrTime.getMinute();
     }
 }

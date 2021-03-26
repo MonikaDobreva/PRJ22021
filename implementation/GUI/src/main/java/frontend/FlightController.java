@@ -5,13 +5,18 @@ import businesslogic.BusinessLogicAPI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 /**
@@ -20,14 +25,18 @@ import java.util.List;
 
 public class FlightController {
 
+
     @FXML
     TextField flightName, depTime, arrTime, airplane, startAirport, destAirport;
+
+    @FXML
+    DatePicker depTimePicker, arrTimePicker;
 
     @FXML
     Button StoreFlight, primaryButton, ShowFlights;
 
     @FXML
-    Label flightLabel;
+    Label flightLabel, nfcLabel;
 
     private BusinessLogicAPI businessLogicAPI;
 
@@ -46,15 +55,20 @@ public class FlightController {
 
     @FXML
     private void storeFlight() {
-        Flight f = businessLogicAPI.getFlightManager().createFlight(
-                flightName.getText(),
-                ZonedDateTime.parse(depTime.getText()),
-                ZonedDateTime.parse(arrTime.getText()),
-                airplane.getText(),
-                startAirport.getText(),
-                destAirport.getText()
-        );
-        businessLogicAPI.getFlightManager().add(f);
+        try {
+            Flight f = businessLogicAPI.getFlightManager().createFlight(
+                    flightName.getText(),
+                    LocalDateTime.parse(depTime.getText() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    LocalDateTime.parse(arrTime.getText() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    airplane.getText(),
+                    startAirport.getText(),
+                    destAirport.getText()
+            );
+            businessLogicAPI.getFlightManager().add(f);
+            nfcLabel.setText("Successfully added flight!");
+        } catch (Exception d) {
+            nfcLabel.setText("Invalid input! Please try again.");
+        }
     }
 
 

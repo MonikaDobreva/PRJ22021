@@ -1,7 +1,9 @@
 package businessentitiesapi;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -23,8 +25,8 @@ public interface FlightManager {
      */
     Flight createFlight(
             String name,
-            ZonedDateTime depTime,
-            ZonedDateTime arrTime,
+            LocalDateTime depTime,
+            LocalDateTime arrTime,
             String airplane,
             String startAirport,
             String destAirport
@@ -38,6 +40,16 @@ public interface FlightManager {
      */
     Flight add(Flight f);
 
+    /**
+     * Get all flights which were previously added to the flightStorage
+     * @return a List of flight objects
+     */
     List<Flight> getFlights();
+
+//    /**
+//     * Creates a date format that includes the year, month and day
+//     * @return a DateTimeFormatter object
+//     */
+//    DateTimeFormatter dftYMD();
 
 }
