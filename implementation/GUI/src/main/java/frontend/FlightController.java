@@ -70,8 +70,7 @@ public class FlightController {
                     startAirport.getText(),
                     destAirport.getText()
             );
-            flightLabel.setText(f.toString());
-//            businessLogicAPI.getFlightManager().add(f);
+            businessLogicAPI.getFlightManager().add(f);
             nfcLabel.setText("Successfully added flight!");
             flightLabel.setText(f.toString());
         } catch (Exception d) {
