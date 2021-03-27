@@ -4,10 +4,7 @@ import businessentitiesapi.Flight;
 import businesslogic.BusinessLogicAPI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -17,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -72,7 +70,6 @@ public class FlightController {
             );
             businessLogicAPI.getFlightManager().add(f);
             nfcLabel.setText("Successfully added flight!");
-            flightLabel.setText(f.toString());
         } catch (Exception d) {
             nfcLabel.setText("Invalid input! Please try again.");
         }

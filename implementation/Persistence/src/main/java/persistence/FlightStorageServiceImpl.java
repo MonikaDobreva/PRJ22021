@@ -35,11 +35,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         try {
             FileWriter writer = new FileWriter("flightStorage.csv", true);
             String sb = "";
-            sb = sb.concat(f.getName() + ";");
-            sb = sb.concat(f.getDepartureTime() + ";");
-            sb = sb.concat(f.getArrivalTime() + ";");
-            sb = sb.concat(f.getAirplane() + ";");
-            sb = sb.concat(f.getStartAirport() + ";");
+            sb = sb.concat(f.getName() + ",");
+            sb = sb.concat(f.getDepartureTime() + ",");
+            sb = sb.concat(f.getArrivalTime() + ",");
+            sb = sb.concat(f.getAirplane() + ",");
+            sb = sb.concat(f.getStartAirport() + ",");
             sb = sb.concat(f.getDestAirport() + "\n");
             if (Files.lines(Path.of("flightStorage.csv")).count() == 0){
                 writer.write(sb);
@@ -58,7 +58,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
         try{
             Files.lines(Path.of("flightStorage.csv"))
-                        .map(line -> line.split(";"))
+                        .map(line -> line.split(","))
                         .map(this::createFlight)
                         .forEach(flights::add);
         } catch (IOException e){

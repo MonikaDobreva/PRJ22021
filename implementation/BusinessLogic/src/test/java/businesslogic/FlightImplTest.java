@@ -44,8 +44,8 @@ public class FlightImplTest {
     public void testGetter(){
         SoftAssertions.assertSoftly(s -> {
             s.assertThat(f.getName()).isEqualTo("LH388");
-            s.assertThat(f.getDepartureTime()).isEqualTo("2007-12-03T10:15:30");
-            s.assertThat(f.getArrivalTime()).isEqualTo("2008-12-03T10:15:30");
+            s.assertThat(f.getDepartureTime()).isEqualTo("2007-12-03T10:15");
+            s.assertThat(f.getArrivalTime()).isEqualTo("2008-12-03T10:15");
             s.assertThat(f.getAirplane()).isEqualTo("Boeing 747");
             s.assertThat(f.getStartAirport()).isEqualTo("DUS");
             s.assertThat(f.getDestAirport()).isEqualTo("ATX");

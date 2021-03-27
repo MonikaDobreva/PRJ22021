@@ -34,7 +34,6 @@ public class FlightManagerTest {
                         "ATX"
                 );
 
-
         List<Flight> flights = new ArrayList<>(Arrays.asList(f));
 
         fm.add(f);
