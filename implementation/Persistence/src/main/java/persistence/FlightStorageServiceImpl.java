@@ -41,7 +41,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             sb = sb.concat(f.getAirplane() + ";");
             sb = sb.concat(f.getStartAirport() + ";");
             sb = sb.concat(f.getDestAirport() + "\n");
-            writer.append(sb);
+            if (Files.lines(Path.of("flightStorage.csv")).count() == 0){
+                writer.write(sb);
+            } else {
+                writer.append(sb);
+            }
             writer.close();
         } catch (IOException e){
             System.out.println(e.getMessage());
