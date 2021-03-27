@@ -3,9 +3,12 @@ package businesslogic;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,16 +22,23 @@ public class FlightManagerTest {
     FlightManager fm = new FlightManagerImpl();
 
     @Test
-    public void storeFlightsInList(){
+    public void storeFlightsInList() {
 
-     //   Flight f1 = fm.createFlight("LH388", LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-02"));
-     //   Flight f2 = fm.createFlight("LH388", LocalDate.parse("2020-01-04"), LocalDate.parse("2020-01-05"));
+        Flight f = fm.createFlight
+                (
+                        "LH388",
+                        LocalDateTime.parse("10:15 2007-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                        LocalDateTime.parse("10:15 2008-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                        "Boeing 747",
+                        "DUS",
+                        "ATX"
+                );
 
-     //   List<Flight> flights = new ArrayList<>(Arrays.asList(f1, f2));
 
-      //  fm.add(f1);
-      //  fm.add(f2);
+        List<Flight> flights = new ArrayList<>(Arrays.asList(f));
 
-      //  assertThat(fm.getFlights()).containsSequence(flights);
+        fm.add(f);
+
+        assertThat(fm.getFlights()).containsSequence(flights);
     }
 }

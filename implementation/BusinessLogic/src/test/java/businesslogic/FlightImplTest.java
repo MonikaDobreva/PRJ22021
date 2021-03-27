@@ -25,8 +25,8 @@ public class FlightImplTest {
     FlightManager fm = new FlightManagerImpl();
     Flight f = fm.createFlight(
             "LH388",
-            LocalDateTime.parse("2007-12-03T10:15:30"),
-            LocalDateTime.parse("2008-12-03T10:15:30"),
+            LocalDateTime.parse("10:15 2007-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+            LocalDateTime.parse("10:15 2008-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
             "Boeing 747",
             "DUS",
             "ATX");
@@ -35,7 +35,7 @@ public class FlightImplTest {
 
     @Test
     public void testToString(){
-        assertThat(f).hasToString("3.DECEMBER: \n" +
+        assertThat(f).hasToString("3. DECEMBER: \n" +
                 "Airplane Boeing 747 on flight LH388 departing from DUS at 10:15\n" +
                 "and going to ATX arriving at 10:15");
     }

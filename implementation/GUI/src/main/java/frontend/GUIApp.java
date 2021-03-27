@@ -4,8 +4,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+
 import javafx.util.Callback;
 import businesslogic.BusinessLogicAPI;
 
@@ -20,7 +25,12 @@ public class GUIApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("flightView"));
+        scene = new Scene(loadFXML("welcome"), 482, 524);
+
+//        Image image = new Image(new File("icons/send.png").toURI().toString());
+//        stage.getIcons().add(appIcon);
+
+        stage.setTitle("AIS");
         stage.setScene(scene);
         stage.show();
     }
@@ -28,6 +38,8 @@ public class GUIApp extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+
+
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
@@ -38,6 +50,9 @@ public class GUIApp extends Application {
     }
 
     private static final Callback<Class<?>, Object> controllerFactory = ( Class<?> c) -> {
+        if(c.getName().equals("frontend.welcomeController")){
+            return new welcomeController();
+        }
         if(c.getName().equals("frontend.FlightController")){
             return new FlightController(businessLogicAPI);
         }

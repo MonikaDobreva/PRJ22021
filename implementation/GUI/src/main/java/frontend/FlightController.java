@@ -54,6 +54,12 @@ public class FlightController {
     }
 
     @FXML
+    private void backToStart() throws IOException {
+        GUIApp.setRoot("welcome");
+    }
+
+
+    @FXML
     private void storeFlight() {
         try {
             Flight f = businessLogicAPI.getFlightManager().createFlight(
@@ -65,15 +71,16 @@ public class FlightController {
                     destAirport.getText()
             );
             flightLabel.setText(f.toString());
-            businessLogicAPI.getFlightManager().add(f);
+//            businessLogicAPI.getFlightManager().add(f);
             nfcLabel.setText("Successfully added flight!");
+            flightLabel.setText(f.toString());
         } catch (Exception d) {
             nfcLabel.setText("Invalid input! Please try again.");
         }
     }
 
-
-    public void showFlights() {
+    @FXML
+    private void showFlights() {
         var flights = businessLogicAPI.getFlightManager().getFlights();
         StringBuilder flightsListed = new StringBuilder();
         for (Flight f : flights) {

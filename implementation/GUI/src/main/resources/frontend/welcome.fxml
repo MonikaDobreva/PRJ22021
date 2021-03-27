@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.welcomeController">
+   <children>
+      <VBox layoutX="98.0" layoutY="215.0" prefHeight="96.0" prefWidth="287.0">
+         <children>
+            <Label text="Welcome to AIS">
+               <font>
+                  <Font name="Eras Bold ITC" size="36.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.34965887665748596" green="0.7210648059844971" blue="0.9210526347160339" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.9961685823754789">
+                           <color>
+                              <Color red="0.11513157933950424" green="0.3059210479259491" blue="0.5921052694320679" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.11513157933950424" green="0.3059210479259491" blue="0.5921052694320679" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="287.0">
+               <children>
+                  <Button fx:id="startBtn" mnemonicParsing="false" onAction="#goToStart" prefHeight="28.0" prefWidth="85.0" style="-fx-background-color: #2980b9;" text="Start" textFill="WHITE">
+                     <font>
+                        <Font name="Fira Code Regular" size="14.0" />
+                     </font>
+                  </Button>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
