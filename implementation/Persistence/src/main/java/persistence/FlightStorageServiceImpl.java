@@ -15,16 +15,16 @@ import java.util.List;
 public class FlightStorageServiceImpl implements FlightStorageService {
 
     private final FlightManager flightManager; //not used yet
-    private final List<Flight> flights; //data handling only through lists so far, DDB later
+    private static List<Flight> flights = new ArrayList<>(); //data handling only through lists so far, DDB later
 
     public FlightStorageServiceImpl(FlightManager flightManager) {
         this.flightManager = flightManager;
-        flights = new ArrayList<>();
     }
 
     @Override
     public void add(Flight f) {
         flights.add(f);
+        System.out.println(flights);
     }
 
     @Override

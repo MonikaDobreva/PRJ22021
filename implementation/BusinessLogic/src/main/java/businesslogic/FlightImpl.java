@@ -62,11 +62,14 @@ public class FlightImpl implements Flight {
     @Override
     public String getDestAirport() { return destAirport; }
 
+    // Airplane ... on flight ...
+    // departing from ... on DAY.MONTH at HH:mm
+    // arriving at ... on DAY.MONTH at HH:mm
 
     @Override
     public String toString() {
-        return depTime.getDayOfMonth() + "." + depTime.getMonth() + ": \n" + "Airplane " + airplane + " on flight "
-                + name + " departing from " + startAirport + " at " + depTime.getHour() + ":" + depTime.getMinute() +
-                "\n" + "and going to " + destAirport + " arriving at " + arrTime.getHour() + ":" + arrTime.getMinute();
+        return "Airplane " + airplane + " on flight " + name + "\n"
+                + "Departing from " + startAirport + " on " + depTime.getDayOfMonth() + "." + depTime.getMonth() + " at " + depTime.getHour() + ":" + depTime.getMinute() + "\n"
+                + "Arriving to " + destAirport + " on " + arrTime.getDayOfMonth() + "." + arrTime.getMonth() + " at " + arrTime.getHour() + ":" + arrTime.getMinute() + "\n";
     }
 }
