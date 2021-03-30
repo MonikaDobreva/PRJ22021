@@ -6,6 +6,7 @@
         <groupId>fontys</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+  
     <groupId>fontys</groupId>
     <artifactId>GUI</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -13,6 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <exec.mainClass>frontend.GUIApp</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
