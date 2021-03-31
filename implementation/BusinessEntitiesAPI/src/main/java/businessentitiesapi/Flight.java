@@ -35,7 +35,7 @@ public interface Flight {
      * For now only returns a string
      * @return name of the plane
      */
-    String getAirplane();
+    Airplane getAirplane();
 
     /**
      * Get the starting airport of the flight
