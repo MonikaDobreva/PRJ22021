@@ -30,6 +30,7 @@ public interface Airplane {
      * @return seat amount
      */
     int getSeatAmount();
+    //May expand by seat categories like business class or economy
     
     
     

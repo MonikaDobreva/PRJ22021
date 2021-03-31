@@ -17,6 +17,7 @@ public class AirplaneImpl implements businessentitiesapi.Airplane {
             this.seatAmount = amountSeats;
     }
 
+    
     @Override
     public Airplane getAirplane() {
         return this;
@@ -41,5 +42,6 @@ public class AirplaneImpl implements businessentitiesapi.Airplane {
     public String toString() {
         return "Airplane with " + "code " + code + " and name " + name + ", has a seat amount of" + seatAmount + '.';
     }
+
 
 }
