@@ -1,6 +1,7 @@
 
 package businesslogic;
 
+import businessentitiesapi.Airplane;
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -10,8 +11,8 @@ import org.junit.jupiter.api.Test;
  */
 public class AirPlaneImplTest {
     
-    AirplaneImpl ap = new AirplaneImpl("Boeing 377","V-BBBB",367);
-    AirplaneImpl wrongAp = new AirplaneImpl("","V-BBBB",367);
+    Airplane ap = new AirplaneImpl("Boeing 377","V-BBBB",367);
+    Airplane wrongAp = new AirplaneImpl("","V-BBBB",367);
     
     @Test
     public void constructorRightTest(){
