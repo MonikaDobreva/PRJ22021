@@ -3,6 +3,7 @@ package persistence;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 /**
@@ -70,6 +72,12 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 //        Flight f2 = flightManager.createFlight("LH388", LocalDate.parse("2020-01-04"), LocalDate.parse("2020-01-05"));
 //        return new ArrayList<>(Arrays.asList(f1, f2));
     }
+
+    @Override
+    public void delete(Flight f) {
+        // implement flight deletion
+    }
+
 
     private Flight createFlight( String[] s ) {
         return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);

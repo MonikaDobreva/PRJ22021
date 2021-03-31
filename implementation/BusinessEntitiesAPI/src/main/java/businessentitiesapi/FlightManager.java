@@ -27,9 +27,9 @@ public interface FlightManager {
             String name,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            String airplane,
-            String startAirport,
-            String destAirport
+            Airplane airplane,
+            Airport startAirport,
+            Airport destAirport
     );
 
     /**
@@ -46,10 +46,10 @@ public interface FlightManager {
      */
     List<Flight> getFlights();
 
-//    /**
-//     * Creates a date format that includes the year, month and day
-//     * @return a DateTimeFormatter object
-//     */
-//    DateTimeFormatter dftYMD();
+    /**
+     * Deletes the given flight from the FlightManager
+     * @param f Flight
+     */
+    void delete(Flight f);
 
 }

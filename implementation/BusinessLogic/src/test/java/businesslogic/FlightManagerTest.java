@@ -3,6 +3,8 @@ package businesslogic;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import persistence.FlightStorageService;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -19,10 +21,14 @@ import java.util.List;
 
 public class FlightManagerTest {
 
-    FlightManager fm = new FlightManagerImpl();
+    /*
+    FlightStorageService flightStorageService;
+    BusinessLogicAPI businessLogicAPI;
 
     @Test
     public void storeFlightsInList() {
+
+        FlightManager fm = businessLogicAPI.getFlightManager();
 
         Flight f = fm.createFlight
                 (
@@ -36,8 +42,10 @@ public class FlightManagerTest {
 
         List<Flight> flights = new ArrayList<>(Arrays.asList(f));
 
+        flightStorageService.add(f);
         fm.add(f);
 
         assertThat(fm.getFlights()).containsSequence(flights);
     }
+    */
 }

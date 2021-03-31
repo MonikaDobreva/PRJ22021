@@ -3,6 +3,8 @@ package businesslogic;
 
 import businessentitiesapi.Airplane;
 import static org.assertj.core.api.Assertions.*;
+
+import businessentitiesapi.Airplane;
 import org.junit.jupiter.api.Test;
 
 /**
