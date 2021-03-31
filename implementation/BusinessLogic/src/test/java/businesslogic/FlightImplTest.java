@@ -27,9 +27,9 @@ public class FlightImplTest {
             "LH388",
             LocalDateTime.parse("10:15 2007-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
             LocalDateTime.parse("10:15 2008-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-            "Boeing 747",
-            "DUS",
-            "ATX");
+            new AirplaneImpl("Boeing 747", "A-BCDE", 200),
+            new AirportImpl("DUS", "Düsseldorf Airport", "Germany", "Düsseldorf"),
+            new AirportImpl("YVY", "Whitehorse Airport", "Canada", "Whitehorse"));
 
     // Tryout: ZonedDateTime.parse("2007-12-03T10:15:30+01:00[Europe/Paris]", new DateTimeFormatter("yyyy-MM-DD-HH-mm")),
 

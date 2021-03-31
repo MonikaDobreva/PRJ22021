@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class FlightStorageServiceImpl implements FlightStorageService {
 
-    private final FlightManager flightManager; //not used yet
+    private final FlightManager flightManager;
     private static List<Flight> flights = new ArrayList<>(); //data handling only through lists so far, DDB later
 
 

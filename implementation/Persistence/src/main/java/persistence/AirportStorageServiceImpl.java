@@ -9,26 +9,36 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AirportStorageServiceImpl {
+public class AirportStorageServiceImpl implements AirportStorageService{
 
-    private static List<Airport> airports = new ArrayList<>();
+    //private static List<Airport> airports = new ArrayList<>();
 
-    private Airport createAirport(String[] s) {
-        return null; // to be continued
+    public Airport createAirport( String[] a ) {
+        return null;
     }
 
 
+    @Override
+    public void add(Airport a) {
+        // add an Airport to the database
+    }
+
     public List<Airport> getAll() {
-        List<Flight> flights = new ArrayList<>();
+        List<Airport> airports = new ArrayList<>();
 
         try {
             Files.lines(Path.of("airportStorage.csv"))
                     .map(line -> line.split(","))
                     .map(this::createAirport)
-                    .forEach(flights::add);
+                    .forEach(airports::add);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        return null; // to be continued
+        return airports; // to be continued
+    }
+
+    @Override
+    public void delete(Airport a) {
+        // delete an airport from the "database"
     }
 }

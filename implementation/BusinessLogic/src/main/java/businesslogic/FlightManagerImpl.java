@@ -20,18 +20,19 @@ public class FlightManagerImpl implements FlightManager {
 
     private FlightStorageService flightStorageService;
 
-    public void setFlightStorageService(FlightStorageService flightStorageService){
+    public void setFlightStorageService(FlightStorageService flightStorageService) {
         this.flightStorageService = flightStorageService;
     }
 
 
     @Override
-    public Flight createFlight(String name,
-                               LocalDateTime depTime,
-                               LocalDateTime arrTime,
-                               Airplane airplane,
-                               Airport startAirport,
-                               Airport destAirport) {
+    public Flight createFlight(
+            String name,
+            LocalDateTime depTime,
+            LocalDateTime arrTime,
+            Airplane airplane,
+            Airport startAirport,
+            Airport destAirport) {
         return new FlightImpl(name, depTime, arrTime, airplane, startAirport, destAirport);
     }
 
