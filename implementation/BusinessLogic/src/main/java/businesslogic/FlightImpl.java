@@ -1,6 +1,7 @@
 package businesslogic;
 
 import businessentitiesapi.Airplane;
+import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
 
 import java.time.LocalDate;
@@ -18,8 +19,8 @@ public class FlightImpl implements Flight {
     private final LocalDateTime depTime;
     private final LocalDateTime arrTime;
     private final Airplane airplane;
-    private final String startAirport;
-    private final String destAirport;
+    private final Airport startAirport;
+    private final Airport destAirport;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
@@ -28,8 +29,8 @@ public class FlightImpl implements Flight {
             LocalDateTime depTime,
             LocalDateTime arrTime,
             Airplane airplane,
-            String startAirport,
-            String destAirport
+            Airport startAirport,
+            Airport destAirport
     ) {
         this.name = name;
         this.depTime = depTime;
@@ -58,10 +59,10 @@ public class FlightImpl implements Flight {
     public Airplane getAirplane() { return airplane; }
 
     @Override
-    public String getStartAirport() { return startAirport; }
+    public Airport getStartAirport() { return startAirport; }
 
     @Override
-    public String getDestAirport() { return destAirport; }
+    public Airport getDestAirport() { return destAirport; }
 
     // Airplane ... on flight ...
     // departing from ... on DAY.MONTH at HH:mm

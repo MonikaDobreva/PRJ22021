@@ -1,5 +1,7 @@
 package businesslogic;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 import persistence.FlightStorageService;
@@ -27,9 +29,9 @@ public class FlightManagerImpl implements FlightManager {
     public Flight createFlight(String name,
                                LocalDateTime depTime,
                                LocalDateTime arrTime,
-                               String airplane,
-                               String startAirport,
-                               String destAirport) {
+                               Airplane airplane,
+                               Airport startAirport,
+                               Airport destAirport) {
         return new FlightImpl(name, depTime, arrTime, airplane, startAirport, destAirport);
     }
 
@@ -46,5 +48,10 @@ public class FlightManagerImpl implements FlightManager {
     @Override
     public List<Flight> getFlights() {
         return flightStorageService.getAll();
+    }
+
+    @Override
+    public void delete(Flight f) {
+        flightStorageService.delete(f);
     }
 }

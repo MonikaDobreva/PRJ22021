@@ -11,5 +11,6 @@ public interface FlightStorageService {
 
     void add(Flight f);
     List<Flight> getAll();
+    void delete(Flight f);
 
 }

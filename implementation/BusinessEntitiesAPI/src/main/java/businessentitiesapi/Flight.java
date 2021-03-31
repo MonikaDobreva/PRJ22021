@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * Flight class, representing the flight of the airline company.
@@ -41,11 +42,11 @@ public interface Flight {
      * Get the starting airport of the flight
      * @return name of the starting airport
      */
-    String getStartAirport();
+    Airport getStartAirport();
 
     /**
      * Get the destination airport of the flight
      * @return name of the destination airport
      */
-    String getDestAirport();
+    Airport getDestAirport();
 }

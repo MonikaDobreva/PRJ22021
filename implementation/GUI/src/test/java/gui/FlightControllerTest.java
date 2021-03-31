@@ -1,6 +1,7 @@
 package gui;
 
 import frontend.FlightController;
+import javafx.scene.robot.Robot;
 import org.junit.jupiter.api.Test;
 
 /**

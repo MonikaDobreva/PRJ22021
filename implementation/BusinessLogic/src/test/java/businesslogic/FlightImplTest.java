@@ -34,14 +34,16 @@ public class FlightImplTest {
     // Tryout: ZonedDateTime.parse("2007-12-03T10:15:30+01:00[Europe/Paris]", new DateTimeFormatter("yyyy-MM-DD-HH-mm")),
 
     @Test
-    public void testToString(){
-        assertThat(f).hasToString("3. DECEMBER: \n" +
-                "Airplane Boeing 747 on flight LH388 departing from DUS at 10:15\n" +
-                "and going to ATX arriving at 10:15");
+    public void testToString() {
+        assertThat(f).hasToString(
+                "Airplane Boeing 747 on flight LH388\n" +
+                "Departing from DUS on 3.DECEMBER at 10:15\n" +
+                "Arriving to ATX on 3.DECEMBER at 10:15\n"
+        );
     }
 
     @Test
-    public void testGetter(){
+    public void testGetter() {
         SoftAssertions.assertSoftly(s -> {
             s.assertThat(f.getName()).isEqualTo("LH388");
             s.assertThat(f.getDepartureTime()).isEqualTo("2007-12-03T10:15");
