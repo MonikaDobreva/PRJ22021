@@ -27,9 +27,12 @@ public class FlightImplTest {
             "LH388",
             LocalDateTime.parse("10:15 2007-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
             LocalDateTime.parse("10:15 2008-12-03", DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-            new AirplaneImpl("Boeing 747", "A-BCDE", 200),
-            new AirportImpl("DUS", "Düsseldorf Airport", "Germany", "Düsseldorf"),
-            new AirportImpl("YVY", "Whitehorse Airport", "Canada", "Whitehorse"));
+            "Boeing 747",
+            "DUS",
+            "YVY");
+//            new AirplaneImpl("Boeing 747", "A-BCDE", 200),
+//            new AirportImpl("DUS", "Düsseldorf Airport", "Germany", "Düsseldorf"),
+//            new AirportImpl("YVY", "Whitehorse Airport", "Canada", "Whitehorse"));
 
     // Tryout: ZonedDateTime.parse("2007-12-03T10:15:30+01:00[Europe/Paris]", new DateTimeFormatter("yyyy-MM-DD-HH-mm")),
 
@@ -38,7 +41,7 @@ public class FlightImplTest {
         assertThat(f).hasToString(
                 "Airplane Boeing 747 on flight LH388\n" +
                 "Departing from DUS on 3.DECEMBER at 10:15\n" +
-                "Arriving to ATX on 3.DECEMBER at 10:15\n"
+                "Arriving to YVY on 3.DECEMBER at 10:15\n"
         );
     }
 
@@ -50,7 +53,7 @@ public class FlightImplTest {
             s.assertThat(f.getArrivalTime()).isEqualTo("2008-12-03T10:15");
             s.assertThat(f.getAirplane()).isEqualTo("Boeing 747");
             s.assertThat(f.getStartAirport()).isEqualTo("DUS");
-            s.assertThat(f.getDestAirport()).isEqualTo("ATX");
+            s.assertThat(f.getDestAirport()).isEqualTo("YVY");
         });
     }
 }

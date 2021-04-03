@@ -14,20 +14,27 @@ import org.junit.jupiter.api.Test;
 public class AirPlaneImplTest {
     
     Airplane ap = new AirplaneImpl("Boeing 377","V-BBBB",367);
-    Airplane wrongAp = new AirplaneImpl("","V-BBBB",367);
+//    Airplane wrongAp = new AirplaneImpl("","V-BBBB",367);
     
+//    @Test
+//    public void constructorRightTest(){
+//        assertThat(ap).isNotNull();
+//        assertThat(ap.getName()).isEqualTo("Boeing 377");
+//    }
+//
+//    @Test
+//    public void constructorWrongTest(){
+//        assertThat(wrongAp).isNotNull();
+//        assertThat(wrongAp.getCode()).isEqualTo("X-XXXX");
+//    }
+
     @Test
-    public void constructorRightTest(){
-        assertThat(ap).isNotNull();
+    public void gettersTest(){
         assertThat(ap.getName()).isEqualTo("Boeing 377");
+        assertThat(ap.getCode()).isEqualTo("V-BBBB");
+        assertThat(ap.getSeatAmount()).isEqualTo(367);
+
     }
-    
-    @Test
-    public void constructorWrongTest(){
-        assertThat(wrongAp).isNotNull();
-        assertThat(wrongAp.getCode()).isEqualTo("X-XXXX");
-    }
-    
     @Test
     public void toStringTest(){
         assertThat(ap.toString()).contains("Boeing 377","V-BBBB","367");

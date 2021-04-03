@@ -40,7 +40,7 @@ public class AirplaneImpl implements businessentitiesapi.Airplane {
 
     @Override
     public String toString() {
-        return "Airplane with " + "code " + code + " and name " + name + ", has a seat amount of" + seatAmount + '.';
+        return "Airplane with " + "code " + code + " and name " + name + ", has a seat amount of " + seatAmount + '.';
     }
 
 

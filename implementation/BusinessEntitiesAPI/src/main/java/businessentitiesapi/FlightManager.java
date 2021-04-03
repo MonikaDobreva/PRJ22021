@@ -27,9 +27,9 @@ public interface FlightManager {
             String name,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            Airplane airplane,
-            Airport startAirport,
-            Airport destAirport
+            String airplane,
+            String startAirport,
+            String destAirport
     );
 
     /**

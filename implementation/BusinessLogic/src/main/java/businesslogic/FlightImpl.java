@@ -18,9 +18,9 @@ public class FlightImpl implements Flight {
     private final String name;
     private final LocalDateTime depTime;
     private final LocalDateTime arrTime;
-    private final Airplane airplane;
-    private final Airport startAirport;
-    private final Airport destAirport;
+    private final String airplane;
+    private final String startAirport;
+    private final String destAirport;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
@@ -28,9 +28,9 @@ public class FlightImpl implements Flight {
             String name,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            Airplane airplane,
-            Airport startAirport,
-            Airport destAirport
+            String airplane,
+            String startAirport,
+            String destAirport
     ) {
         this.name = name;
         this.depTime = depTime;
@@ -56,13 +56,13 @@ public class FlightImpl implements Flight {
     }
 
     @Override
-    public Airplane getAirplane() { return airplane; }
+    public String getAirplane() { return airplane; }
 
     @Override
-    public Airport getStartAirport() { return startAirport; }
+    public String getStartAirport() { return startAirport; }
 
     @Override
-    public Airport getDestAirport() { return destAirport; }
+    public String getDestAirport() { return destAirport; }
 
     // Airplane ... on flight ...
     // departing from ... on DAY.MONTH at HH:mm
