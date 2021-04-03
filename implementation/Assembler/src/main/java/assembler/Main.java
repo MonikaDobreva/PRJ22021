@@ -16,6 +16,7 @@ public class Main {
 
         PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
         BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
+        System.out.println(businessLogicAPI.getAirplaneManager().getAirplanes());
 
         GUIApp app = new GUIApp();
         app.startFrontEnd(businessLogicAPI);

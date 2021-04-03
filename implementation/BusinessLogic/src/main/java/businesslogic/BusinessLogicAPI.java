@@ -1,5 +1,7 @@
 package businesslogic;
 
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.FlightManager;
 
 /**
@@ -9,5 +11,9 @@ import businessentitiesapi.FlightManager;
 public interface BusinessLogicAPI {
 
     FlightManager getFlightManager();
+
+    AirportManager getAirportManager();
+
+    AirplaneManager getAirplaneManager();
 
 }

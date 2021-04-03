@@ -20,7 +20,7 @@ public interface Airplane {
     String getCode();
     
     /**
-     * Gives the Airplane name like Boeing 377
+     * Gives the Airplane name like "Boeing 377"
      * @return AirplaneName
      */
     String getName();

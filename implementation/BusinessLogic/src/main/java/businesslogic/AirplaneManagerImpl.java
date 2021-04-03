@@ -14,9 +14,16 @@ public class AirplaneManagerImpl implements AirplaneManager{
     
 private AirplaneStorageService airplaneStorageService;
 
-    public void setFlightStorageService(AirplaneStorageService airplaneStorageService){
+    public void setAirplaneStorageService(AirplaneStorageService airplaneStorageService){
         this.airplaneStorageService = airplaneStorageService;
     }
+
+//    @Override
+////    public Airplane createAirplane(String name, String code, int amountSeats) {
+////        return null;
+////    }
+
+
 
     @Override
     public void add(Airplane a) {
@@ -35,7 +42,7 @@ private AirplaneStorageService airplaneStorageService;
 
     @Override
     public Airplane createAirplane(String name, String code, int amountSeats) {
-         return new AirplaneImpl(name, code,amountSeats);
+         return new AirplaneImpl(name, code, amountSeats);
     }
    
 }

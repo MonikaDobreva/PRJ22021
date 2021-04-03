@@ -1,7 +1,10 @@
 package frontend;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
 import businesslogic.BusinessLogicAPI;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -36,6 +39,12 @@ public class FlightController {
     @FXML
     Label flightLabel, nfcLabel;
 
+    @FXML
+    ComboBox<Airplane> airplaneDropdown;
+
+    @FXML
+    ComboBox<Airport> stAirportDropdown, dtAirportDropdown;
+
     private BusinessLogicAPI businessLogicAPI;
 
     public FlightController() {
@@ -44,6 +53,7 @@ public class FlightController {
 
     public FlightController(BusinessLogicAPI logicAPI) {
         this.businessLogicAPI = logicAPI;
+        //airplaneDropdown = new ComboBox<>(FXCollections.observableArrayList(logicAPI.getAirplaneManager().createAirplane("Hi", "A", 4)));
     }
 
     @FXML
@@ -67,6 +77,9 @@ public class FlightController {
                     airplane.getText(),
                     startAirport.getText(),
                     destAirport.getText()
+//                    airplaneDropdown.getValue(),
+//                    stAirportDropdown.getValue(),
+//                    dtAirportDropdown.getValue()
             );
             businessLogicAPI.getFlightManager().add(f);
             nfcLabel.setText("Successfully added flight!");

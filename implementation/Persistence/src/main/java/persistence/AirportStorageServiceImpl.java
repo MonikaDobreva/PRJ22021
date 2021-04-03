@@ -1,6 +1,7 @@
 package persistence;
 
 import businessentitiesapi.Airport;
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 
 import java.io.IOException;
@@ -8,13 +9,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AirportStorageServiceImpl implements AirportStorageService{
 
     //private static List<Airport> airports = new ArrayList<>();
+    private final AirportManager airportManager;
 
-    public Airport createAirport( String[] a ) {
-        return null;
+    public AirportStorageServiceImpl(AirportManager airportManager) {
+        this.airportManager = airportManager;
+    }
+
+    public Airport createAirportFromCSV(String[] a ) {
+        return airportManager.createAirport(a[0], a[1], a[2], a[3]);
     }
 
 
@@ -29,7 +36,7 @@ public class AirportStorageServiceImpl implements AirportStorageService{
         try {
             Files.lines(Path.of("airportStorage.csv"))
                     .map(line -> line.split(","))
-                    .map(this::createAirport)
+                    .map(this::createAirportFromCSV)
                     .forEach(airports::add);
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -40,5 +47,12 @@ public class AirportStorageServiceImpl implements AirportStorageService{
     @Override
     public void delete(Airport a) {
         // delete an airport from the "database"
+    }
+
+    public Airport getAirportByName(String iata){
+        for (Airport a : getAll()) {
+            return a.getIataCode().equals(iata) ? a : null;
+        }
+        return null;
     }
 }

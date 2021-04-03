@@ -1,5 +1,8 @@
 package businesslogic;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.FlightManager;
 import persistence.PersistenceAPI;
 
@@ -20,5 +23,17 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         FlightManagerImpl flightManager = new FlightManagerImpl();
         flightManager.setFlightStorageService(persistenceAPI.getFlightStorageService(flightManager));
         return flightManager;
+    }
+
+    public AirportManager getAirportManager(){
+        AirportManagerImpl airportManager = new AirportManagerImpl();
+        airportManager.setAirportStorageService(persistenceAPI.getAirportStorageService(airportManager));
+        return airportManager;
+    }
+
+    public AirplaneManager getAirplaneManager(){
+        AirplaneManagerImpl airplaneManager = new AirplaneManagerImpl();
+        airplaneManager.setAirplaneStorageService(persistenceAPI.getAirplaneStorageService(airplaneManager));
+        return airplaneManager;
     }
 }

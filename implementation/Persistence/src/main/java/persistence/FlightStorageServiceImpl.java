@@ -1,5 +1,6 @@
 package persistence;
 
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 
@@ -80,6 +81,9 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
 
     private Flight createFlight( String[] s ) {
-        return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);
+        //return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);
+        //later with a database this will be replaced by a method, that fetches the needed object from another table
+        // by the use of the respective foreign key
+        return null; //placeholder to satisfy the "add" controller method
     }
 }

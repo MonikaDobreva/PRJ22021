@@ -1,5 +1,8 @@
 package persistence;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.FlightManager;
 
 /**
@@ -18,6 +21,14 @@ public interface PersistenceAPI {
      * @return FlightStorageService object that knows how to store and retrieve flights.
      */
     default FlightStorageService getFlightStorageService(FlightManager flightManager){
+        return null;
+    }
+
+    default AirportStorageService getAirportStorageService(AirportManager airportManager){
+        return null;
+    }
+
+    default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager){
         return null;
     }
 

@@ -51,7 +51,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
         try{
             Files.lines(Path.of("airplaneStorage.csv"))
                         .map(line -> line.split(","))
-                        .map(this::createAirplane)
+                        .map(this::createAirplaneFromCSV)
                         .forEach(airplanes::add);
         } catch (IOException e){
             System.out.println(e.getMessage());
@@ -64,9 +64,9 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
     public void delete(Airplane a) {
         // implement flight deletion
     }
-    
-    
-    private Airplane createAirplane( String[] s ) {
-        return this.airplaneManager.createAirplane( s[0],s[1],Integer.valueOf(s[3]));
+
+
+    public Airplane createAirplaneFromCSV (String[] s) {
+         return this.airplaneManager.createAirplane(s[0], s[1], Integer.parseInt(s[2]));
     }
 }

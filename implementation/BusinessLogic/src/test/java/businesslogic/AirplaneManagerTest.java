@@ -30,7 +30,7 @@ public class AirplaneManagerTest {
     Airplane ap2 = new AirplaneImpl("Boeing 350","V-AAAA",250);
 
     List<Airplane> airplanes;
-    AirplaneManagerImpl airplaneManager = new AirplaneManagerImpl();
+    AirplaneManager airplaneManager = new AirplaneManagerImpl();
 
     @BeforeEach
     public void setupMock(){
