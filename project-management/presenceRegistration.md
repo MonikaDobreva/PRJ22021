@@ -17,13 +17,13 @@ present = x
 |23.03|x|x|x|x|x|
 |24.03|x|x|x|x|x|
 |29.03|x|x|x|x|x|
-|30.03||||||
-|31.03||||||
+|30.03|x|x|x|x|x|
+|31.03|x|x|x|x|x|
 
 ## Project Week
 |Date|Time|Boening, Alex|Rachel, Davis|Dobreva, Monika|Sebastián Delgado, Joel|Swiezy, Benjamin|
 |---|---|---|---|---|---|---|
-|06.04|09:00 - 12:00||||||
+|06.04|09:00 - 12:00|x|x|x|x|x|
 |06.04|13:00 - 16:00||||||
 |07.04|09:00 - 12:00||||||
 |07.04|13:00 - 16:00||||||
