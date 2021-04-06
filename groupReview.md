@@ -11,7 +11,7 @@
 
 [**Activity Diagram: Sales Officer**](analysis/activityDiagrams/ActivityDiagramSalesOfficer.svg) *Sebastian Delgado, Joel J.*
 
-[**Class diagram**](design/classDiagram.svg) 
+[**Class diagram**](design/classDiagram.svg) *Dobreva, Monika M.P.*
 
 ---
 ### Reflection
