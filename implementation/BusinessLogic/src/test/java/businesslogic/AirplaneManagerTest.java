@@ -30,13 +30,13 @@ public class AirplaneManagerTest {
     Airplane ap2 = new AirplaneImpl("Boeing 350","V-AAAA",250);
 
     List<Airplane> airplanes;
-    AirplaneManager airplaneManager = new AirplaneManagerImpl();
+    AirplaneManagerImpl airplaneManager = new AirplaneManagerImpl();
 
     @BeforeEach
     public void setupMock(){
         airplanes = new ArrayList<>();
         apStorage = mock(AirplaneStorageService.class);
-        airplaneManager.setFlightStorageService(apStorage);
+        airplaneManager.setAirplaneStorageService(apStorage);
     }
 
     @Test
