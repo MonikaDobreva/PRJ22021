@@ -46,7 +46,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
 
     @Override
     public List<Airplane> getAll() {
-       List<Airplane> airplanes = new ArrayList<>();
+       //List<Airplane> airplanes = new ArrayList<>();
 
         try{
             Files.lines(Path.of("airplaneStorage.csv"))
@@ -67,6 +67,6 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
 
 
     public Airplane createAirplaneFromCSV (String[] s) {
-         return this.airplaneManager.createAirplane(s[0], s[1], Integer.parseInt(s[2]));
+        return this.airplaneManager.createAirplane(s[0], s[1], Integer.parseInt(s[2]));
     }
 }
