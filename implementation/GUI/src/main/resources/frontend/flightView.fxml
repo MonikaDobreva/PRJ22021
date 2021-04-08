@@ -90,7 +90,7 @@
                         <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <children>
                               <TextField fx:id="airplane" prefHeight="25.0" prefWidth="150.0" promptText="e.g. &quot;Boeing 747&quot;" text="Boeing 747" />
-                              <ComboBox fx:id="airplaneDropdown" prefWidth="150.0" promptText="select Airplane" />
+                              <ComboBox fx:id="airplaneDropdown" onMouseClicked="#listFlights" prefWidth="150.0" promptText="select Airplane" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
