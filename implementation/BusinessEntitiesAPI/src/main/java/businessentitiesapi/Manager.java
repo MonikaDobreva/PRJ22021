@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface Manager<T> {
 
-    void add(T t);
+    T add(T t);
 
     void delete(T t);
 

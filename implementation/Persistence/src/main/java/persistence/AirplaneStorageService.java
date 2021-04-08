@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface AirplaneStorageService {
 
-    void add(Airplane a);
+    Airplane add(Airplane a);
     List<Airplane> getAll();
     void delete(Airplane a);
 }

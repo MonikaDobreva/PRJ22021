@@ -26,7 +26,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
     }
     
     @Override
-    public void add(Airplane a) {
+    public Airplane add(Airplane a) {
        try {
             FileWriter writer = new FileWriter("airplaneStorage.csv", true);
             String sb = "";
@@ -42,6 +42,7 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
+        return a;
     }
 
     @Override

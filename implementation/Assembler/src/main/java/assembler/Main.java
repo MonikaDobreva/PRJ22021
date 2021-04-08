@@ -17,8 +17,7 @@ public class Main {
         PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
         BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
 
-        GUIApp app = new GUIApp();
-        app.startFrontEnd(businessLogicAPI);
+        new GUIApp(businessLogicAPI).show();
 
     }
 

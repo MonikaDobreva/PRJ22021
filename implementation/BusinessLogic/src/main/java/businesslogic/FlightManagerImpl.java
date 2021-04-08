@@ -60,8 +60,9 @@ public class FlightManagerImpl implements FlightManager {
 //    }
 
     @Override
-    public void add(Flight f) {
+    public Flight add(Flight f) {
         flightStorageService.add(f);
+        return f;
     }
 
     @Override

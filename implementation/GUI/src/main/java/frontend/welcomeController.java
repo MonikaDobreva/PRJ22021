@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.util.function.Supplier;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -11,12 +12,18 @@ import java.io.IOException;
 
 public class welcomeController {
 
+    private final Supplier<SceneManager> sceneManagerSupplier;
+
+    public welcomeController(Supplier<SceneManager> sceneManagerSupplier) {
+        this.sceneManagerSupplier = sceneManagerSupplier;
+    }
+
     @FXML
     Button startBtn;
 
     @FXML
     public void goToStart() throws IOException {
-        GUIApp.setRoot("flightView");
+        sceneManagerSupplier.get().changeScene("welcome");
     }
 
 }

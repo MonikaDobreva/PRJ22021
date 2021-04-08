@@ -23,7 +23,7 @@ import java.util.List;
 @ExtendWith( MockitoExtension.class )
 public class AirplaneManagerTest {
 
-    @Mock
+//    @Mock
     AirplaneStorageService apStorage;
 
     Airplane ap1 = new AirplaneImpl("Boeing 377","V-BBBB",367);
@@ -45,24 +45,24 @@ public class AirplaneManagerTest {
                 .isEqualTo(ap1.toString());
     }
 
-    @Test
-    public void addTest(){
-//        TO DO
-    }
+//    @Test
+//    public void addTest(){
+////        TO DO
+//    }
 
 //    @Test
 //    public void addTest(){
-//        Mockito.doAnswer(a -> {
-//            airplanes.add(ap1);
-//            assertThat(airplanes)
-//                    .containsExactly(ap1);
-//            return null;
-//        }).when(apStorage).add(ap1);
-////        Mockito.doReturn(airplanes.add(ap1)).when(apStorage).add(ap1);
-////        Mockito.doReturn(airplanes.add(ap2)).when(apStorage).add(ap2);
-////
-////        assertThat(airplanes)
-////                .containsExactly(ap1, ap2);
+////        Mockito.doAnswer(a -> {
+////            airplanes.add(ap1);
+////            assertThat(airplanes)
+////                    .containsExactly(ap1);
+////            return null;
+////        }).when(apStorage).add(ap1);
+//        Mockito.doReturn(airplanes).when(apStorage).add(ap1);
+//        Mockito.doReturn(airplanes).when(apStorage).add(ap2);
+//
+//        assertThat(airplanes)
+//                .containsExactly(ap1, ap2);
 //
 //    }
 

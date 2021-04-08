@@ -32,17 +32,13 @@ public interface FlightManager {
             String destAirport
     );
 
-
-
-
-
     /**
      * Adds a new flight to the FlightManager, which stores all the flight objects in a list
      *
      * @param f The flight to be added
      * @return the added flight
      */
-    void add(Flight f);
+    Flight add(Flight f);
 
     /**
      * Get all flights which were previously added to the flightStorage
