@@ -98,4 +98,12 @@ public class FlightController {
     public void listFlights() {
         airplaneDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
     }
+    
+    public void listSAirports() {
+        stAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
+    }
+    
+     public void listDEAirports() {
+        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
+    }
 }
