@@ -130,7 +130,8 @@ class QueryExecutor<E extends Serializable, K extends Serializable> extends Abst
     List<E> doGetAll( final Connection c, String sql ) throws DAOException {
         try (
                 PreparedStatement pst = c.prepareStatement( sql );
-                ResultSet rs = pst.executeQuery()) {
+                ResultSet rs = pst.executeQuery())
+        {
             List<E> result = new ArrayList<>();
             while ( rs.next() ) {
                 E e = recordToEntity( rs );
@@ -303,8 +304,8 @@ class QueryExecutor<E extends Serializable, K extends Serializable> extends Abst
 
     @Override
     PreparedStatement
-            fillPreparedStatement( final PreparedStatement pst,
-                    List<FieldPair> fields )
+    fillPreparedStatement( final PreparedStatement pst,
+                           List<FieldPair> fields )
             throws SQLException {
         int j = 1;
         for ( FieldPair fp : fields ) {

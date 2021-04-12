@@ -18,7 +18,7 @@ public class QueryFactoryTest {
 
     Mapper<?, ?> mapper = Mapper.mapperFor( Employee.class );
     QueryFactory fac = new QueryFactory( mapper );
-    String columnNames = "(employeeid,lastname,firstname,email,departmentid,available,dob,hiredate)";
+    String columnNames = "employeeid,lastname,firstname,email,departmentid,available,dob,hiredate";
 
     //@Disabled("Think TDD")
     @Test
@@ -26,7 +26,7 @@ public class QueryFactoryTest {
         String queryText = cachedTest( () -> fac.saveQueryText() );
         //TODO
         assertThat(queryText)
-                .contains("insert", "into", "employees", columnNames, "values", "(?,?,?,?,?,?,?,?)", "returning");
+                .contains("insert", "into", "employees", "values", "(?,?,?,?,?,?,?,?)", "returning", columnNames);
         //fail( "tSaveQueryText completed succesfully; you know what to do" );
     }
 

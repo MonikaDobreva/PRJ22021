@@ -1,5 +1,6 @@
 package genericdao.pgdao;
 
+import genericmapper.FieldPair;
 import genericmapper.Mapper;
 import static java.lang.String.format;
 import java.lang.reflect.Field;
@@ -85,10 +86,10 @@ public class QueryFactory {
         String columnNames = allColumns();
         String placeholders = makePlaceHolders( columnNames.split(",").length);
         String sqlt = format(
-            "select (%1$s) from %2$s where (%3$s)=(?)",
+            "select %1$s from %2$s where (%3$s)=(?)",
             columnNames,
             tableName(),
-            mapper.getKeyFieldName() );
+            idName() );
         return sqlt;
     }
 
@@ -119,7 +120,7 @@ public class QueryFactory {
         return format(
         "delete from %1$s where (%2$s)=(?)",
                 tableName(),
-                mapper.getKeyFieldName());
+                idName());
     }
 
     String updateQueryText() {
@@ -138,7 +139,7 @@ public class QueryFactory {
             tableName(),
             columnNames,
             placeholders,
-            mapper.getKeyFieldName() );
+            idName() );
         return sqlt;
     }
 
@@ -158,10 +159,10 @@ public class QueryFactory {
         String columnNames = allColumns();
         String placeholders = makePlaceHolders( columnNames.split(",").length);
         return format(
-                "insert into %1$s (%2$s) values (%3$s) returning (%3$s)",
+                "insert into %1$s (%2$s) values (%3$s) returning %2$s",
                 tableName(),
                 columnNames,
-                placeholders  
+                placeholders
         );
     }
 
@@ -174,7 +175,7 @@ public class QueryFactory {
         //TODO
         String columnNames = allColumns();
         return format(
-                "select (%1$s) from %2$s",
+                "select %1$s from %2$s",
                 columnNames,
                 tableName()
         );

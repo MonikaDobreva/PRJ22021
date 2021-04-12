@@ -232,7 +232,6 @@ public class TransactionTest {
         try (DAO<Employee, Integer> edao = daof.createDao(Employee.class);
              TransactionToken tok = edao.startTransaction();) {
             Employee savedJohnny = edao.save(johnny).get();
-            System.out.println("here");
             System.out.println("Short appearance of Johnny: " + savedJohnny);
             edao.deleteEntity(savedJohnny);
             tok.commit();
