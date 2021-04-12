@@ -7,6 +7,7 @@ import java.util.Map;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -40,6 +41,8 @@ public class SceneManager {
 
     void displayOn(Stage stage, int width, int height) {
         stage.setScene(scene);
+        stage.setIconified(true);
+        stage.getIcons().add(new Image(GUIApp.class.getResourceAsStream( "AISLogo1.png" )));
         stage.setWidth(width);
         stage.setHeight(height);
         stage.show();
