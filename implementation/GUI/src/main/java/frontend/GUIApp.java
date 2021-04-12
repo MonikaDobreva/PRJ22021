@@ -53,6 +53,11 @@ public class GUIApp extends Application {
 //        return null;
     };
 
+
+
+
+
+
     public GUIApp(BusinessLogicAPI businessLogicAPI) {
         this.businessLogicAPI = businessLogicAPI;
     }
@@ -72,6 +77,8 @@ public class GUIApp extends Application {
 
             Platform.runLater(() -> {
                 Stage stage = new Stage();
+                //stage.getIcons().add(new Image(GUIApp.class.getResourceAsStream( "Aspotify.png" )));
+                //stage.getIcons().add( new Image(new File("spotify.png").toURI().toString()));
                 try {
                     start(stage);
                 } catch (IOException ex) {
@@ -93,6 +100,7 @@ public class GUIApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         sceneManager.displayOn(stage, 480, 550);
+
     }
 
     public SceneManager getSceneManager() {
