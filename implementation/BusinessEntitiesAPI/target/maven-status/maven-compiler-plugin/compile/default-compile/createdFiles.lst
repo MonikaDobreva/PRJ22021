@@ -1,0 +1,8 @@
+module-info.class
+businessentitiesapi/Airplane.class
+businessentitiesapi/FlightManager.class
+businessentitiesapi/Flight.class
+businessentitiesapi/Airport.class
+businessentitiesapi/AirportManager.class
+businessentitiesapi/Manager.class
+businessentitiesapi/AirplaneManager.class

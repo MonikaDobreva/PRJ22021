@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d9a1d376-ac4e-45f6-84f9-289192792fad" name="Default Changelist" comment="Pass the tests from GenericDao">
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/daoclassdiagram.uxf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/dbscripts/loaddb.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/dbscripts/newpiet.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/dbscripts/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/nbactions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/dao/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/dao/DAOException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/dao/DAOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/dao/TransactionToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/memory/InMemoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/AbstractQueryExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/PGDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/PGDAOFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/PGJDBCUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/PGTransactionToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/QueryExecutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/main/java/genericdao/pgdao/QueryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Company2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Company2Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/CompanyMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/DepartmentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/EmployeeDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/EmployeeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/EmployeeMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/Truck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/entities/TruckMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/dao/DAOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/dao/TransactionTokenTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/DBTestHelpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/NonClosingConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOBaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOConnectionClosedExceptionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOExceptionTestBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOFactoryQueryCacheTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOStringKeyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOTestBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDAOTransactionalTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGDataSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PGTransactionTokenTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/PgJDBCUtilsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/QueryFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/genericdao/pgdao/TransactionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/src/test/java/usertypes/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-34-39_739.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-46-27_943.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-47-08_572.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-47-46_291.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-50-51_072.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-52-01_641.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-52-39_072.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-54-56_681.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-55-13_028.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-55-35_349.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T09-59-07_521.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-01-50_388.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-02-17_320.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-02-48_535.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-03-24_377.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-04-30_520.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-05-19_687.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-06-17_464.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-06-45_613.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-08-28_310.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-10-33_498.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-11-08_557.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-22-09_144.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/2021-04-08T10-23-02_418.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-entities.EmployeeDaoTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-entities.EmployeeMapperTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.dao.DAOTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.dao.TransactionTokenTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOBaseTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOConnectionClosedExceptionTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOFactoryQueryCacheTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOFactoryTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOStringKeyTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOTransactionalTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGTransactionTokenTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PgJDBCUtilsTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.QueryFactoryTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/TEST-genericdao.pgdao.TransactionTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/entities.EmployeeDaoTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/entities.EmployeeMapperTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.dao.DAOTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.dao.TransactionTokenTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOBaseTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOConnectionClosedExceptionTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOFactoryQueryCacheTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOFactoryTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOStringKeyTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOTransactionalTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PGTransactionTokenTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.PgJDBCUtilsTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.QueryFactoryTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericdao/target/surefire-reports/genericdao.pgdao.TransactionTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/generateentitymappers" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/nbactions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/no-module-info.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/out/src/main/java/testentities/StudentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/out/src/main/java/testentities/TutorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/main/java/genericmapper/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/main/java/genericmapper/FieldPair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/main/java/genericmapper/Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/main/java/genericmapper/MapperGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/main/resources/genericmapper/CodeTemplate-java.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/client/StudentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/entities/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/entities/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/entities/EmployeeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/entities/EmployeeMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/generatedmappers/TutorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/ConstantsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/FieldPairTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/MapperGeneratorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/MapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/StringMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/genericmapper/TestData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testentities/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testentities/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testentities/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testentities/Tutor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testentities/TutorMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/src/test/java/testutils/TestUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/classes/.netbeans_automatic_build" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/classes/genericmapper/CodeTemplate-java.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/failsafe-reports/failsafe-summary.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/2021-04-07T15-37-17_541.dumpstream" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-entities.EmployeeMapperTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-genericmapper.ConstantsTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-genericmapper.FieldPairTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-genericmapper.MapperGeneratorTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-genericmapper.MapperTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/TEST-genericmapper.StringMapperTest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/entities.EmployeeMapperTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/genericmapper.ConstantsTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/genericmapper.FieldPairTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/genericmapper.MapperGeneratorTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/genericmapper.MapperTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/surefire-reports/genericmapper.StringMapperTest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/implementation/genericmapper22/target/test-classes/.netbeans_automatic_build" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/BusinessLogic/src/test/java/businesslogic/AirplaneManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/BusinessLogic/src/test/java/businesslogic/AirplaneManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/BusinessLogic/src/test/java/businesslogic/FlightManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/BusinessLogic/src/test/java/businesslogic/FlightManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/daoclassdiagram.uxf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/dbscripts/loaddb.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/dbscripts/newpiet.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/dbscripts/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/nbactions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/dao/DAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/dao/DAOException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/dao/DAOFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/dao/TransactionToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/memory/InMemoryDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/AbstractQueryExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/PGDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/PGDAOFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/PGJDBCUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/PGTransactionToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/QueryExecutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/main/java/genericdao/pgdao/QueryFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Company.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Company2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Company2Mapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/CompanyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Department.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/DepartmentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/EmployeeDaoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/EmployeeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/EmployeeMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/Truck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/entities/TruckMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/dao/DAOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/dao/TransactionTokenTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/DBTestHelpers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/NonClosingConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOBaseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOConnectionClosedExceptionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOExceptionTestBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOFactoryQueryCacheTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOStringKeyTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOTestBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDAOTransactionalTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGDataSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PGTransactionTokenTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/PgJDBCUtilsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/QueryFactoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/genericdao/pgdao/TransactionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/src/test/java/usertypes/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-34-39_739.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-46-27_943.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-47-08_572.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-47-46_291.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-50-51_072.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-52-01_641.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-52-39_072.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-54-56_681.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-55-13_028.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-55-35_349.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T09-59-07_521.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-01-50_388.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-02-17_320.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-02-48_535.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-03-24_377.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-04-30_520.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-05-19_687.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-06-17_464.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-06-45_613.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-08-28_310.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-10-33_498.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-11-08_557.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-22-09_144.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/2021-04-08T10-23-02_418.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-entities.EmployeeDaoTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-entities.EmployeeMapperTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.dao.DAOTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.dao.TransactionTokenTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOBaseTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOConnectionClosedExceptionTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOFactoryQueryCacheTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOFactoryTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOStringKeyTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGDAOTransactionalTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PGTransactionTokenTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.PgJDBCUtilsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.QueryFactoryTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/TEST-genericdao.pgdao.TransactionTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/entities.EmployeeDaoTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/entities.EmployeeMapperTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.dao.DAOTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.dao.TransactionTokenTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOBaseTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOConnectionClosedExceptionTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOFactoryQueryCacheTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOFactoryTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOStringKeyTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGDAOTransactionalTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PGTransactionTokenTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.PgJDBCUtilsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.QueryFactoryTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/surefire-reports/genericdao.pgdao.TransactionTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericdao/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/generateentitymappers" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/nbactions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/no-module-info.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/out/src/main/java/testentities/StudentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/out/src/main/java/testentities/TutorMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/main/java/genericmapper/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/main/java/genericmapper/FieldPair.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/main/java/genericmapper/Mapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/main/java/genericmapper/MapperGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/main/resources/genericmapper/CodeTemplate-java.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/client/StudentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/entities/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/entities/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/entities/EmployeeMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/entities/EmployeeMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/generatedmappers/TutorMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/ConstantsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/FieldPairTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/MapperGeneratorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/MapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/StringMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/genericmapper/TestData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testentities/Course.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testentities/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testentities/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testentities/Tutor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testentities/TutorMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/src/test/java/testutils/TestUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/classes/genericmapper/CodeTemplate-java.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/failsafe-reports/failsafe-summary.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/2021-04-07T15-37-17_541.dumpstream" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-entities.EmployeeMapperTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-genericmapper.ConstantsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-genericmapper.FieldPairTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-genericmapper.MapperGeneratorTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-genericmapper.MapperTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/TEST-genericmapper.StringMapperTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/entities.EmployeeMapperTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/genericmapper.ConstantsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/genericmapper.FieldPairTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/genericmapper.MapperGeneratorTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/genericmapper.MapperTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/surefire-reports/genericmapper.StringMapperTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/Persistence/genericmapper22/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/implementation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/implementation/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1qpxEcMWAR0SKxUQQOP5AE7aSEn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunConfigurationTargetLRU" value="f40611b1-6c49-48cb-af0a-378622735551/database/&quot;postgres&quot;/schema/&quot;public&quot;&#10;f40611b1-6c49-48cb-af0a-378622735551/database/&quot;simpledao&quot;/schema/&quot;public&quot;&#10;2c9f22fc-781f-4c26-9334-f0eebf6fd765&#10;2c9f22fc-781f-4c26-9334-f0eebf6fd765/database/&quot;simpledao&quot;&#10;51e74265-6c94-4c45-b9aa-e389ce3ed477/database/&quot;postgres&quot;/schema/&quot;public&quot;" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Implementation/Persistence/src/main/java/genericmapper" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/src/main/java/genericmapper" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/src/main/java/genericdao/pgdao" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/src/main/java/genericdao/memory" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Implementation" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/src/main/java" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/genericdao/dbscripts" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence" />
+      <recent name="$PROJECT_DIR$/Implementation/Persistence/src/main/java/genericdao/dao" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in GenericDao">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="assembler.Main" />
+      <module name="Assembler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="assembler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in AirlineInformationSystem (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AirlineInformationSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in AirlineInformationSystem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AirlineInformationSystem" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in GenericDao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GenericDao" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in genericdao (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="genericdao" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Assembler" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Assembler" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in GenericDao" />
+        <item itemvalue="JUnit.All in AirlineInformationSystem (1)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in genericdao (1)" />
+        <item itemvalue="JUnit.All in AirlineInformationSystem" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d9a1d376-ac4e-45f6-84f9-289192792fad" name="Default Changelist" comment="" />
+      <created>1617790222789</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617790222789</updated>
+      <workItem from="1617874090990" duration="136000" />
+      <workItem from="1617874245832" duration="156000" />
+      <workItem from="1617874442247" duration="445000" />
+      <workItem from="1617874890610" duration="66000" />
+      <workItem from="1617874981581" duration="296000" />
+      <workItem from="1617875490792" duration="1807000" />
+      <workItem from="1618212756849" duration="242000" />
+      <workItem from="1618213028524" duration="540000" />
+      <workItem from="1618213680267" duration="10618000" />
+      <workItem from="1618228032664" duration="1205000" />
+      <workItem from="1618229293748" duration="1028000" />
+      <workItem from="1618230351927" duration="5255000" />
+      <workItem from="1618242031205" duration="1637000" />
+      <workItem from="1618245835861" duration="11541000" />
+      <workItem from="1618297464113" duration="718000" />
+      <workItem from="1618298190752" duration="3164000" />
+      <workItem from="1618301397887" duration="3074000" />
+      <workItem from="1618304523752" duration="1766000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add GenericDAO and GenericMapper to persistance layer">
+      <created>1618228788762</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618228788762</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add GenericDAO and GenericMapper to persistance layer">
+      <created>1618230895608</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618230895608</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix code mistakes on QueryFactory.java so tests for GenericDao pass">
+      <created>1618260269799</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618260269799</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix code mistakes on QueryFactory.java so tests for GenericDao pass">
+      <created>1618260543822</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618260543822</updated>
+    </task>
+    <task id="LOCAL-00005" summary="trying to fix commit problems">
+      <created>1618297762046</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618297762046</updated>
+    </task>
+    <task id="LOCAL-00006" summary="trying to fix commit problems">
+      <created>1618298082599</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618298082599</updated>
+    </task>
+    <task id="LOCAL-00007" summary="trying to fix commit problems">
+      <created>1618298326002</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618298326002</updated>
+    </task>
+    <task id="LOCAL-00008" summary="trying to fix commit problems">
+      <created>1618298731349</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618298731349</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Pass the tests from GenericDao">
+      <created>1618302137819</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1618302137819</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add GenericDAO and GenericMapper to persistance layer" />
+    <MESSAGE value="Fix code mistakes on QueryFactory.java so tests for GenericDao pass" />
+    <MESSAGE value="trying to fix commit problems" />
+    <MESSAGE value="Pass the tests from GenericDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pass the tests from GenericDao" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.postgresql.util.PSQLException" package="org.postgresql.util" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

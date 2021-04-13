@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: businesslogic.FlightManagerTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 0.65 s <<< FAILURE! - in businesslogic.FlightManagerTest
+tFlightNameFormat{String, boolean}[1]  Time elapsed: 0.422 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightNameFormat{String, boolean}[2]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightNameFormat{String, boolean}[3]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightNameFormat{String, boolean}[4]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightNameFormat{String, boolean}[5]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightNameFormat{String, boolean}[6]  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightNameFormat(java.lang.String,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightDate{LocalDateTime, boolean}[1]  Time elapsed: 0.008 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightDate(java.time.LocalDateTime,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+
+tFlightDate{LocalDateTime, boolean}[2]  Time elapsed: 0.002 s  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make void businesslogic.FlightManagerTest.tFlightDate(java.time.LocalDateTime,boolean) throws java.lang.NoSuchMethodException,java.lang.reflect.InvocationTargetException,java.lang.IllegalAccessException accessible: module businesslogic_module does not "opens businesslogic" to unnamed module @5dd91bca
+

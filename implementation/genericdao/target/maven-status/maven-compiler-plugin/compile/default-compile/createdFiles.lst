@@ -1,0 +1,12 @@
+genericdao/pgdao/QueryExecutor.class
+genericdao/dao/DAO.class
+genericdao/memory/InMemoryDAO.class
+genericdao/pgdao/AbstractQueryExecutor.class
+genericdao/dao/DAOFactory.class
+genericdao/dao/TransactionToken.class
+genericdao/pgdao/PGJDBCUtils.class
+genericdao/pgdao/PGDAO.class
+genericdao/pgdao/QueryFactory.class
+genericdao/dao/DAOException.class
+genericdao/pgdao/PGDAOFactory.class
+genericdao/pgdao/PGTransactionToken.class
