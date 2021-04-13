@@ -157,13 +157,19 @@ public class QueryFactory {
     private String computeSaveQueryText() {
         //TODO
         String columnNames = allColumns();
-        String placeholders = makePlaceHolders( columnNames.split(",").length);
-        return format(
-                "insert into %1$s (%2$s) values (%3$s) returning %2$s",
+        String toFillColumns = Arrays.stream(columnNames.split(","))
+                .filter(s -> !mapper.generatedFieldNames().contains(s))
+                .collect(joining(","));
+        String placeholders = makePlaceHolders( toFillColumns.split(",").length);
+        String stm = format(
+                "insert into %1$s (%2$s) values (%3$s) returning %4$s",
                 tableName(),
-                columnNames,
-                placeholders
-        );
+                toFillColumns,
+                placeholders,
+                columnNames
+                );
+        System.out.println(stm);
+        return stm;
     }
 
     String allQuery() {

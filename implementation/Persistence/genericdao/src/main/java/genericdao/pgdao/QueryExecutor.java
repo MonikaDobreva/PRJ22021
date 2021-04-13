@@ -283,6 +283,7 @@ class QueryExecutor<E extends Serializable, K extends Serializable> extends Abst
     @Override
     List<E> doSaveAll( final Connection c, String sql, List<E> entities,
             List<E> result ) throws DAOException {
+
         try ( PreparedStatement pst = c.prepareStatement( sql )) {
             for ( E e : entities ) {
 
