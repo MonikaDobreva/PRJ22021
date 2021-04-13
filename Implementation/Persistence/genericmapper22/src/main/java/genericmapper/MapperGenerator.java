@@ -61,7 +61,7 @@ public class MapperGenerator {
      * id field.
      */
     final String javaSource() {
-        //TODO generate the code
+        //TODO generate the codes
         String typeName = entityType.getSimpleName();
         String paramName = typeName.substring( 0, 1 ).toLowerCase();
         System.out.println("ClassText " + paramName);
