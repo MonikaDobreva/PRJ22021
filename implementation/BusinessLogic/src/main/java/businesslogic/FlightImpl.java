@@ -4,17 +4,23 @@ import businessentitiesapi.Airplane;
 import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+import nl.fontys.sebivenlo.sebiannotations.ID;
+import nl.fontys.sebivenlo.sebiannotations.TableName;
+
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
+@TableName("flights")
+public class FlightImpl implements Flight, Serializable {
 
-public class FlightImpl implements Flight {
-
+    @ID
+    private final int flightId;
     private final String name;
     private final LocalDateTime depTime;
     private final LocalDateTime arrTime;
@@ -32,12 +38,17 @@ public class FlightImpl implements Flight {
             String startAirport,
             String destAirport
     ) {
+        this.flightId = 0;
         this.name = name;
         this.depTime = depTime;
         this.arrTime = arrTime;
         this.airplane = airplane;
         this.startAirport = startAirport;
         this.destAirport = destAirport;
+    }
+
+    public int getFlightId() {
+        return flightId;
     }
 
     @Override

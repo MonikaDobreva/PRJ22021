@@ -3,4 +3,5 @@ module businesslogic_module {
     requires transitive persistence_module;
     
     exports businesslogic;
+    requires nl.fontys.sebivenlo.sebiannotations;
 }

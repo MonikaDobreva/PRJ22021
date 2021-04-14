@@ -3,7 +3,13 @@ package persistence;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import genericdao.dao.DAO;
+import genericdao.dao.TransactionToken;
 
+import genericdao.pgdao.PGDAOFactory;
+import genericdao.pgdao.PGJDBCUtils;
+
+import javax.sql.DataSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,10 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -30,6 +33,23 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     public FlightStorageServiceImpl(FlightManager flightManager) {
         this.flightManager = flightManager;
+    }
+
+    @Override
+    public List<Flight> getAll() {
+        DataSource ds = PGJDBCUtils.getDataSource("postgres");
+        PGDAOFactory daof = new PGDAOFactory(ds);
+        DAO<Flight, Integer> flightDao = daof.createDao(Flight.class);
+        try {
+            TransactionToken tok = flightDao.startTransaction();
+            Collection<Flight> all = flightDao.getAll();
+            flightDao.close();
+            return all.stream().collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @Override
@@ -55,24 +75,21 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         }
     }
 
-    @Override
-    public List<Flight> getAll() {
-        List<Flight> flights = new ArrayList<>();
-
-        try{
-            Files.lines(Path.of("flightStorage.csv"))
-                        .map(line -> line.split(","))
-                        .map(this::createFlight)
-                        .forEach(flights::add);
-        } catch (IOException e){
-            System.out.println(e.getMessage());
-        }
-
-        return flights;
-//        Flight f1 = flightManager.createFlight("LH388", LocalDate.parse("2020-01-01"), LocalDate.parse("2020-01-02"));
-//        Flight f2 = flightManager.createFlight("LH388", LocalDate.parse("2020-01-04"), LocalDate.parse("2020-01-05"));
-//        return new ArrayList<>(Arrays.asList(f1, f2));
-    }
+//    @Override
+//    public List<Flight> getAll() {
+//        List<Flight> flights = new ArrayList<>();
+//
+//        try{
+//            Files.lines(Path.of("flightStorage.csv"))
+//                        .map(line -> line.split(","))
+//                        .map(this::createFlight)
+//                        .forEach(flights::add);
+//        } catch (IOException e){
+//            System.out.println(e.getMessage());
+//        }
+//
+//        return flights;
+//    }
 
     @Override
     public void delete(Flight f) {

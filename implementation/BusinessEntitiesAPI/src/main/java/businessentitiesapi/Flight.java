@@ -1,6 +1,6 @@
 package businessentitiesapi;
 
-
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -11,7 +11,8 @@ import java.util.Locale;
  * Flight class, representing the flight of the airline company.
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
 */
-public interface Flight {
+
+public interface Flight extends Serializable {
 
     /**
      * Get the name of the flight

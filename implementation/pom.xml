@@ -20,8 +20,6 @@
         <module>BusinessLogic</module>
         <module>Persistence</module>
         <module>BusinessEntitiesAPI</module>
-        <module>genericdao</module>
-        <module>genericmapper22</module>
     </modules>
     <name>AirlineInformationSystem</name>
 </project>

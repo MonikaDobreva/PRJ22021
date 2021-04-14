@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: genericdao.pgdao.PGDAOConnectionClosedExceptionTest
--------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.743 s - in genericdao.pgdao.PGDAOConnectionClosedExceptionTest
