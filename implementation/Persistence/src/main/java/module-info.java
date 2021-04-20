@@ -4,5 +4,6 @@ module persistence_module {
     exports persistence;
     requires java.sql;
     requires org.postgresql.jdbc;
+    requires genericdao_module;
     
 }

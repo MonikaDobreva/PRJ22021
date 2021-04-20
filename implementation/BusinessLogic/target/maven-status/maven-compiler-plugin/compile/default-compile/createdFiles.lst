@@ -5,6 +5,5 @@ module-info.class
 businesslogic/FlightManagerImpl.class
 businesslogic/BusinessLogicAPIImpl.class
 businesslogic/AirportImpl.class
-businesslogic/FlightImpl.class
 businesslogic/AirplaneImpl.class
 businesslogic/BusinessLogicAPI.class

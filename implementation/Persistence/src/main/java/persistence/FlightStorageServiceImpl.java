@@ -55,24 +55,24 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public void add(Flight f) {
         //flights.add(f);
-        try {
-            FileWriter writer = new FileWriter("flightStorage.csv", true);
-            String sb = "";
-            sb = sb.concat(f.getName() + ",");
-            sb = sb.concat(f.getDepartureTime() + ",");
-            sb = sb.concat(f.getArrivalTime() + ",");
-            sb = sb.concat(f.getAirplane() + ",");
-            sb = sb.concat(f.getStartAirport() + ",");
-            sb = sb.concat(f.getDestAirport() + "\n");
-            if (Files.lines(Path.of("flightStorage.csv")).count() == 0){
-                writer.write(sb);
-            } else {
-                writer.append(sb);
-            }
-            writer.close();
-        } catch (IOException e){
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            FileWriter writer = new FileWriter("flightStorage.csv", true);
+//            String sb = "";
+//            sb = sb.concat(f.getName() + ",");
+//            sb = sb.concat(f.getDepartureTime() + ",");
+//            sb = sb.concat(f.getArrivalTime() + ",");
+//            sb = sb.concat(f.getAirplane() + ",");
+//            sb = sb.concat(f.getStartAirport() + ",");
+//            sb = sb.concat(f.getDestAirport() + "\n");
+//            if (Files.lines(Path.of("flightStorage.csv")).count() == 0){
+//                writer.write(sb);
+//            } else {
+//                writer.append(sb);
+//            }
+//            writer.close();
+//        } catch (IOException e){
+//            System.out.println(e.getMessage());
+//        }
     }
 
 //    @Override
@@ -97,10 +97,10 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     }
 
 
-    private Flight createFlight( String[] s ) {
-        return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);
-        //later with a database this will be replaced by a method, that fetches the needed object from another table
-        // by the use of the respective foreign key
-        //return null; //placeholder to satisfy the "add" controller method
-    }
+//    private Flight createFlight( String[] s ) {
+//        return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);
+//        //later with a database this will be replaced by a method, that fetches the needed object from another table
+//        // by the use of the respective foreign key
+//        //return null; //placeholder to satisfy the "add" controller method
+//    }
 }

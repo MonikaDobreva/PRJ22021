@@ -2,7 +2,7 @@ package assembler;
 
 import businesslogic.BusinessLogicAPI;
 import businesslogic.BusinessLogicImplementationProvider;
-import frontend.GUIApp;
+//import frontend.GUIApp;
 import persistence.PersistenceAPI;
 import persistence.PersistenceImplementationProvider;
 
@@ -17,7 +17,11 @@ public class Main {
         PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
         BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
 
-        new GUIApp(businessLogicAPI).show();
+//        new GUIApp(businessLogicAPI).show();
+        
+        var list = businessLogicAPI.getFlightManager().getFlights();
+        
+        list.stream().forEach(t -> System.out.println(t.toString()));
 
     }
 

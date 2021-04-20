@@ -24,12 +24,12 @@ public interface FlightManager {
      * @return a new flight object
      */
     Flight createFlight(
-            String name,
+            int flightID,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            String airplane,
-            String startAirport,
-            String destAirport
+            int airplane,
+             int flightRouteId,
+            int basePrice
     );
 
     /**

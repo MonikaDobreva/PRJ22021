@@ -28,16 +28,16 @@ public class FlightManagerImpl implements FlightManager {
 
     @Override
     public Flight createFlight(
-            String name,
+            int flightID,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            String airplane,
-            String startAirport,
-            String destAirport){
+            int airplane,
+             int flightRouteId,
+            int basePrice){
 //            Airplane airplane,
 //            Airport startAirport,
 //            Airport destAirport) {
-        return new FlightImpl(name, depTime, arrTime, airplane, startAirport, destAirport);
+        return new Flight(flightID,depTime,arrTime,airplane,flightRouteId,basePrice);
     }
 
     //Method is static because I want to call to it without need of an object
