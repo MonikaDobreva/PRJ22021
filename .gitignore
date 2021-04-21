@@ -127,3 +127,4 @@ fabric.properties
 hs_err_pid*
 /implementation/target/
 /implementation/Assembler/target/
+/implementation/Assembler/application.properties
