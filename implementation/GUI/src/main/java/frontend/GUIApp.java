@@ -26,7 +26,7 @@ public class GUIApp extends Application {
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
-    private static final String INITIAL_VIEW = "flightView";
+    private static final String INITIAL_VIEW = "welcome";
 
     private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
             -> {
@@ -52,11 +52,6 @@ public class GUIApp extends Application {
 //        }
 //        return null;
     };
-
-
-
-
-
 
     public GUIApp(BusinessLogicAPI businessLogicAPI) {
         this.businessLogicAPI = businessLogicAPI;
@@ -94,7 +89,8 @@ public class GUIApp extends Application {
     }
 
     private void initializeSceneManager(){
-        sceneManager = new SceneManager(controllerFactory,INITIAL_VIEW);
+        sceneManager = new SceneManager(controllerFactory, INITIAL_VIEW);
+
     }
 
     @Override

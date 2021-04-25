@@ -2,10 +2,16 @@ package frontend;
 
 import businessentitiesapi.*;
 import businesslogic.BusinessLogicAPI;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.MapValueFactory;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -34,7 +40,7 @@ public class FlightController {
     DatePicker depTimePicker, arrTimePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights;
 
     @FXML
     Label nfcLabel;
@@ -44,6 +50,18 @@ public class FlightController {
 
     @FXML
     Spinner<Integer> depTimeHourSpinner, depTimeMinSpinner, arrTimeHourSpinner, arrTimeMinSpinner;
+
+    @FXML
+    TableView<Flight> flightsTable = new TableView<>();
+
+    @FXML
+    TableColumn<Flight, Integer> flightIdColumn = new TableColumn<>(), basePriceColumn = new TableColumn<>();
+
+    @FXML
+    TableColumn<Flight, String> originAirportColumn = new TableColumn<>(), destinationAirportColumn = new TableColumn<>(), airplaneColumn = new TableColumn<>();
+
+    @FXML
+    TableColumn<Flight, LocalDateTime> departureTimeColumn = new TableColumn<>(), arrivalTimeColumn = new TableColumn<>();
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
@@ -63,32 +81,41 @@ public class FlightController {
         sceneManagerSupplier.get().changeScene( "welcome" );
     }
 
+    @FXML
+    private void switchToViewFlight() throws IOException {
+        sceneManagerSupplier.get().changeScene( "flightList" );
+    }
 
     @FXML
     private void storeFlight() {
-        try {
-            Flight f = flightManager.createFlight(
-                    Integer.parseInt(flightIdField.getText()),
-                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    airplaneIdDropdown.getValue(),
-                    Integer.parseInt(routeIdField.getText()),
-                    Integer.parseInt(basePriceField.getText())
-            );
-            flightManager.add(f);
-            nfcLabel.setText("Successfully added flight!");
-        } catch (Exception d) {
-            nfcLabel.setText("Invalid input! Please try again.");
-        }
+//        try {
+//            Flight f = flightManager.createFlight(
+//                    Integer.parseInt(flightIdField.getText()),
+//                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+//                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+//                    airplaneIdDropdown.getValue(),
+//                    Integer.parseInt(routeIdField.getText()),
+//                    Integer.parseInt(basePriceField.getText())
+//            );
+//            flightManager.add(f);
+//            nfcLabel.setText("Successfully added flight!");
+//        } catch (Exception d) {
+//            nfcLabel.setText("Invalid input! Please try again.");
+//        }
     }
 
     @FXML
     private void showFlights() {
         var flights = flightManager.getFlights();
-        StringBuilder flightsListed = new StringBuilder();
-        for (Flight f : flights) {
-            flightsListed.append("Flight ").append(flights.indexOf(f) + 1).append(": ").append(f.toString()).append("\n");
-        }
+        flightsTable.getItems().clear();
+        flightsTable.getItems().addAll(flights);
+        flightIdColumn.setCellValueFactory(new PropertyValueFactory<>("flightID"));
+        originAirportColumn.setCellValueFactory(new PropertyValueFactory<>("originAirport"));
+        destinationAirportColumn.setCellValueFactory(new PropertyValueFactory<>("destinationAirport"));
+        departureTimeColumn.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        arrivalTimeColumn.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        airplaneColumn.setCellValueFactory(new PropertyValueFactory<>("airplane"));
+        basePriceColumn.setCellValueFactory(new PropertyValueFactory<>("basePrice"));
     }
 
 //    public void listFlights() {

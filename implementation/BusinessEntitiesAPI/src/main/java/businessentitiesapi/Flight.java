@@ -22,8 +22,8 @@ public class Flight implements Serializable {
     private final String destinationAirport;
     private final LocalDateTime departureTime;
     private final LocalDateTime arrivalTime;
-    private final  String airplaneModel;
-    private final  int basePrice;
+    private final String airplaneModel;
+    private final int basePrice;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
@@ -48,6 +48,10 @@ public class Flight implements Serializable {
     public int getFlightID() {
         return flightID;
     }
+
+    public String getOriginAirport(){ return originAirport; }
+
+    public String getDestinationAirport(){ return destinationAirport; }
 
     public LocalDateTime getDepartureTime() {
         return departureTime;
