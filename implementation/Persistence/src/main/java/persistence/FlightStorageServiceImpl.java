@@ -44,7 +44,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             TransactionToken tok = flightDao.startTransaction();
             Collection<Flight> all = flightDao.getAll();
             flightDao.close();
-            return all.stream().collect(Collectors.toList());
+            return new ArrayList<>(all);
         } catch (Exception e) {
             e.printStackTrace();
         }

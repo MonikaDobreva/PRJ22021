@@ -15,12 +15,12 @@ public interface FlightManager {
     /**
      * Creates a new flight, fed with the name, departure and arrival date.
      *
-     * @param name         The name of the flight
-     * @param depTime      The date and time of the departure of the flight
-     * @param arrTime      The date and time of the arrival of the flight
-     * @param airplane     The airplane used for the flight
-     * @param startAirport The airport where the flight takes off
-     * @param destAirport  The airport where the flight arrives
+     * @param flightID      The id of the flight
+     * @param depTime       The date and time of the departure of the flight
+     * @param arrTime       The date and time of the arrival of the flight
+     * @param airplane      The airplane used for the flight
+     * @param flightRouteId The airport where the flight takes off
+     * @param basePrice     The airport where the flight arrives
      * @return a new flight object
      */
     Flight createFlight(

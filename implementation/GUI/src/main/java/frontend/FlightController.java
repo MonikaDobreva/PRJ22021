@@ -28,7 +28,7 @@ public class FlightController {
 
 
     @FXML
-    TextField flightName, depTime, arrTime, airplane, startAirport, destAirport;
+    TextField flightIdField, airplaneIdField, routeIdField, basePriceField;
 
     @FXML
     DatePicker depTimePicker, arrTimePicker;
@@ -37,13 +37,13 @@ public class FlightController {
     Button StoreFlight, primaryButton, ShowFlights;
 
     @FXML
-    Label flightLabel, nfcLabel;
+    Label nfcLabel;
 
     @FXML
-    ComboBox<String> airplaneDropdown;
+    ComboBox<Integer> airplaneIdDropdown, routeIdDropdown;
 
     @FXML
-    ComboBox<String> stAirportDropdown, dtAirportDropdown;
+    Spinner<Integer> depTimeHourSpinner, depTimeMinSpinner, arrTimeHourSpinner, arrTimeMinSpinner;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
@@ -68,15 +68,12 @@ public class FlightController {
     private void storeFlight() {
         try {
             Flight f = flightManager.createFlight(
-                    flightName.getText(),
-                    LocalDateTime.parse(depTime.getText() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    LocalDateTime.parse(arrTime.getText() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    airplaneDropdown.getValue(),
-                    startAirport.getText(),
-                    destAirport.getText()
-                   // airplaneDropdown.getValue(),
-//                    stAirportDropdown.getValue(),
-//                    dtAirportDropdown.getValue()
+                    Integer.parseInt(flightIdField.getText()),
+                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    airplaneIdDropdown.getValue(),
+                    Integer.parseInt(routeIdField.getText()),
+                    Integer.parseInt(basePriceField.getText())
             );
             flightManager.add(f);
             nfcLabel.setText("Successfully added flight!");
@@ -92,18 +89,17 @@ public class FlightController {
         for (Flight f : flights) {
             flightsListed.append("Flight ").append(flights.indexOf(f) + 1).append(": ").append(f.toString()).append("\n");
         }
-        flightLabel.setText(flightsListed.toString());
     }
 
-    public void listFlights() {
-        airplaneDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
-    }
+//    public void listFlights() {
+//        airplaneIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
+//    }
     
-    public void listSAirports() {
-        stAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
-    }
+//    public void listSAirports() {
+//        routeIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
+//    }
     
-     public void listDEAirports() {
-        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
-    }
+//     public void listDEAirports() {
+//        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
+//    }
 }
