@@ -29,7 +29,6 @@ public class FlightMapper extends Mapper<Flight, Integer> {
             f.getDepartureTime(),
             f.getArrivalTime(),
             f.getAirplane(),
-            f.getFlightRouteID(),
             f.getBasePrice(),
             
         };

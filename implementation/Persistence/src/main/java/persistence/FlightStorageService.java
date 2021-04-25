@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface FlightStorageService {
 
-    void add(Flight f);
+    Flight add(Flight f);
     List<Flight> getAll();
-    void delete(Flight f);
+    boolean delete(Flight f);
 
 }

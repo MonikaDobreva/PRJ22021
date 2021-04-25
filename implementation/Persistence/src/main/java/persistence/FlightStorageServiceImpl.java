@@ -28,18 +28,17 @@ import java.util.stream.Collectors;
 public class FlightStorageServiceImpl implements FlightStorageService {
 
     private final FlightManager flightManager;
-    private static List<Flight> flights = new ArrayList<>(); //data handling only through lists so far, DDB later
-
+    private final DAO<Flight, Integer> flightDao;
 
     public FlightStorageServiceImpl(FlightManager flightManager) {
         this.flightManager = flightManager;
+        DataSource ds = PGJDBCUtils.getDataSource("postgres");
+        PGDAOFactory daof = new PGDAOFactory(ds);
+        flightDao = daof.createDao(Flight.class);
     }
 
     @Override
     public List<Flight> getAll() {
-        DataSource ds = PGJDBCUtils.getDataSource("postgres");
-        PGDAOFactory daof = new PGDAOFactory(ds);
-        DAO<Flight, Integer> flightDao = daof.createDao(Flight.class);
         try {
             TransactionToken tok = flightDao.startTransaction();
             Collection<Flight> all = flightDao.getAll();
@@ -53,54 +52,14 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     }
 
     @Override
-    public void add(Flight f) {
-        //flights.add(f);
-//        try {
-//            FileWriter writer = new FileWriter("flightStorage.csv", true);
-//            String sb = "";
-//            sb = sb.concat(f.getName() + ",");
-//            sb = sb.concat(f.getDepartureTime() + ",");
-//            sb = sb.concat(f.getArrivalTime() + ",");
-//            sb = sb.concat(f.getAirplane() + ",");
-//            sb = sb.concat(f.getStartAirport() + ",");
-//            sb = sb.concat(f.getDestAirport() + "\n");
-//            if (Files.lines(Path.of("flightStorage.csv")).count() == 0){
-//                writer.write(sb);
-//            } else {
-//                writer.append(sb);
-//            }
-//            writer.close();
-//        } catch (IOException e){
-//            System.out.println(e.getMessage());
-//        }
+    public Flight add(Flight f) {
+        //TODO: implement add flight;
+        return f;
     }
-
-//    @Override
-//    public List<Flight> getAll() {
-//        List<Flight> flights = new ArrayList<>();
-//
-//        try{
-//            Files.lines(Path.of("flightStorage.csv"))
-//                        .map(line -> line.split(","))
-//                        .map(this::createFlight)
-//                        .forEach(flights::add);
-//        } catch (IOException e){
-//            System.out.println(e.getMessage());
-//        }
-//
-//        return flights;
-//    }
 
     @Override
-    public void delete(Flight f) {
-        // implement flight deletion
+    public boolean delete(Flight f) {
+        // TODO: implement flight deletion
+        return false;
     }
-
-
-//    private Flight createFlight( String[] s ) {
-//        return this.flightManager.createFlight( s[0], LocalDateTime.parse(s[1]), LocalDateTime.parse(s[2]), s[3], s[4], s[5]);
-//        //later with a database this will be replaced by a method, that fetches the needed object from another table
-//        // by the use of the respective foreign key
-//        //return null; //placeholder to satisfy the "add" controller method
-//    }
 }
