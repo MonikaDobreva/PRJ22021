@@ -13,54 +13,55 @@ import nl.fontys.sebivenlo.sebiannotations.*;
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
 */
 
-@TableName("flights")
+@TableName("flights_view")
 public class Flight implements Serializable {
 
     @ID
-    private final int id;
-    private final LocalDateTime departure_time;
-    private final LocalDateTime arrival_time;
-    private final  int airplane_id;
-    private final int flight_route_id;
-    private final  int base_price;
+    private final int flightID;
+    private final String originAirport;
+    private final String destinationAirport;
+    private final LocalDateTime departureTime;
+    private final LocalDateTime arrivalTime;
+    private final  String airplaneModel;
+    private final  int basePrice;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
     public Flight(
             int flightID,
+            String originAirport,
+            String destinationAirport,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            int airplane,
-             int flightRouteId,
+            String airplane,
             int basePrice
-           
     ) {
-        this.id = flightID;
-        this.departure_time = depTime;
-        this.arrival_time = arrTime;
-        this.airplane_id = airplane;
-        this.flight_route_id =flightRouteId;
-        this.base_price = basePrice;
+        this.flightID = flightID;
+        this.originAirport = originAirport;
+        this.destinationAirport = destinationAirport;
+        this.departureTime = depTime;
+        this.arrivalTime = arrTime;
+        this.airplaneModel = airplane;
+        this.basePrice = basePrice;
     }
-
 
     public int getFlightID() {
-        return id;
+        return flightID;
     }
-
 
     public LocalDateTime getDepartureTime() {
-        return departure_time;
+        return departureTime;
     }
-
 
     public LocalDateTime getArrivalTime() {
-        return arrival_time;
+        return arrivalTime;
     }
 
+    public String getAirplane() { return airplaneModel; }
 
-    public int getAirplane() { return airplane_id; }
-
+    public int getBasePrice() {
+        return basePrice;
+    }
  
     // Airplane ... on flight ...
     // departing from ... on DAY.MONTH at HH:mm
@@ -68,60 +69,11 @@ public class Flight implements Serializable {
 
     @Override
     public String toString() {
-        return "Airplane " + airplane_id + " on flight \n"
-               + arrival_time.getDayOfMonth() + "." + arrival_time.getMonth() + " at " + arrival_time.getHour() + ":" + arrival_time.getMinute() + "\n";
+        return "Airplane " + airplaneModel + " on flight " + getFlightID() + "\n" +
+               "departing from " + originAirport + " on " + departureTime.getDayOfMonth() + "." + departureTime.getMonth() +
+                " at " + departureTime.getHour() + ":" + departureTime.getMinute() + "\n" +
+                "arriving at " + destinationAirport + " on " + arrivalTime.getDayOfMonth() + "." + arrivalTime.getMonth() +
+                " at " + arrivalTime.getHour() + ":" + arrivalTime.getMinute() + "\n";
     }
 
-
-    public int getFlightRouteID() {
-      return flight_route_id;
-    }
-
-
-    public int getBasePrice() {
-        return base_price;
-    }
-
- 
-    
 }
-
-//public interface Flight extends Serializable {
-//
-//    /**
-//     * databse id basically
-//     * @return flightID
-//     */
-//    int getFlightID();
-//    
-//    /**
-//     * Get the name of the flight
-//     * @return flight name
-//     */
-//    String getName();
-//
-//    /**
-//     * Get the departure time of the flight
-//     * @return date and time of departure
-//     */
-//    LocalDateTime getDepartureTime();
-//
-//    /**
-//     * Get the arrival time of the flight
-//     * @return date and time of departure
-//     */
-//    LocalDateTime getArrivalTime();
-//
-//    /**
-//     * Get the Airplane object of a flight
-//     * For now only returns a string
-//     * @return id of the plane
-//     */
-//    int getAirplane();
-//
-//    int getFlightRouteID();
-//    
-//    int getBasePrice();
-//    
-//    
-//}

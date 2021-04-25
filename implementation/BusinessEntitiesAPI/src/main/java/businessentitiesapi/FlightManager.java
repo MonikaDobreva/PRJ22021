@@ -25,10 +25,11 @@ public interface FlightManager {
      */
     Flight createFlight(
             int flightID,
+            String originAirport,
+            String destinationAirport,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            int airplane,
-             int flightRouteId,
+            String airplane,
             int basePrice
     );
 

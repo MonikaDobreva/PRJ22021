@@ -7,7 +7,7 @@ create table if not exists airports
     id        int generated always as identity primary key
 );
 
-create or replace view airports_view ("airportID", "iataCode", "fullName", city, country) as
+create or replace view airports_view (airportID, iataCode, fullName, city, country) as
 select airports.id, airports.iata_code, airports.full_name, airports.city, airports.country
 from airports;
 
@@ -19,7 +19,7 @@ create table if not exists airplanes
     capacity      int  not null
 );
 
-create or replace view airplanes_view ("airplaneID", "airplaneCode", model, capacity) as
+create or replace view airplanes_view (airplaneID, airplaneCode, model, capacity) as
 select airplanes.id, airplanes.airplane_code, airplanes.model, airplanes.capacity 
 from airplanes;
 
@@ -29,7 +29,7 @@ create table if not exists user_types
     name text not null
 );
 
-create or replace view user_types_view ("userTypeID", name) as 
+create or replace view user_types_view (userTypeID, name) as 
 	select user_types.id, user_types."name" 
 	from user_types;
 
@@ -40,7 +40,7 @@ create table if not exists users
     user_type int  not null references user_types (id)
 );
 
-create or replace view users_view ("userID", "userName", "userType") as 
+create or replace view users_view (userID, userName, userType) as 
 	select users.id, users.user_name, users.user_type
 	from users;
 
@@ -51,7 +51,7 @@ create table if not exists seat_types
     extra_price int check (extra_price >= 0)
 );
 
-create or replace view seat_types_view ("seatTypeID", name, "extraPrice") as 
+create or replace view seat_types_view (seatTypeID, name, extraPrice) as 
 	select seat_types.id, seat_types."name", seat_types.extra_price
 	from seat_types;
 
@@ -63,7 +63,7 @@ create table if not exists seats
     airplane_id  int  not null references airplanes (id)
 );
 
-create or replace view seats_view ("seatID", "seatTypeId", "seatNumber", "airplaneId") as 
+create or replace view seats_view (seatID, seatTypeId, seatNumber, airplaneId) as 
 	select seats.id, seats.seat_type_id, seats.seat_number, seats.airplane_id 
 	from seats;
 
@@ -73,7 +73,7 @@ create table if not exists meal_types
     name text not null
 );
 
-create or replace view meal_types_view ("mealTypeID", name) as 
+create or replace view meal_types_view (mealTypeID, name) as 
 	select meal_types.id, meal_types."name" 
 	from meal_types;
 
@@ -84,7 +84,7 @@ create table if not exists flight_routes
     destination_airport_id int not null references airports (id)
 );
 
-create or replace view flight_routes_view ("flightRouteID", "originAiportCode", "destinationAiportCode") as 
+create or replace view flight_routes_view (flightRouteID, originAiportCode, destinationAiportCode) as 
 	select first_conversion.id, first_conversion.iata_code , airports.iata_code 
 	from (select flight_routes.id, airports.iata_code, flight_routes.destination_airport_id
 		  from flight_routes join airports on flight_routes.origin_airport_id = airports.id) as first_conversion
@@ -100,12 +100,14 @@ create table if not exists flights
     base_price      int       not null check (base_price >= 0)
 );
 
-create or replace view flights_view ("flightID", "originAirport", "destinationAirport", 
-							"departureTime", "arrivalTime", "basePrice") 
+create or replace view flights_view (flightID, originAirport, destinationAirport, 
+							departureTime, arrivalTime, airplaneModel, basePrice)
 as
-	select flights.id, flight_routes_view."originAiportCode", flight_routes_view."destinationAiportCode", 
-		   flights.departure_time, flights.arrival_time, flights.base_price 
-	from flights join flight_routes_view on flights.flight_route_id = flight_routes_view."flightRouteID";
+	select first_conversion.id, flight_routes_view.originAiportCode, flight_routes_view.destinationAiportCode,
+           first_conversion.departure_time, first_conversion.arrival_time, first_conversion.model, first_conversion.base_price
+	from (select flights.id,  flights.departure_time,  flights.arrival_time, airplanes.model, flight_route_id, base_price
+	      from flights join airplanes on flights.airplane_id = airplanes.id) as first_conversion
+join flight_routes_view on first_conversion.flight_route_id = flight_routes_view.flightRouteID;
 
 create table if not exists flight_seats
 (
@@ -115,7 +117,7 @@ create table if not exists flight_seats
     available boolean default true not null
 );
 
-create or replace view flight_seats_view ("flightSeatID", "seatID", "flightID", available ) as 
+create or replace view flight_seats_view (flightSeatID, seatID, flightID, available ) as 
 	select flight_seats.id, flight_seats.seat_id, flight_seats.flight_id, flight_seats.available 
 	from flight_seats;
 
@@ -129,7 +131,7 @@ create table if not exists persons
     gender     text not null check (length(gender) = 1)
 );
 
-create or replace view customers_view("customerID", "firstName", "lastName", email, "birthDate", gender) as
+create or replace view customers_view(customerID, firstName, lastName, email, birthDate, gender) as
 select persons.*
 from persons join bookings on persons.id = bookings.person_id;
 
@@ -140,8 +142,8 @@ create table if not exists passengers
     person_id       int  not null references persons (id)
 );
 
-create or replace view passengers_view ("passengerID", "firstName", "lastName", "passportNumber", 
-										email, "birthDate", gender)
+create or replace view passengers_view (passengerID, firstName, lastName, passportNumber, 
+										email, birthDate, gender)
 as
 	select passengers.id, persons.first_name, persons.last_name, passengers.passport_number,
 		   persons.email, persons.birth_date, persons.gender 
@@ -155,7 +157,7 @@ create table if not exists bookings
     time_of_booking timestamp not null
 );
 
-create or replace view bookings_view ("bookingID", "personID", "userID", "bookingTime") as 
+create or replace view bookings_view (bookingID, personID, userID, bookingTime) as 
 	select bookings.id, bookings.person_id, bookings.user_id, bookings.time_of_booking 
 	from bookings;
 
@@ -172,8 +174,8 @@ create table if not exists tickets
     price_paid      int                   not null check (price_paid >= 0)
 );
 
-create or replace view tickets_view ("ticketID", "passengerID", "flightSeatID", "cabinBaggage", "checkedBaggage", 
-									 "mealID", "bookingID", "pricePaid", "cancelled")	 
+create or replace view tickets_view (ticketID, passengerID, flightSeatID, cabinBaggage, checkedBaggage, 
+									 mealID, bookingID, pricePaid, cancelled)	 
 as 
 	select tickets.id, tickets.passenger_id, tickets.flight_seat_id, tickets.cabin_baggage, tickets.checked_baggage,
 	       tickets.meal_id, tickets.booking_id, tickets.price_paid, tickets.canceled 
