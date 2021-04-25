@@ -58,10 +58,13 @@ public class FlightController {
     TableColumn<Flight, Integer> flightIdColumn = new TableColumn<>(), basePriceColumn = new TableColumn<>();
 
     @FXML
-    TableColumn<Flight, String> originAirportColumn = new TableColumn<>(), destinationAirportColumn = new TableColumn<>(), airplaneColumn = new TableColumn<>();
+    TableColumn<Flight, String> originAirportColumn = new TableColumn<>(),
+            destinationAirportColumn = new TableColumn<>(),
+            airplaneColumn = new TableColumn<>();
 
     @FXML
-    TableColumn<Flight, LocalDateTime> departureTimeColumn = new TableColumn<>(), arrivalTimeColumn = new TableColumn<>();
+    TableColumn<Flight, LocalDateTime> departureTimeColumn = new TableColumn<>(),
+            arrivalTimeColumn = new TableColumn<>();
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
@@ -72,18 +75,13 @@ public class FlightController {
     }
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        sceneManagerSupplier.get().changeScene( "secondary" );
-    }
-
-    @FXML
     private void backToStart() throws IOException {
         sceneManagerSupplier.get().changeScene( "welcome" );
     }
 
     @FXML
     private void switchToViewFlight() throws IOException {
-        sceneManagerSupplier.get().changeScene( "flightList" );
+        sceneManagerSupplier.get().changeScene( "viewFlights" );
     }
 
     @FXML
@@ -107,6 +105,7 @@ public class FlightController {
     @FXML
     private void showFlights() {
         var flights = flightManager.getFlights();
+        flightsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         flightsTable.getItems().clear();
         flightsTable.getItems().addAll(flights);
         flightIdColumn.setCellValueFactory(new PropertyValueFactory<>("flightID"));

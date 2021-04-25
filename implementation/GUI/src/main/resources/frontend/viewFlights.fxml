@@ -16,41 +16,7 @@
 
 <VBox prefHeight="590.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.FlightController">
    <children>
-      <MenuBar>
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <Menu mnemonicParsing="false" text="New">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Flight" />
-                        <MenuItem mnemonicParsing="false" text="Booking" />
-                        <MenuItem mnemonicParsing="false" text="Route" />
-                     </items>
-                  </Menu>
-                  <MenuItem mnemonicParsing="false" text="Exit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Edit 1" />
-                  <MenuItem mnemonicParsing="false" text="Edit 2" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="View">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Flights" />
-                  <MenuItem mnemonicParsing="false" text="Bookings" />
-                  <MenuItem mnemonicParsing="false" text="Routes" />
-                  <MenuItem mnemonicParsing="false" text="Go to MD..." />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
+      <fx:include source="topMenu.fxml"/>
       <HBox prefHeight="69.0" prefWidth="600.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="400.0">

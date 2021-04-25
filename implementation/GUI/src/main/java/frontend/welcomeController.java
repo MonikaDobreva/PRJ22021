@@ -23,7 +23,7 @@ public class welcomeController {
 
     @FXML
     public void goToStart() throws IOException {
-        sceneManagerSupplier.get().changeScene("flightList");
+        sceneManagerSupplier.get().changeScene("viewFlights");
     }
 
 }
