@@ -181,3 +181,48 @@ as
 	       tickets.meal_id, tickets.booking_id, tickets.price_paid, tickets.canceled 
 	from tickets;
 
+create or replace function getFlightRouteID(originAirport text, destinationAirport text)
+    returns flight_routes.id%type as $$
+declare
+    originAirportID airports.id%type;
+    destinationAirportID airports.id%type;
+    flightRouteID flight_routes.id%type;
+begin
+    select airports.id
+    into originAirportID
+    from airports
+    where airports.iata_code = originAirport;
+
+    select airports.id
+    into destinationAirportID
+    from airports
+    where airports.iata_code = destinationAirport;
+
+    select flight_routes.id
+    into flightRouteID
+    from flight_routes
+    where destination_airport_id = destinationAirportID and origin_airport_id = originAirportID;
+
+    return flightRouteID;
+end;
+    $$ language plpgsql;
+
+
+
+create or replace function getAirplaneID(
+    airplaneModel text
+)
+    returns airplanes.id%type as $$
+declare
+    airplaneID airplanes.id%type;
+begin
+
+    select airplanes.id
+    into airplaneID
+    from airplanes
+    where airplanes.model = airplaneModel;
+
+    return airplaneID;
+end;
+$$ language plpgsql;
+

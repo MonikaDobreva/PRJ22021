@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="businesslogic.AirPlaneImplTest" time="0.11" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="businesslogic.AirPlaneImplTest" time="0.205" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -13,10 +13,10 @@
     <property name="user.timezone" value=""/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="user.country" value="GB"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/joel/IdeaProjects/prj2-2021-prj2-2021-03/implementation/BusinessLogic/target/surefire 2021-04-21T13-58-00_340-jvmRun1 surefire1703350500234290891tmp surefire_07657221294244662071tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /Users/joel/IdeaProjects/prj2-2021-prj2-2021-03/implementation/BusinessLogic/target/surefire 2021-04-26T11-18-03_179-jvmRun1 surefire16981731886971558894tmp surefire_03358748300848928955tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/joel/IdeaProjects/prj2-2021-prj2-2021-03/implementation/BusinessLogic/target/test-classes:/Users/joel/.m2/repository/org/checkerframework/checker-qual/3.5.0/checker-qual-3.5.0.jar:/Users/joel/.m2/repository/org/assertj/assertj-core/3.18.1/assertj-core-3.18.1.jar:/Users/joel/.m2/repository/org/mockito/mockito-core/3.5.13/mockito-core-3.5.13.jar:/Users/joel/.m2/repository/net/bytebuddy/byte-buddy/1.10.15/byte-buddy-1.10.15.jar:/Users/joel/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.15/byte-buddy-agent-1.10.15.jar:/Users/joel/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/joel/.m2/repository/org/mockito/mockito-junit-jupiter/3.5.13/mockito-junit-jupiter-3.5.13.jar:/Users/joel/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/joel/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/joel/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/joel/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/joel/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/joel/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/joel/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -43,10 +43,10 @@
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
     <property name="java.vendor.version" value="AdoptOpenJDK"/>
-    <property name="maven.ext.class.path" value="/Applications/NetBeans/Apache NetBeans 12.2.app/Contents/Resources/NetBeans/netbeans/java/maven-nblib/netbeans-eventspy.jar"/>
     <property name="localRepository" value="/Users/joel/.m2/repository"/>
     <property name="java.vendor.url.bug" value="https://github.com/AdoptOpenJDK/openjdk-support/issues"/>
     <property name="java.io.tmpdir" value="/var/folders/sc/1x6yxsr52tb89s29hv_fggqm0000gn/T/"/>
+    <property name="idea.version" value="2021.1"/>
     <property name="java.version" value="11.0.10"/>
     <property name="user.dir" value="/Users/joel/IdeaProjects/prj2-2021-prj2-2021-03/implementation/BusinessLogic"/>
     <property name="os.arch" value="x86_64"/>
@@ -60,6 +60,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="toStringTest" classname="businesslogic.AirPlaneImplTest" time="0.103"/>
-  <testcase name="gettersTest" classname="businesslogic.AirPlaneImplTest" time="0.002"/>
+  <testcase name="toStringTest" classname="businesslogic.AirPlaneImplTest" time="0.191"/>
+  <testcase name="gettersTest" classname="businesslogic.AirPlaneImplTest" time="0.003"/>
 </testsuite>

@@ -117,15 +117,18 @@ public class FlightController {
         basePriceColumn.setCellValueFactory(new PropertyValueFactory<>("basePrice"));
     }
 
-//    public void listFlights() {
+    public void listFlights() {
+        //TODO
 //        airplaneIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
-//    }
+    }
     
-//    public void listSAirports() {
+    public void listSAirports() {
+        //TODO
 //        routeIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
-//    }
+    }
     
-//     public void listDEAirports() {
+     public void listDEAirports() {
+         //TODO
 //        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
-//    }
+    }
 }

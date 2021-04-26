@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -29,10 +30,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     private final FlightManager flightManager;
     private final DAO<Flight, Integer> flightDao;
+    private final DataSource ds;
 
     public FlightStorageServiceImpl(FlightManager flightManager) {
         this.flightManager = flightManager;
-        DataSource ds = PGJDBCUtils.getDataSource("postgres");
+        ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
         flightDao = daof.createDao(Flight.class);
     }
@@ -54,6 +56,27 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public Flight add(Flight f) {
         //TODO: implement add flight;
+        String getFlightRouteID = "SELECT * FROM getFlightRouteID(?, ?)";
+        String getAirplaneID = "SELECT * FROM getAirplaneID(?)";
+        try (Connection con = ds.getConnection();
+             PreparedStatement pstm1 = con.prepareStatement(getFlightRouteID);
+             PreparedStatement pstm2 = con.prepareStatement(getAirplaneID)) {
+
+            pstm1.setString(1, f.getOriginAirport());
+            pstm1.setString(2, f.getDestinationAirport());
+            ResultSet rs1 = pstm1.executeQuery();
+
+            int flightRouteID = rs1.getInt(1);
+
+            pstm2.setString(1, f.getAirplane());
+            ResultSet rs2 = pstm2.executeQuery();
+
+            int airplaneID = rs2.getInt(1);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
         return f;
     }
 

@@ -5,9 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
@@ -23,7 +20,7 @@
    <children>
       <VBox alignment="CENTER" prefWidth="482.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-              <fx:include fx:id = "menuBar" source="topMenu.fxml"/>
+              <fx:include fx:id="menuBar" source="topMenu.fxml" />
             <VBox spacing="10.0">
                <children>
                     <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="400.0">
@@ -57,7 +54,7 @@
                         </rowConstraints>
                         <children>
                             <Label prefHeight="17.0" prefWidth="100.0" text="Flight ID:" />
-                            <TextField fx:id="flightIdField" prefHeight="25.0" prefWidth="122.0" promptText="e.g. &quot;LH388&quot;" text="LH388" GridPane.columnIndex="1" />
+                            <TextField fx:id="flightIdField" editable="false" prefHeight="25.0" prefWidth="122.0" promptText="e.g. &quot;LH388&quot;" text="LH388" GridPane.columnIndex="1" />
                             <Label prefHeight="17.0" prefWidth="150.0" text="Departure Time:" GridPane.rowIndex="1" />
                         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
