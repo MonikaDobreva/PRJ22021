@@ -13,7 +13,7 @@ import nl.fontys.sebivenlo.sebiannotations.*;
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
 */
 
-@TableName("flights_view")
+@TableName("flightsView")
 public class Flight implements Serializable {
 
     @ID

@@ -56,28 +56,16 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public Flight add(Flight f) {
         //TODO: implement add flight;
-        String getFlightRouteID = "SELECT * FROM getFlightRouteID(?, ?)";
-        String getAirplaneID = "SELECT * FROM getAirplaneID(?)";
-        try (Connection con = ds.getConnection();
-             PreparedStatement pstm1 = con.prepareStatement(getFlightRouteID);
-             PreparedStatement pstm2 = con.prepareStatement(getAirplaneID)) {
-
-            pstm1.setString(1, f.getOriginAirport());
-            pstm1.setString(2, f.getDestinationAirport());
-            ResultSet rs1 = pstm1.executeQuery();
-
-            int flightRouteID = rs1.getInt(1);
-
-            pstm2.setString(1, f.getAirplane());
-            ResultSet rs2 = pstm2.executeQuery();
-
-            int airplaneID = rs2.getInt(1);
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        try {
+            TransactionToken tok = flightDao.startTransaction();
+            Optional<Flight> storedFlight = flightDao.save(f);
+            flightDao.close();
+//            return new ArrayList<>(all);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        return f;
+        return null;
     }
 
     @Override
