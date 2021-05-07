@@ -34,7 +34,7 @@ public class FlightController {
 
 
     @FXML
-    TextField flightIdField, airplaneIdField, routeIdField, basePriceField;
+    TextField airplaneModelField, basePriceField;
 
     @FXML
     DatePicker depTimePicker, arrTimePicker;
@@ -46,7 +46,7 @@ public class FlightController {
     Label nfcLabel;
 
     @FXML
-    ComboBox<Integer> airplaneIdDropdown, routeIdDropdown;
+    ComboBox<Integer> airplaneModelDropdown;
 
     @FXML
     Spinner<Integer> depTimeHourSpinner, depTimeMinSpinner, arrTimeHourSpinner, arrTimeMinSpinner;

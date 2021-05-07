@@ -61,8 +61,6 @@ public class GUIApp extends Application {
 
             Platform.runLater(() -> {
                 Stage stage = new Stage();
-                //stage.getIcons().add(new Image(GUIApp.class.getResourceAsStream( "Aspotify.png" )));
-                //stage.getIcons().add( new Image(new File("spotify.png").toURI().toString()));
                 try {
                     start(stage);
                 } catch (IOException ex) {
