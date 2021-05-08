@@ -1,6 +1,9 @@
 
 package businessentitiesapi;
 
+import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -20,11 +23,11 @@ public interface AirplaneManager {
     Airplane createAirplane(String name, String code, int amountSeats);
 
     /**
-     * Adds a new airplane to the airplanManager, which stores all the airplane objects in a list
+     * Adds a new airplane to the airplaneManager, which stores all the airplane objects in a list
      *
-     * @param f The airplane to be added
+     * @param a The airplane to be added
      */
-    void add(Airplane f);
+    void add(Airplane a);
 
     /**
      * Get all airplane which were previously added to the airplaneStorage
@@ -34,7 +37,27 @@ public interface AirplaneManager {
 
     /**
      * Deletes the given airplane from the AirplaneManager
+     *
+     * @param a Airplane to be deleted
      */
     void delete(Airplane a);
+
+    /**
+     * Check if Airplane is available for the given departure and arrival time
+     *
+     * @param a The airplane that we want to check availability
+     * @param departure Departure time
+     * @param arrival Arrival time
+     */
+    boolean checkAvailability(Airplane a, LocalDateTime departure, LocalDateTime arrival) throws IllegalArgumentException;
+
+    /**
+     * Get all the dates as a LocalDateTimeRange where an airplane has been scheduled
+     *
+     * @param a Airplane to obtain schedule
+     *
+     * @return a List of the date ranges when the airplane is not available
+     */
+    List<LocalDateTimeRange> airplaneSchedule (Airplane a);
 
 }

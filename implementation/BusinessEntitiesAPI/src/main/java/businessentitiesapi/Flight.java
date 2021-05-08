@@ -55,7 +55,7 @@ public class Flight implements Serializable {
         if (Pattern.matches("[A-Z]{3}", destinationAirport) && !originAirport.equals(destinationAirport)) {
              this.destinationAirport = destinationAirport;
         } else {
-            throw new IllegalArgumentException("Is not 3 Uppercase letter code! Or is same Airport as depature airport!");
+            throw new IllegalArgumentException("Is not 3 Uppercase letter code! Or is same Airport as departure airport!");
         }
         
         /**

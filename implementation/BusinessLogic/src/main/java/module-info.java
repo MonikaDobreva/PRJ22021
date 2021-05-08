@@ -4,4 +4,5 @@ module businesslogic_module {
     
     exports businesslogic;
     requires nl.fontys.sebivenlo.sebiannotations;
+    requires ranges;
 }

@@ -6,6 +6,8 @@
 package persistence;
 
 import businessentitiesapi.Airplane;
+import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
+
 import java.util.List;
 
 /**
@@ -17,4 +19,6 @@ public interface AirplaneStorageService {
     Airplane add(Airplane a);
     List<Airplane> getAll();
     void delete(Airplane a);
+
+    List<LocalDateTimeRange> getSchedule(Airplane a);
 }

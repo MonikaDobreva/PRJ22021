@@ -5,5 +5,6 @@ module persistence_module {
     requires java.sql;
     requires org.postgresql.jdbc;
     requires genericdao_module;
-    
+    requires ranges;
+
 }
