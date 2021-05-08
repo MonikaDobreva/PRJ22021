@@ -31,6 +31,11 @@ select passengers.id, persons.first_name, persons.last_name, passengers.passport
        persons.email, persons.birth_date, persons.gender
 from passengers join persons on passengers.person_id = persons.id;
 
+create or replace view airplaneSchedule (airplaneCode, departureTime, arrivalTime) as
+select airplanes.airplane_code, (flights.departure_time - (60 * interval '1 minute') ) as depTime,
+       (flights.arrival_time + (60 * interval '1 minute') ) as arrTime
+from flights join airplanes on flights.airplane_id = airplanes.id;
+
 -- Function that returns a flightRouteID for a given originAirport and destinationAirport
 create or replace function getFlightRouteID(originAirport text, destinationAirport text)
     returns flight_routes.id%type as $$
