@@ -46,7 +46,7 @@ public class FlightController {
     Label nfcLabel;
 
     @FXML
-    ComboBox<Integer> airplaneModelDropdown;
+    ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
 
     @FXML
     Spinner<Integer> depTimeHourSpinner, depTimeMinSpinner, arrTimeHourSpinner, arrTimeMinSpinner;
@@ -69,37 +69,45 @@ public class FlightController {
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
 
-    public FlightController( Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
+    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
     }
 
     @FXML
     private void backToStart() throws IOException {
-        sceneManagerSupplier.get().changeScene( "welcome" );
+        sceneManagerSupplier.get().changeScene("welcome");
     }
 
     @FXML
     private void switchToViewFlight() throws IOException {
-        sceneManagerSupplier.get().changeScene( "viewFlights" );
+        sceneManagerSupplier.get().changeScene("viewFlights");
     }
 
+    //    private final int flightID;
+    //    private final String originAirport;
+    //    private final String destinationAirport;
+    //    private final LocalDateTime departureTime;
+    //    private final LocalDateTime arrivalTime;
+    //    private final String airplaneModel;
+    //    private final int basePrice;
     @FXML
     private void storeFlight() {
-//        try {
-//            Flight f = flightManager.createFlight(
-//                    Integer.parseInt(flightIdField.getText()),
-//                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-//                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-//                    airplaneIdDropdown.getValue(),
-//                    Integer.parseInt(routeIdField.getText()),
-//                    Integer.parseInt(basePriceField.getText())
-//            );
-//            flightManager.add(f);
-//            nfcLabel.setText("Successfully added flight!");
-//        } catch (Exception d) {
-//            nfcLabel.setText("Invalid input! Please try again.");
-//        }
+        try {
+            Flight f = flightManager.createFlight(
+                    1, //placeholder, id should be generated according to the amount of flight already in the database
+                    originApDropdown.getValue(),
+                    destinationApDropdown.getValue(),
+                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    airplaneModelDropdown.getValue(),
+                    Integer.parseInt(basePriceField.getText())
+            );
+            flightManager.add(f);
+            nfcLabel.setText("Successfully added flight!");
+        } catch (Exception d) {
+            nfcLabel.setText("Invalid input! Please try again.");
+        }
     }
 
     @FXML
@@ -121,14 +129,19 @@ public class FlightController {
         //TODO
 //        airplaneIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
     }
-    
+
     public void listSAirports() {
         //TODO
 //        routeIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
     }
-    
-     public void listDEAirports() {
-         //TODO
+
+    public void listDEAirports() {
+        //TODO
 //        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
+    }
+
+    public void listAirplaneModels(){
+        //TODO
+//        airplaneModelDropdown.setItems((FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplaneModel).collect(Collectors.toList()))));
     }
 }
