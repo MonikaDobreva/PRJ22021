@@ -65,11 +65,11 @@ insert into public.airplanes (id, model, airplane_code, capacity) overriding sys
 alter sequence public.airplanes_id_seq restart with 15;
 
 --seat_types
-insert into public.seat_types (id, name, extra_price) overriding system value values (5, 'Emergency Exit', 0);
-insert into public.seat_types (id, name, extra_price) overriding system value values (1, 'Economy', 0);
-insert into public.seat_types (id, name, extra_price) overriding system value values (3, 'Business', 120);
-insert into public.seat_types (id, name, extra_price) overriding system value values (2, 'Premium Economy', 50);
-insert into public.seat_types (id, name, extra_price) overriding system value values (4, 'First Class', 290);
+insert into public.seat_types (id, name, extra_price) overriding system value values (5, 'Emergency Exit', 0.00);
+insert into public.seat_types (id, name, extra_price) overriding system value values (1, 'Economy', 0.00);
+insert into public.seat_types (id, name, extra_price) overriding system value values (3, 'Business', 120.00);
+insert into public.seat_types (id, name, extra_price) overriding system value values (2, 'Premium Economy', 50.00);
+insert into public.seat_types (id, name, extra_price) overriding system value values (4, 'First Class', 290.00);
 alter sequence public.seat_types_id_seq restart with 6;
 
 --seats
@@ -164,12 +164,12 @@ insert into public.seats (id, seat_type_id, seat_number, airplane_id) overriding
 alter sequence public.seats_id_seq restart with 89;
 
 --flights
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (1, '2021-12-22 18:00:00.000000', '2021-12-22 23:00:00.000000', 1, 3, 210);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (2, '2021-12-25 16:00:00.000000', '2021-12-25 21:00:00.000000', 1, 4, 210);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (3, '2021-06-11 09:50:00.000000', '2021-06-11 21:20:00.000000', 2, 1, 550);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (4, '2021-08-20 17:00:00.000000', '2021-08-21 04:00:00.000000', 2, 2, 550);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (5, '2022-01-01 12:45:00.000000', '2022-01-01 15:35:00.000000', 1, 5, 85);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (6, '2022-01-02 17:00:00.000000', '2022-01-02 19:50:00.000000', 1, 6, 85);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (1, '2021-12-22 18:00:00.000000', '2021-12-22 23:00:00.000000', 1, 3, 210.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (2, '2021-12-25 16:00:00.000000', '2021-12-25 21:00:00.000000', 1, 4, 210.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (3, '2021-06-11 09:50:00.000000', '2021-06-11 21:20:00.000000', 2, 1, 550.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (4, '2021-08-20 17:00:00.000000', '2021-08-21 04:00:00.000000', 2, 2, 550.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (5, '2022-01-01 12:45:00.000000', '2022-01-01 15:35:00.000000', 1, 5, 85.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (6, '2022-01-02 17:00:00.000000', '2022-01-02 19:50:00.000000', 1, 6, 85.00);
 alter sequence public.flights_id_seq restart with 7;
 
 --flight_seats
@@ -564,48 +564,48 @@ insert into public.bookings (id, person_id, user_id, time_of_booking) overriding
 alter sequence public.bookings_id_seq restart with 28;
 
 --tickets
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (25, 14, 1, 1, 1, 17, false, 25, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (44, 22, 1, 1, 1, 26, false, 43, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (42, 20, 1, 1, 1, 26, false, 42, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (8, 4, 1, 1, 1, 6, false, 8, 330);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (18, 11, 1, 1, 1, 12, false, 18, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (19, 12, 1, 1, 1, 13, false, 19, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (14, 8, 1, 1, 1, 10, false, 14, 260);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (20, 13, 1, 1, 1, 13, false, 20, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (13, 7, 1, 1, 1, 10, false, 13, 260);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (26, 15, 1, 1, 1, 17, false, 26, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (27, 16, 1, 1, 1, 17, false, 27, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (3, 1, 1, 1, 1, 3, false, 3, 500);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (17, 10, 1, 1, 1, 12, false, 17, 260);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (16, 9, 1, 1, 1, 12, false, 16, 260);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (10, 6, 1, 1, 1, 7, false, 10, 330);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (4, 2, 1, 1, 1, 3, false, 4, 500);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (9, 5, 1, 1, 1, 7, false, 9, 330);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (32, 18, 1, 1, 1, 20, false, 32, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (22, 67, 1, 1, 1, 15, false, 22, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (23, 68, 1, 1, 1, 16, false, 23, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (21, 66, 1, 1, 1, 14, false, 21, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (24, 69, 1, 1, 1, 16, false, 24, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (30, 72, 1, 1, 1, 18, false, 30, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (28, 70, 1, 1, 1, 18, false, 28, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (29, 71, 1, 1, 1, 18, false, 29, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (34, 73, 1, 1, 1, 21, false, 34, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (35, 74, 1, 1, 1, 22, false, 35, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (2, 60, 1, 1, 1, 2, false, 2, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (1, 59, 1, 1, 1, 1, false, 1, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (6, 62, 1, 1, 1, 5, false, 6, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (40, 75, 1, 1, 1, 25, false, 40, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (41, 76, 1, 1, 1, 25, false, 41, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (5, 61, 1, 1, 1, 4, false, 5, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (11, 63, 1, 1, 1, 8, false, 11, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (15, 65, 1, 1, 1, 11, false, 15, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (12, 64, 1, 1, 1, 9, false, 12, 550);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (37, 25, 1, 1, 1, 23, false, 37, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (31, 17, 1, 1, 1, 19, false, 31, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (43, 21, 1, 1, 1, 27, false, 44, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (36, 26, 1, 1, 1, 23, false, 36, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (33, 19, 1, 1, 1, 20, false, 33, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (38, 24, 1, 1, 1, 23, false, 38, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (39, 23, 1, 1, 1, 24, false, 39, 210);
-insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (7, 3, 1, 1, 1, 6, false, 7, 330);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (25, 14, 1, 1, 1, 17, false, 25, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (44, 22, 1, 1, 1, 26, false, 43, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (42, 20, 1, 1, 1, 26, false, 42, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (8, 4, 1, 1, 1, 6, false, 8, 330.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (18, 11, 1, 1, 1, 12, false, 18, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (19, 12, 1, 1, 1, 13, false, 19, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (14, 8, 1, 1, 1, 10, false, 14, 260.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (20, 13, 1, 1, 1, 13, false, 20, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (13, 7, 1, 1, 1, 10, false, 13, 260.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (26, 15, 1, 1, 1, 17, false, 26, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (27, 16, 1, 1, 1, 17, false, 27, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (3, 1, 1, 1, 1, 3, false, 3, 500.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (17, 10, 1, 1, 1, 12, false, 17, 260.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (16, 9, 1, 1, 1, 12, false, 16, 260.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (10, 6, 1, 1, 1, 7, false, 10, 330.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (4, 2, 1, 1, 1, 3, false, 4, 500.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (9, 5, 1, 1, 1, 7, false, 9, 330.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (32, 18, 1, 1, 1, 20, false, 32, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (22, 67, 1, 1, 1, 15, false, 22, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (23, 68, 1, 1, 1, 16, false, 23, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (21, 66, 1, 1, 1, 14, false, 21, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (24, 69, 1, 1, 1, 16, false, 24, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (30, 72, 1, 1, 1, 18, false, 30, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (28, 70, 1, 1, 1, 18, false, 28, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (29, 71, 1, 1, 1, 18, false, 29, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (34, 73, 1, 1, 1, 21, false, 34, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (35, 74, 1, 1, 1, 22, false, 35, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (2, 60, 1, 1, 1, 2, false, 2, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (1, 59, 1, 1, 1, 1, false, 1, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (6, 62, 1, 1, 1, 5, false, 6, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (40, 75, 1, 1, 1, 25, false, 40, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (41, 76, 1, 1, 1, 25, false, 41, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (5, 61, 1, 1, 1, 4, false, 5, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (11, 63, 1, 1, 1, 8, false, 11, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (15, 65, 1, 1, 1, 11, false, 15, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (12, 64, 1, 1, 1, 9, false, 12, 550.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (37, 25, 1, 1, 1, 23, false, 37, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (31, 17, 1, 1, 1, 19, false, 31, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (43, 21, 1, 1, 1, 27, false, 44, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (36, 26, 1, 1, 1, 23, false, 36, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (33, 19, 1, 1, 1, 20, false, 33, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (38, 24, 1, 1, 1, 23, false, 38, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (39, 23, 1, 1, 1, 24, false, 39, 210.00);
+insert into public.tickets (id, flight_seat_id, cabin_baggage, checked_baggage, meal_id, booking_id, canceled, passenger_id, price_paid) overriding system value values (7, 3, 1, 1, 1, 6, false, 7, 330.00);
 alter sequence public.tickets_id_seq restart with 45;
