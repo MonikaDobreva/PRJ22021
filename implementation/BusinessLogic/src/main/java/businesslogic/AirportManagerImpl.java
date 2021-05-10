@@ -17,8 +17,8 @@ public class AirportManagerImpl implements AirportManager {
     }
 
     @Override
-    public Airport createAirport(String iata, String name, String country, String city) {
-        return new AirportImpl(iata, name, country, city);
+    public Airport createAirport(int airportID, String iataCode, String fullName, String country, String city) {
+        return new Airport(airportID, iataCode, fullName, country, city);
     }
 
     @Override

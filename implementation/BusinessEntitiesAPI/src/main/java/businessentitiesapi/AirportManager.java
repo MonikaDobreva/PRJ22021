@@ -7,13 +7,14 @@ public interface AirportManager {
     /**
      * Creates a new airport, fed with the name, code and amount of seats.
      *
-     * @param iata      unique code to identify an airport like "ATX"
-     * @param name      full name of the airport
+     * @param airportID
+     * @param iataCode      unique code to identify an airport like "ATX"
+     * @param fullName      full name of the airport
      * @param country   name of the country
      * @param city      name of the city
      * @return          a new airport object
      */
-    Airport createAirport(String iata, String name, String country, String city);
+    Airport createAirport(int airportID, String iataCode, String fullName, String country, String city);
 
     /**
      * Adds a new airport to the airportManager, which stores all the airport objects in a list

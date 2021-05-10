@@ -6,7 +6,7 @@ import static org.mockito.Mockito.mock;
 import businessentitiesapi.Airplane;
 import businessentitiesapi.AirplaneManager;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
-import org.assertj.core.api.ThrowableAssert;
+import org.assertj.core.api.ThrowableAssert.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,14 +25,13 @@ import java.util.List;
  *
  * @author Rachel
  */
-@ExtendWith( MockitoExtension.class )
+//@ExtendWith( MockitoExtension.class )
 public class AirplaneManagerTest {
 
-//    @Mock
     AirplaneStorageService apStorage;
 
-    Airplane ap1 = new AirplaneImpl("Boeing 377","V-BBBB",367);
-    Airplane ap2 = new AirplaneImpl("Boeing 350","V-AAAA",250);
+    Airplane ap1 = new Airplane("Boeing 377","V-BBBB",367);
+    Airplane ap2 = new Airplane("Boeing 350","V-AAAA",250);
 
     LocalDateTime a = LocalDateTime.of(2021, 6, 21, 17,35);
     LocalDateTime b = LocalDateTime.of(2021, 6, 21, 22,25);
@@ -85,6 +84,7 @@ public class AirplaneManagerTest {
 //                .containsExactly(ap1, ap2);
 //
 //    }
+    
     @Test
     public void getTest(){
         Mockito.when(apStorage.getAll()).thenReturn(airplanes);
@@ -124,7 +124,7 @@ public class AirplaneManagerTest {
         Mockito.when(airplaneManager.airplaneSchedule(ap1)).thenReturn(ap1Schedule);
 
         if (!expected){
-            ThrowableAssert.ThrowingCallable code = () -> {
+            ThrowingCallable code = () -> {
                 airplaneManager.checkAvailability(
                         ap1,
                         LocalDateTime.of(dYear, dMonth, dDay, dHour, dMinutes),

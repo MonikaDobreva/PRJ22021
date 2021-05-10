@@ -24,7 +24,7 @@ private AirplaneStorageService airplaneStorageService;
 
     @Override
     public Airplane createAirplane(String name, String code, int amountSeats) {
-        return new AirplaneImpl(name, code, amountSeats);
+        return new Airplane(name, code, amountSeats);
     }
 
     @Override

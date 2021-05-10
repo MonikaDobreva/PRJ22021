@@ -36,6 +36,14 @@ select airplanes.airplane_code, (flights.departure_time - (60 * interval '1 minu
        (flights.arrival_time + (60 * interval '1 minute') ) as arrTime
 from flights join airplanes on flights.airplane_id = airplanes.id;
 
+create or replace view airportsView (airportID, iataCode, fullName, city, country) as
+select airports.id, airports.iata_code, airports.full_name, airports.city, airports.country
+from airports;
+
+create or replace view airplanesView (airplaneID, airplaneCode, model, capacity) as
+select airplanes.id, airplanes.airplane_code, airplanes.model, airplanes.capacity
+from airplanes;
+
 -- Function that returns a flightRouteID for a given originAirport and destinationAirport
 create or replace function getFlightRouteID(originAirport text, destinationAirport text)
     returns flight_routes.id%type as $$
