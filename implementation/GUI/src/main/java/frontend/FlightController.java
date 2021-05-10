@@ -69,11 +69,13 @@ public class FlightController {
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
     private final AirportManager airportManager;
+    private final AirplaneManager airplaneManager;
 
-    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager) {
+    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
+        this.airplaneManager = airplaneManager;
     }
 
     @FXML
@@ -137,8 +139,7 @@ public class FlightController {
     }
 
     public void listAirplaneModels(){
-        //TODO
-//        airplaneModelDropdown.setItems((FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplaneModel).collect(Collectors.toList()))));
+        airplaneModelDropdown.setItems((FXCollections.observableArrayList(airplaneManager.getAirplanes().stream().map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")").collect(Collectors.toList()))));
     }
 
     public void clearFlightsView() {

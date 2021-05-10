@@ -3,9 +3,13 @@ package persistence;
 
 import businessentitiesapi.Airplane;
 import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
+import genericdao.dao.DAO;
 import genericdao.dao.DAOException;
+import genericdao.dao.TransactionToken;
 import genericdao.pgdao.PGDAO;
+import genericdao.pgdao.PGDAOFactory;
 import genericdao.pgdao.PGJDBCUtils;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
 
@@ -20,6 +24,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -34,11 +39,14 @@ import static java.lang.String.format;
 public class AirplaneStorageServiceImpl implements AirplaneStorageService{
 
     private final AirplaneManager airplaneManager;
+    private final DAO<Airplane, Integer> airplaneDao;
     private final DataSource ds;
     
     public AirplaneStorageServiceImpl(AirplaneManager airplaneManager) {
         this.airplaneManager = airplaneManager;
         ds = PGJDBCUtils.getDataSource("postgres");
+        PGDAOFactory daof = new PGDAOFactory(ds);
+        airplaneDao = daof.createDao(Airplane.class);
     }
     
     @Override
@@ -49,7 +57,15 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
 
     @Override
     public List<Airplane> getAll() {
-       //TODO: implement get all the airplanes from db
+        try {
+            TransactionToken tok = airplaneDao.startTransaction();
+            Collection<Airplane> all = airplaneDao.getAll();
+            airplaneDao.close();
+            return new ArrayList<>(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 

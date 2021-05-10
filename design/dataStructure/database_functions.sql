@@ -46,8 +46,8 @@ select airports.id, airports.iata_code, airports.full_name, airports.city, airpo
 from airports
 order by airports.id;
 
-create or replace view airplanesView (airplaneID, airplaneCode, model, capacity) as
-select airplanes.id, airplanes.airplane_code, airplanes.model, airplanes.capacity
+create or replace view airplanesView (airplaneID, model, airplaneCode, capacity) as
+select airplanes.id, airplanes.model, airplanes.airplane_code, airplanes.capacity
 from airplanes
 order by airplanes.id;
 

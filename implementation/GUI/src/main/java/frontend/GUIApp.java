@@ -22,7 +22,7 @@ public class GUIApp extends Application {
 
         switch (c.getName()) {
             case "frontend.FlightController":
-                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager());
+                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.topMenuController":
                 return new topMenuController(this::getSceneManager);
             case "frontend.welcomeController":
