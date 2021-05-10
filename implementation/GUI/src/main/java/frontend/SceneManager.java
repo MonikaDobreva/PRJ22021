@@ -48,4 +48,11 @@ public class SceneManager {
         stage.show();
     }
 
+    void displayOn(Stage stage) {
+        stage.setScene(scene);
+        stage.setIconified(true);
+        stage.getIcons().add(new Image(GUIApp.class.getResourceAsStream( "AISLogo1.png" )));
+        stage.show();
+    }
+
 }

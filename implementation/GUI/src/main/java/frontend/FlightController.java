@@ -40,7 +40,7 @@ public class FlightController {
     DatePicker depTimePicker, arrTimePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, clearFlightsButton;
 
     @FXML
     Label nfcLabel;
@@ -106,7 +106,7 @@ public class FlightController {
             flightManager.add(f);
             nfcLabel.setText("Successfully added flight!");
         } catch (Exception d) {
-            nfcLabel.setText("Invalid input! Please try again.");
+            nfcLabel.setText(d.getMessage());
         }
     }
 
@@ -114,7 +114,7 @@ public class FlightController {
     private void showFlights() {
         var flights = flightManager.getFlights();
         flightsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        flightsTable.getItems().clear();
+        //clearFlightsView();
         flightsTable.getItems().addAll(flights);
         flightIdColumn.setCellValueFactory(new PropertyValueFactory<>("flightID"));
         originAirportColumn.setCellValueFactory(new PropertyValueFactory<>("originAirport"));
@@ -130,12 +130,12 @@ public class FlightController {
 //        airplaneIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
     }
 
-    public void listSAirports() {
+    public void listOriginAirports() {
         //TODO
 //        routeIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
     }
 
-    public void listDEAirports() {
+    public void listDestinationAirports() {
         //TODO
 //        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
     }
@@ -143,5 +143,9 @@ public class FlightController {
     public void listAirplaneModels(){
         //TODO
 //        airplaneModelDropdown.setItems((FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplaneModel).collect(Collectors.toList()))));
+    }
+
+    public void clearFlightsView() {
+        flightsTable.getItems().clear();
     }
 }

@@ -82,7 +82,8 @@ public class GUIApp extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        sceneManager.displayOn(stage, 480, 550);
+        //sceneManager.displayOn(stage, 480, 550);
+        sceneManager.displayOn(stage);
 
     }
 
