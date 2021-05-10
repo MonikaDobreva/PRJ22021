@@ -68,10 +68,12 @@ public class FlightController {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final FlightManager flightManager;
+    private final AirportManager airportManager;
 
-    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager) {
+    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
+        this.airportManager = airportManager;
     }
 
     @FXML
@@ -125,19 +127,13 @@ public class FlightController {
         basePriceColumn.setCellValueFactory(new PropertyValueFactory<>("basePrice"));
     }
 
-    public void listFlights() {
-        //TODO
-//        airplaneIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getAirplane).collect(Collectors.toList())));
-    }
 
     public void listOriginAirports() {
-        //TODO
-//        routeIdDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getStartAirport).collect(Collectors.toList())));
+        originApDropdown.setItems(FXCollections.observableArrayList(airportManager.getAirports().stream().map(Airport::getIataCode).collect(Collectors.toList())));
     }
 
     public void listDestinationAirports() {
-        //TODO
-//        dtAirportDropdown.setItems(FXCollections.observableArrayList(flightManager.getFlights().stream().map(Flight::getDestAirport).collect(Collectors.toList())));
+        destinationApDropdown.setItems(FXCollections.observableArrayList(airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream().map(Airport::getIataCode).collect(Collectors.toList())));
     }
 
     public void listAirplaneModels(){

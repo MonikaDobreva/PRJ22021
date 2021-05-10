@@ -4,6 +4,8 @@ package businessentitiesapi;
 import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
+import java.io.Serializable;
+
 /**
  * Airport class, representing all available airports for creating flights.
  *
@@ -11,7 +13,7 @@ import nl.fontys.sebivenlo.sebiannotations.TableName;
  */
 
 @TableName("airportsView")
-public class Airport {
+public class Airport implements Serializable {
 
     @ID
     private final int airportID;

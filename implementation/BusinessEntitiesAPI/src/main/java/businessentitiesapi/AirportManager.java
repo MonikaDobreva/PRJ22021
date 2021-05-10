@@ -30,6 +30,8 @@ public interface AirportManager {
      */
     List<Airport> getAirports();
 
+    List<Airport> getAirportsWithoutOrigin(String a);
+
     /**
      * Deletes the given airport from the AirportManager
      */

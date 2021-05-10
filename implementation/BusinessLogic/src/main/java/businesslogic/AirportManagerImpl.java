@@ -7,6 +7,7 @@ import persistence.AirportStorageService;
 import persistence.FlightStorageService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AirportManagerImpl implements AirportManager {
 
@@ -29,6 +30,11 @@ public class AirportManagerImpl implements AirportManager {
     @Override
     public List<Airport> getAirports() {
         return airportStorageService.getAll();
+    }
+
+    @Override
+    public List<Airport> getAirportsWithoutOrigin(String iataCode) {
+        return getAirports().stream().filter(a -> !a.getIataCode().equals(iataCode)).collect(Collectors.toList());
     }
 
     @Override

@@ -4,13 +4,15 @@ package businessentitiesapi;
 import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
+import java.io.Serializable;
+
 /**
  * This represents the airplanes in the company
  * @author Rachel
  */
 
 @TableName("airplanesView")
-public class Airplane {
+public class Airplane implements Serializable {
 
     @ID
     private final int airplaneID;
