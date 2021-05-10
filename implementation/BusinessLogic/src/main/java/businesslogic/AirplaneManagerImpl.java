@@ -23,8 +23,8 @@ private AirplaneStorageService airplaneStorageService;
     }
 
     @Override
-    public Airplane createAirplane(String name, String code, int amountSeats) {
-        return new Airplane(name, code, amountSeats);
+    public Airplane createAirplane(int ID ,String name, String code, int amountSeats) {
+        return new Airplane(ID, name, code, amountSeats);
     }
 
     @Override

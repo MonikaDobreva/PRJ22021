@@ -15,12 +15,13 @@ public interface AirplaneManager {
     /**
      * Creates a new airplane, fed with the name, code and amount of seats.
      *
+     * @param airplaneID 
      * @param name like Boeing 377
      * @param code format A-BCDE
      * @param amountSeats total amount 
      * @return a new flight object
      */
-    Airplane createAirplane(String name, String code, int amountSeats);
+    Airplane createAirplane(int airplaneID, String name, String code, int amountSeats);
 
     /**
      * Adds a new airplane to the airplaneManager, which stores all the airplane objects in a list

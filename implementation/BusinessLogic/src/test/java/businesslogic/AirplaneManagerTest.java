@@ -30,8 +30,8 @@ public class AirplaneManagerTest {
 
     AirplaneStorageService apStorage;
 
-    Airplane ap1 = new Airplane("Boeing 377","V-BBBB",367);
-    Airplane ap2 = new Airplane("Boeing 350","V-AAAA",250);
+    Airplane ap1 = new Airplane(0, "Boeing 377","V-BBBB",367);
+    Airplane ap2 = new Airplane(1, "Boeing 350","V-AAAA",250);
 
     LocalDateTime a = LocalDateTime.of(2021, 6, 21, 17,35);
     LocalDateTime b = LocalDateTime.of(2021, 6, 21, 22,25);
@@ -64,7 +64,7 @@ public class AirplaneManagerTest {
 
     @Test
     public void createAirplaneTest(){
-        assertThat(airplaneManager.createAirplane("Boeing 377", "V-BBBB", 367).toString())
+        assertThat(airplaneManager.createAirplane(0, "Boeing 377", "V-BBBB", 367).toString())
                 .isEqualTo(ap1.toString());
     }
 
