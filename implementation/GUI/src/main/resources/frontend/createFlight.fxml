@@ -47,7 +47,7 @@
                            <children>
                               <Spinner fx:id="depTimeHourSpinner" editable="true" max="23" min="00" prefHeight="25.0" prefWidth="59.0" />
                               <Spinner fx:id="depTimeMinSpinner" editable="true" max="59" min="00" prefHeight="25.0" prefWidth="58.0" />
-                              <DatePicker fx:id="depTimePicker" promptText="select date" showWeekNumbers="true" />
+                              <DatePicker fx:id="depTimePicker" onMouseClicked="#clearNfcLabel" promptText="select date" showWeekNumbers="true" />
                            </children>
                         </HBox>
                             <Label prefHeight="17.0" prefWidth="132.0" text="Arrival Time:" GridPane.rowIndex="1" />
@@ -100,13 +100,17 @@
                         </HBox>
                         </children>
                     </GridPane>
-                    <HBox alignment="CENTER" prefHeight="25.0" prefWidth="456.0" spacing="20.0">
+                    <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="456.0" spacing="20.0">
                         <children>
-                        <Label fx:id="nfcLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="185.0" />
                             <Button fx:id="ShowFlights" onAction="#switchToViewFlight" text="Show Flights" />
                             <Button fx:id="StoreFlight" contentDisplay="CENTER" onAction="#storeFlight" prefHeight="25.0" prefWidth="99.0" text="Register flight" />
                         </children>
                     </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="440.0">
+                     <children>
+                        <Label fx:id="nfcLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="412.0" />
+                     </children>
+                  </HBox>
                   <HBox>
                      <children>
                           <Button fx:id="primaryButton" onAction="#backToStart" text="Back" />

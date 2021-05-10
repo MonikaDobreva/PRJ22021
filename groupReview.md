@@ -7,7 +7,7 @@
 
 [**Use Cases + Test Scenarios: Sales Officer**](analysis/UseCasesSalesOfficer.md) *Davis, Rachel R.E.*
 
-[**Domain Model**](analysis/domainModel.svg) *Swiezy, Benjamin B.M.*
+[**Domain Model**](analysis/workingSpace/domainModel.svg) *Swiezy, Benjamin B.M.*
 
 [**Activity Diagram: Sales Officer**](analysis/activityDiagrams/ActivityDiagramSalesOfficer.svg) *Sebastian Delgado, Joel J.*
 

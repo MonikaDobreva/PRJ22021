@@ -115,6 +115,11 @@ public class FlightController {
     }
 
     @FXML
+    private void clearNfcLabel(){
+        nfcLabel.setText("");
+    }
+
+    @FXML
     private void showFlights() {
         var flights = flightManager.getFlights();
         flightsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -139,7 +144,11 @@ public class FlightController {
     }
 
     public void listAirplaneModels(){
-        airplaneModelDropdown.setItems((FXCollections.observableArrayList(airplaneManager.getAirplanes().stream().map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")").collect(Collectors.toList()))));
+        //airplaneModelDropdown.setItems((FXCollections.observableArrayList(airplaneManager.getAirplanes().stream().map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")").collect(Collectors.toList()))));
+        airplaneModelDropdown.setItems((FXCollections.observableArrayList(
+                airplaneManager.getAirplanes().stream()
+                        .map(Airplane::getAirplaneCode)
+                        .collect(Collectors.toList()))));
     }
 
     public void clearFlightsView() {

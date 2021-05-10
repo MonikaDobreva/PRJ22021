@@ -13,7 +13,7 @@
 
 ### Week #2
 
-[**Domain Model**](analysis/domainModel.svg)
+[**Domain Model**](analysis/domainModelver2.svg)
 
 
 ### Week #3
