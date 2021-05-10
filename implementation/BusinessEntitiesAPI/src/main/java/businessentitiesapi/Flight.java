@@ -25,8 +25,6 @@ public class Flight implements Serializable {
     private final LocalDateTime arrivalTime;
     private final String airplaneModel;
     private final int basePrice;
-    // The airplane and airports will be implemented as own classes later!
-    // For now they are just Strings. You can delete comment when implemented.
 
     public Flight(
             int flightID,
@@ -79,7 +77,7 @@ public class Flight implements Serializable {
         /**
          * this checks that the airplane model only consists of letters and numbers and whitespaces
          */
-        if (Pattern.matches("[a-zA-Z_\\-0-9\\s\\-]+", airplane)) {
+        if (Pattern.matches("[a-zA-Z/0-9\\s]+", airplane)) {
             this.airplaneModel = airplane;
         }else{
             throw new IllegalArgumentException("The name is consisting of more than whitespaces,letters and numbers!");
@@ -93,6 +91,7 @@ public class Flight implements Serializable {
         }else{
            throw new IllegalArgumentException("The price is less than zero!"); 
         }
+        
     }
     
     public int getFlightID() {
