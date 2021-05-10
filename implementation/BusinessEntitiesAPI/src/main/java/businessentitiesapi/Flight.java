@@ -79,7 +79,7 @@ public class Flight implements Serializable {
         /**
          * this checks that the airplane model only consists of letters and numbers and whitespaces
          */
-        if (Pattern.matches("[a-zA-Z_-0-9\\s]+", airplane)) {
+        if (Pattern.matches("[a-zA-Z_\\-0-9\\s\\-]+", airplane)) {
             this.airplaneModel = airplane;
         }else{
             throw new IllegalArgumentException("The name is consisting of more than whitespaces,letters and numbers!");
