@@ -1,3 +1,10 @@
+-- Create a view for the Flights Route table that shows Origin and Destination Airport instead of their IDs
+create or replace view flightRoutesView (flightRouteID, originAirportCode, destinationAirportCode) as
+select first_conversion.id, first_conversion.iata_code , airports.iata_code
+from (select flight_routes.id, airports.iata_code, flight_routes.destination_airport_id
+      from flight_routes join airports on flight_routes.origin_airport_id = airports.id) as first_conversion
+         join airports on first_conversion.destination_airport_id = airports.id;
+
 -- Create a view for the Flights table that shows Origin and Destination Airport instead of Flight Route ID
 -- and shows the Airplane Model instead of the Airplane ID
 create or replace view flightsView (flightID, originAirport, destinationAirport,
@@ -8,13 +15,6 @@ select first_conversion.id, flightRoutesView.originAirportCode, flightRoutesView
 from (select flights.id,  flights.departure_time,  flights.arrival_time, airplanes.model, flight_route_id, base_price
       from flights join airplanes on flights.airplane_id = airplanes.id) as first_conversion
 join flightRoutesView on first_conversion.flight_route_id = flightRoutesView.flightRouteID;
-
--- Create a view for the Flights Route table that shows Origin and Destination Airport instead of their IDs
-create or replace view flightRoutesView (flightRouteID, originAirportCode, destinationAirportCode) as
-select first_conversion.id, first_conversion.iata_code , airports.iata_code
-from (select flight_routes.id, airports.iata_code, flight_routes.destination_airport_id
-      from flight_routes join airports on flight_routes.origin_airport_id = airports.id) as first_conversion
-         join airports on first_conversion.destination_airport_id = airports.id;
 
 -- Create a view for Customers which finds out which Persons are Customers base on the Persons ID on the Bookings table.
 -- It also gives extra attributes related to the Customers like firstName, lastName, ...
