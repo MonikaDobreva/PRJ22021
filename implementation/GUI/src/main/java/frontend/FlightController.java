@@ -102,8 +102,8 @@ public class FlightController {
                     1, //placeholder, id should be generated according to the amount of flight already in the database
                     originApDropdown.getValue(),
                     destinationApDropdown.getValue(),
-                    LocalDateTime.parse(depTimeHourSpinner.getValue() + ":" + depTimeMinSpinner.getValue() + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    LocalDateTime.parse(arrTimeHourSpinner.getValue() + ":" + arrTimeMinSpinner.getValue() + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
                     airplaneModelDropdown.getValue(),
                     Integer.parseInt(basePriceField.getText())
             );
@@ -114,6 +114,16 @@ public class FlightController {
         }
     }
 
+    /**
+     * Adds an additional 0 to the time if it is only one digit.
+     * Otherwise the selected time cannot be properly parsed.
+     * @param t time value
+     * @return formatted time value
+     */
+    private String makeTimeValid(String t){
+        return t.length() == 1 ? "0" + t : t;
+    }
+
     @FXML
     private void clearNfcLabel(){
         nfcLabel.setText("");
@@ -121,9 +131,9 @@ public class FlightController {
 
     @FXML
     private void showFlights() {
+        clearFlightsView();
         var flights = flightManager.getFlights();
         flightsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        //clearFlightsView();
         flightsTable.getItems().addAll(flights);
         flightIdColumn.setCellValueFactory(new PropertyValueFactory<>("flightID"));
         originAirportColumn.setCellValueFactory(new PropertyValueFactory<>("originAirport"));
@@ -136,11 +146,17 @@ public class FlightController {
 
 
     public void listOriginAirports() {
-        originApDropdown.setItems(FXCollections.observableArrayList(airportManager.getAirports().stream().map(Airport::getIataCode).collect(Collectors.toList())));
+        originApDropdown.setItems(FXCollections.observableArrayList(
+                airportManager.getAirports().stream()
+                        .map(Airport::getIataCode)
+                        .collect(Collectors.toList())));
     }
 
     public void listDestinationAirports() {
-        destinationApDropdown.setItems(FXCollections.observableArrayList(airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream().map(Airport::getIataCode).collect(Collectors.toList())));
+        destinationApDropdown.setItems(FXCollections.observableArrayList(
+                airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream()
+                        .map(Airport::getIataCode)
+                        .collect(Collectors.toList())));
     }
 
     public void listAirplaneModels(){
