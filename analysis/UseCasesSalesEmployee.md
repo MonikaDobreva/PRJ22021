@@ -32,7 +32,7 @@
 |**Pre-condition**|At least one flight needs to be registered and have tickets available.|
 |**Scenario**|1. Sales Employee <ins>looks up a flight</ins><br>2. System gives the opportunity to book one or more tickets for this flight<br>3. Sales Employee chooses the option to book one or more tickets for this flight<br>4.System asks the Sales Employee for information such as name, gender, birthday, e-mail, phone number for the customer and additionally asks for the same information plus the passport number of every passenger<br>5. Sales Employee inputs all the data<br>6. System saves the information, reserves the seat(s) and issues the ticket(s)|
 |**Result**|The Sales Employee has successfully created a booking for a customer, that includes either one or multiple tickets for a specific flight.|
-|**Extensions**|5a. Sales Employee chooses to also input options, such as additional baggage or a different meal<br>1.Sales Employee chooses at least one of the options.<br>2. System saves the information, and replaces the default values.<br>Returns to step 6.|
+|**Extensions**|5a. Sales Employee chooses to also input options, such as additional baggage or a different meal<br>1.Sales Employee chooses at least one of the options.<br>2. System saves the information, and replaces the default values. Returns to step 6.|
 |**Exceptions**|6a. Sales Employee did not input all the required information. <br>6.1. System asks the Sales Employee to fill the remaining fields. Returns to step 5.|
 |**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/createBooking.md)|
   
