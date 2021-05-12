@@ -28,12 +28,12 @@
 |---|---|
 |**Name**|Create booking|
 |**Actor**|Sales Employee|
-|**Description**|The sales Employee creates a booking for a customer including adding ticket options.|
-|**Pre-condition**|flights need to have been added to the system and the flight needs to have at least one available ticket.|
-|**Scenario**|1. Sales Employee <ins>looks up a flight</ins><br>2. System gives the option to book this flight<br>3. Sales Employee chooses the option to book this flight<br>4.System prompts the actor for Information(first name, last name, id number, birthday, email, phone number) for the ticket<br>5. Actor inputs the private data from the customer<br>6. System safes it|
-|**Result**|A customer has a booking  that was done through a Sales Employee|
-|**Extensions**|5a. Sales Employee chooses to add booking options<br>1.System gives the option to add Luggage, add handluggage and food options.<br>2. Sales Employee selects which options should be added.<br>returns to step 6.|
-|**Exceptions**|6a. User has not inputted all options. <br>6.1. System does not accept and returns to 5.|
+|**Description**|The Sales Employee creates a booking for a customer including adding ticket options.|
+|**Pre-condition**|At least one flight needs to be registered and have tickets available.|
+|**Scenario**|1. Sales Employee <ins>looks up a flight</ins><br>2. System gives the opportunity to book one or more tickets for this flight<br>3. Sales Employee chooses the option to book one or more tickets for this flight<br>4.System asks the Sales Employee for information such as name, gender, birthday, e-mail, phone number for the customer and additionally asks for the same information plus the passport number of every passenger<br>5. Sales Employee inputs all the data<br>6. System saves the information, reserves the seat(s) and issues the ticket(s)|
+|**Result**|The Sales Employee has successfully created a booking for a customer, that includes either one or multiple tickets for a specific flight.|
+|**Extensions**|5a. Sales Employee chooses to also input options, such as additional baggage or a different meal<br>1.Sales Employee chooses at least one of the options.<br>2. System saves the information, and replaces the default values.<br>Returns to step 6.|
+|**Exceptions**|6a. Sales Employee did not input all the required information. <br>6.1. System asks the Sales Employee to fill the remaining fields. Returns to step 5.|
 |**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/createBooking.md)|
   
 |Use case Number|x|
