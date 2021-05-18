@@ -25,12 +25,13 @@ public class FlightMapper extends Mapper<Flight, Integer> {
     @Override
     public Object[] deconstruct(Flight f) {
         return new Object[]{
-            f.getFlightID(),
-            f.getDepartureTime(),
-            f.getArrivalTime(),
-            f.getAirplane(),
-            f.getBasePrice(),
-            
+                f.getFlightID(),
+                f.getOriginAirport(),
+                f.getDestinationAirport(),
+                f.getDepartureTime(),
+                f.getArrivalTime(),
+                f.getAirplane(),
+                f.getBasePrice()
         };
     }
 

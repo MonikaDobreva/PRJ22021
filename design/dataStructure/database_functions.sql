@@ -114,7 +114,7 @@ begin
 
     insert into flights (departure_time, arrival_time, airplane_id, flight_route_id, base_price)
     values ( new.departureTime, new.arrivalTime, airplaneID, flightRouteID, new.basePrice);
-
+    new.flightID = (select max(flights.id) from flights);
     return new;
 
 end;

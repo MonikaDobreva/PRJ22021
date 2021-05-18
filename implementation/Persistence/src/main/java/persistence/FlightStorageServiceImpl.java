@@ -59,6 +59,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         try {
             TransactionToken tok = flightDao.startTransaction();
             Optional<Flight> storedFlight = flightDao.save(f);
+            tok.commit();
             flightDao.close();
 //            return new ArrayList<>(all);
         } catch (Exception e) {
