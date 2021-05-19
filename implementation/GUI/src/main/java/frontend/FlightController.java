@@ -88,13 +88,9 @@ public class FlightController {
         sceneManagerSupplier.get().changeScene("viewFlights");
     }
 
-    //    private final int flightID;
-    //    private final String originAirport;
-    //    private final String destinationAirport;
-    //    private final LocalDateTime departureTime;
-    //    private final LocalDateTime arrivalTime;
-    //    private final String airplaneModel;
-    //    private final int basePrice;
+    /**
+     *
+     */
     @FXML
     private void storeFlight() {
         try {
@@ -115,7 +111,7 @@ public class FlightController {
     }
 
     /**
-     * Adds an additional 0 to the time if it is only one digit.
+     * Small helper method, which adds an additional 0 to the time if it is only one digit.
      * Otherwise the selected time cannot be properly parsed.
      * @param t time value
      * @return formatted time value
@@ -124,11 +120,19 @@ public class FlightController {
         return t.length() == 1 ? "0" + t : t;
     }
 
+
+    /**
+     * Helper method which clears the notification label
+     */
     @FXML
     private void clearNfcLabel(){
         nfcLabel.setText("");
     }
 
+    /**
+     * Helper method which first clears the view with the method clearFlightsView and then
+     * assigns the different fields of a flight to the respective columns of the table view in the GUI
+     */
     @FXML
     private void showFlights() {
         clearFlightsView();
@@ -145,6 +149,10 @@ public class FlightController {
     }
 
 
+    /**
+     * Helper method which retrieves all the existing origin airports from the database
+     * and sets a respective combo box to the resulting collection
+     */
     public void listOriginAirports() {
         originApDropdown.setItems(FXCollections.observableArrayList(
                 airportManager.getAirports().stream()
@@ -152,6 +160,10 @@ public class FlightController {
                         .collect(Collectors.toList())));
     }
 
+    /**
+     * Helper method which retrieves all the existing destination airports from the database
+     * and sets a respective combo box to the resulting collection
+     */
     public void listDestinationAirports() {
         destinationApDropdown.setItems(FXCollections.observableArrayList(
                 airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream()
@@ -159,14 +171,21 @@ public class FlightController {
                         .collect(Collectors.toList())));
     }
 
+    /**
+     * Helper method which retrieves all the existing airplane model from the database
+     * and sets a respective combo box to the resulting collection
+     */
     public void listAirplaneModels(){
-        //airplaneModelDropdown.setItems((FXCollections.observableArrayList(airplaneManager.getAirplanes().stream().map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")").collect(Collectors.toList()))));
         airplaneModelDropdown.setItems((FXCollections.observableArrayList(
                 airplaneManager.getAirplanes().stream()
                         .map(Airplane::getAirplaneCode)
                         .collect(Collectors.toList()))));
     }
 
+    /**
+     * Clears the view of current flights available displayed in the GUI
+     * Assigned to the "Clear View" button on the flight view
+     */
     public void clearFlightsView() {
         flightsTable.getItems().clear();
     }
