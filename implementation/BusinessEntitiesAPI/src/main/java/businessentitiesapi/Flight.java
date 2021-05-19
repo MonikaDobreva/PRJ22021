@@ -1,6 +1,7 @@
 package businessentitiesapi;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -24,7 +25,7 @@ public class Flight implements Serializable {
     private final LocalDateTime departureTime;
     private final LocalDateTime arrivalTime;
     private final String airplaneModel;
-    private final double basePrice;
+    private final BigDecimal basePrice;
     // The airplane and airports will be implemented as own classes later!
     // For now they are just Strings. You can delete comment when implemented.
 
@@ -35,7 +36,7 @@ public class Flight implements Serializable {
             LocalDateTime depTime,
             LocalDateTime arrTime,
             String airplane,
-            double basePrice
+            BigDecimal basePrice
     ) {
         this.flightID = flightID;
 
@@ -88,8 +89,8 @@ public class Flight implements Serializable {
         /**
          * this checks that the baseprice cannot be 0 or less
          */
-        if (basePrice>0) {
-            this.basePrice = basePrice; 
+        if (basePrice.doubleValue() > 0) {
+            this.basePrice = basePrice;
         }else{
            throw new IllegalArgumentException("The price is less than zero!"); 
         }
@@ -119,7 +120,7 @@ public class Flight implements Serializable {
         return airplaneModel;
     }
     
-    public double getBasePrice() {
+    public BigDecimal getBasePrice() {
         return basePrice;
     }
 

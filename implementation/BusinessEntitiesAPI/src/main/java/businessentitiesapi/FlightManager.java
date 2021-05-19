@@ -1,5 +1,6 @@
 package businessentitiesapi;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -32,7 +33,7 @@ public interface FlightManager {
             LocalDateTime depTime,
             LocalDateTime arrTime,
             String airplane,
-            int basePrice
+            BigDecimal basePrice
     );
 
     /**
