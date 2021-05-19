@@ -32,7 +32,7 @@ create table if not exists seat_types
 (
     id          int generated always as identity primary key,
     name        text not null,
-    extra_price decimal check (extra_price >= 0)
+    extra_price int check (extra_price >= 0)
 );
 
 create table if not exists seats
@@ -56,6 +56,16 @@ create table if not exists flight_routes
     destination_airport_id int not null references airports (id)
 );
 
+create table if not exists flights
+(
+    id              int generated always as identity primary key,
+    departure_time  timestamp not null,
+    arrival_time    timestamp not null,
+    airplane_id     int       not null references airplanes (id),
+    flight_route_id int       not null references flight_routes (id),
+    base_price      int      not null check (base_price >= 0)
+);
+
 create table if not exists flight_seats
 (
     id        int generated always as identity primary key,
@@ -72,16 +82,6 @@ create table if not exists persons
     email      text not null,
     birth_date date not null,
     gender     text not null check (length(gender) = 1)
-);
-
-create table if not exists flights
-(
-    id              int generated always as identity primary key,
-    departure_time  timestamp not null,
-    arrival_time    timestamp not null,
-    airplane_id     int       not null references airplanes (id),
-    flight_route_id int       not null references flight_routes (id),
-    base_price      decimal       not null check (base_price >= 0)
 );
 
 create table if not exists passengers
@@ -109,5 +109,5 @@ create table if not exists tickets
     booking_id      int                   not null references bookings (id),
     canceled        boolean default false not null,
     passenger_id    int                   not null references passengers (id),
-    price_paid      decimal                   not null check (price_paid >= 0)
+    price_paid      int                   not null check (price_paid >= 0)
 );
