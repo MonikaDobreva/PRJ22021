@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -79,21 +80,31 @@ public class FlightController {
         this.airplaneManager = airplaneManager;
     }
 
+    /**
+     * Method assigned as an action to buttons which bring the user back to the welcome page
+     * @throws IOException
+     */
     @FXML
     private void backToStart() throws IOException {
         sceneManagerSupplier.get().changeScene("welcome");
     }
 
+    /**
+     * Method assigned as an action to buttons which should bring the use to the flight view
+     * @throws IOException
+     */
     @FXML
     private void switchToViewFlight() throws IOException {
         sceneManagerSupplier.get().changeScene("viewFlights");
     }
 
     /**
-     *
+     * Method assigned as an action to a button which finalizes the creation of a flight inputted through the
+     * "create flight view" and adds it to the database
      */
     @FXML
     private void storeFlight() {
+
         try {
             Flight f = flightManager.createFlight(
                     1, //placeholder, id should be generated according to the amount of flight already in the database
@@ -106,8 +117,19 @@ public class FlightController {
             );
             flightManager.add(f);
             nfcLabel.setText("Successfully added flight!");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Successfully added flight!");
+            alert.showAndWait();
+
         } catch (Exception d) {
             nfcLabel.setText(d.getMessage());
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Warning!");
+            alert.setHeaderText(null);
+            alert.setContentText(d.getMessage());
+            alert.showAndWait();
         }
     }
 
@@ -173,7 +195,7 @@ public class FlightController {
     }
 
     /**
-     * Helper method which retrieves all the existing airplane model from the database
+     * Helper method which retrieves all the existing airplane models from the database
      * and sets a respective combo box to the resulting collection
      */
     public void listAirplaneModels(){

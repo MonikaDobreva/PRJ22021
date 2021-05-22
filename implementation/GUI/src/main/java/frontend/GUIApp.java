@@ -27,6 +27,8 @@ public class GUIApp extends Application {
                 return new topMenuController(this::getSceneManager);
             case "frontend.welcomeController":
                 return new welcomeController(this::getSceneManager);
+            case "frontend.managementDashboardController":
+                return new managementDashboardController(this::getSceneManager);
             default:
                 return null;
         }

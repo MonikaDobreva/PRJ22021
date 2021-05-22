@@ -74,7 +74,7 @@ public class topMenuController {
 
     @FXML
     private void switchToViewDashboard() throws IOException {
-        sceneManagerSupplier.get().changeScene("welcome");
+        sceneManagerSupplier.get().changeScene("managementDashboardView");
     }
 
     @FXML
