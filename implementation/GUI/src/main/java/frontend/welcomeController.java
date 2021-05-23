@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.function.Supplier;
+import javafx.event.ActionEvent;
+import javafx.scene.control.MenuButton;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}

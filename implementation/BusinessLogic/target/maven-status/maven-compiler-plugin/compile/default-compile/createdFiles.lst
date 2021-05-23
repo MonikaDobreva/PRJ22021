@@ -1,9 +1,7 @@
-businesslogic/AirplaneManagerImpl.class
-businesslogic/BusinessLogicImplementationProvider.class
-businesslogic/AirportManagerImpl.class
+businesslogic\BusinessLogicAPI.class
 module-info.class
-businesslogic/FlightManagerImpl.class
-businesslogic/BusinessLogicAPIImpl.class
-businesslogic/AirportImpl.class
-businesslogic/AirplaneImpl.class
-businesslogic/BusinessLogicAPI.class
+businesslogic\AirportManagerImpl.class
+businesslogic\BusinessLogicAPIImpl.class
+businesslogic\FlightManagerImpl.class
+businesslogic\BusinessLogicImplementationProvider.class
+businesslogic\AirplaneManagerImpl.class

@@ -1,0 +1,33 @@
+.background{
+    -fx-background-image : url("pexels-pixabay-62623.jpg");
+    -fx-background-size : cover;
+}
+
+.checkBox .box {
+    -fx-background-color: white;
+    -fx-border-color:grey;
+    -fx-border-radius:3px; 
+
+}
+
+.checkBox:selected .mark {
+    -fx-background-color: white;
+}
+
+.checkBox:selected .box {
+    -fx-background-color: #62b2ff;
+}
+
+/*.table {
+    -fx-border-bottom: 1px solid #fff;
+}this does not work yet*/
+
+.textBox {
+    -fx-background-color: #fff
+}
+
+.splitPane{
+    -fx-opacity: 0;
+}
+
+

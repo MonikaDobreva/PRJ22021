@@ -1,9 +1,9 @@
+businessentitiesapi\AirplaneManager.class
+businessentitiesapi\Airport.class
+businessentitiesapi\AirportManager.class
 module-info.class
-businessentitiesapi/Airplane.class
-businessentitiesapi/FlightManager.class
-businessentitiesapi/Flight.class
-businessentitiesapi/FlightMapper.class
-businessentitiesapi/Airport.class
-businessentitiesapi/AirportManager.class
-businessentitiesapi/Manager.class
-businessentitiesapi/AirplaneManager.class
+businessentitiesapi\FlightMapper.class
+businessentitiesapi\Airplane.class
+businessentitiesapi\Manager.class
+businessentitiesapi\FlightManager.class
+businessentitiesapi\Flight.class
