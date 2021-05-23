@@ -32,10 +32,13 @@ public class SceneManager {
     private Parent loadScene(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(controllerFactory);
+        fxmlLoader.setResources(ResourceBundle.getBundle("frontend.editAisStrings"));
         try {
             return fxmlLoader.load();
         } catch (IOException ex) {
-            return null;
+            Logger.getLogger(SceneManager.class.getName()).log(Level.SEVERE, "Unable to load fxml", ex);
+           Logger.getLogger(SceneManager.class.getName()).log(Level.SEVERE, "Unable to load fxml", ex.getCause());
+            return createErrorPane(fxmlResource, ex);
         }
     }
 
@@ -53,6 +56,47 @@ public class SceneManager {
         stage.setIconified(true);
         stage.getIcons().add(new Image(GUIApp.class.getResourceAsStream( "AISLogo1.png" )));
         stage.show();
+    }
+    
+    Parent createErrorPane(URL fxmlResource, IOException ex) {
+        var parent =  new VBox();
+        var titleLabel = new Label("Unable to load fxml");
+        titleLabel.setTextFill(Paint.valueOf("#FF0000"));
+        titleLabel.setFont(new Font(titleLabel.getFont().getName(), 32));
+        parent.getChildren().add(titleLabel);
+        
+        var loader = GUIApp.class.getClassLoader();
+        var loaderName = loader.getName();
+        
+        addRow(parent, "File", fxmlResource.toString());
+        addRow(parent, "Loader name", loaderName);
+        
+        addRow(parent, "Cause class", ex.getCause().getClass().toString());
+        addRow(parent, "Cause message", ex.getCause().getMessage());
+        
+        var stackTrace = Stream.of(ex.getStackTrace()).limit(10).map(st -> st.toString()).collect(Collectors.joining("\n"));
+        var stLabel = new Label("Stacktrace:");
+        stLabel.setStyle("-fx-font-weight: bold;");
+        parent.getChildren().add(stLabel);
+        parent.getChildren().add(new TextArea(stackTrace));
+        return parent;
+    }
+    
+    void addRow(VBox parent, String label, String text){
+        var row =  new HBox();
+        
+        var nameLabel = new Label(label + ": ");
+        nameLabel.setStyle("-fx-font-weight: bold;");
+        
+        var textLabel = new Label(text);
+        textLabel.setWrapText(true);
+        
+        row.getChildren().addAll(
+                nameLabel,
+                textLabel
+        );
+        
+        parent.getChildren().add(row);
     }
 
 }
