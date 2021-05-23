@@ -34,9 +34,7 @@
                      </stops>
                   </LinearGradient>
                </textFill>
-               <padding>
-                  <Insets bottom="10.0" />
-               </padding>
+               
             </Label>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="287.0">
                <children>
@@ -56,9 +54,7 @@
                      </items>
                   </MenuButton>
                </children>
-               <padding>
-                  <Insets top="20.0" />
-               </padding>
+              
             </HBox>
          </children>
       </VBox>
