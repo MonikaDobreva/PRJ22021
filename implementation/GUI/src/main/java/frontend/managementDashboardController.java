@@ -1,5 +1,12 @@
 package frontend;
 
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.AirportManager;
+import businessentitiesapi.FlightManager;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+
 import java.util.function.Supplier;
 
 /**
@@ -8,11 +15,28 @@ import java.util.function.Supplier;
 
 public class managementDashboardController {
 
-    private final Supplier<SceneManager> sceneManagerSupplier;
+    private final FlightManager flightManager;
+    private final AirportManager airportManager;
+    private final AirplaneManager airplaneManager;
 
-    public managementDashboardController(Supplier<SceneManager> sceneManagerSupplier){
-        this.sceneManagerSupplier = sceneManagerSupplier;
+    @FXML
+    Label totalFlightsLabel;
+
+    @FXML
+    Button updateStatisticsButton;
+
+    public managementDashboardController(FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager){
+        this.airplaneManager = airplaneManager;
+        this.airportManager = airportManager;
+        this.flightManager = flightManager;
     }
+
+    @FXML
+    private void updateData(){
+        totalFlightsLabel.setText(String.valueOf((long) flightManager.getFlights().size()));
+    }
+
+
 
 
 

@@ -106,11 +106,7 @@
                             <Button fx:id="StoreFlight" contentDisplay="CENTER" onAction="#storeFlight" prefHeight="25.0" prefWidth="99.0" text="Register flight" />
                         </children>
                     </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="440.0">
-                     <children>
-                        <Label fx:id="nfcLabel" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="412.0" />
-                     </children>
-                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="440.0" />
                   <HBox>
                      <children>
                           <Button fx:id="primaryButton" onAction="#backToStart" text="Back" />
