@@ -45,9 +45,6 @@ public class FlightController {
     Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, clearFlightsButton;
 
     @FXML
-    Label nfcLabel;
-
-    @FXML
     ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
 
     @FXML
@@ -116,7 +113,6 @@ public class FlightController {
                     new BigDecimal(basePriceField.getText())
             );
             flightManager.add(f);
-            nfcLabel.setText("Successfully added flight!");
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Success");
             alert.setHeaderText(null);
@@ -124,7 +120,6 @@ public class FlightController {
             alert.showAndWait();
 
         } catch (Exception d) {
-            nfcLabel.setText(d.getMessage());
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Warning!");
             alert.setHeaderText(null);
@@ -141,15 +136,6 @@ public class FlightController {
      */
     private String makeTimeValid(String t){
         return t.length() == 1 ? "0" + t : t;
-    }
-
-
-    /**
-     * Helper method which clears the notification label
-     */
-    @FXML
-    private void clearNfcLabel(){
-        nfcLabel.setText("");
     }
 
     /**
