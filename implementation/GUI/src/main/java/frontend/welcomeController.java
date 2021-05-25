@@ -38,6 +38,8 @@ public class welcomeController {
 
     @FXML
     private void changeLanguageEnglish(ActionEvent event) {
+        //this is actually referring to something that is actually not there.
+        //it will then drop to default
         Locale.setDefault(Locale.ENGLISH);
     }
 
