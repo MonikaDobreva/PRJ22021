@@ -33,8 +33,7 @@ public class welcomeController {
     
     @FXML
     private void changeLanguageGerman(ActionEvent event) {
-        Locale.setDefault(Locale.GERMAN);
-        System.out.println("german");
+        Locale.setDefault(Locale.GERMANY);
     }
 
     @FXML
@@ -44,7 +43,7 @@ public class welcomeController {
 
     @FXML
     private void changeLanguageDutch(ActionEvent event) {
-        Locale.setDefault(Locale.forLanguageTag("nl_NL"));
+        Locale.setDefault(new Locale("nl", "NL"));
     }
 
 }

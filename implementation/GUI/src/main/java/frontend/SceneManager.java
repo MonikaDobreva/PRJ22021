@@ -3,6 +3,7 @@ package frontend;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -44,7 +45,8 @@ public class SceneManager {
     private Parent loadScene(String fxml) {
         FXMLLoader fxmlLoader = new FXMLLoader(GUIApp.class.getResource(fxml + ".fxml"));
         fxmlLoader.setControllerFactory(controllerFactory);
-        fxmlLoader.setResources(ResourceBundle.getBundle("frontend.editAisStrings"));
+//        System.out.println(Locale.getDefault()+"scene");
+        fxmlLoader.setResources(ResourceBundle.getBundle("frontend.editAisStrings",Locale.getDefault()));
         try {
             return fxmlLoader.load();
         } catch (IOException ex) {
