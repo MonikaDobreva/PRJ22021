@@ -8,6 +8,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+            <repositories>
+                <repository>
+                    <id>fontysvenlo.org</id> 
+                    <url>https://www.fontysvenlo.org/repository</url> 
+                </repository>
+            </repositories>
     <parent>
         <groupId>nl.fontys.sebivenlo</groupId>
         <artifactId>sebipom</artifactId>
