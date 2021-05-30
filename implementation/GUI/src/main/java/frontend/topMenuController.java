@@ -49,7 +49,7 @@ public class topMenuController {
 
     @FXML
     private void switchToEditFlight() throws IOException {
-        sceneManagerSupplier.get().changeScene("editDetailsFlights");
+        sceneManagerSupplier.get().changeScene("editFlights");
     }
 
     @FXML

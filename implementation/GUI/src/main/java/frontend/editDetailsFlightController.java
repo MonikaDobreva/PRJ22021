@@ -1,5 +1,6 @@
 package frontend;
 
+import businessentitiesapi.Flight;
 import java.util.Locale;
 import java.util.function.Supplier;
 import javafx.event.ActionEvent;
@@ -39,10 +40,16 @@ public class editDetailsFlightController {
     private MenuButton languageMenu;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    
+    private final Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, Flight editFlight) {
         this.sceneManagerSupplier = sceneManagerSupplier;
+        this.editFlight = editFlight;
+        showFlightDetails();
+    }
+
+    private void showFlightDetails() {
+        arrivalTime.setText(editFlight.getArrivalTime().toString());
     }
 
     /**
@@ -128,21 +135,24 @@ public class editDetailsFlightController {
         sceneManagerSupplier.get().changeScene("editFlights");
     }
 
-    
-     /**
+    /**
      * This method is called when the user clicks on the delteFlight button.
-     * 
+     *
      * It deletes the flight entry from the database.
      */
     @FXML
     private void deleteFlight(ActionEvent event) {
     }
 
+    
+     /**
+     * This method is called when the user clicks on the safe button.
+     *
+     * It updates the flight entry with the changed data in the database.
+     */
     @FXML
     private void safeEditFlight(ActionEvent event) {
     }
-
-    
 
     //    private final int flightID;
 //    //    private final String originAirport;

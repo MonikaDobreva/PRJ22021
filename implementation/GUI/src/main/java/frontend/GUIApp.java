@@ -31,8 +31,8 @@ public class GUIApp extends Application {
                 return new managementDashboardController(businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.editFlightController":
                 return new editFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
-            case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager);
+//            case "frontend.editDetailsFlightController":
+//                return new editDetailsFlightController(this::getSceneManager);
             default:
                 return null;
         }

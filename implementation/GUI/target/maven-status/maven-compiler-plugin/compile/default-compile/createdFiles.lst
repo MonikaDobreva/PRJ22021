@@ -1,1 +1,9 @@
+frontend\FlightController.class
+module-info.class
+frontend\GUIApp.class
+frontend\topMenuController.class
+frontend\editDetailsFlightController.class
 frontend\managementDashboardController.class
+frontend\editFlightController.class
+frontend\SceneManager.class
+frontend\welcomeController.class

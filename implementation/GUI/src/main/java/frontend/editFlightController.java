@@ -4,16 +4,23 @@ import businessentitiesapi.AirplaneManager;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
 import java.util.function.Supplier;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  *
@@ -83,6 +90,7 @@ public class editFlightController {
      */
     private LocalDateTime lastClicked;
 
+    
     /**
      * This is the method called if a user clicks on a row in the tableView from
      * viewFlights.
@@ -91,25 +99,72 @@ public class editFlightController {
      * window with the information of the row already filled.
      */
     @FXML
-    private void editColoum() {
-        Flight selectedItem = flightsTable.getSelectionModel().getSelectedItem();
-        if (selectedItem == null) {
+    private void editColoum(MouseEvent event) {
+        Flight selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
+        if (selectedFlight == null) {
             return;
         }
-        if (selectedItem != clickedFlight) {
-            clickedFlight = selectedItem;
+        if (selectedFlight != clickedFlight) {
+            clickedFlight = selectedFlight;
             lastClicked = LocalDateTime.now();
-        }else if(selectedItem==clickedFlight){
+        } else if (selectedFlight == clickedFlight) {
             LocalDateTime now = LocalDateTime.now();
-            long between = lastClicked.until(now,ChronoUnit.MILLIS);
-            if (between<200) {
+            long between = lastClicked.until(now, ChronoUnit.MILLIS);
+            if (between < 200) {
                 //do something if the user has clicked twice in the distanz of 200ms
-//                sceneManagerSupplier.get().changeScene(view);
-                
-            }else{
-               lastClicked = LocalDateTime.now(); 
+
+                //this is for passing parameter done here
+                Node node = (Node) event.getSource();
+                Stage stage = (Stage) node.getScene().getWindow();
+                stage.close();
+                try {
+                    FXMLLoader loader = FXMLLoader.load(getClass().getClassLoader().getResource("editDetailsFlight.fxml"));
+
+                    //make the new controller and also pass the flight
+                    editDetailsFlightController controller = new editDetailsFlightController(sceneManagerSupplier, selectedFlight);
+                    //the controller is manually set
+                    loader.setController(controller);
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+
+                } catch (IOException e) {
+                    System.err.println(String.format("Error: %s", e.getMessage()));
+                }
+
+            } else {
+                lastClicked = LocalDateTime.now();
             }
         }
     }
+//    /**
+//     * This is the method called if a user clicks on a row in the tableView from
+//     * viewFlights.
+//     *
+//     * If the user double clicks a row which is not empty then it opens the edit
+//     * window with the information of the row already filled.
+//     */
+//    @FXML
+//    private void editColoum() {
+//        Flight selectedItem = flightsTable.getSelectionModel().getSelectedItem();
+//        if (selectedItem == null) {
+//            return;
+//        }
+//        if (selectedItem != clickedFlight) {
+//            clickedFlight = selectedItem;
+//            lastClicked = LocalDateTime.now();
+//        }else if(selectedItem==clickedFlight){
+//            LocalDateTime now = LocalDateTime.now();
+//            long between = lastClicked.until(now,ChronoUnit.MILLIS);
+//            if (between<200) {
+//                //do something if the user has clicked twice in the distanz of 200ms
+////                sceneManagerSupplier.get().changeScene(view);
+//                
+//            }else{
+//               lastClicked = LocalDateTime.now(); 
+//            }
+//        }
+//    }
     
 }

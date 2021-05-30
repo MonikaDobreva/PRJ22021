@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="businessentitiesapi.FlightTest" time="0.227" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="businessentitiesapi.FlightTest" time="0.167" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="D:\java\AdoptOpenJDK\jdk-11.0.9.101-hotspot\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter E:\tmp\surefire16456063513908136886 2021-05-25T15-21-18_721-jvmRun1 surefire1472654472789206654tmp surefire_02273549250922690959tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter E:\tmp\surefire11994820229442335705 2021-05-30T17-00-27_593-jvmRun1 surefire8695347959545550024tmp surefire_017522118228283871995tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\Fontys\Project2\Github\prj2-2021-prj2-2021-03\implementation\BusinessEntitiesAPI\target\test-classes;C:\Users\Rachel\.m2\repository\org\assertj\assertj-core\3.18.1\assertj-core-3.18.1.jar;C:\Users\Rachel\.m2\repository\org\mockito\mockito-core\3.5.13\mockito-core-3.5.13.jar;C:\Users\Rachel\.m2\repository\net\bytebuddy\byte-buddy\1.10.15\byte-buddy-1.10.15.jar;C:\Users\Rachel\.m2\repository\net\bytebuddy\byte-buddy-agent\1.10.15\byte-buddy-agent-1.10.15.jar;C:\Users\Rachel\.m2\repository\org\objenesis\objenesis\3.1\objenesis-3.1.jar;C:\Users\Rachel\.m2\repository\org\mockito\mockito-junit-jupiter\3.5.13\mockito-junit-jupiter-3.5.13.jar;C:\Users\Rachel\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.0\junit-jupiter-api-5.7.0.jar;C:\Users\Rachel\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Rachel\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Rachel\.m2\repository\org\junit\platform\junit-platform-commons\1.7.0\junit-platform-commons-1.7.0.jar;C:\Users\Rachel\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.7.0\junit-jupiter-params-5.7.0.jar;C:\Users\Rachel\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.0\junit-jupiter-engine-5.7.0.jar;C:\Users\Rachel\.m2\repository\org\junit\platform\junit-platform-engine\1.7.0\junit-platform-engine-1.7.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -63,12 +63,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="constructorWorksTest" classname="businessentitiesapi.FlightTest" time="0.124"/>
-  <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[1]" classname="businessentitiesapi.FlightTest" time="0.022"/>
+  <testcase name="constructorWorksTest" classname="businessentitiesapi.FlightTest" time="0.086"/>
+  <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[1]" classname="businessentitiesapi.FlightTest" time="0.019"/>
   <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[2]" classname="businessentitiesapi.FlightTest" time="0.001"/>
   <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[3]" classname="businessentitiesapi.FlightTest" time="0.001"/>
   <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[4]" classname="businessentitiesapi.FlightTest" time="0.001"/>
   <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[5]" classname="businessentitiesapi.FlightTest" time="0.001"/>
-  <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[6]" classname="businessentitiesapi.FlightTest" time="0.002"/>
+  <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[6]" classname="businessentitiesapi.FlightTest" time="0.001"/>
   <testcase name="constructorNotWorkingTest{int, String, String, int, int, int, int, int, int, String, String}[7]" classname="businessentitiesapi.FlightTest" time="0.001"/>
 </testsuite>
