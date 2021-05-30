@@ -36,8 +36,6 @@ public class editDetailsFlightController {
     private TextField cVPrice;
     @FXML
     private Button deleteFlightButton, cancelEditButton, safeEditButton;
-    @FXML
-    private MenuButton languageMenu;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
     private final Flight editFlight;
@@ -45,7 +43,7 @@ public class editDetailsFlightController {
     public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, Flight editFlight) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.editFlight = editFlight;
-        showFlightDetails();
+//        showFlightDetails();//this thrwos errors as well
     }
 
     private void showFlightDetails() {
