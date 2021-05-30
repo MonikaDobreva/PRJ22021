@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="background" stylesheets="@welcome.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.welcomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="background" stylesheets="@welcome.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.welcomeController">
    <children>
-      <VBox layoutX="495.0" layoutY="304.0" prefHeight="257.0" prefWidth="428.0">
+      <VBox layoutX="495.0" layoutY="304.0" prefHeight="260.0" prefWidth="430.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="425.0" AnchorPane.rightAnchor="425.0" AnchorPane.topAnchor="200.0">
          <children>
             <Label alignment="TOP_CENTER" prefHeight="54.0" prefWidth="432.0" text="%welcomeTitleLabel">
                <font>
@@ -38,20 +47,28 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="287.0">
                <children>
-                  <Button fx:id="startBtn" mnemonicParsing="false" onAction="#goToStart" prefHeight="28.0" prefWidth="85.0" style="-fx-background-color: #2980b9;" text="Start" textFill="WHITE">
+                  <ComboBox fx:id="userChoice" onMouseClicked="#userRoles" prefHeight="30.0" prefWidth="200.0" promptText="Select a User Role">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button fx:id="startBtn" mnemonicParsing="false" onAction="#goToStart" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #2980b9;" text="Start" textFill="WHITE">
                      <font>
-                        <Font name="Fira Code Regular" size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
                </children></HBox>
             <HBox alignment="CENTER">
                <children>
-                  <MenuButton fx:id="languageMenu" alignment="CENTER" mnemonicParsing="false" text="%changeLanguageMenu">
+                  <MenuButton fx:id="languageMenu" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" text="%changeLanguageMenu">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#changeLanguageGerman" text="Deutsch" />
                         <MenuItem mnemonicParsing="false" onAction="#changeLanguageEnglish" text="English" />
                         <MenuItem mnemonicParsing="false" onAction="#changeLanguageDutch" text="Nederlands" />
                      </items>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
                   </MenuButton>
                </children>
               
