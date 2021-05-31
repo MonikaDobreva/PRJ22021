@@ -36,13 +36,16 @@ public class FlightController {
 
 
     @FXML
-    TextField airplaneModelField, basePriceField;
+    Label airplaneModelLabel = new Label(), flightIDLabel, originAirportLabel = new Label(), destinationAirportLabel = new Label();
+
+    @FXML
+    TextField basePriceField;
 
     @FXML
     DatePicker depTimePicker, arrTimePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, clearFlightsButton;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, clearFlightsButton, backBtn;
 
     @FXML
     ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
@@ -75,6 +78,8 @@ public class FlightController {
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
+        flightIDLabel = new Label(String.valueOf(flightManager.getLastID() + 1));
+//        flightIDLabel.setText(String.valueOf(flightManager.getLastID() + 1));
     }
 
     /**
@@ -83,7 +88,7 @@ public class FlightController {
      */
     @FXML
     private void backToStart() throws IOException {
-        sceneManagerSupplier.get().changeScene("welcome");
+        sceneManagerSupplier.get().changeScene("salesOfficerOptions");
     }
 
     /**
@@ -197,5 +202,12 @@ public class FlightController {
      */
     public void clearFlightsView() {
         flightsTable.getItems().clear();
+    }
+
+    @FXML
+    public void test(){
+//        flightIDLabel = new Label("Hello");
+        flightIDLabel.setText("Test");
+        System.out.println("here");
     }
 }

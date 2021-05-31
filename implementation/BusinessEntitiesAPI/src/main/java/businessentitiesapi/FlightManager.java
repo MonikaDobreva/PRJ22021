@@ -56,4 +56,10 @@ public interface FlightManager {
      */
     void delete(Flight f);
 
+    /**
+     * get the ID from the last flight added
+     * @return the ID
+     */
+    int getLastID();
+
 }

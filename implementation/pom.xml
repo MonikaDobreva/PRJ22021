@@ -26,6 +26,9 @@
         <module>Persistence</module>
         <module>BusinessEntitiesAPI</module>
         <module>GUI</module>
+        <module>genericmapper22</module>
+        <module>genericdao</module>
+        <module>genericranges</module>
     </modules>
     <name>AirlineInformationSystem</name>
 </project>
