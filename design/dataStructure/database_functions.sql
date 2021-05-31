@@ -149,6 +149,41 @@ create trigger insert_flight
     for each row
 execute procedure flight_insert();
 
+-- Function that returns a trigger. It allows to insert flights routes into the Flights_Routes table through
+-- the FlightsRoutes view
+create or replace function flightRoutes_insert()
+    returns trigger as
+$$
+declare
+    originAirportID    airports.id%type;
+    destinationAirportID    airports.id%type;
+begin
+
+    select airports.id
+    into originAirportID
+    from airports
+    where airports.iata_code = new.originAirportCode;
+
+    select airports.id
+    into destinationAirportID
+    from airports
+    where airports.iata_code = new.destinationAirportCode;
+
+    insert into flight_routes (origin_airport_id, destination_airport_id)
+    values (originAirportID, destinationAirportID);
+    new.flightRouteID = (select max(flight_routes.id) from flight_routes);
+    return new;
+
+end;
+$$ language plpgsql;
+
+-- Trigger that fires when trying to insert data through the FlightRoutes view
+create trigger insert_flightRoute
+    instead of insert
+    on flightRoutesView
+    for each row
+execute procedure flightRoutes_insert();
+
 
 --Create booking Use Case
 create or replace view bookingsView(bookingId, personId, userId, timeOfBooking) as
