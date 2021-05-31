@@ -80,7 +80,14 @@ public class FlightManagerImpl implements FlightManager {
     }
 
     @Override
-    public void delete(Flight f) {
-        flightStorageService.delete(f);
+    public boolean delete(Flight f) {
+        return flightStorageService.delete(f);
     }
+
+    @Override
+    public boolean update(Flight f) {
+       return flightStorageService.update(f);
+    }
+    
+    
 }

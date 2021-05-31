@@ -54,6 +54,12 @@ public interface FlightManager {
      * Deletes the given flight from the FlightManager
      * @param f Flight
      */
-    void delete(Flight f);
+    boolean delete(Flight f);
+    
+    /**
+     * Updates the given flight with same id
+     * @param f Flight
+     */
+    boolean update(Flight f);
 
 }

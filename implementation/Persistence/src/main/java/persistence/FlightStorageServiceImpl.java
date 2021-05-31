@@ -71,7 +71,47 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     @Override
     public boolean delete(Flight f) {
-        // TODO: implement flight deletion
-        return false;
+        try {
+            TransactionToken tok = flightDao.startTransaction();
+            flightDao.deleteEntity(f);
+            if (flightDao.get(f.getFlightID()).isEmpty()) {
+               tok.commit();
+               flightDao.close();
+               return true;
+            }else{
+                tok.rollback();
+                flightDao.close();
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+
+    @Override
+    public boolean update(Flight f) {
+        try {
+            TransactionToken tok = flightDao.startTransaction();
+            flightDao.update(f);
+            if (flightDao.get(f.getFlightID()).get().equals(f)) {
+               tok.commit();
+               flightDao.close();
+               return true;
+            }else{
+                tok.rollback();
+                flightDao.close();
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
+    
+    
 }

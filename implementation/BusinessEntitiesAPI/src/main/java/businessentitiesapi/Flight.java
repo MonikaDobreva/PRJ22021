@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.regex.Pattern;
 import nl.fontys.sebivenlo.sebiannotations.*;
 
@@ -139,5 +140,51 @@ public class Flight implements Serializable {
                 + "arriving at " + destinationAirport + " on " + arrivalTime.getDayOfMonth() + "." + arrivalTime.getMonth()
                 + " at " + arrivalTime.getHour() + ":" + arrivalTime.getMinute() + "\n";
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Flight other = (Flight) obj;
+        if (this.flightID != other.flightID) {
+            return false;
+        }
+        if (!Objects.equals(this.originAirport, other.originAirport)) {
+            return false;
+        }
+        if (!Objects.equals(this.destinationAirport, other.destinationAirport)) {
+            return false;
+        }
+        if (!Objects.equals(this.airplaneModel, other.airplaneModel)) {
+            return false;
+        }
+        if (!Objects.equals(this.departureTime, other.departureTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.arrivalTime, other.arrivalTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.basePrice, other.basePrice)) {
+            return false;
+        }
+        return true;
+    }
+
+ 
+    
+    
     
 }
