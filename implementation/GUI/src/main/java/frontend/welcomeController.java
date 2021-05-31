@@ -34,9 +34,13 @@ public class welcomeController {
     }
     @FXML
     public void goToStart() throws IOException {
-        if (userChoice.getValue().toLowerCase().contains("officer")){
-            sceneManagerSupplier.get().changeScene("salesOfficerOptions");
-        } else {
+        try {
+            if (userChoice.getValue().toLowerCase().contains("officer")) {
+                sceneManagerSupplier.get().changeScene("salesOfficerOptions");
+            } else {
+                sceneManagerSupplier.get().changeScene("viewFlights");
+            }
+        } catch (NullPointerException ex){
             sceneManagerSupplier.get().changeScene("viewFlights");
         }
     }
