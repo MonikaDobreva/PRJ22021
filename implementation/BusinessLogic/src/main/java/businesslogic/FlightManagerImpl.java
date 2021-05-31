@@ -49,25 +49,6 @@ public class FlightManagerImpl implements FlightManager {
                 basePrice);
     }
 
-    //Method is static because I want to call to it without need of an object
-    private static boolean checkFlightName(String name){
-        Predicate<String> check = n -> ((n.length() >= 3 && n.length() <= 6) &&
-                n.matches("[A-Z]{2}[0-9]{1,4}"));
-
-        return check.test(name);
-    }
-
-    private static boolean checkDate(LocalDateTime date){
-        Predicate<LocalDateTime> check = d -> d.isAfter(LocalDateTime.now());
-
-        return check.test(date);
-    }
-
-//    @Override
-//    public DateTimeFormatter dftYMD() {
-//        return DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm");
-//    }
-
     @Override
     public Flight add(Flight f) {
         flightStorageService.add(f);
@@ -90,4 +71,9 @@ public class FlightManagerImpl implements FlightManager {
     }
     
     
+
+    public int getLastID() {
+        return flightStorageService.getLastID();
+    }
+
 }

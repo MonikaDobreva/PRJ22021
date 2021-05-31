@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Persistence" />
+        <module name="BusinessLogic" />
+        <module name="genericranges" />
+        <module name="GUI" />
+        <module name="genericdao" />
+        <module name="Assembler" />
+        <module name="BusinessEntitiesAPI" />
+        <module name="genericmapper" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AirlineInformationSystem" target="11" />
+      <module name="Assembler" target="11" />
+      <module name="BusinessEntitiesAPI" target="11" />
+      <module name="BusinessLogic" target="11" />
+      <module name="genericdao" target="11" />
+      <module name="genericmapper" target="11" />
+      <module name="genericranges" target="11" />
+      <module name="GUI" target="11" />
+      <module name="Persistence" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Assembler" options="-Xpkginfo:always" />
+      <module name="BusinessEntitiesAPI" options="-Xpkginfo:always" />
+      <module name="BusinessLogic" options="-Xpkginfo:always" />
+      <module name="GUI" options="-Xpkginfo:always" />
+      <module name="Persistence" options="-Xpkginfo:always" />
+      <module name="genericdao" options="" />
+      <module name="genericmapper" options="" />
+      <module name="genericranges" options="" />
+    </option>
+  </component>
+</project>

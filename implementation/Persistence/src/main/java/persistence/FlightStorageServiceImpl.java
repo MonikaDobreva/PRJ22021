@@ -55,10 +55,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
 
     @Override
     public Flight add(Flight f) {
-        //TODO: implement add flight;
+        //TODO: Check if added flight is the proper one;
+        Optional<Flight> storedFlight = Optional.empty();
         try {
             TransactionToken tok = flightDao.startTransaction();
-            Optional<Flight> storedFlight = flightDao.save(f);
+            storedFlight = flightDao.save(f);
             tok.commit();
             flightDao.close();
 //            return new ArrayList<>(all);
@@ -66,7 +67,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             e.printStackTrace();
         }
 
-        return null;
+        return storedFlight.get();
     }
 
     @Override
@@ -110,8 +111,19 @@ public class FlightStorageServiceImpl implements FlightStorageService {
             return false;
         }
     }
-    
-    
-    
-    
+
+    @Override
+    public int getLastID() {
+        int id = 0;
+        try{
+            TransactionToken tok = flightDao.startTransaction();
+            id = flightDao.lastId();
+            flightDao.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        };
+
+        return id;
+    }
+
 }

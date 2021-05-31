@@ -1,0 +1,6 @@
+genericmapper/FieldPair.class
+module-info.class
+genericmapper/Constants.class
+genericmapper/MapperGenerator.class
+genericmapper/Mapper$StringMapper.class
+genericmapper/Mapper.class

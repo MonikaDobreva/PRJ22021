@@ -1,0 +1,17 @@
+testentities/Person.class
+testentities/Student.class
+genericmapper/TestData.class
+generatedmappers/TutorMapper.class
+entities/Email.class
+entities/EmployeeMapper.class
+testutils/TestUtils.class
+testentities/Course.class
+genericmapper/ConstantsTest.class
+genericmapper/MapperGeneratorTest.class
+genericmapper/MapperTest.class
+testentities/TutorMapper.class
+client/StudentMapper.class
+genericmapper/FieldPairTest.class
+entities/Employee.class
+testentities/Tutor.class
+genericmapper/StringMapperTest.class

@@ -62,4 +62,10 @@ public interface FlightManager {
      */
     boolean update(Flight f);
 
+    /**
+     * get the ID from the last flight added
+     * @return the ID
+     */
+    int getLastID();
+
 }
