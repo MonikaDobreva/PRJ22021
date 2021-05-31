@@ -35,6 +35,8 @@ public class GUIApp extends Application {
                 return new editDetailsFlightController(this::getSceneManager);
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
+            case "frontend.CreateBookingController":
+                return new CreateBookingController(this::getSceneManager);
             default:
                 return null;
         }
