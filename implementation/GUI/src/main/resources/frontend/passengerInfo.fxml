@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.6" minWidth="10.0" prefWidth="132.8" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59999999999997" minWidth="0.0" prefWidth="333.59999999999997" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+           <Label text="Customer:">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+           <TextField prefHeight="26.0" prefWidth="147.0" promptText="first name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+           <TextField promptText="last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+           <ComboBox prefWidth="150.0" promptText="select" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <items>
+                   <FXCollections fx:factory="observableArrayList">
+                       <String fx:id="m" fx:value="male" />
+                       <String fx:id="f" fx:value="female" />
+                       <String fx:id="d" fx:value="diverse" />
+                   </FXCollections>
+               </items>
+           </ComboBox>
+           <TextField prefHeight="26.0" prefWidth="198.0" promptText="email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+           <DatePicker promptText="select birth day" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+           <TextField disable="true" promptText="passport number" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+           <ComboBox disable="true" prefWidth="150.0" promptText="seat" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+           <Label text="Cabin luggage: " GridPane.rowIndex="8" />
+           <ComboBox disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+           <Label text="Hand luggage: " GridPane.rowIndex="9" />
+           <ComboBox disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+           <Label text="Select meal: " GridPane.rowIndex="10" />
+           <ComboBox disable="true" prefWidth="150.0" promptText="Standard Meal" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Label text="First name:" GridPane.rowIndex="1" />
+      <Label text="Last name:" GridPane.rowIndex="2" />
+      <Label text="Gender:" GridPane.rowIndex="3" />
+      <Label text="Email:" GridPane.rowIndex="4" />
+      <Label text="Date of birth:" GridPane.rowIndex="5" />
+      <Label text="Passport number:" GridPane.rowIndex="6" />
+      <Label text="Seat:" GridPane.rowIndex="7" />
+   </children>
+</GridPane>
