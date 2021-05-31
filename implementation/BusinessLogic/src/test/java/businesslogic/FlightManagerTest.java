@@ -77,7 +77,7 @@ public class FlightManagerTest {
     }
 
     @Test
-    public void getTest(){
+    public void getAllTest(){
         Mockito.when(fStorage.getAll()).thenReturn(flights);
         flights.add(f1);
         flights.add(f2);
