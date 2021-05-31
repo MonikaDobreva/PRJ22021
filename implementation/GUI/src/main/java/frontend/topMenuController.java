@@ -6,6 +6,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
@@ -49,7 +50,8 @@ public class topMenuController {
 
     @FXML
     private void switchToEditFlight() throws IOException {
-        sceneManagerSupplier.get().changeScene("editFlights");
+        Consumer<editFlightController> cons = (editFlightController c)->c.initWindow();
+        sceneManagerSupplier.get().changeScene("editFlights",cons);
     }
 
     @FXML

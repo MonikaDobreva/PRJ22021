@@ -2,6 +2,7 @@ package frontend;
 
 import businessentitiesapi.Flight;
 import java.util.Locale;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,12 +39,16 @@ public class editDetailsFlightController {
     private Button deleteFlightButton, cancelEditButton, safeEditButton;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    private final Flight editFlight;
+    private Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, Flight editFlight) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-        this.editFlight = editFlight;
-//        showFlightDetails();//this thrwos errors as well
+
+    }
+
+    public void setFlight(Flight f) {
+        editFlight = f;
+        showFlightDetails();
     }
 
     private void showFlightDetails() {
@@ -130,7 +135,8 @@ public class editDetailsFlightController {
 
     @FXML
     private void cancelChangeScene(ActionEvent event) {
-        sceneManagerSupplier.get().changeScene("editFlights");
+        Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
+        sceneManagerSupplier.get().changeScene("editFlights", cons);
     }
 
     /**
@@ -140,10 +146,10 @@ public class editDetailsFlightController {
      */
     @FXML
     private void deleteFlight(ActionEvent event) {
+
     }
 
-    
-     /**
+    /**
      * This method is called when the user clicks on the safe button.
      *
      * It updates the flight entry with the changed data in the database.
