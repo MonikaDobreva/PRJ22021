@@ -15,5 +15,7 @@ public interface BusinessLogicAPI {
     AirportManager getAirportManager();
 
     AirplaneManager getAirplaneManager();
+    
+    EditDetailsLogic getEditDetailsLogic();
 
 }

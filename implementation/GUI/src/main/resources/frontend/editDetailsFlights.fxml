@@ -82,8 +82,8 @@
                      </font></Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <children>
-                        <Spinner fx:id="cVDepHour" editable="true" prefHeight="26.0" prefWidth="105.0" visible="false" />
-                        <Spinner fx:id="cVDepMin" editable="true" prefHeight="26.0" prefWidth="127.0" visible="false" />
+                        <Spinner fx:id="cVDepHour" editable="true" max="23" min="00" prefHeight="26.0" prefWidth="105.0" visible="false" />
+                        <Spinner fx:id="cVDepMin" editable="true" max="59" min="00" prefHeight="26.0" prefWidth="127.0" visible="false" />
                         <DatePicker fx:id="cVDepDate" visible="false" />
                      </children>
                   </HBox>
@@ -126,8 +126,8 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <children>
-                        <Spinner fx:id="cVArrHour" editable="true" prefHeight="26.0" prefWidth="105.0" visible="false" />
-                        <Spinner fx:id="cVArrMin" editable="true" prefHeight="26.0" prefWidth="127.0" visible="false" />
+                        <Spinner fx:id="cVArrHour" editable="true" max="23" min="00" prefHeight="26.0" prefWidth="105.0" visible="false" />
+                        <Spinner fx:id="cVArrMin" editable="true" max="59" min="00" prefHeight="26.0" prefWidth="127.0" visible="false" />
                         <DatePicker fx:id="cVArrDate" visible="false" />
                      </children>
                   </HBox>

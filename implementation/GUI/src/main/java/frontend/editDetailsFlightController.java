@@ -6,7 +6,9 @@ import businessentitiesapi.Airport;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import businesslogic.EditDetailsLogic;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -54,13 +56,15 @@ public class editDetailsFlightController {
     private final FlightManager flightManager;
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
+    private final EditDetailsLogic eLogic;
     private Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, EditDetailsLogic editDLogic) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
+        this.eLogic = editDLogic;
     }
 
     public void setFlight(Flight f) {
@@ -186,23 +190,11 @@ public class editDetailsFlightController {
         //this checks if the boxes are ticked and uses then the new data for the flight other wise it will be the old flight
         if (chBoxDepTime.isSelected()) {
             changed = true;
-            depTime = LocalDateTime.parse(
-                    makeTimeValid(cVDepHour.getValue().toString())
-                    + ":"
-                    + makeTimeValid(cVDepMin.getValue().toString())
-                    + " "
-                    + cVDepDate.getValue(),
-                    DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
+            depTime = eLogic.makeDateTime(cVDepHour.getValue(), cVDepMin.getValue(), cVDepDate.getValue());
         }
         if (chBoxArrTime.isSelected()) {
             changed = true;
-            arrTime = LocalDateTime.parse(
-                    makeTimeValid(cVArrHour.getValue().toString())
-                    + ":"
-                    + makeTimeValid(cVArrMin.getValue().toString())
-                    + " "
-                    + cVArrDate.getValue(),
-                    DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
+            arrTime = eLogic.makeDateTime(cVArrHour.getValue(), cVArrMin.getValue(), cVArrDate.getValue());
         }
         if (chBoxOrigin.isSelected()) {
             changed = true;
@@ -233,11 +225,10 @@ public class editDetailsFlightController {
             if (update == true) {
                 Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
                 sceneManagerSupplier.get().changeScene("editFlights", cons);
-            }else{
-                 errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("somethingWrong"));
+            } else {
+                errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("somethingWrong"));
             }
-            
-            
+
         } catch (Exception e) {
             errorLabel.setText(e.getLocalizedMessage());
         }
@@ -276,16 +267,4 @@ public class editDetailsFlightController {
                         .map(Airplane::getAirplaneCode)
                         .collect(Collectors.toList()))));
     }
-
-    /**
-     * Small helper method, which adds an additional 0 to the time if it is only
-     * one digit. Otherwise the selected time cannot be properly parsed.
-     *
-     * @param t time value
-     * @return formatted time value
-     */
-    private String makeTimeValid(String t) {
-        return t.length() == 1 ? "0" + t : t;
-    }
-
 }
