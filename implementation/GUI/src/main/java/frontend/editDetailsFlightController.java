@@ -229,10 +229,14 @@ public class editDetailsFlightController {
         try {
             Flight f = flightManager.createFlight(1, //placeholder, id should be generated according to the amount of flight already in the database
                     originAirport, destinationAirport, depTime, arrTime, airplane, basePrice);
-            flightManager.update(f);
-//rember to check update............
-            Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
-            sceneManagerSupplier.get().changeScene("editFlights", cons);
+            boolean update = flightManager.update(f);
+            if (update == true) {
+                Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
+                sceneManagerSupplier.get().changeScene("editFlights", cons);
+            }else{
+                 errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("somethingWrong"));
+            }
+            
             
         } catch (Exception e) {
             errorLabel.setText(e.getLocalizedMessage());
