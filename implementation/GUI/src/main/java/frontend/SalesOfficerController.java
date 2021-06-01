@@ -1,5 +1,6 @@
 package frontend;
 
+import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -23,7 +24,8 @@ public class SalesOfficerController {
 
     @FXML
     public void goToEditFlight(){
-        sceneManagerSupplier.get().changeScene("editFlights");
+       Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
+        sceneManagerSupplier.get().changeScene("editFlights", cons);
     }
 
     @FXML

@@ -32,9 +32,11 @@ public class GUIApp extends Application {
             case "frontend.editFlightController":
                 return new editFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager);
+                return new editDetailsFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
+            case "frontend.DeleteFlightController":
+                return new DeleteFlightController(this::getSceneManager,businessLogicAPI.getFlightManager());
             default:
                 return null;
         }

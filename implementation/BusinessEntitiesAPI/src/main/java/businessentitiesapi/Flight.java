@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import nl.fontys.sebivenlo.sebiannotations.*;
 
@@ -47,7 +48,10 @@ public class Flight implements Serializable {
         if (Pattern.matches("[A-Z]{3}", originAirport)) {
             this.originAirport = originAirport;
         } else {
-            throw new IllegalArgumentException("Is not 3 Uppercase letter code!");
+            throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("originAirportCode"));
+         
         }
 
         /**
@@ -57,7 +61,9 @@ public class Flight implements Serializable {
         if (Pattern.matches("[A-Z]{3}", destinationAirport) && !originAirport.equals(destinationAirport)) {
              this.destinationAirport = destinationAirport;
         } else {
-            throw new IllegalArgumentException("Is not 3 Uppercase letter code! Or is same Airport as departure airport!");
+             throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("destinationAirport"));
         }
         
         /**
@@ -66,7 +72,9 @@ public class Flight implements Serializable {
         if (depTime.isAfter(LocalDateTime.now())) {
             this.departureTime = depTime;
         }else{
-            throw new IllegalArgumentException("The departure time lies in the past!");
+            throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("depTimePast"));
         }
         
         /**
@@ -75,7 +83,10 @@ public class Flight implements Serializable {
         if (arrTime.isAfter(depTime)) {
              this.arrivalTime = arrTime;
         }else{
-            throw new IllegalArgumentException("The arrival time lies before the departure time!");
+            throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("arrTime"));
+           
         }
         
         /**
@@ -84,7 +95,10 @@ public class Flight implements Serializable {
         if (Pattern.matches("[a-zA-Z_0-9\\s\\-]+", airplane)) {
             this.airplaneModel = airplane;
         }else{
-            throw new IllegalArgumentException("The name is consisting of more than whitespaces,letters and numbers!");
+             throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("airplaneModel"));
+           
         }
         
         /**
@@ -93,7 +107,9 @@ public class Flight implements Serializable {
         if (basePrice.doubleValue() > 0) {
             this.basePrice = basePrice;
         }else{
-           throw new IllegalArgumentException("The price is less than zero!"); 
+            throw new IllegalArgumentException(
+                    ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
+                            .getString("price"));
         }
     }
     

@@ -82,14 +82,14 @@
                      </font></Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                      <children>
-                        <Spinner fx:id="cVDepHour" prefHeight="26.0" prefWidth="105.0" visible="false" />
-                        <Spinner fx:id="cVDepMin" prefHeight="26.0" prefWidth="127.0" visible="false" />
+                        <Spinner fx:id="cVDepHour" editable="true" prefHeight="26.0" prefWidth="105.0" visible="false" />
+                        <Spinner fx:id="cVDepMin" editable="true" prefHeight="26.0" prefWidth="127.0" visible="false" />
                         <DatePicker fx:id="cVDepDate" visible="false" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <children>
-                        <Label fx:id="price" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE">
+                        <Label fx:id="price" prefHeight="18.0" prefWidth="279.0" textFill="WHITE">
                            <font>
                               <Font name="Calibri" size="14.0" />
                            </font>
@@ -97,8 +97,8 @@
                      </children>
                   </HBox>
                   <CheckBox fx:id="chBoxDepTime" mnemonicParsing="false" onAction="#showCVDepTime" styleClass="checkBox" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cVOrigin" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="cVDestination" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cVOrigin" onMouseClicked="#showStart" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="cVDestination" onMouseClicked="#showDestination" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                   <CheckBox fx:id="chBoxArrTime" mnemonicParsing="false" onAction="#showCVArrTime" styleClass="checkBox" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <CheckBox fx:id="chBoxOrigin" mnemonicParsing="false" onAction="#showCVOrigin" styleClass="checkBox" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <CheckBox fx:id="chBoxDest" mnemonicParsing="false" onAction="#showCVDest" styleClass="checkBox" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
@@ -126,38 +126,38 @@
                   </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <children>
-                        <Spinner fx:id="cVArrHour" prefHeight="26.0" prefWidth="105.0" visible="false" />
-                        <Spinner fx:id="cVArrMin" prefHeight="26.0" prefWidth="127.0" visible="false" />
+                        <Spinner fx:id="cVArrHour" editable="true" prefHeight="26.0" prefWidth="105.0" visible="false" />
+                        <Spinner fx:id="cVArrMin" editable="true" prefHeight="26.0" prefWidth="127.0" visible="false" />
                         <DatePicker fx:id="cVArrDate" visible="false" />
                      </children>
                   </HBox>
-                  <ComboBox fx:id="cVAirplane" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cVAirplane" onMouseClicked="#showAirplanes" prefWidth="150.0" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
                      <children>
                         <TextField fx:id="cVPrice" styleClass="textBox" visible="false" />
                      </children>
                   </HBox>
-                  <Label fx:id="departureTime" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="departureTime" prefHeight="18.0" prefWidth="279.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="arrivalTime" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="arrivalTime" prefHeight="18.0" prefWidth="279.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="origin" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <Label fx:id="origin" prefHeight="18.0" prefWidth="279.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="destination" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Label fx:id="destination" prefHeight="18.0" prefWidth="279.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="airplane" prefHeight="18.0" prefWidth="279.0" text="test" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Label fx:id="airplane" prefHeight="18.0" prefWidth="279.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
@@ -172,7 +172,7 @@
             </GridPane>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="errorLabel" prefHeight="96.0" prefWidth="678.0" text="test" textFill="#ff8c00" wrapText="true">
+                  <Label fx:id="errorLabel" prefHeight="96.0" prefWidth="678.0" textFill="#ff8c00" wrapText="true">
                      <font>
                         <Font name="Calibri" size="20.0" />
                      </font>

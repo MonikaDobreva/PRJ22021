@@ -1,0 +1,6 @@
+.warningLabel{
+    -fx-color: rgb(255, 102, 102);
+}
+.deleteButton{
+    -fx-background-color: rgb(255, 102, 102);
+}
