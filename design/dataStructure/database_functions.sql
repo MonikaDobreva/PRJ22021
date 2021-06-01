@@ -154,3 +154,17 @@ execute procedure flight_insert();
 create or replace view bookingsView(bookingId, personId, userId, timeOfBooking) as
 select *
 from bookings;
+
+create or replace view personsView(personId, firstName, lastName, email, birthDate, gender) as
+select *
+from persons;
+
+create or replace view passengersView(passengerId, passportNumber, personId) as
+select *
+from passengers;
+
+create or replace view ticketsView(
+    ticketId, flightSeatId, cabinBaggage, checkedBaggage, mealId, bookingId, canceled, passengerId, pricePaid)
+    as
+select *
+from tickets;
