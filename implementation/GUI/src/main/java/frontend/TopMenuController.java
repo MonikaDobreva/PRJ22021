@@ -13,11 +13,11 @@ import java.util.function.Supplier;
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
 
-public class topMenuController {
+public class TopMenuController {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
 
-    public topMenuController(Supplier<SceneManager> sceneManagerSupplier) {
+    public TopMenuController(Supplier<SceneManager> sceneManagerSupplier) {
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
 

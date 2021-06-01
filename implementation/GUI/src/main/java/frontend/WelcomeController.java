@@ -16,7 +16,7 @@ import javafx.scene.control.MenuButton;
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
 
-public class welcomeController {
+public class WelcomeController {
 
     private final Supplier<SceneManager> sceneManagerSupplier;
 
@@ -29,7 +29,7 @@ public class welcomeController {
     @FXML
     Button startBtn;
 
-    public welcomeController(Supplier<SceneManager> sceneManagerSupplier) {
+    public WelcomeController(Supplier<SceneManager> sceneManagerSupplier) {
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
     @FXML

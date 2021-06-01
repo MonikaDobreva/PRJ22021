@@ -14,6 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -37,6 +38,9 @@ public class FlightController {
 
     @FXML
     Label airplaneModelLabel = new Label(), flightIDLabel, originAirportLabel = new Label(), destinationAirportLabel = new Label();
+
+    @FXML
+    VBox createFlightWindow;
 
     @FXML
     TextField basePriceField;
@@ -78,8 +82,11 @@ public class FlightController {
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
-        flightIDLabel = new Label(String.valueOf(flightManager.getLastID() + 1));
-//        flightIDLabel.setText(String.valueOf(flightManager.getLastID() + 1));
+    }
+
+    @FXML
+    public void flightIDLabelText(){
+        flightIDLabel.setText(String.valueOf(flightManager.getLastID() + 1));
     }
 
     /**
@@ -204,10 +211,4 @@ public class FlightController {
         flightsTable.getItems().clear();
     }
 
-    @FXML
-    public void test(){
-//        flightIDLabel = new Label("Hello");
-        flightIDLabel.setText("Test");
-        System.out.println("here");
-    }
 }

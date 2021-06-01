@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBooking">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
-               <top>
-                   <fx:include fx:id="menuBar" source="topMenu.fxml" />
-               </top>
-               <center>
-                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <TextField text="Select flight" />
-                        <ComboBox layoutX="159.0" layoutY="10.0" prefWidth="150.0" />
-                        <TextField />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                     </children>
-                  </HBox>
-               </center>
-               <right>
-                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </right>
-            </BorderPane>
-         </children></VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" />
-   </children>
+<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBookingController">
+    <children>
+        <VBox prefHeight="481.0" prefWidth="600.0">
+
+            <children>
+                <fx:include fx:id="menuBar" source="topMenu.fxml"/>
+                <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="400.0">
+                    <children>
+                        <Label alignment="CENTER" text="Create booking" textFill="#4f78b0">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="25.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                </HBox>
+                <Separator prefWidth="200.0"/>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <children>
+                        <Label text="Flight:"/>
+                        <ComboBox fx:id="selectFlight" onMouseClicked="#listOriginAirports" prefHeight="25.0"
+                                  prefWidth="190.0" promptText="select flight">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </ComboBox>
+                    </children>
+                </HBox>
+                <Separator layoutX="10.0" layoutY="250.0" prefWidth="200.0"/>
+                <CheckBox fx:id="passengerOrNot" mnemonicParsing="false" text="also passenger?"/>
+                <HBox prefHeight="358.0" prefWidth="600.0">
+                    <children>
+                        <fx:include fx:id="passengerInfo" source="passengerInfo.fxml"/>
+                    </children>
+                </HBox>
+                <Separator layoutX="10.0" layoutY="76.0" prefWidth="200.0"/>
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="79.0" spacing="10.0">
+                    <children>
+                        <Label text="How many additional passengers?"/>
+                        <ComboBox fx:id="additionalPassenger" onMouseClicked="#listOriginAirports" prefHeight="25.0"
+                                  prefWidth="190.0" promptText="0">
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </ComboBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                                prefHeight="38.0" prefWidth="97.0" text="Submit">
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
