@@ -85,6 +85,11 @@ public class FlightController {
     }
 
     @FXML
+    public void initWindow(){
+        flightIDLabelText();
+    }
+
+    @FXML
     public void flightIDLabelText(){
         flightIDLabel.setText(String.valueOf(flightManager.getLastID() + 1));
     }
