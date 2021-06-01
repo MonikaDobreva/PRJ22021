@@ -1,9 +1,20 @@
 package frontend;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.Airport;
+import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
+import businessentitiesapi.FlightManager;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -30,20 +42,25 @@ public class editDetailsFlightController {
     @FXML
     private CheckBox chBoxDepTime, chBoxArrTime, chBoxOrigin, chBoxDest, chBoxAirpl, chBoxPrice;
     @FXML
-    private ComboBox<?> cVOrigin, cVDestination;
+    private ComboBox<String> cVOrigin, cVDestination;
     @FXML
-    private ComboBox<?> cVAirplane;
+    private ComboBox<String> cVAirplane;
     @FXML
     private TextField cVPrice;
     @FXML
     private Button deleteFlightButton, cancelEditButton, safeEditButton;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
+    private final FlightManager flightManager;
+    private final AirportManager airportManager;
+    private final AirplaneManager airplaneManager;
     private Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-
+        this.flightManager = flightManager;
+        this.airportManager = airportManager;
+        this.airplaneManager = airplaneManager;
     }
 
     public void setFlight(Flight f) {
@@ -142,11 +159,12 @@ public class editDetailsFlightController {
     /**
      * This method is called when the user clicks on the delteFlight button.
      *
-     * It deletes the flight entry from the database.
+     * It redirects to the delete flight confirmation page
      */
     @FXML
     private void deleteFlight(ActionEvent event) {
-
+        Consumer<DeleteFlightController> cont = (DeleteFlightController c) -> c.setDeleteFlight(editFlight);
+        sceneManagerSupplier.get().changeScene("deleteFlight", cont);
     }
 
     /**
@@ -156,60 +174,114 @@ public class editDetailsFlightController {
      */
     @FXML
     private void safeEditFlight(ActionEvent event) {
+        //helper var for easier reading
+        boolean changed = false;
+        String originAirport = editFlight.getOriginAirport();
+        String destinationAirport = editFlight.getDestinationAirport();
+        LocalDateTime depTime = editFlight.getDepartureTime();
+        LocalDateTime arrTime = editFlight.getArrivalTime();
+        String airplane = editFlight.getAirplane();
+        BigDecimal basePrice = editFlight.getBasePrice();
+
+        //this checks if the boxes are ticked and uses then the new data for the flight other wise it will be the old flight
+        if (chBoxDepTime.isSelected()) {
+            changed = true;
+            depTime = LocalDateTime.parse(
+                    makeTimeValid(cVDepHour.getValue().toString())
+                    + ":"
+                    + makeTimeValid(cVDepMin.getValue().toString())
+                    + " "
+                    + cVDepDate.getValue(),
+                    DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
+        }
+        if (chBoxArrTime.isSelected()) {
+            changed = true;
+            arrTime = LocalDateTime.parse(
+                    makeTimeValid(cVArrHour.getValue().toString())
+                    + ":"
+                    + makeTimeValid(cVArrMin.getValue().toString())
+                    + " "
+                    + cVArrDate.getValue(),
+                    DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
+        }
+        if (chBoxOrigin.isSelected()) {
+            changed = true;
+            originAirport = cVOrigin.getValue();
+        }
+        if (chBoxDest.isSelected()) {
+            changed = true;
+            destinationAirport = cVDestination.getValue();
+        }
+        if (chBoxAirpl.isSelected()) {
+            changed = true;
+            airplane = cVAirplane.getValue();
+        }
+        if (chBoxPrice.isSelected()) {
+            changed = true;
+            basePrice = new BigDecimal(cVPrice.getText());
+        }
+        //if nothing is changed let the user know
+        if (changed == false) {
+            errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("nothingChangedLabel"));
+            return;
+        }
+
+        try {
+            Flight f = flightManager.createFlight(1, //placeholder, id should be generated according to the amount of flight already in the database
+                    originAirport, destinationAirport, depTime, arrTime, airplane, basePrice);
+            flightManager.update(f);
+//rember to check update............
+            Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
+            sceneManagerSupplier.get().changeScene("editFlights", cons);
+            
+        } catch (Exception e) {
+            errorLabel.setText(e.getLocalizedMessage());
+        }
     }
 
-    //    private final int flightID;
-//    //    private final String originAirport;
-//    //    private final String destinationAirport;
-//    //    private final LocalDateTime departureTime;
-//    //    private final LocalDateTime arrivalTime;
-//    //    private final String airplaneModel;
-//    //    private final int basePrice;
-//    @FXML
-//    private void storeFlight() {
-//        try {
-//            Flight f = flightManager.createFlight(
-//                    1, //placeholder, id should be generated according to the amount of flight already in the database
-//                    originApDropdown.getValue(),
-//                    destinationApDropdown.getValue(),
-//                    LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-//                    LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-//                    airplaneModelDropdown.getValue(),
-//                    Integer.parseInt(basePriceField.getText())
-//            );
-//            flightManager.add(f);
-//            nfcLabel.setText("Successfully added flight!");
-//        } catch (Exception d) {
-//            nfcLabel.setText(d.getMessage());
-//        }
-//    }
     /**
-     * // * Adds an additional 0 to the time if it is only one digit. // *
-     * Otherwise the selected time cannot be properly parsed. // * @param t time
-     * value // * @return formatted time value //
+     * show start airports
+     *
+     * @param event
      */
-//    private String makeTimeValid(String t){
-//        return t.length() == 1 ? "0" + t : t;
-//    }
-//     public void listOriginAirports() {
-//        originApDropdown.setItems(FXCollections.observableArrayList(
-//                airportManager.getAirports().stream()
-//                        .map(Airport::getIataCode)
-//                        .collect(Collectors.toList())));
-//    }
-//
-//    public void listDestinationAirports() {
-//        destinationApDropdown.setItems(FXCollections.observableArrayList(
-//                airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream()
-//                        .map(Airport::getIataCode)
-//                        .collect(Collectors.toList())));
-//    }
-//
-//    public void listAirplaneModels(){
-//        //airplaneModelDropdown.setItems((FXCollections.observableArrayList(airplaneManager.getAirplanes().stream().map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")").collect(Collectors.toList()))));
-//        airplaneModelDropdown.setItems((FXCollections.observableArrayList(
-//                airplaneManager.getAirplanes().stream()
-//                        .map(Airplane::getAirplaneCode)
-//                        .collect(Collectors.toList()))));
-//    }
+    @FXML
+    private void showStart(MouseEvent event) {
+        cVOrigin.setItems(FXCollections.observableArrayList(
+                airportManager.getAirports().stream()
+                        .map(Airport::getIataCode)
+                        .collect(Collectors.toList())));
+    }
+
+    /**
+     * show destination airports
+     *
+     * @param event
+     */
+    @FXML
+    private void showDestination(MouseEvent event) {
+        cVDestination.setItems(FXCollections.observableArrayList(
+                airportManager.getAirportsWithoutOrigin(cVOrigin.getValue()).stream()
+                        .map(Airport::getIataCode)
+                        .collect(Collectors.toList())));
+    }
+
+    @FXML
+    private void showAirplanes(MouseEvent event) {
+        cVAirplane.setItems((FXCollections.observableArrayList(
+                airplaneManager.getAirplanes().stream()
+                        .map(Airplane::getAirplaneCode)
+                        .collect(Collectors.toList()))));
+    }
+
+    /**
+     * Small helper method, which adds an additional 0 to the time if it is only
+     * one digit. Otherwise the selected time cannot be properly parsed.
+     *
+     * @param t time value
+     * @return formatted time value
+     */
+    private String makeTimeValid(String t) {
+        return t.length() == 1 ? "0" + t : t;
+    }
+
 }

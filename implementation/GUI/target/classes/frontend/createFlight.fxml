@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="481.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.FlightController">
    <children>
-      <VBox prefHeight="481.0" prefWidth="700.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="createFlightWindow" onMouseMoved="#flightIDLabelText" prefHeight="481.0" prefWidth="700.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
               <fx:include fx:id="menuBar" source="topMenu.fxml" />
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="430.0" prefWidth="565.0">
@@ -150,7 +150,7 @@
                            <HBox.margin>
                               <Insets left="275.0" right="20.0" top="10.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="clearFlightsButton" mnemonicParsing="false" onAction="#test" prefHeight="25.0" prefWidth="115.0" text="Create flight(s)">
+                        <Button fx:id="clearFlightsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Create flight(s)">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>

@@ -23,20 +23,23 @@ public class GUIApp extends Application {
         switch (c.getName()) {
             case "frontend.FlightController":
                 return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
-            case "frontend.topMenuController":
-                return new topMenuController(this::getSceneManager);
-            case "frontend.welcomeController":
-                return new welcomeController(this::getSceneManager);
+            case "frontend.TopMenuController":
+                return new TopMenuController(this::getSceneManager);
+            case "frontend.WelcomeController":
+                return new WelcomeController(this::getSceneManager);
             case "frontend.managementDashboardController":
                 return new managementDashboardController(businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.editFlightController":
                 return new editFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager);
+                return new editDetailsFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
+            case "frontend.DeleteFlightController":
+                return new DeleteFlightController(this::getSceneManager,businessLogicAPI.getFlightManager());
             case "frontend.CreateBookingController":
                 return new CreateBookingController(this::getSceneManager);
+
             default:
                 return null;
         }
