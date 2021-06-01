@@ -3,10 +3,11 @@ package businessentitiesapi;
 import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @TableName(value = "bookingsView")
-public class Booking {
+public class Booking implements Serializable {
     @ID
     private final int bookingId;
 
