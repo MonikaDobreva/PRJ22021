@@ -3,15 +3,16 @@ package businessentitiesapi;
 import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @TableName(value = "personsView")
-public class Person {
+public class Person implements Serializable {
     @ID
     private final int personId;
 
     private final String firstName, lastName, email, gender;
-    private final LocalDate birhDate;
+    private final LocalDate birthDate;
 
     public Person(int personId, String firstName, String lastName, String email, String gender, LocalDate birhDate) {
         this.personId = personId;
@@ -19,7 +20,7 @@ public class Person {
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
-        this.birhDate = birhDate;
+        this.birthDate = birhDate;
     }
 
     public int getPersonId() {
@@ -42,7 +43,7 @@ public class Person {
         return gender;
     }
 
-    public LocalDate getBirhDate() {
-        return birhDate;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 }

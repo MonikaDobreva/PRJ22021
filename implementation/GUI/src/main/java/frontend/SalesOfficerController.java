@@ -19,7 +19,8 @@ public class SalesOfficerController {
 
     @FXML
     public void goToCreateFlight(){
-        sceneManagerSupplier.get().changeScene("createFlight");
+        Consumer<FlightController> cons = (FlightController c)->c.initWindow();
+        sceneManagerSupplier.get().changeScene("createFlight", cons);
     }
 
     @FXML

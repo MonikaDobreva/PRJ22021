@@ -3,23 +3,27 @@ package businessentitiesapi;
 import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
+import java.io.Serializable;
+
 @TableName(value = "ticketsView")
-public class Ticket {
+public class Ticket implements Serializable {
     @ID
     private final int ticketId;
 
-    private final int flightSeatId, cabinBaggage, checkedBaggage, mealId, bookingId, passengerId;
+    private String flightSeatId, mealId, bookingId, passengerId;
+    private final int cabinBaggage, checkedBaggage;
     private final boolean canceled;
     private final double pricePaid;
 
-    public Ticket(int ticketId, int flightSeatId, int cabinBaggage, int checkedBaggage, int mealId, int bookingId, int passengerId, boolean canceled, double pricePaid) {
+
+    public Ticket(int ticketId, String flightSeatId, String mealId, String bookingId, String passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, double pricePaid) {
         this.ticketId = ticketId;
         this.flightSeatId = flightSeatId;
-        this.cabinBaggage = cabinBaggage;
-        this.checkedBaggage = checkedBaggage;
         this.mealId = mealId;
         this.bookingId = bookingId;
         this.passengerId = passengerId;
+        this.cabinBaggage = cabinBaggage;
+        this.checkedBaggage = checkedBaggage;
         this.canceled = canceled;
         this.pricePaid = pricePaid;
     }
@@ -28,8 +32,20 @@ public class Ticket {
         return ticketId;
     }
 
-    public int getFlightSeatId() {
+    public String getFlightSeatId() {
         return flightSeatId;
+    }
+
+    public String getMealId() {
+        return mealId;
+    }
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public String getPassengerId() {
+        return passengerId;
     }
 
     public int getCabinBaggage() {
@@ -38,18 +54,6 @@ public class Ticket {
 
     public int getCheckedBaggage() {
         return checkedBaggage;
-    }
-
-    public int getMealId() {
-        return mealId;
-    }
-
-    public int getBookingId() {
-        return bookingId;
-    }
-
-    public int getPassengerId() {
-        return passengerId;
     }
 
     public boolean isCanceled() {
