@@ -14,13 +14,13 @@ public class Person implements Serializable {
     private final String firstName, lastName, email, gender;
     private final LocalDate birthDate;
 
-    public Person(int personId, String firstName, String lastName, String email, String gender, LocalDate birhDate) {
+    public Person(int personId, String firstName, String lastName, String email, String gender, LocalDate birthDate) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
-        this.birthDate = birhDate;
+        this.birthDate = birthDate;
     }
 
     public int getPersonId() {
