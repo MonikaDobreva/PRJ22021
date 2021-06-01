@@ -19,6 +19,7 @@ public class BookingManagerImpl implements BookingManager {
 
     @Override
     public Booking createBooking(String personId, String userId, LocalDateTime timeOfBooking) {
+        //The 0 is just a placeholder
         return new Booking(0, personId, userId, timeOfBooking);
     }
 

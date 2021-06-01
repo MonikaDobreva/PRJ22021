@@ -1,6 +1,6 @@
 package persistence;
 
-import businessentitiesapi.Booking;
+import businessentitiesapi.Ticket;
 import genericdao.dao.DAO;
 import genericdao.dao.TransactionToken;
 import genericdao.pgdao.PGDAOFactory;
@@ -12,21 +12,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-public class BookingStorageServiceImpl implements BookingStorageService {
+public class TicketStorageServiceImpl implements TicketStorageService {
 
-    private final DAO<Booking, Integer> bookingDao;
+    private final DAO<Ticket, Integer> ticketDao;
 
-    public BookingStorageServiceImpl() {
+    public TicketStorageServiceImpl() {
         DataSource ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
-        bookingDao = daof.createDao(Booking.class);
+        ticketDao = daof.createDao(Ticket.class);
     }
 
     @Override
-    public List<Booking> getAll() {
+    public List<Ticket> getAll() {
         try {
-            Collection<Booking> all = bookingDao.getAll();
-            bookingDao.close();
+            Collection<Ticket> all = ticketDao.getAll();
+            ticketDao.close();
             return new ArrayList<>(all);
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,18 +36,18 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     }
 
     @Override
-    public Booking add(Booking f) {
-        Optional<Booking> storedBooking = Optional.empty();
+    public Ticket add(Ticket f) {
+        Optional<Ticket> storedTicket = Optional.empty();
         try {
-            TransactionToken tok = bookingDao.startTransaction();
-            storedBooking = bookingDao.save(f);
+            TransactionToken tok = ticketDao.startTransaction();
+            storedTicket = ticketDao.save(f);
             tok.commit();
-            bookingDao.close();
+            ticketDao.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return storedBooking.get();
+        return storedTicket.get();
     }
 
 }
