@@ -133,3 +133,8 @@ hs_err_pid*
 /implementation/genericdao/target/
 /implementation/genericmapper22/target/
 /implementation/bulkvalidator/target/
+/implementation/GUI/target/
+
+.DS_Store
+
+

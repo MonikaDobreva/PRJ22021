@@ -57,6 +57,8 @@ public class PGJDBCUtils {
                     String[] serverNames = {
                         props.getProperty( prefix + "dbhost" )
                     };
+                    int[] portNumbers = {Integer.parseInt(props.getProperty(prefix + "port"))};
+                    source.setPortNumbers(portNumbers);
                     source.setServerNames( serverNames );
                                         source.setDatabaseName( props
                             .getProperty( prefix + "dbname" ) );
