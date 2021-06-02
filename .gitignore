@@ -132,3 +132,4 @@ hs_err_pid*
 /implementation/Assembler/application.properties
 /implementation/genericdao/target/
 /implementation/genericmapper22/target/
+/implementation/bulkvalidator/target/

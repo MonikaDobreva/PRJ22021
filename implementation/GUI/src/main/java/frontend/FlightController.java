@@ -118,10 +118,9 @@ public class FlightController {
      */
     @FXML
     private void storeFlight() {
-
         try {
             Flight f = flightManager.createFlight(
-                    1, //placeholder, id should be generated according to the amount of flight already in the database
+                    Integer.parseInt(flightIDLabel.getText()),
                     originApDropdown.getValue(),
                     destinationApDropdown.getValue(),
                     LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),

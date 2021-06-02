@@ -30,7 +30,7 @@ public class FlightManagerImpl implements FlightManager {
 
 
     @Override
-    public Flight createFlight(
+    public Flight createFlight (
             int flightID,
             String originAirport,
             String destinationAirport,

@@ -54,7 +54,7 @@ public class FlightTest {
             int hourOrg,
             int hourDes,
             int min,
-            String airplanName,
+            String airplaneName,
             String price) {
 
         ThrowingCallable code = () -> {
@@ -64,7 +64,7 @@ public class FlightTest {
                     destAirp,
                     LocalDateTime.of(year, Month.of(month), month, hourOrg, min),
                     LocalDateTime.of(year, Month.of(month), month, hourDes, min),
-                    airplanName,
+                    airplaneName,
                     new BigDecimal(price)
             );
         };

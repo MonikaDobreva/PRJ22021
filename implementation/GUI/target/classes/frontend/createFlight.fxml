@@ -137,7 +137,7 @@
                               <Insets right="20.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                            <Button fx:id="ShowFlights" onAction="#switchToViewFlight" prefHeight="25.0" prefWidth="115.0" text="Clear Fields">
+                            <Button fx:id="ShowFlights" prefHeight="25.0" prefWidth="115.0" text="Clear Fields">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
@@ -146,11 +146,11 @@
                     </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="286.0">
                      <children>
-                            <Button fx:id="StoreFlight" onAction="#storeFlight" prefHeight="25.0" prefWidth="115.0" text="Add More Flights">
+                            <Button fx:id="StoreFlight" prefHeight="25.0" prefWidth="115.0" text="Add More Flights">
                            <HBox.margin>
                               <Insets left="275.0" right="20.0" top="10.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="clearFlightsButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Create flight(s)">
+                        <Button fx:id="clearFlightsButton" mnemonicParsing="false" onAction="#storeFlight" prefHeight="25.0" prefWidth="115.0" text="Create flight(s)">
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>

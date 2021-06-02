@@ -19,6 +19,7 @@
     <bytecodeTargetLevel>
       <module name="AirlineInformationSystem" target="11" />
       <module name="Assembler" target="11" />
+      <module name="bulkvalidator" target="11" />
       <module name="BusinessEntitiesAPI" target="11" />
       <module name="BusinessLogic" target="11" />
       <module name="genericdao" target="11" />
@@ -35,9 +36,9 @@
       <module name="BusinessLogic" options="-Xpkginfo:always" />
       <module name="GUI" options="-Xpkginfo:always" />
       <module name="Persistence" options="-Xpkginfo:always" />
-      <module name="genericdao" options="" />
-      <module name="genericmapper" options="" />
-      <module name="genericranges" options="" />
+      <module name="genericdao" options="-Xpkginfo:always" />
+      <module name="genericmapper" options="-Xpkginfo:always" />
+      <module name="genericranges" options="-Xpkginfo:always" />
     </option>
   </component>
 </project>

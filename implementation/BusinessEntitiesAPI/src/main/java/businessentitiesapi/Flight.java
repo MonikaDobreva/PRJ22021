@@ -2,14 +2,10 @@ package businessentitiesapi;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Pattern;
+
 import nl.fontys.sebivenlo.sebiannotations.*;
 
 /**
@@ -21,17 +17,15 @@ import nl.fontys.sebivenlo.sebiannotations.*;
 public class Flight implements Serializable {
     
     @ID
-    private final int flightID;
-    private final String originAirport;
-    private final String destinationAirport;
-    private final LocalDateTime departureTime;
-    private final LocalDateTime arrivalTime;
-    private final String airplaneModel;
-    private final BigDecimal basePrice;
-    // The airplane and airports will be implemented as own classes later!
-    // For now they are just Strings. You can delete comment when implemented.
+    private int flightID;
+    private String originAirport;
+    private String destinationAirport;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
+    private String airplaneModel;
+    private BigDecimal basePrice;
 
-    public Flight(
+    public Flight (
             int flightID,
             String originAirport,
             String destinationAirport,
@@ -39,78 +33,73 @@ public class Flight implements Serializable {
             LocalDateTime arrTime,
             String airplane,
             BigDecimal basePrice
-    ) {
+    ){
+        List<String> exceptions = new ArrayList<>();
+
         this.flightID = flightID;
 
-        /**
-         * this checks that the originAirport is set to the 3 letter code
-         */
+        // Check that the originAirport is set to the 3 letter code
         if (Pattern.matches("[A-Z]{3}", originAirport)) {
             this.originAirport = originAirport;
         } else {
-            throw new IllegalArgumentException(
+            exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("originAirportCode"));
-         
+
         }
 
-        /**
-         * this checks that the destinationAirport is set to 3 letter code and
-         * is not the same as origin airport
-         */
+        // Check that the destinationAirport is set to 3 letter code and
+        // is not the same as origin airport
         if (Pattern.matches("[A-Z]{3}", destinationAirport) && !originAirport.equals(destinationAirport)) {
              this.destinationAirport = destinationAirport;
         } else {
-             throw new IllegalArgumentException(
+             exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("destinationAirport"));
         }
-        
-        /**
-         * this checks that the departure time is in the future
-         */
+
+        // Check that the departure time is in the future
         if (depTime.isAfter(LocalDateTime.now())) {
             this.departureTime = depTime;
         }else{
-            throw new IllegalArgumentException(
+            exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("depTimePast"));
         }
-        
-        /**
-         * this checks that the arrival time lies after the departure time
-         */
+
+        // Check that the arrival time lies after the departure time
         if (arrTime.isAfter(depTime)) {
-             this.arrivalTime = arrTime;
+            this.arrivalTime = arrTime;
         }else{
-            throw new IllegalArgumentException(
+            exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("arrTime"));
-           
+
         }
-        
-        /**
-         * this checks that the airplane model only consists of letters and numbers and whitespaces
-         */
+
+        // Check that the airplane model only consists of letters and numbers and whitespaces
         if (Pattern.matches("[a-zA-Z_0-9\\s\\-]+", airplane)) {
             this.airplaneModel = airplane;
         }else{
              throw new IllegalArgumentException(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("airplaneModel"));
-           
+
         }
-        
-        /**
-         * this checks that the baseprice cannot be 0 or less
-         */
+
+        // Check that the basePrice cannot be 0 or less
         if (basePrice.doubleValue() > 0) {
             this.basePrice = basePrice;
         }else{
-            throw new IllegalArgumentException(
+            exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("price"));
         }
+
+        if (!exceptions.isEmpty()) {
+            throw new IllegalArgumentException(String.join("\n", exceptions));
+        }
+
     }
     
     public int getFlightID() {
@@ -150,7 +139,7 @@ public class Flight implements Serializable {
     // arriving at ... on DAY.MONTH at HH:mm
     @Override
     public String toString() {
-        return "Airplane " + airplaneModel + " on flight " + getFlightID() + "\n"
+        return "Airplane " + airplaneModel + " on flight " + flightID + "\n"
                 + "departing from " + originAirport + " on " + departureTime.getDayOfMonth() + "." + departureTime.getMonth()
                 + " at " + departureTime.getHour() + ":" + departureTime.getMinute() + "\n"
                 + "arriving at " + destinationAirport + " on " + arrivalTime.getDayOfMonth() + "." + arrivalTime.getMonth()
@@ -199,8 +188,4 @@ public class Flight implements Serializable {
         return true;
     }
 
- 
-    
-    
-    
 }
