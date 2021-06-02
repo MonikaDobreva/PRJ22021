@@ -9,7 +9,10 @@ import java.util.function.Supplier;
 
 public class CreateBookingController {
 
+    private final Supplier<SceneManager> sceneManager;
+
     public CreateBookingController(Supplier<SceneManager> sceneManager) {
+        this.sceneManager = sceneManager;
     }
 
     @FXML
@@ -23,6 +26,9 @@ public class CreateBookingController {
 
     @FXML
     Button submitButton;
+
+    @FXML
+    PassengerInfoController passengerInfoController;
 
 
 }

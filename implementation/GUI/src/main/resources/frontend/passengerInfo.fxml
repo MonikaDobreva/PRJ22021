@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PassengerInfoController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.6" minWidth="10.0" prefWidth="132.8"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59999999999997" minWidth="0.0"

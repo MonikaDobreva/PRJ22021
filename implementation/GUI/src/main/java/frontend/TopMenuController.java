@@ -36,7 +36,7 @@ public class TopMenuController {
 
     @FXML
     private void switchToCreateBooking() throws IOException {
-        sceneManagerSupplier.get().changeScene("welcome");
+        sceneManagerSupplier.get().changeScene("createBooking");
     }
 
     @FXML
