@@ -52,13 +52,44 @@
                   GridPane.rowIndex="7"/>
         <Label text="Cabin luggage: " GridPane.rowIndex="8"/>
         <ComboBox fx:id="cabinLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1"
-                  GridPane.rowIndex="8"/>
+                  GridPane.rowIndex="8">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="1"/>
+                <String fx:value="2"/>
+                <String fx:value="3"/>
+            </FXCollections>
+        </items>
+        </ComboBox>
         <Label text="Hand luggage: " GridPane.rowIndex="9"/>
         <ComboBox fx:id="handLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1"
-                  GridPane.rowIndex="9"/>
+                  GridPane.rowIndex="9">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="1"/>
+                <String fx:value="2"/>
+                <String fx:value="3"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
         <Label text="Select meal: " GridPane.rowIndex="10"/>
         <ComboBox fx:id="meal" disable="true" prefWidth="150.0" promptText="Standard Meal" GridPane.columnIndex="1"
-                  GridPane.rowIndex="10"/>
+                  GridPane.rowIndex="10">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Standard Meal"/>
+                    <String fx:value="None"/>
+                    <String fx:value="Vegan"/>
+                    <String fx:value="Vegetarian"/>
+                    <String fx:value="Muslim"/>
+                    <String fx:value="Kosher"/>
+                    <String fx:value="Child Meal"/>
+                    <String fx:value="Diabetic"/>
+                    <String fx:value="Gluten Free"/>
+                    <String fx:value="Lactose Free"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
         <Label text="First name:" GridPane.rowIndex="1"/>
         <Label text="Last name:" GridPane.rowIndex="2"/>
         <Label text="Gender:" GridPane.rowIndex="3"/>

@@ -1,5 +1,6 @@
 package frontend;
 
+import businessentitiesapi.Passenger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -29,6 +30,12 @@ public class CreateBookingController {
 
     @FXML
     PassengerInfoController passengerInfoController;
+
+    @FXML
+    void onPassengerOrNotBoxClicked() {
+        System.out.println("Hello worldi");
+        passengerInfoController.enablePassengerFields();
+    }
 
 
 }
