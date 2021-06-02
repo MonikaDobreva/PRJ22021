@@ -128,18 +128,18 @@ fabric.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/implementation/target/
-/implementation/Assembler/target/
-/implementation/Assembler/application.properties
-/implementation/genericdao/application.properties
-/implementation/genericdao/target/
-/implementation/genericmapper22/target/
-/implementation/bulkvalidator/target/
-/implementation/GUI/target/
+implementation/target/
+implementation/Assembler/target/
+implementation/Assembler/application.properties
+implementation/genericdao/application.properties
+implementation/genericdao/target/
+implementation/genericmapper22/target/
+implementation/bulkvalidator/target/
+implementation/GUI/target/
 
 .DS_Store
 
 
-/implementation/genericdao/
-/implementation/genericmapper22/
-/implementation/genericranges/
+implementation/genericdao/
+implementation/genericmapper22/
+implementation/genericranges/
