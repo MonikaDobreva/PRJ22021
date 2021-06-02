@@ -1,11 +1,14 @@
 package frontend;
 
+import businessentitiesapi.Flight;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 public class PassengerInfoController {
+
+    private Flight flight;
 
     @FXML
     public TextField firstName;
@@ -37,11 +40,20 @@ public class PassengerInfoController {
     @FXML
     public ComboBox<String> meal;
 
-    void enablePassengerFields() {
-        passportNumber.setDisable(false);
-        seatNumber.setDisable(false);
-        cabinLuggage.setDisable(false);
-        handLuggage.setDisable(false);
-        meal.setDisable(false);
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    void setPassengerFields(boolean isEnabled) {
+        var actualState = !isEnabled;
+        if (flight == null && isEnabled) {
+            return;
+        }
+
+        passportNumber.setDisable(actualState);
+        seatNumber.setDisable(actualState);
+        cabinLuggage.setDisable(actualState);
+        handLuggage.setDisable(actualState);
+        meal.setDisable(actualState);
     }
 }

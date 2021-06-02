@@ -1,6 +1,8 @@
 package persistence;
 
 import businessentitiesapi.Flight;
+import businessentitiesapi.FlightSeat;
+
 import java.util.List;
 
 /**
@@ -16,6 +18,8 @@ public interface FlightStorageService {
     boolean update(Flight f);
 
     int getLastID();
+
+    List<FlightSeat> getSeats();
 
 
 }

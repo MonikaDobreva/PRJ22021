@@ -3,6 +3,7 @@ package persistence;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import businessentitiesapi.FlightSeat;
 import genericdao.dao.DAO;
 import genericdao.dao.TransactionToken;
 
@@ -124,6 +125,11 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         };
 
         return id;
+    }
+
+    @Override
+    public List<FlightSeat> getSeats() {
+        return List.of(new FlightSeat(), new FlightSeat());
     }
 
 }

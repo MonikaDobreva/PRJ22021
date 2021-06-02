@@ -38,7 +38,7 @@ public class GUIApp extends Application {
             case "frontend.DeleteFlightController":
                 return new DeleteFlightController(this::getSceneManager,businessLogicAPI.getFlightManager());
             case "frontend.CreateBookingController":
-                return new CreateBookingController(this::getSceneManager);
+                return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.PassengerInfoController":
                 return new PassengerInfoController();
 

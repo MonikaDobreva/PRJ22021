@@ -31,7 +31,7 @@
                 <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
                         <Label text="Flight:"/>
-                        <ComboBox fx:id="selectFlight" prefHeight="25.0"
+                        <ComboBox fx:id="selectFlight" onAction="#onFlightSelected" prefHeight="25.0"
                                   prefWidth="190.0" promptText="select flight">
                             <HBox.margin>
                                 <Insets/>
