@@ -139,3 +139,6 @@ hs_err_pid*
 .DS_Store
 
 
+/implementation/genericdao/
+/implementation/genericmapper22/
+/implementation/genericranges/
