@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.TopMenuController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.TopMenuController">
    <children>
       <MenuBar fx:id="menuBar" prefHeight="28.0" prefWidth="483.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
@@ -30,7 +30,7 @@
                   <MenuItem fx:id="viewFlightsMenu" mnemonicParsing="false" onAction="#switchToViewFlights" text="Flights" />
                   <MenuItem fx:id="viewBookingsMenu" mnemonicParsing="false" onAction="#switchToViewBookings" text="Bookings" />
                   <MenuItem fx:id="viewRoutesMenu" mnemonicParsing="false" onAction="#switchToViewRoutes" text="Routes" />
-                  <MenuItem fx:id="viewDashboardMenu" mnemonicParsing="false" onAction="#switchToViewDashboard" text="Go to MD..." />
+                  <MenuItem fx:id="viewDashboardMenu" mnemonicParsing="false" onAction="#switchToViewDashboard" text="Management Dashboard" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Help">
