@@ -36,4 +36,12 @@ public class PassengerInfoController {
 
     @FXML
     public ComboBox<String> meal;
+
+    void enablePassengerFields() {
+        passportNumber.setDisable(false);
+        seatNumber.setDisable(false);
+        cabinLuggage.setDisable(false);
+        handLuggage.setDisable(false);
+        meal.setDisable(false);
+    }
 }
