@@ -74,6 +74,11 @@ public class editDetailsFlightController {
 
     private void showFlightDetails() {
         arrivalTime.setText(editFlight.getArrivalTime().toString());
+        departureTime.setText(editFlight.getDepartureTime().toString());
+        airplane.setText(editFlight.getAirplane());
+        price.setText(editFlight.getBasePrice().toPlainString());
+        destination.setText(editFlight.getDestinationAirport());
+        origin.setText(editFlight.getOriginAirport());
     }
 
     /**
@@ -219,7 +224,7 @@ public class editDetailsFlightController {
         }
 
         try {
-            Flight f = flightManager.createFlight(1, //placeholder, id should be generated according to the amount of flight already in the database
+            Flight f = flightManager.createFlight(1, //placeholder, id should be same as old is done in database
                     originAirport, destinationAirport, depTime, arrTime, airplane, basePrice);
             boolean update = flightManager.update(f);
             if (update == true) {
