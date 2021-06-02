@@ -57,14 +57,18 @@ public class PGJDBCUtils {
                     String[] serverNames = {
                         props.getProperty( prefix + "dbhost" )
                     };
-                    int[] portNumbers = {Integer.parseInt(props.getProperty(prefix + "port"))};
-                    source.setPortNumbers(portNumbers);
+
+                    var portNumber = props.getProperty(prefix + "port");
+                    if (portNumber != null) {
+                        int[] portNumbers = {Integer.parseInt(portNumber)};
+                        source.setPortNumbers(portNumbers);
+                    }
+
+
                     source.setServerNames( serverNames );
-                                        source.setDatabaseName( props
-                            .getProperty( prefix + "dbname" ) );
+                    source.setDatabaseName( props.getProperty( prefix + "dbname" ) );
                     source.setUser( props.getProperty( prefix + "username" ));
-                    source.setPassword( props
-                            .getProperty( prefix + "password" ) );
+                    source.setPassword( props.getProperty( prefix + "password" ) );
                     String pingQuery = "SELECT current_database(), now()::TIMESTAMP as now;";
                     try ( Connection con = source.getConnection();
                     PreparedStatement pst = con.prepareStatement( pingQuery ); ) {
