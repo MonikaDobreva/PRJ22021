@@ -16,8 +16,8 @@ public class Airplane implements Serializable {
 
     @ID
     private final int airplaneID;
-    private final String airplaneCode;
     private final String model;
+    private final String airplaneCode;
     private final int capacity;
 
     public Airplane(int airplaneID, String name, String code, int amountSeats) {

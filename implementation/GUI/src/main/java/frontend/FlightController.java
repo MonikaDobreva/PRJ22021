@@ -203,7 +203,7 @@ public class FlightController {
     public void listAirplaneModels(){
         airplaneModelDropdown.setItems((FXCollections.observableArrayList(
                 airplaneManager.getAirplanes().stream()
-                        .map(Airplane::getAirplaneCode)
+                        .map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")")
                         .collect(Collectors.toList()))));
     }
 
