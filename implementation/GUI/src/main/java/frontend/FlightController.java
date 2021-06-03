@@ -26,6 +26,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -118,30 +120,47 @@ public class FlightController {
      */
     @FXML
     private void storeFlight() {
+        //Obtain Departure and Arrival times - Use Optional to catch case where fields are empty
+        Optional<LocalDateTime> departureTime = Optional.empty();
+        Optional<LocalDateTime> arrivalTime = Optional.empty();;
+        try{
+            departureTime = Optional.of(LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString())
+                    + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " "
+                    + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
+            arrivalTime = Optional.of(LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString())
+                    + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " "
+                    + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
+        } catch (Exception ex){
+            showAlert("Warning!", "Invalid Departure or Arrival Time!", AlertType.ERROR);
+            return;
+        }
+
         try {
             Flight f = flightManager.createFlight(
                     Integer.parseInt(flightIDLabel.getText()),
                     originApDropdown.getValue(),
                     destinationApDropdown.getValue(),
-                    LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " " + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
-                    LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString()) + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " " + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")),
+                    departureTime.get(),
+                    arrivalTime.get(),
                     airplaneModelDropdown.getValue(),
                     new BigDecimal(basePriceField.getText())
             );
             flightManager.add(f);
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Successfully added flight!");
-            alert.showAndWait();
+            showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
 
-        } catch (Exception d) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Warning!");
-            alert.setHeaderText(null);
-            alert.setContentText(d.getMessage());
-            alert.showAndWait();
+        } catch (IllegalArgumentException ex) {
+            showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
+        } catch (NoSuchElementException | NullPointerException ex){
+            showAlert("Warning!", "Some of the fields are empty! Please have a look :)", AlertType.ERROR);
         }
+    }
+
+    public void showAlert(String title, String message, AlertType type){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     /**

@@ -81,7 +81,7 @@ public class Flight implements Serializable {
         if (Pattern.matches("[a-zA-Z_0-9\\s\\-]+", airplane)) {
             this.airplaneModel = airplane;
         }else{
-             throw new IllegalArgumentException(
+            exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
                             .getString("airplaneModel"));
 
