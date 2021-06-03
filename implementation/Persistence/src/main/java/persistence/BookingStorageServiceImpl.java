@@ -25,6 +25,7 @@ public class BookingStorageServiceImpl implements BookingStorageService {
     @Override
     public List<Booking> getAll() {
         try {
+            TransactionToken tok = bookingDao.startTransaction();
             Collection<Booking> all = bookingDao.getAll();
             bookingDao.close();
             return new ArrayList<>(all);

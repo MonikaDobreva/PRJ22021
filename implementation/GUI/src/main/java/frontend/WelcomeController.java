@@ -11,6 +11,8 @@ import java.util.function.Supplier;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}

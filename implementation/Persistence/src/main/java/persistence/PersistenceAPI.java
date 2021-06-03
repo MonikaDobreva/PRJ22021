@@ -33,6 +33,10 @@ public interface PersistenceAPI {
         return null;
     }
 
+    default BookingStorageService getBookingStorageService(BookingManager bookingManager){
+        return null;
+    };
+
     // This interface can be extended with all services that need to be made
     // available to the business logic
 

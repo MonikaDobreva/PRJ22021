@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.managementDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.managementDashboardController">
    <children>
-      <VBox layoutX="139.0" layoutY="66.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="139.0" layoutY="66.0" prefHeight="400.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
              <fx:include fx:id="menuBar" source="topMenu.fxml" />
-            <VBox prefHeight="583.0" prefWidth="992.0">
+            <VBox prefHeight="468.0" prefWidth="678.0">
                <children>
                    <Label prefHeight="44.0" prefWidth="281.0" text="Management Dashboard" textFill="#4f78b0">
                        <font>
@@ -34,10 +24,10 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="461.0" prefWidth="943.0">
                                  <children>
-                                    <GridPane layoutX="14.0" layoutY="14.0">
+                                    <GridPane layoutX="14.0" layoutY="14.0" prefHeight="179.0" prefWidth="200.0">
                                       <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="60.0" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,17 +36,49 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <Label text="Total Flights:" />
-                                          <Label fx:id="totalFlightsLabel" layoutX="10.0" layoutY="17.0" text="0" GridPane.columnIndex="1" />
-                                          <Label layoutX="10.0" layoutY="17.0" text="Total Routes:" GridPane.rowIndex="1" />
-                                          <Label layoutX="10.0" layoutY="47.0" text="Total Bookings:" GridPane.rowIndex="2" />
-                                          <Label fx:id="totalRoutesLabel" layoutX="110.0" layoutY="17.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Label fx:id="totalBookingsLabel" layoutX="110.0" layoutY="47.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Label text="Total tickets:" GridPane.rowIndex="3" />
-                                          <Label fx:id="totalBookingsLabel1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="Total Flights:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalFlightsLabel" layoutX="10.0" layoutY="17.0" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="17.0" text="Total Routes:" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="10.0" layoutY="47.0" text="Total Bookings:" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalRoutesLabel" layoutX="110.0" layoutY="17.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalBookingsLabel" layoutX="110.0" layoutY="47.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Total tickets:" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalTicketsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </GridPane>
-                                    <Button fx:id="updateStatisticsButton" layoutX="14.0" layoutY="314.0" mnemonicParsing="false" onAction="#updateData" text="Update Statistics" />
+                                    <Button fx:id="updateStatisticsButton" layoutX="14.0" layoutY="314.0" mnemonicParsing="false" onAction="#updateFlightStatistics" text="Update Statistics" />
                                  </children></AnchorPane>
                         </content>
                       </Tab>
@@ -71,7 +93,7 @@
                                                 <Label text="%mDashSelectAFlight" />
                                                 <ComboBox fx:id="mDashFlightDropdown" onMouseClicked="#listFlights" prefWidth="150.0" />
                                                 <Label text="%andABooking" />
-                                                <ComboBox prefWidth="150.0" />
+                                                <ComboBox fx:id="mDashBookingDropdown" onMouseClicked="#listFlightsDependingOnSelectedFlight" prefWidth="150.0" />
                                                 <Button mnemonicParsing="false" onAction="#updateFlightData" text="%applyBookings" />
                                              </children>
                                           </HBox>
@@ -142,25 +164,63 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="631.0" spacing="10.0">
                                              <children>
-                                                <Label text="Select a route:" />
+                                                <Label text="Select a route you want to see statistics for:">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Label>
                                                 <ComboBox prefWidth="150.0" />
                                                 <Button mnemonicParsing="false" text="Apply" />
                                              </children>
                                           </HBox>
-                                          <GridPane>
+                                          <GridPane prefHeight="188.0" prefWidth="631.0">
                                             <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="311.0" minWidth="10.0" prefWidth="159.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="478.0" minWidth="10.0" prefWidth="472.0" />
                                             </columnConstraints>
                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label text="Origin Airport:" />
-                                                <Label text="Destination airport:" GridPane.rowIndex="1" />
-                                                <Label text="Label" GridPane.rowIndex="2" />
+                                                <Label text="Total flights:" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Total planes:" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Label" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font></Label>
+                                                <Label text="Total routes:">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="-" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="-" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="-" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="-" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </GridPane>
                                        </children>

@@ -46,4 +46,11 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         return flightRouteManager;
     }
 
+    @Override
+    public BookingManager getBookingsManager() {
+        BookingManagerImpl bookingManager = new BookingManagerImpl();
+        bookingManager.setBookingStorageService(persistenceAPI.getBookingStorageService(bookingManager));
+        return bookingManager;
+    }
+
 }

@@ -2,6 +2,7 @@ package businesslogic;
 
 import businessentitiesapi.AirplaneManager;
 import businessentitiesapi.AirportManager;
+import businessentitiesapi.BookingManager;
 import businessentitiesapi.FlightManager;
 import businessentitiesapi.FlightRouteManager;
 
@@ -21,4 +22,5 @@ public interface BusinessLogicAPI {
 
     FlightRouteManager getFlightRouteManager();
 
+    BookingManager getBookingsManager();
 }

@@ -17,29 +17,34 @@ import java.util.stream.Collectors;
 public class managementDashboardController {
 
     private final FlightManager flightManager;
+    private final BookingManager bookingManager;
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
 
     @FXML
-    Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel, mDashBookingsLabel, mDashMealsLabel;
+    Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
+            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel;
 
     @FXML
     Button updateStatisticsButton;
 
     @FXML
-    ComboBox<Integer> mDashFlightDropdown;
+    ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown;
 
-    public managementDashboardController(FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager){
+    public managementDashboardController(FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, BookingManager bookingManager){
         this.airplaneManager = airplaneManager;
         this.airportManager = airportManager;
         this.flightManager = flightManager;
+        this.bookingManager = bookingManager;
     }
 
     @FXML
-    private void updateData(){
+    private void updateFlightStatistics(){
         totalFlightsLabel.setText(String.valueOf((long) flightManager.getFlights().size()));
         totalRoutesLabel.setText("Test");
-        totalBookingsLabel.setText("Test");
+        totalBookingsLabel.setText(String.valueOf((long) bookingManager.getBookings().size()));
+        totalTicketsLabel.setText("Test");
+
     }
 
     @FXML
@@ -48,6 +53,15 @@ public class managementDashboardController {
                 flightManager.getFlights().stream()
                         .map(Flight::getFlightID)
                         .collect(Collectors.toList())));
+    }
+
+    @FXML
+    private void listFlightsDependingOnSelectedFlight(){
+        mDashBookingDropdown.setItems(FXCollections.observableArrayList(
+                bookingManager.getBookings().stream()
+                .map(Booking::getBookingId)
+                .collect(Collectors.toList())
+        ));
     }
 
     @FXML
