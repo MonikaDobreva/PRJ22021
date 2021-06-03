@@ -21,12 +21,13 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
-
 public class FlightStorageServiceImpl implements FlightStorageService {
 
     private final FlightManager flightManager;
@@ -74,18 +75,9 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public boolean delete(Flight f) {
         try {
-            TransactionToken tok = flightDao.startTransaction();
             flightDao.deleteEntity(f);
-            if (flightDao.get(f.getFlightID()).isEmpty()) {
-               tok.commit();
-               flightDao.close();
-               return true;
-            }else{
-                tok.rollback();
-                flightDao.close();
-                return false;
-            }
-
+            flightDao.close();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -95,18 +87,9 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public boolean update(Flight f) {
         try {
-            TransactionToken tok = flightDao.startTransaction();
             flightDao.update(f);
-            if (flightDao.get(f.getFlightID()).get().equals(f)) {
-               tok.commit();
-               flightDao.close();
-               return true;
-            }else{
-                tok.rollback();
-                flightDao.close();
-                return false;
-            }
-
+            flightDao.close();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -116,7 +99,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     @Override
     public int getLastID() {
         int id = 0;
-        try{
+        try {
             TransactionToken tok = flightDao.startTransaction();
             id = flightDao.lastId();
             flightDao.close();
@@ -128,8 +111,7 @@ public class FlightStorageServiceImpl implements FlightStorageService {
     }
 
 //    @Override
-  //  public List<FlightSeat> getSeats() {
-  //      return List.of(new FlightSeat(), new FlightSeat());
-  //  }
-
+    //  public List<FlightSeat> getSeats() {
+    //      return List.of(new FlightSeat(), new FlightSeat());
+    //  }
 }
