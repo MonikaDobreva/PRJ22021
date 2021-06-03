@@ -203,3 +203,16 @@ create or replace view ticketsView(
     as
 select *
 from tickets;
+
+create or replace view flightSeatsView(flightSeatId, seatId, flightId, available) as
+select *
+from flight_seats;
+
+create or replace view seatsView(seatId, seatTypeId, seatNumber, airplaneId) as
+select *
+from seats;
+
+create or replace view seatTypesView(seatTypeId, name, extraPrice) as
+select *
+from seat_types;
+

@@ -127,9 +127,9 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         return id;
     }
 
-    @Override
-    public List<FlightSeat> getSeats() {
-        return List.of(new FlightSeat(), new FlightSeat());
-    }
+//    @Override
+  //  public List<FlightSeat> getSeats() {
+  //      return List.of(new FlightSeat(), new FlightSeat());
+  //  }
 
 }

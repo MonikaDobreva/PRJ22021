@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @TableName(value = "bookingsView")
 public class Booking implements Serializable {
+
     @ID
     private final int bookingId;
 
