@@ -26,7 +26,7 @@ public class FlightController {
 
 
     @FXML
-    Label airplaneModelLabel = new Label(), flightIDLabel, originAirportLabel = new Label(), destinationAirportLabel = new Label();
+    Label flightIDLabel;
 
     @FXML
     VBox createFlightWindow;
@@ -38,7 +38,8 @@ public class FlightController {
     DatePicker depDatePicker, arrDatePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn, originAirportInfoBtn,
+            destinationAirportInfoBtn, airplaneInfoBtn;
 
     @FXML
     ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
@@ -171,6 +172,7 @@ public class FlightController {
 
         flightManager.add(f.get());
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
+        clearCreateFlightFields();
     }
 
     public void showAlert(String title, String message, AlertType type){
@@ -252,4 +254,35 @@ public class FlightController {
         flightsTable.getItems().clear();
     }
 
+    /**
+     * Clears the fields of the Create Flights window
+     */
+    public void clearCreateFlightFields() {
+        flightIDLabelText();
+        depTimeHourSpinner.getValueFactory().setValue(0);
+        depTimeMinSpinner.getValueFactory().setValue(0);
+        arrTimeHourSpinner.getValueFactory().setValue(0);
+        arrTimeMinSpinner.getValueFactory().setValue(0);
+        depDatePicker.getEditor().clear();
+        arrDatePicker.getEditor().clear();
+        originApDropdown.getSelectionModel().clearSelection();
+        destinationApDropdown.getSelectionModel().clearSelection();
+        airplaneModelDropdown.getSelectionModel().clearSelection();
+        basePriceField.setText("00.00");
+        originAirportInfoBtn.setVisible(false);
+        destinationAirportInfoBtn.setVisible(false);
+        airplaneInfoBtn.setVisible(false);
+    }
+
+    public void displayOriginAirportInfo(){
+
+    }
+
+    public void displayDestinationAirportInfo(){
+
+    }
+
+    public void displayAirplaneInfo(){
+
+    }
 }

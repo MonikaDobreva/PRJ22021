@@ -76,16 +76,17 @@ public class AirplaneStorageServiceImpl implements AirplaneStorageService{
 
     @Override
     public List<LocalDateTimeRange> getSchedule(Airplane a) {
-        //TODO: implement create airplane schedule from db
+
         List<LocalDateTimeRange> schedule = new ArrayList<>();
         String sql = format(
-                "select %1$s from %2$s where (%3$s)=(?)",
-                "(airplaneCode, departureTime, arrivalTime)",
+                "select %1$s from %2$s where %3$s = ?",
+                "airplaneCode, departureTime, arrivalTime",
                 "airplaneSchedule",
-                "airplaneCode" );
+                "airplaneCode");
         try (Connection con = ds.getConnection();
-             PreparedStatement pst = con.prepareStatement( sql );){
+             PreparedStatement pst = con.prepareStatement( sql);){
 
+            pst.setObject(1, a.getAirplaneCode());
             ResultSet result = pst.executeQuery();
 
             while(result.next()){
