@@ -5,66 +5,89 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBookingController">
+<AnchorPane prefHeight="576.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBookingController">
     <children>
-        <VBox prefHeight="481.0" prefWidth="600.0">
+        <VBox prefHeight="584.0" prefWidth="600.0">
 
             <children>
-                <fx:include fx:id="menuBar" source="topMenu.fxml"/>
+                <fx:include fx:id="menuBar" source="topMenu.fxml" />
                 <HBox alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="400.0">
                     <children>
                         <Label alignment="CENTER" text="Create booking" textFill="#4f78b0">
                             <font>
-                                <Font name="Calibri Bold Italic" size="25.0"/>
+                                <Font name="Calibri Bold Italic" size="25.0" />
                             </font>
                         </Label>
                     </children>
                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                     <opaqueInsets>
-                        <Insets/>
+                        <Insets />
                     </opaqueInsets>
                 </HBox>
-                <Separator prefWidth="200.0"/>
-                <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Separator prefWidth="200.0" />
+                <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="600.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
-                        <Label text="Flight:"/>
-                        <ComboBox fx:id="selectFlight" onAction="#onFlightSelected" prefHeight="25.0"
-                                  prefWidth="190.0" promptText="select flight">
+                        <Label text="Flight:" />
+                        <ComboBox fx:id="selectFlight" onAction="#onFlightSelected" prefHeight="25.0" prefWidth="190.0" promptText="select flight">
                             <HBox.margin>
-                                <Insets/>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                         </ComboBox>
                     </children>
                 </HBox>
-                <Separator layoutX="10.0" layoutY="250.0" prefWidth="200.0"/>
-                <CheckBox fx:id="passengerOrNot" onMouseClicked="#onPassengerOrNotBoxClicked" mnemonicParsing="false" text="also passenger?"/>
-                <HBox prefHeight="358.0" prefWidth="600.0">
+                <Separator layoutX="10.0" layoutY="250.0" prefWidth="200.0" />
+                <CheckBox fx:id="passengerOrNot" mnemonicParsing="false" onMouseClicked="#onPassengerOrNotBoxClicked" text="also passenger?">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></CheckBox>
+                <HBox prefHeight="549.0" prefWidth="591.0">
                     <children>
-                        <fx:include fx:id="passengerInfo" source="passengerInfo.fxml"/>
+                        <fx:include fx:id="passengerInfo" source="passengerInfo.fxml" />
                     </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
                 </HBox>
-                <Separator layoutX="10.0" layoutY="76.0" prefWidth="200.0"/>
-                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="79.0" spacing="10.0">
+                <Separator layoutX="10.0" layoutY="76.0" prefHeight="122.0" prefWidth="600.0" />
+                <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="79.0" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                     <children>
-                        <Label text="How many additional passengers?"/>
-                        <ComboBox fx:id="additionalPassenger" prefHeight="25.0"
-                                  prefWidth="190.0" promptText="0">
+                        <Label text="How many additional passengers?">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></Label>
+                        <ComboBox fx:id="additionalPassenger" prefHeight="25.0" prefWidth="190.0" promptText="0">
                             <HBox.margin>
-                                <Insets/>
+                                <Insets />
                             </HBox.margin>
                         </ComboBox>
                     </children>
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                                prefHeight="38.0" prefWidth="97.0" text="Submit">
+                        <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Submit">
                             <font>
-                                <Font size="16.0"/>
+                                <Font size="16.0" />
                             </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                         </Button>
                     </children>
                 </HBox>

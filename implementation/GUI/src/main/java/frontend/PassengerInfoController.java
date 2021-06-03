@@ -29,6 +29,9 @@ public class PassengerInfoController {
     public TextField passportNumber;
 
     @FXML
+    public ComboBox<String> seatType;
+
+    @FXML
     public ComboBox<String> seatNumber;
 
     @FXML
@@ -51,6 +54,7 @@ public class PassengerInfoController {
         }
 
         passportNumber.setDisable(actualState);
+        seatType.setDisable(actualState);
         seatNumber.setDisable(actualState);
         cabinLuggage.setDisable(actualState);
         handLuggage.setDisable(actualState);

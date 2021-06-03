@@ -6,96 +6,101 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PassengerInfoController">
+<GridPane vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PassengerInfoController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.6" minWidth="10.0" prefWidth="132.8"/>
-        <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59999999999997" minWidth="0.0"
-                           prefWidth="333.59999999999997"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.6" minWidth="10.0" prefWidth="132.8" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59999999999997" minWidth="0.0" prefWidth="333.59999999999997" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <Label text="Customer:">
             <font>
-                <Font size="21.0"/>
+                <Font size="21.0" />
             </font>
         </Label>
-        <TextField fx:id="firstName" prefHeight="26.0" prefWidth="147.0" promptText="first name"
-                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <TextField fx:id="lastName" promptText="last name" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <TextField fx:id="firstName" prefHeight="26.0" prefWidth="147.0" promptText="first name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="lastName" promptText="last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
         <ComboBox fx:id="gender" prefWidth="150.0" promptText="select" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:id="m" fx:value="male"/>
-                    <String fx:id="f" fx:value="female"/>
-                    <String fx:id="d" fx:value="diverse"/>
+                    <String fx:id="m" fx:value="male" />
+                    <String fx:id="f" fx:value="female" />
+                    <String fx:id="d" fx:value="diverse" />
                 </FXCollections>
             </items>
         </ComboBox>
-        <TextField fx:id="email" prefHeight="26.0" prefWidth="198.0" promptText="email" GridPane.columnIndex="1"
-                   GridPane.rowIndex="4"/>
-        <DatePicker fx:id="birthday" promptText="select birth day" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-        <TextField fx:id="passportNumber" disable="true" promptText="passport number" GridPane.columnIndex="1"
-                   GridPane.rowIndex="6"/>
-        <ComboBox fx:id="seatNumber" disable="true" prefWidth="150.0" promptText="seat" GridPane.columnIndex="1"
-                  GridPane.rowIndex="7"/>
-        <Label text="Cabin luggage: " GridPane.rowIndex="8"/>
-        <ComboBox fx:id="cabinLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1"
-                  GridPane.rowIndex="8">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1"/>
-                <String fx:value="2"/>
-                <String fx:value="3"/>
-            </FXCollections>
-        </items>
+        <TextField fx:id="email" prefHeight="26.0" prefWidth="198.0" promptText="email" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <DatePicker fx:id="birthday" promptText="select birth day" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <TextField fx:id="passportNumber" disable="true" promptText="passport number" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <ComboBox fx:id="seatNumber" disable="true" prefWidth="150.0" promptText="select" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Label text="Cabin luggage: " GridPane.rowIndex="9" />
+        <ComboBox fx:id="cabinLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                </FXCollections>
+            </items>
         </ComboBox>
-        <Label text="Hand luggage: " GridPane.rowIndex="9"/>
-        <ComboBox fx:id="handLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1"
-                  GridPane.rowIndex="9">
+        <Label text="Hand luggage: " GridPane.rowIndex="10" />
+        <ComboBox fx:id="handLuggage" disable="true" prefWidth="150.0" promptText="1" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="1" />
+                    <String fx:value="2" />
+                    <String fx:value="3" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="Select meal: " GridPane.rowIndex="11" />
+        <ComboBox fx:id="meal" disable="true" prefWidth="150.0" promptText="Standard Meal" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Standard Meal" />
+                    <String fx:value="None" />
+                    <String fx:value="Vegan" />
+                    <String fx:value="Vegetarian" />
+                    <String fx:value="Muslim" />
+                    <String fx:value="Kosher" />
+                    <String fx:value="Child Meal" />
+                    <String fx:value="Diabetic" />
+                    <String fx:value="Gluten Free" />
+                    <String fx:value="Lactose Free" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="First name:" GridPane.rowIndex="1" />
+        <Label text="Last name:" GridPane.rowIndex="2" />
+        <Label text="Gender:" GridPane.rowIndex="3" />
+        <Label text="Email:" GridPane.rowIndex="4" />
+        <Label text="Date of birth:" GridPane.rowIndex="5" />
+        <Label text="Passport number:" GridPane.rowIndex="6" />
+        <Label text="Seat:" GridPane.rowIndex="8" />
+        <Label text="Seat Type:" GridPane.rowIndex="7" />
+        <ComboBox fx:id="seatType" disable="true" prefWidth="150.0" promptText="select" GridPane.columnIndex="1" GridPane.rowIndex="7">
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1"/>
-                <String fx:value="2"/>
-                <String fx:value="3"/>
+                <String fx:value="Economy" />
+                <String fx:value="Premium Economy" />
+                <String fx:value="Business" />
+                <String fx:value="First Class" />
+                <String fx:value="Emergency Exit" />
             </FXCollections>
         </items>
     </ComboBox>
-        <Label text="Select meal: " GridPane.rowIndex="10"/>
-        <ComboBox fx:id="meal" disable="true" prefWidth="150.0" promptText="Standard Meal" GridPane.columnIndex="1"
-                  GridPane.rowIndex="10">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Standard Meal"/>
-                    <String fx:value="None"/>
-                    <String fx:value="Vegan"/>
-                    <String fx:value="Vegetarian"/>
-                    <String fx:value="Muslim"/>
-                    <String fx:value="Kosher"/>
-                    <String fx:value="Child Meal"/>
-                    <String fx:value="Diabetic"/>
-                    <String fx:value="Gluten Free"/>
-                    <String fx:value="Lactose Free"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Label text="First name:" GridPane.rowIndex="1"/>
-        <Label text="Last name:" GridPane.rowIndex="2"/>
-        <Label text="Gender:" GridPane.rowIndex="3"/>
-        <Label text="Email:" GridPane.rowIndex="4"/>
-        <Label text="Date of birth:" GridPane.rowIndex="5"/>
-        <Label text="Passport number:" GridPane.rowIndex="6"/>
-        <Label text="Seat:" GridPane.rowIndex="7"/>
-    </children>
-</GridPane>
+</children>
+        </GridPane>
