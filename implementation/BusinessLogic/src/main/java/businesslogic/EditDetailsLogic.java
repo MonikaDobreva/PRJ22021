@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
  */
 public class EditDetailsLogic {
     
-    
     public LocalDateTime makeDateTime(Integer hour, Integer min, LocalDate date){
          return  LocalDateTime.parse(
                     makeTimeValid(hour.toString())
