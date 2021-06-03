@@ -216,3 +216,23 @@ create or replace view seatTypesView(seatTypeId, name, extraPrice) as
 select *
 from seat_types;
 
+-- Trigger that fires when trying to delete a flight trough the flight view(flightsTable)
+create trigger delete_flight
+    instead of delete
+    on flightsView
+    for each row
+execute procedure flight_delete();
+
+-- Function that returns a trigger. It allows to delete a flight in the Flights table through
+-- the Flights view (flightsTable)
+create or replace function flight_delete()
+    returns trigger as $$
+declare
+   
+begin
+	
+  	DELETE FROM flights  WHERE flights.id = old.flightid;
+   
+    return new;
+end;
+$$ language plpgsql;
