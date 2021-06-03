@@ -111,3 +111,12 @@ create table if not exists tickets
     passenger_id    int                   not null references passengers (id),
     price_paid      numeric(10,2)         not null check (price_paid >= 0.00)
 );
+
+--to be able to delete a flight
+ALTER TABLE public.flight_seats 
+drop CONSTRAINT flight_seats_flight_id_fkey;
+ALTER TABLE public.flight_seats ADD CONSTRAINT flight_seats_flight_id_fkey FOREIGN KEY (flight_id) REFERENCES flights(id)ON DELETE cascade;
+
+ALTER TABLE public.tickets 
+drop CONSTRAINT tickets_flight_seat_id_fkey;
+ALTER TABLE public.tickets ADD CONSTRAINT tickets_flight_seat_id_fkey FOREIGN KEY (flight_seat_id) REFERENCES flight_seats(id)ON DELETE cascade;
