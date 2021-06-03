@@ -1,9 +1,6 @@
 package persistence;
 
-import businessentitiesapi.Airplane;
-import businessentitiesapi.AirplaneManager;
-import businessentitiesapi.AirportManager;
-import businessentitiesapi.FlightManager;
+import businessentitiesapi.*;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -29,6 +26,10 @@ public interface PersistenceAPI {
     }
 
     default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager){
+        return null;
+    }
+
+    default FlightRouteStorageService getFlightRouteStorageService(FlightRouteManager flightRouteManager){
         return null;
     }
 

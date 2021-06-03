@@ -32,6 +32,7 @@ public class AirplaneManagerTest {
 
     Airplane ap1 = new Airplane(0, "Boeing 377","V-BBBB",367);
     Airplane ap2 = new Airplane(1, "Boeing 350","V-AAAA",250);
+    Airplane ap3 = new Airplane(2, "Boeing 250","V-CCCC",20);
 
     LocalDateTime a = LocalDateTime.of(2021, 6, 21, 17,35);
     LocalDateTime b = LocalDateTime.of(2021, 6, 21, 22,25);
@@ -143,5 +144,16 @@ public class AirplaneManagerTest {
 
             assertThat(result).isTrue();
         }
+    }
+
+    @Test
+    public void getAirplaneTest(){
+        airplanes.add(ap1);
+        airplanes.add(ap2);
+        airplanes.add(ap3);
+
+        Mockito.when(apStorage.getAll()).thenReturn(airplanes);
+
+        assertThat(airplaneManager.getAirplane("V-AAAA")).isEqualTo(ap2);
     }
 }

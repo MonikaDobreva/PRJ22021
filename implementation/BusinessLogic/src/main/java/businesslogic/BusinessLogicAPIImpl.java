@@ -1,9 +1,6 @@
 package businesslogic;
 
-import businessentitiesapi.Airplane;
-import businessentitiesapi.AirplaneManager;
-import businessentitiesapi.AirportManager;
-import businessentitiesapi.FlightManager;
+import businessentitiesapi.*;
 import persistence.PersistenceAPI;
 
 /**
@@ -40,6 +37,13 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     public EditDetailsLogic getEditDetailsLogic() {
         EditDetailsLogic edl = new EditDetailsLogic();
         return edl;
+    }
+
+    @Override
+    public FlightRouteManager getFlightRouteManager() {
+        FlightRouteManagerImpl flightRouteManager = new FlightRouteManagerImpl();
+        flightRouteManager.setFlightRouteStorageService(persistenceAPI.getFlightRouteStorageService(flightRouteManager));
+        return flightRouteManager;
     }
 
 }

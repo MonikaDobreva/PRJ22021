@@ -6,6 +6,7 @@ import persistence.FlightRouteStorageService;
 import persistence.FlightStorageService;
 
 import java.util.List;
+import java.util.Optional;
 
 public class FlightRouteManagerImpl implements FlightRouteManager {
 
@@ -29,5 +30,18 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     @Override
     public List<FlightRoute> getFlightRoutes() {
         return flightRouteStorageService.getAll();
+    }
+
+    @Override
+    public void checkExistence(String originAirport, String destinationAirport) {
+        var flightRoutes = this.getFlightRoutes();
+
+        Optional<FlightRoute> flightRoute = this.getFlightRoutes().stream()
+                .filter(fr -> fr.getOriginAirportCode().equals(originAirport) && fr.getDestinationAirportCode().equals(destinationAirport))
+                .findAny();
+
+        if(flightRoute.isEmpty()){
+            this.add(this.createFlightRoute(0, originAirport, destinationAirport));
+        }
     }
 }

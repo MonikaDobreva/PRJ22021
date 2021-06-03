@@ -33,6 +33,11 @@ private AirplaneStorageService airplaneStorageService;
     }
 
     @Override
+    public Airplane getAirplane(String airplaneCode) {
+        return this.getAirplanes().stream().filter(a -> a.getAirplaneCode().equals(airplaneCode)).findFirst().get();
+    }
+
+    @Override
     public List<Airplane> getAirplanes() {
         return airplaneStorageService.getAll();
     }
@@ -48,7 +53,7 @@ private AirplaneStorageService airplaneStorageService;
         List<LocalDateTimeRange> schedule = this.airplaneSchedule(a);
         for(LocalDateTimeRange range : schedule){
             if(r.meets(range) || r.overlaps(range)){
-                throw new IllegalArgumentException("This Airplane is not available for the specified dates");
+                throw new IllegalArgumentException("The Airplane selected is not available for the specified dates");
             }
         }
         return true;

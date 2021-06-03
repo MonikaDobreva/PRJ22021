@@ -1,9 +1,8 @@
 package persistence;
 
-import businessentitiesapi.AirplaneManager;
-import businessentitiesapi.Airport;
-import businessentitiesapi.AirportManager;
-import businessentitiesapi.FlightManager;
+import businessentitiesapi.*;
+
+import java.util.List;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -25,5 +24,11 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
     public AirportStorageService getAirportStorageService(AirportManager airportManager){
         return new AirportStorageServiceImpl(airportManager);
     }
+    @Override
+    public FlightRouteStorageService getFlightRouteStorageService(FlightRouteManager flightRouteManager){
+        return new FlightRouteStorageServiceImpl(flightRouteManager);
+    }
+
+
 
 }

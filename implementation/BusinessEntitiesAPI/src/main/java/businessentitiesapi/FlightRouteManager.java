@@ -11,7 +11,7 @@ public interface FlightRouteManager {
      *
      * @param flightRouteID             The name of the flight route
      * @param originAirportCode       The airport where the flight takes off
-     * @param destinationAirportCode  The airport where the flight arrives
+     * @param destinationAirportCode  The airport where the flight lands
      *
      * @return a new flight object
      */
@@ -35,4 +35,12 @@ public interface FlightRouteManager {
      */
     List<FlightRoute> getFlightRoutes();
 
+    /**
+     * Check if a flight Route containing the given airports exists, if not creates it
+     *
+     * @param originAirport       The airport where the flight takes off
+     * @param destinationAirport  The airport where the flight lands
+     * @return
+     */
+    void checkExistence(String originAirport, String destinationAirport);
 }

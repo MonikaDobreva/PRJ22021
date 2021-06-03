@@ -31,6 +31,14 @@ public interface AirplaneManager {
     void add(Airplane a);
 
     /**
+     * Return Airplane object matching the given Airplane Code
+     *
+     * @param airplaneCode The airplane Code from the Airplane to be returned
+     * @return Airplane object
+     */
+    Airplane getAirplane(String airplaneCode);
+
+    /**
      * Get all airplane which were previously added to the airplaneStorage
      * @return a List of airplane objects
      */

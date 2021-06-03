@@ -78,12 +78,15 @@ public class FlightController {
     private final FlightManager flightManager;
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
+    private final FlightRouteManager flightRouteManager;
 
-    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager) {
+    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager,
+                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
+        this.flightRouteManager = flightRouteManager;
     }
 
     @FXML
@@ -120,39 +123,67 @@ public class FlightController {
      */
     @FXML
     private void storeFlight() {
-        //Obtain Departure and Arrival times - Use Optional to catch case where fields are empty
+        //TODO: Separate code in smaller pieces - Look cleaner
+        Optional<Flight>f = Optional.empty();
+        Optional<Integer> flightID = Optional.empty();
+        Optional<String> originAirport = Optional.empty();
+        Optional<String> destinationAirport = Optional.empty();
         Optional<LocalDateTime> departureTime = Optional.empty();
         Optional<LocalDateTime> arrivalTime = Optional.empty();;
+        Optional<String> airplaneInfo = Optional.empty();
+        Optional<BigDecimal> price = Optional.empty();
+
+        //Obtain values from all the fields -
+        //Catch exceptions and show message in case some of the fields are empty
         try{
+            flightID = Optional.of(Integer.parseInt(flightIDLabel.getText()));
+            originAirport = Optional.of(originApDropdown.getValue());
+            destinationAirport = Optional.of(destinationApDropdown.getValue());
             departureTime = Optional.of(LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString())
                     + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " "
                     + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
             arrivalTime = Optional.of(LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString())
                     + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " "
                     + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
-        } catch (Exception ex){
-            showAlert("Warning!", "Invalid Departure or Arrival Time!", AlertType.ERROR);
+            airplaneInfo = Optional.of(airplaneModelDropdown.getValue());
+            price = Optional.of(new BigDecimal(basePriceField.getText()));
+        } catch (DateTimeParseException | NoSuchElementException | NullPointerException ex){
+            showAlert("Warning!", "Some of the fields might be empty! Please have a look :)", AlertType.ERROR);
             return;
         }
 
+        //Check availability for select airplane on desired dates
+        //Catch exception and show message in case of not available
+        Airplane airplane = airplaneManager.getAirplane(airplaneInfo.get().split(" ")[0]);
+
+        try{
+            airplaneManager.checkAvailability(airplane, departureTime.get(), arrivalTime.get());
+        } catch (IllegalArgumentException ex){
+            showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
+            return;
+        }
+
+        //With the data collected try to create the Flight object
+        //Catch exception and show message in case of violation of flight constraints
         try {
-            Flight f = flightManager.createFlight(
-                    Integer.parseInt(flightIDLabel.getText()),
-                    originApDropdown.getValue(),
-                    destinationApDropdown.getValue(),
+            f = Optional.of(flightManager.createFlight(
+                    flightID.get(),
+                    originAirport.get(),
+                    destinationAirport.get(),
                     departureTime.get(),
                     arrivalTime.get(),
-                    airplaneModelDropdown.getValue(),
-                    new BigDecimal(basePriceField.getText())
-            );
-            flightManager.add(f);
-            showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
-
+                    airplane.getModel(),
+                    price.get()
+            ));
         } catch (IllegalArgumentException ex) {
             showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
-        } catch (NoSuchElementException | NullPointerException ex){
-            showAlert("Warning!", "Some of the fields are empty! Please have a look :)", AlertType.ERROR);
+            return;
         }
+
+        flightRouteManager.checkExistence(originAirport.get(), destinationAirport.get());
+
+        flightManager.add(f.get());
+        showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
     }
 
     public void showAlert(String title, String message, AlertType type){
