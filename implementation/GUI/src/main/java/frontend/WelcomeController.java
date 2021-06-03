@@ -39,7 +39,10 @@ public class WelcomeController {
         try {
             if (userChoice.getValue().toLowerCase().contains("officer")) {
                 sceneManagerSupplier.get().changeScene("salesOfficerOptions");
-            } else {
+            } else if(userChoice.getValue().toLowerCase().contains("manager")){
+                sceneManagerSupplier.get().changeScene("managementDashboardView");
+            }
+            else {
                 sceneManagerSupplier.get().changeScene("viewFlights");
             }
         } catch (NullPointerException ex){

@@ -1,10 +1,6 @@
 package businesslogic;
 
-import businessentitiesapi.AirplaneManager;
-import businessentitiesapi.AirportManager;
-import businessentitiesapi.BookingManager;
-import businessentitiesapi.FlightManager;
-import businessentitiesapi.FlightRouteManager;
+import businessentitiesapi.*;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -23,4 +19,6 @@ public interface BusinessLogicAPI {
     FlightRouteManager getFlightRouteManager();
 
     BookingManager getBookingsManager();
+
+    TicketManager getTicketManager();
 }

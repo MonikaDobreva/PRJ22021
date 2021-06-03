@@ -2,7 +2,9 @@ package frontend;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 import java.io.IOException;
+
 import javafx.util.Callback;
 import businesslogic.BusinessLogicAPI;
 import javafx.application.Platform;
@@ -28,15 +30,21 @@ public class GUIApp extends Application {
             case "frontend.WelcomeController":
                 return new WelcomeController(this::getSceneManager);
             case "frontend.managementDashboardController":
-                return new managementDashboardController(businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(), businessLogicAPI.getBookingsManager());
+                return new managementDashboardController(
+                        businessLogicAPI.getFlightManager(),
+                        businessLogicAPI.getAirportManager(),
+                        businessLogicAPI.getAirplaneManager(),
+                        businessLogicAPI.getBookingsManager(),
+                        businessLogicAPI.getFlightRouteManager(),
+                        businessLogicAPI.getTicketManager());
             case "frontend.editFlightController":
-                return new editFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
+                return new editFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager,businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(),businessLogicAPI.getEditDetailsLogic());
+                return new editDetailsFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(), businessLogicAPI.getEditDetailsLogic());
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
             case "frontend.DeleteFlightController":
-                return new DeleteFlightController(this::getSceneManager,businessLogicAPI.getFlightManager());
+                return new DeleteFlightController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.CreateBookingController":
                 return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.PassengerInfoController":
@@ -90,7 +98,7 @@ public class GUIApp extends Application {
         return this;
     }
 
-    private void initializeSceneManager(){
+    private void initializeSceneManager() {
         sceneManager = new SceneManager(controllerFactory, INITIAL_VIEW);
 
     }

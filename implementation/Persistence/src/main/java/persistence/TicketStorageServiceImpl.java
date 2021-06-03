@@ -1,6 +1,7 @@
 package persistence;
 
 import businessentitiesapi.Ticket;
+import businessentitiesapi.TicketManager;
 import genericdao.dao.DAO;
 import genericdao.dao.TransactionToken;
 import genericdao.pgdao.PGDAOFactory;
@@ -16,7 +17,7 @@ public class TicketStorageServiceImpl implements TicketStorageService {
 
     private final DAO<Ticket, Integer> ticketDao;
 
-    public TicketStorageServiceImpl() {
+    public TicketStorageServiceImpl(TicketManager ticketManager) {
         DataSource ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
         ticketDao = daof.createDao(Ticket.class);

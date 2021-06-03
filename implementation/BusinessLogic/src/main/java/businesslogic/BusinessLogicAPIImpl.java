@@ -53,4 +53,11 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         return bookingManager;
     }
 
+    @Override
+    public TicketManager getTicketManager() {
+        TicketManagerImpl ticketManager = new TicketManagerImpl();
+        ticketManager.setTicketStorageService(persistenceAPI.getTicketStorageService(ticketManager));
+        return ticketManager;
+    }
+
 }

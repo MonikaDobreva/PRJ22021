@@ -17,7 +17,16 @@ public class TicketManagerImpl implements TicketManager {
 
 
     @Override
-    public Ticket createTicket(String flightSeatId, int cabinBaggage, int checkedBaggage, String mealId, String bookingId, boolean canceled, String passengerId, double pricePaid) {
+    public Ticket createTicket(
+            int flightSeatId,
+            int cabinBaggage,
+            int checkedBaggage,
+            int mealId,
+            int bookingId,
+            boolean canceled,
+            int passengerId,
+            double pricePaid
+    ) {
         //The 0 is just a placeholder
         return new Ticket(0, flightSeatId, mealId, bookingId, passengerId, cabinBaggage, checkedBaggage, canceled, pricePaid);
     }
