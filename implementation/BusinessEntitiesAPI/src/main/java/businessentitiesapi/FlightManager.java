@@ -69,6 +69,4 @@ public interface FlightManager {
      * @return the ID
      */
     int getLastID();
-
-    List<Flight> specialQuery();
 }

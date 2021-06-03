@@ -74,10 +74,7 @@ public class FlightManagerImpl implements FlightManager {
         return flightStorageService.getLastID();
     }
 
-    @Override
-    public List<Flight> specialQuery() {
-        return null;
-    }
+
 
 
 }
