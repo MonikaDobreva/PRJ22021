@@ -147,3 +147,4 @@ implementation/genericranges/
 
 **/target
 .idea
+implementation/genericdao/src/main/resources/application.properties
