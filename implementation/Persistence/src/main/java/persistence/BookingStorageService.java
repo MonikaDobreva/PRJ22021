@@ -9,5 +9,6 @@ public interface BookingStorageService {
 
     Booking add(Booking b);
     List<Booking> getAll();
+    List<Booking> getBookingsOfFlight(int i);
 
 }

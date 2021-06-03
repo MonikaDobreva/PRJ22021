@@ -5,10 +5,12 @@ import java.util.List;
 
 public interface BookingManager {
 
-    Booking createBooking(String personId, String userId, LocalDateTime timeOfBooking);
+    Booking createBooking(int personId, int userId, LocalDateTime timeOfBooking);
 
     Booking add(Booking b);
 
     List<Booking> getBookings();
+
+    List<Booking> getBookingsOfFlight(int i);
 
 }

@@ -1,31 +1,18 @@
 package frontend;
 
 import businessentitiesapi.*;
-import businesslogic.BusinessLogicAPI;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -48,10 +35,10 @@ public class FlightController {
     TextField basePriceField;
 
     @FXML
-    DatePicker depTimePicker, arrTimePicker;
+    DatePicker depDatePicker, arrDatePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, clearFlightsButton, backBtn;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn;
 
     @FXML
     ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
@@ -141,10 +128,10 @@ public class FlightController {
             destinationAirport = Optional.of(destinationApDropdown.getValue());
             departureTime = Optional.of(LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString())
                     + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " "
-                    + depTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
+                    + depDatePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
             arrivalTime = Optional.of(LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString())
                     + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " "
-                    + arrTimePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
+                    + arrDatePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
             airplaneInfo = Optional.of(airplaneModelDropdown.getValue());
             price = Optional.of(new BigDecimal(basePriceField.getText()));
         } catch (DateTimeParseException | NoSuchElementException | NullPointerException ex){

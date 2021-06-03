@@ -19,7 +19,7 @@ public interface FlightStorageService {
 
     int getLastID();
 
-   // List<FlightSeat> getSeats();
+    // List<FlightSeat> getSeats();
 
 
 }

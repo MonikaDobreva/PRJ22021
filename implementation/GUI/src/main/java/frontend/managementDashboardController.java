@@ -23,7 +23,7 @@ public class managementDashboardController {
 
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
-            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel;
+            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel;
 
     @FXML
     Button updateStatisticsButton;
@@ -40,9 +40,9 @@ public class managementDashboardController {
 
     @FXML
     private void updateFlightStatistics(){
-        totalFlightsLabel.setText(String.valueOf((long) flightManager.getFlights().size()));
+        totalFlightsLabel.setText(String.valueOf(flightManager.getFlights().size()));
         totalRoutesLabel.setText("Test");
-        totalBookingsLabel.setText(String.valueOf((long) bookingManager.getBookings().size()));
+        totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
         totalTicketsLabel.setText("Test");
 
     }
@@ -55,10 +55,13 @@ public class managementDashboardController {
                         .collect(Collectors.toList())));
     }
 
+
+
     @FXML
     private void listFlightsDependingOnSelectedFlight(){
+        var currentFlight = mDashFlightDropdown.getValue();
         mDashBookingDropdown.setItems(FXCollections.observableArrayList(
-                bookingManager.getBookings().stream()
+                bookingManager.getBookingsOfFlight(currentFlight).stream()
                 .map(Booking::getBookingId)
                 .collect(Collectors.toList())
         ));

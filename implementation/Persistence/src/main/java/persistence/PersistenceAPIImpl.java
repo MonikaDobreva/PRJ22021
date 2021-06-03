@@ -28,6 +28,10 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
     public FlightRouteStorageService getFlightRouteStorageService(FlightRouteManager flightRouteManager){
         return new FlightRouteStorageServiceImpl(flightRouteManager);
     }
+    @Override
+    public BookingStorageService getBookingStorageService(BookingManager bookingManager){
+        return new BookingStorageServiceImpl(bookingManager);
+    }
 
 
 

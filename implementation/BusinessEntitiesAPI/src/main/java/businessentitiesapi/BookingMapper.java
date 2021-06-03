@@ -6,7 +6,7 @@ import genericmapper.Mapper;
 import java.util.function.Function;
 
 /**
- * @author Rachel
+ * @author Benjamin
  */
 public class BookingMapper extends Mapper<Booking, Integer> {
 

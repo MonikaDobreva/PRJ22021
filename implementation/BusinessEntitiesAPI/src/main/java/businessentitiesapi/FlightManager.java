@@ -70,4 +70,5 @@ public interface FlightManager {
      */
     int getLastID();
 
+    List<Flight> specialQuery();
 }

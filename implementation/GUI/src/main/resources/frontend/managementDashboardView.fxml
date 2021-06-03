@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.managementDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.managementDashboardController">
    <children>
       <VBox layoutX="139.0" layoutY="66.0" prefHeight="400.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -24,7 +34,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="461.0" prefWidth="943.0">
                                  <children>
-                                    <GridPane layoutX="14.0" layoutY="14.0" prefHeight="179.0" prefWidth="200.0">
+                                    <GridPane layoutX="14.0" layoutY="14.0" prefHeight="205.0" prefWidth="200.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="60.0" />
@@ -33,6 +43,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
@@ -76,6 +87,16 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
+                                          <Label text="Total revenue:" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalRevenueLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </GridPane>
                                     <Button fx:id="updateStatisticsButton" layoutX="14.0" layoutY="314.0" mnemonicParsing="false" onAction="#updateFlightStatistics" text="Update Statistics" />
@@ -97,9 +118,9 @@
                                                 <Button mnemonicParsing="false" onAction="#updateFlightData" text="%applyBookings" />
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER" spacing="20.0">
+                                          <HBox alignment="CENTER" prefHeight="219.0" prefWidth="715.0" spacing="20.0">
                                              <children>
-                                                <GridPane prefHeight="149.0" prefWidth="457.0">
+                                                <GridPane prefHeight="173.0" prefWidth="374.0">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="161.0" />
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.0" minWidth="10.0" prefWidth="201.0" />
@@ -108,6 +129,7 @@
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
@@ -122,6 +144,7 @@
                                                       <Label fx:id="mDashEstFDLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <Label fx:id="mDashBookingsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                                       <Label fx:id="mDashMealsLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Label text="Revenue:" GridPane.rowIndex="5" />
                                                    </children>
                                                 </GridPane>
                                                 <GridPane layoutX="10.0" layoutY="10.0" prefHeight="149.0" prefWidth="405.0">

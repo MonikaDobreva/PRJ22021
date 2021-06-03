@@ -12,10 +12,11 @@ public class Booking implements Serializable {
     @ID
     private final int bookingId;
 
-    private final String personId, userId;
+    private final int personId;
+    private final int userId;
     private final LocalDateTime timeOfBooking;
 
-    public Booking(int bookingId, String personId, String userId, LocalDateTime timeOfBooking) {
+    public Booking(int bookingId, int personId, int userId, LocalDateTime timeOfBooking) {
         this.bookingId = bookingId;
         this.personId = personId;
         this.userId = userId;
@@ -26,11 +27,11 @@ public class Booking implements Serializable {
         return bookingId;
     }
 
-    public String getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 

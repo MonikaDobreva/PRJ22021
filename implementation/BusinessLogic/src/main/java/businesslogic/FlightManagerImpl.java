@@ -69,11 +69,15 @@ public class FlightManagerImpl implements FlightManager {
     public boolean update(Flight f) {
        return flightStorageService.update(f);
     }
-    
-    
 
     public int getLastID() {
         return flightStorageService.getLastID();
     }
+
+    @Override
+    public List<Flight> specialQuery() {
+        return null;
+    }
+
 
 }

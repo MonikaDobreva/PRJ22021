@@ -18,7 +18,7 @@ public class BookingManagerImpl implements BookingManager {
     }
 
     @Override
-    public Booking createBooking(String personId, String userId, LocalDateTime timeOfBooking) {
+    public Booking createBooking(int personId, int userId, LocalDateTime timeOfBooking) {
         //The 0 is just a placeholder
         return new Booking(0, personId, userId, timeOfBooking);
     }
@@ -32,5 +32,11 @@ public class BookingManagerImpl implements BookingManager {
     public List<Booking> getBookings() {
         return bookingStorageService.getAll();
     }
+
+    @Override
+    public List<Booking> getBookingsOfFlight(int i) {
+        return bookingStorageService.getBookingsOfFlight(i);
+    }
+
 
 }

@@ -61,7 +61,7 @@
             <HBox alignment="CENTER" prefHeight="87.0" prefWidth="600.0" spacing="20.0">
                <children>
                   <Button fx:id="DisplayFlights" mnemonicParsing="false" onAction="#showFlights" prefHeight="35.0" prefWidth="105.0" text="Display Flights" />
-                  <Button fx:id="clearFlightsButton" layoutX="341.0" layoutY="34.0" mnemonicParsing="false" onAction="#clearFlightsView" prefHeight="35.0" prefWidth="105.0" text="Clear View" />
+                  <Button fx:id="storeFlightsButton" layoutX="341.0" layoutY="34.0" mnemonicParsing="false" onAction="#clearFlightsView" prefHeight="35.0" prefWidth="105.0" text="Clear View" />
                   <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backToStart" prefHeight="35.0" prefWidth="91.0" text="Back">
                      <HBox.margin>
                         <Insets left="150.0" />
