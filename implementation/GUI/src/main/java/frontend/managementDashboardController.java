@@ -3,6 +3,8 @@ package frontend;
 import businessentitiesapi.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -31,7 +33,7 @@ public class managementDashboardController {
     @FXML
     ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown;
 
-    public managementDashboardController(FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, BookingManager bookingManager){
+    public managementDashboardController(FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, BookingManager bookingManager) {
         this.airplaneManager = airplaneManager;
         this.airportManager = airportManager;
         this.flightManager = flightManager;
@@ -39,7 +41,7 @@ public class managementDashboardController {
     }
 
     @FXML
-    private void updateFlightStatistics(){
+    private void updateFlightStatistics() {
         totalFlightsLabel.setText(String.valueOf(flightManager.getFlights().size()));
         totalRoutesLabel.setText("Test");
         totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
@@ -48,27 +50,44 @@ public class managementDashboardController {
     }
 
     @FXML
-    private void listFlights(){
+    private void listFlights() {
         mDashFlightDropdown.setItems(FXCollections.observableArrayList(
                 flightManager.getFlights().stream()
                         .map(Flight::getFlightID)
                         .collect(Collectors.toList())));
+        mDashBookingDropdown.setValue(null);
     }
 
 
-
     @FXML
-    private void listFlightsDependingOnSelectedFlight(){
+    private void listFlightsDependingOnSelectedFlight() {
         var currentFlight = mDashFlightDropdown.getValue();
-        mDashBookingDropdown.setItems(FXCollections.observableArrayList(
-                bookingManager.getBookingsOfFlight(currentFlight).stream()
-                .map(Booking::getBookingId)
-                .collect(Collectors.toList())
-        ));
+
+        if (currentFlight == null) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setHeaderText("Excuse me!");
+            alert.setTitle("Information");
+            alert.setContentText("Please select a flight first!");
+            alert.showAndWait();
+        } else {
+            if (bookingManager.getBookingsOfFlight(currentFlight).isEmpty()) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setHeaderText("Excuse me!");
+                alert.setTitle("Information");
+                alert.setContentText("No bookings for this flight available!");
+            } else {
+                mDashBookingDropdown.setItems(FXCollections.observableArrayList(
+                        bookingManager.getBookingsOfFlight(currentFlight).stream()
+                                .map(Booking::getBookingId)
+                                .distinct()
+                                .collect(Collectors.toList())
+                ));
+            }
+        }
     }
 
     @FXML
-    private void updateFlightData(){
+    private void updateFlightData() {
         var currentFlight = mDashFlightDropdown.getValue();
         mDashDepLabel.setText("1");
         mDashArrLabel.setText("2");
@@ -77,9 +96,6 @@ public class managementDashboardController {
         mDashMealsLabel.setText("5");
 
     }
-
-
-
 
 
 }
