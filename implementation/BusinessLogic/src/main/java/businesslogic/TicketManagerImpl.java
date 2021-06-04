@@ -4,6 +4,7 @@ import businessentitiesapi.Ticket;
 import businessentitiesapi.TicketManager;
 import persistence.TicketStorageService;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class TicketManagerImpl implements TicketManager {
             int bookingId,
             boolean canceled,
             int passengerId,
-            double pricePaid
+            BigDecimal pricePaid
     ) {
         //The 0 is just a placeholder
         return new Ticket(0, flightSeatId, mealId, bookingId, passengerId, cabinBaggage, checkedBaggage, canceled, pricePaid);

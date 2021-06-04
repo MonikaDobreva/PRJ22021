@@ -1,5 +1,6 @@
 package businessentitiesapi;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TicketManager {
@@ -24,7 +25,7 @@ public interface TicketManager {
             int bookingId,
             boolean canceled,
             int passengerId,
-            double pricePaid
+            BigDecimal pricePaid
     );
 
     /**

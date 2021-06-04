@@ -38,5 +38,10 @@ public class BookingManagerImpl implements BookingManager {
         return bookingStorageService.getBookingsOfFlight(i);
     }
 
+    @Override
+    public Booking getBookingById(int currentFlight) {
+        return bookingStorageService.getBookingById(currentFlight);
+    }
+
 
 }

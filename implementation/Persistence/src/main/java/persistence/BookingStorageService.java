@@ -11,4 +11,5 @@ public interface BookingStorageService {
     List<Booking> getAll();
     List<Booking> getBookingsOfFlight(int i);
 
+    Booking getBookingById(int currentFlight);
 }

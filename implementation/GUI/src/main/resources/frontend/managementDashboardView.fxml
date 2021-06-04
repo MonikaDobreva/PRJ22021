@@ -162,16 +162,15 @@
                                                    <children>
                                                       <Label text="Booked by" />
                                                       <Label layoutX="10.0" layoutY="15.0" text="Going to:" GridPane.rowIndex="1" />
-                                                      <Label layoutX="10.0" layoutY="41.0" text="Bookings:" GridPane.rowIndex="3" />
-                                                      <Label layoutX="10.0" layoutY="76.0" text="Booked meals:" GridPane.rowIndex="4" />
-                                                      <Label layoutX="10.0" layoutY="106.0" text="Estimated flight duration:" GridPane.rowIndex="2" />
-                                                      <Label fx:id="mDashDepLabel1" text="0" GridPane.columnIndex="1" />
-                                                      <Label fx:id="mDashArrLabel1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <Label fx:id="mDashEstFDLabel1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                      <Label fx:id="mDashBookingsLabel1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                      <Label fx:id="mDashMealsLabel1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                      <Label fx:id="mDashBookedByLabel" text="0" GridPane.columnIndex="1" />
+                                                      <Label fx:id="mDashGoingToLabel" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                    </children>
                                                 </GridPane>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="715.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#clearStatistics" prefHeight="25.0" prefWidth="59.0" text="Clear" />
                                              </children>
                                           </HBox>
                                        </children>

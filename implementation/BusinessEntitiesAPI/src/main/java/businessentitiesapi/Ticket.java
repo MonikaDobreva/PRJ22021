@@ -4,6 +4,7 @@ import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @TableName(value = "ticketsView")
 public class Ticket implements Serializable {
@@ -13,10 +14,10 @@ public class Ticket implements Serializable {
     private final int flightSeatId, mealId, bookingId, passengerId;
     private final int cabinBaggage, checkedBaggage;
     private final boolean canceled;
-    private final double pricePaid;
+    private final BigDecimal pricePaid;
 
 
-    public Ticket(int ticketId, int flightSeatId, int mealId, int bookingId, int passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, double pricePaid) {
+    public Ticket(int ticketId, int flightSeatId, int mealId, int bookingId, int passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, BigDecimal pricePaid) {
         this.ticketId = ticketId;
         this.flightSeatId = flightSeatId;
         this.mealId = mealId;
@@ -60,7 +61,7 @@ public class Ticket implements Serializable {
         return canceled;
     }
 
-    public double getPricePaid() {
+    public BigDecimal getPricePaid() {
         return pricePaid;
     }
 }

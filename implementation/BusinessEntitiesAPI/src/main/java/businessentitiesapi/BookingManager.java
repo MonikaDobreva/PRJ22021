@@ -13,4 +13,5 @@ public interface BookingManager {
 
     List<Booking> getBookingsOfFlight(int i);
 
+    Booking getBookingById(int currentFlight);
 }

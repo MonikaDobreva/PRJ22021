@@ -13,14 +13,12 @@ import java.util.*;
 public class BookingStorageServiceImpl implements BookingStorageService {
 
     private final DAO<Booking, Integer> bookingDao;
-    private BookingManager bookingManager;
 
 
     public BookingStorageServiceImpl(BookingManager bookingManager) {
         DataSource ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
         bookingDao = daof.createDao(Booking.class);
-        this.bookingManager = bookingManager;
     }
 
     @Override
@@ -59,6 +57,21 @@ public class BookingStorageServiceImpl implements BookingStorageService {
             System.out.println("Something went wrong with that query");
         }
         return allB;
+    }
+
+    @Override
+    public Booking getBookingById(int currentFlight) {
+        Optional<Booking> fetchedBooking = Optional.empty();
+        try {
+            TransactionToken tok = bookingDao.startTransaction();
+            fetchedBooking = bookingDao.get(currentFlight);
+            tok.commit();
+            bookingDao.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return fetchedBooking.get();
     }
 
     @Override

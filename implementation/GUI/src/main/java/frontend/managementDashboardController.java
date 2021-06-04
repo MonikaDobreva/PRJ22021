@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 /**
@@ -26,7 +27,7 @@ public class managementDashboardController {
 
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
-            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel;
+            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, mDashGoingToLabel;
 
     @FXML
     Button updateStatisticsButton;
@@ -64,12 +65,11 @@ public class managementDashboardController {
 
     }
 
-    public double sumOfTicketPrices(){
+    public BigDecimal sumOfTicketPrices() {
         var allTickets = ticketManager.getTickets();
-        double sum = 0;
-        System.out.println(allTickets);
+        BigDecimal sum = BigDecimal.ZERO;
         for (Ticket t : allTickets) {
-            sum = sum + t.getPricePaid();
+            sum = sum.add(t.getPricePaid());
         }
         return sum;
     }
@@ -92,39 +92,62 @@ public class managementDashboardController {
     @FXML
     private void listFlightsDependingOnSelectedFlight() {
         var currentFlight = mDashFlightDropdown.getValue();
-
         if (currentFlight == null) {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setHeaderText("Excuse me!");
-            alert.setTitle("Information");
-            alert.setContentText("Please select a flight first!");
-            alert.showAndWait();
+            showAlert("Information", "Please select a flight first!", AlertType.INFORMATION);
+        } else if (bookingManager.getBookingsOfFlight(currentFlight).isEmpty()) {
+            showAlert("Information", "No bookings for this flight available!", AlertType.INFORMATION);
         } else {
-            if (bookingManager.getBookingsOfFlight(currentFlight).isEmpty()) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setHeaderText("Excuse me!");
-                alert.setTitle("Information");
-                alert.setContentText("No bookings for this flight available!");
-            } else {
-                mDashBookingDropdown.setItems(FXCollections.observableArrayList(
-                        bookingManager.getBookingsOfFlight(currentFlight).stream()
-                                .map(Booking::getBookingId)
-                                .distinct()
-                                .collect(Collectors.toList())
-                ));
-            }
+            mDashBookingDropdown.setItems(FXCollections.observableArrayList(
+                    bookingManager.getBookingsOfFlight(currentFlight).stream()
+                            .map(Booking::getBookingId)
+                            .distinct()
+                            .collect(Collectors.toList())
+            ));
         }
     }
 
     @FXML
     private void updateFlightData() {
         var currentFlight = mDashFlightDropdown.getValue();
-        mDashDepLabel.setText("1");
-        mDashArrLabel.setText("2");
-        mDashEstFDLabel.setText("3");
-        mDashBookingsLabel.setText("4");
-        mDashMealsLabel.setText("5");
+        var currentBooking = bookingManager.getBookingsOfFlight(currentFlight).stream()
+                .filter(b -> b.getBookingId() == mDashBookingDropdown.getValue()).findFirst().get();
+        if (currentFlight == null && currentBooking == null) {
+            showAlert("Information", "Please select at least a flight first!", AlertType.INFORMATION);
+        } else if (currentBooking == null) {
+            mDashDepLabel.setText("1");
+            mDashArrLabel.setText("2");
+            mDashEstFDLabel.setText("3");
+            mDashBookingsLabel.setText("4");
+            mDashMealsLabel.setText("5");
+        } else {
+            mDashDepLabel.setText("1");
+            mDashArrLabel.setText("2");
+            mDashEstFDLabel.setText("3");
+            mDashBookingsLabel.setText("4");
+            mDashMealsLabel.setText("5");
 
+            mDashGoingToLabel.setText("only booking");
+            mDashBookedByLabel.setText("only booking");
+        }
+    }
+
+    public void clearStatistics(){
+        mDashDepLabel.setText("");
+        mDashArrLabel.setText("");
+        mDashEstFDLabel.setText("");
+        mDashBookingsLabel.setText("");
+        mDashMealsLabel.setText("");
+
+        mDashGoingToLabel.setText("");
+        mDashBookedByLabel.setText("");
+    }
+
+    public void showAlert(String title, String message, AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
