@@ -85,13 +85,25 @@ public class CreateFlightGUITest {
     }
 
     @Test
-    public void init(FxRobot robot){
+    public void createFlightTest(FxRobot robot){
         robot
                 .clickOn("#userChoice")
                 .type(KeyCode.DOWN)
                 .type(KeyCode.ENTER)
                 .clickOn("#startBtn")
-                .clickOn("#");
+                .clickOn("#createFlightBtn")
+                .clickOn("#depTimeHourSpinner")
+                .write("10")
+                .clickOn("#depTimeMinSpinner")
+                .write("30")
+                .clickOn("#depDatePicker")
+                .write("12/07/2021")
+                .clickOn("#arrTimeHourSpinner")
+                .write("14")
+                .clickOn("#arrTimeMinSpinner")
+                .write("45")
+                .clickOn("#arrDatePicker")
+                .write("12/07/2021");
 //        assertSoftly( softly ->{
 //            softly.assertThat()
 //        });
