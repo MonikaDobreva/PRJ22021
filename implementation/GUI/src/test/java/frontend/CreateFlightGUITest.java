@@ -46,7 +46,7 @@ import static org.mockito.Mockito.mock;
 
 @ExtendWith(ApplicationExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class GUIAppTest {
+public class CreateFlightGUITest {
 
     static {
         if (Boolean.getBoolean("SERVER")) {
@@ -144,3 +144,4 @@ public class GUIAppTest {
 //        });
 //    }
 }
+
