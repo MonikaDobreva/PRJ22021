@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import frontend.GUIApp;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
@@ -86,7 +87,11 @@ public class CreateFlightGUITest {
     @Test
     public void init(FxRobot robot){
         robot
-                .clickOn("#userChoice");
+                .clickOn("#userChoice")
+                .type(KeyCode.DOWN)
+                .type(KeyCode.ENTER)
+                .clickOn("#startBtn")
+                .clickOn("#");
 //        assertSoftly( softly ->{
 //            softly.assertThat()
 //        });

@@ -36,20 +36,20 @@ order by persons.id;
 
 -- Create a view for Passengers which finds out which Persons are Passengers base on the Persons ID on the Persons table
 -- It also gives extra attributes related to the Passengers like firstName, lastName, passportNumber, ...
-create or replace view passengersView
-            (passengerID, firstName, lastName, passportNumber,
-             email, birthDate, gender)
-as
-select passengers.id,
-       persons.first_name,
-       persons.last_name,
-       passengers.passport_number,
-       persons.email,
-       persons.birth_date,
-       persons.gender
-from passengers
-         join persons on passengers.person_id = persons.id
-order by passengers.id;
+-- create or replace view passengersView
+--             (passengerID, firstName, lastName, passportNumber,
+--              email, birthDate, gender)
+-- as
+-- select passengers.id,
+--        persons.first_name,
+--        persons.last_name,
+--        passengers.passport_number,
+--        persons.email,
+--        persons.birth_date,
+--        persons.gender
+-- from passengers
+--          join persons on passengers.person_id = persons.id
+-- order by passengers.id;
 
 create or replace view airplaneSchedule (airplaneCode, departureTime, arrivalTime) as
 select airplanes.airplane_code,
