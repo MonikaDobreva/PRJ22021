@@ -7,5 +7,8 @@ import java.util.List;
 public interface FlightSeatStorageService {
 
     FlightSeat add(FlightSeat f);
+
     List<FlightSeat> getAll();
+
+    List<FlightSeat> addAll(List<FlightSeat>flightSeats);
 }

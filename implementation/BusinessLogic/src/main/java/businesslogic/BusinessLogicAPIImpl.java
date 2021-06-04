@@ -60,4 +60,11 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         return ticketManager;
     }
 
+    @Override
+    public FlightSeatManager getFlightSeatManager() {
+        FlightSeatManagerImpl flightSeatManager = new FlightSeatManagerImpl();
+        flightSeatManager.setFlightSeatStorageService(persistenceAPI.getFlightSeatStorageService(flightSeatManager));
+        return flightSeatManager;
+    }
+
 }
