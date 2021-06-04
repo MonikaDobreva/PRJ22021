@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -67,14 +68,19 @@ public class FlightController {
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
     private final FlightRouteManager flightRouteManager;
+    private final SeatManager seatManager;
+    private final FlightSeatManager flightSeatManager;
 
     public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager,
-                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager) {
+                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager,
+                            SeatManager seatManager, FlightSeatManager flightSeatManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
         this.flightRouteManager = flightRouteManager;
+        this.seatManager = seatManager;
+        this.flightSeatManager = flightSeatManager;
     }
 
     @FXML
@@ -170,9 +176,11 @@ public class FlightController {
 
         flightRouteManager.checkExistence(originAirport.get(), destinationAirport.get());
 
-
-
         flightManager.add(f.get());
+
+        List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
+        flightSeatManager.addAll(seatsId, f.get().getFlightID());
+
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
         clearCreateFlightFields();
     }

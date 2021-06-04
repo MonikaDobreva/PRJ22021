@@ -24,7 +24,9 @@ public class GUIApp extends Application {
 
         switch (c.getName()) {
             case "frontend.FlightController":
-                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager());
+                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
+                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager() ,
+                        businessLogicAPI.getFlightSeatManager());
             case "frontend.TopMenuController":
                 return new TopMenuController(this::getSceneManager);
             case "frontend.WelcomeController":
@@ -38,9 +40,12 @@ public class GUIApp extends Application {
                         businessLogicAPI.getFlightRouteManager(),
                         businessLogicAPI.getTicketManager());
             case "frontend.editFlightController":
-                return new editFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager());
+                return new editFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
+                        businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(), businessLogicAPI.getEditDetailsLogic());
+                return new editDetailsFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(),
+                        businessLogicAPI.getAirportManager(), businessLogicAPI.getAirplaneManager(),
+                        businessLogicAPI.getEditDetailsLogic());
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
             case "frontend.DeleteFlightController":
