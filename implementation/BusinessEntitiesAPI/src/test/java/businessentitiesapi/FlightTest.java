@@ -25,7 +25,7 @@ public class FlightTest {
                     "LOD",
                     LocalDateTime.of(2022, Month.MARCH, 3, 13, 40),
                     LocalDateTime.of(2022, Month.MARCH, 3, 14, 40),
-                    "Boeing 375",
+                    "A-AAAA",
                     new BigDecimal("30.00"));
         };
 
@@ -37,13 +37,13 @@ public class FlightTest {
     @ParameterizedTest
     @CsvSource({
         //id,originAirport,destAirport,year,month,day,hour1,hour2,min,airplaneName,price
-        "1,KLEW,DUS,2022,5,23,14,15,40,Boeing 35,80.00",
-        "1,KLE,DUSW,2022,5,23,14,15,40,Boeing 35,80.00",
-        "1,KLE,KLE,2022,5,23,14,15,40,Boeing 35,80.00",
-        "1,KLE,DUS,2019,5,23,14,15,40,Boeing 35,80.00",
-        "1,KLE,DUS,2022,5,23,14,12,40,Boeing 35,80.00",
+        "1,KLEW,DUS,2022,5,23,14,15,40,A-AAAA,80.00",
+        "1,KLE,DUSW,2022,5,23,14,15,40,A-AAAA,80.00",
+        "1,KLE,KLE,2022,5,23,14,15,40,A-AAAA,80.00",
+        "1,KLE,DUS,2019,5,23,14,15,40,A-AAAA,80.00",
+        "1,KLE,DUS,2022,5,23,14,12,40,A-AAAA,80.00",
         "1,KLE,DUS,2022,5,23,14,15,40,Boeing@35,80.00",
-        "1,KLE,DUS,2019,5,23,14,15,40,Boeing 35,-1.00",})
+        "1,KLE,DUS,2019,5,23,14,15,40,A-AAAA,-1.00",})
     public void constructorNotWorkingTest(
             int id,
             String orgAirp,

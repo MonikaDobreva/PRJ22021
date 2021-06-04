@@ -11,16 +11,16 @@ order by first_conversion.id;
 -- and shows the Airplane Model instead of the Airplane ID
 create or replace view flightsView
             (flightID, originAirport, destinationAirport,
-             departureTime, arrivalTime, airplaneModel, basePrice)
+             departureTime, arrivalTime, airplaneCode, basePrice)
 as
 select first_conversion.id,
        flightRoutesView.originAirportCode,
        flightRoutesView.destinationAirportCode,
        first_conversion.departure_time,
        first_conversion.arrival_time,
-       first_conversion.model,
+       first_conversion.airplane_code,
        first_conversion.base_price
-from (select flights.id, flights.departure_time, flights.arrival_time, airplanes.model, flight_route_id, base_price
+from (select flights.id, flights.departure_time, flights.arrival_time, airplanes.airplane_code, flight_route_id, base_price
       from flights
                join airplanes on flights.airplane_id = airplanes.id) as first_conversion
          join flightRoutesView on first_conversion.flight_route_id = flightRoutesView.flightRouteID
@@ -99,7 +99,7 @@ end;
 $$ language plpgsql;
 
 -- Function that returns an airplaneID for a given airplaneModel
-create or replace function getAirplaneID(airplaneModel text)
+create or replace function getAirplaneID(airplaneCode text)
     returns airplanes.id%type as
 $$
 declare
@@ -109,7 +109,7 @@ begin
     select airplanes.id
     into airplaneID
     from airplanes
-    where airplanes.model = airplaneModel;
+    where airplanes.airplane_code = airplaneCode;
 
     return airplaneID;
 end;
@@ -132,7 +132,7 @@ begin
 
     select *
     into airplaneID
-    from getAirplaneID(new.airplaneModel);
+    from getAirplaneID(new.airplaneCode);
 
     insert into flights (departure_time, arrival_time, airplane_id, flight_route_id, base_price)
     values (new.departureTime, new.arrivalTime, airplaneID, flightRouteID, new.basePrice);

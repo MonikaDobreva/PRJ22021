@@ -22,7 +22,7 @@ public class Flight implements Serializable {
     private String destinationAirport;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    private String airplaneModel;
+    private String airplaneCode;
     private BigDecimal basePrice;
 
     public Flight (
@@ -31,7 +31,7 @@ public class Flight implements Serializable {
             String destinationAirport,
             LocalDateTime depTime,
             LocalDateTime arrTime,
-            String airplane,
+            String airplaneCode,
             BigDecimal basePrice
     ){
         List<String> exceptions = new ArrayList<>();
@@ -78,8 +78,8 @@ public class Flight implements Serializable {
         }
 
         // Check that the airplane model only consists of letters and numbers and whitespaces
-        if (Pattern.matches("[a-zA-Z_0-9\\s\\-]+", airplane)) {
-            this.airplaneModel = airplane;
+        if (Pattern.matches("[A-Z]-[A-Z]{4}", airplaneCode)) {
+            this.airplaneCode = airplaneCode;
         }else{
             exceptions.add(
                     ResourceBundle.getBundle("businessentitiesapi.flightException", Locale.getDefault())
@@ -123,7 +123,7 @@ public class Flight implements Serializable {
     }
     
     public String getAirplane() {
-        return airplaneModel;
+        return airplaneCode;
     }
     
     public BigDecimal getBasePrice() {
@@ -137,7 +137,7 @@ public class Flight implements Serializable {
     // arriving at ... on DAY.MONTH at HH:mm
     @Override
     public String toString() {
-        return "Airplane " + airplaneModel + " on flight " + flightID + "\n"
+        return "Airplane " + airplaneCode + " on flight " + flightID + "\n"
                 + "departing from " + originAirport + " on " + departureTime.getDayOfMonth() + "." + departureTime.getMonth()
                 + " at " + departureTime.getHour() + ":" + departureTime.getMinute() + "\n"
                 + "arriving at " + destinationAirport + " on " + arrivalTime.getDayOfMonth() + "." + arrivalTime.getMonth()
@@ -171,7 +171,7 @@ public class Flight implements Serializable {
         if (!Objects.equals(this.destinationAirport, other.destinationAirport)) {
             return false;
         }
-        if (!Objects.equals(this.airplaneModel, other.airplaneModel)) {
+        if (!Objects.equals(this.airplaneCode, other.airplaneCode)) {
             return false;
         }
         if (!Objects.equals(this.departureTime, other.departureTime)) {
