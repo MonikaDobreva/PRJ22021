@@ -170,6 +170,8 @@ public class FlightController {
 
         flightRouteManager.checkExistence(originAirport.get(), destinationAirport.get());
 
+
+
         flightManager.add(f.get());
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
         clearCreateFlightFields();
