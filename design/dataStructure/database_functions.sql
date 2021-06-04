@@ -264,3 +264,10 @@ begin
     return new;
 end;
 $$ language plpgsql;
+
+-- Trigger that fires when trying to update data trough the flight view(flightsTable)
+create trigger update_flight
+    instead of update
+    on flightsView
+    for each row
+execute procedure flight_update();
