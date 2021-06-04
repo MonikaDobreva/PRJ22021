@@ -1,11 +1,13 @@
 package frontend;
 
 import businessentitiesapi.*;
+import businesslogic.BusinessLogicImplementationProvider;
+import businesslogic.EditDetailsLogic;
 import frontend.FlightController;
 import businesslogic.BusinessLogicAPI;
-import businesslogic.BusinessLogicAPIImpl;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -31,15 +33,17 @@ import static org.mockito.Mockito.when;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import persistence.PersistenceAPI;
+import persistence.PersistenceImplementationProvider;
 
 import java.io.IOException;
 
 import static org.mockito.Mockito.mock;
 
 /**
- *
  * @author Rachel
  */
+
 @ExtendWith(ApplicationExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditFlightGuiTest {
@@ -55,40 +59,90 @@ public class EditFlightGuiTest {
             System.setProperty("monocle.platform", "Headless");
         }
     }
-    
-    FlightManager flightManager;
-    
-//
-//   @Start
-//    void start(Stage stage) throws IOException {
-//         flightManager = mock(FlightManager.class);
-//        BusinessLogicAPI businessLogicAPI = new BusinessLogicAPIImpl();
-//        new GUIApp(businessLogicAPI).init(false).start(stage);
-//
-//     
-//    }
 
-//    //@Disabled("Think TDD")
+    FlightManager flightManager;
+    AirportManager airportManager;
+    AirplaneManager airplaneManager;
+    FlightRouteManager flightRouteManager;
+    BookingManager bookingManager;
+    EditDetailsLogic editDetailsLogic;
+
+    @Start
+    void start(Stage stage) throws IOException {
+
+        flightManager = mock(FlightManager.class);
+        airportManager = mock(AirportManager.class);
+        airplaneManager = mock(AirplaneManager.class);
+        bookingManager = mock(BookingManager.class);
+        editDetailsLogic = mock(EditDetailsLogic.class);
+        flightRouteManager = mock(FlightRouteManager.class);
+
+        PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
+        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
+
+        new GUIApp(businessLogicAPI).init(false).start(stage);
+    }
+
+    @Test
+    public void init(FxRobot robot){
+        robot
+                .clickOn("#userChoice");
+
+//        assertSoftly( softly ->{
+//            softly.assertThat()
+//        });
+    }
+    
+
 //    @Test
 //    void testAddCustomer(FxRobot robot) {
 //
-//        when(customerManager.createCustomer(anyString(), any()))
-//                .thenReturn(new Customer(0, "Elon Musk", LocalDate.of(1971, Month.JUNE, 28)));
+//        when(flightManager.createFlight(any(), anyString(), anyString(), LocalDateTime.parse(anyString()), LocalDateTime.parse(anyString()), anyString(), any()))
+//                .thenReturn(new Flight(
+//                        1,
+//                        "DUS",
+//                        "AUS",
+//                        LocalDateTime.parse("2022-01-01T10:10:00"),
+//                        LocalDateTime.parse("2022-01-01T13:10:00"),
+//                        "Boeing 747",
+//                        BigDecimal.valueOf(150)) {
+//                });
 //
-//        ArgumentCaptor<Customer> customerCaptor = ArgumentCaptor.forClass(Customer.class);
+//        ArgumentCaptor<Flight> flightArgumentCaptor = ArgumentCaptor.forClass(Flight.class);
 //
 //        robot
-//                .clickOn("#customerName")
-//                .write("Elon Musk")
-//                .clickOn("#dateOfBirth")
-//                .write("1971-06-28")
-//                .clickOn("#storeCustomer");
+//                .clickOn("#depTimeHourSpinner")
+//                .write("10")
+//                .clickOn("#depTimeMinSpinner")
+//                .write("10")
+//                .clickOn("#depDatePicker")
+//                .write("2022-01-01")
+//                .clickOn("arrTimeHourSpinner")
+//                .write("13")
+//                .clickOn("arrTimeMinSpinner")
+//                .write("10")
+//                .clickOn("arrDatePicker")
+//                .write("2022-01-01")
+//                .clickOn("#originApDropdown")
+//                .clickOn("DUS")
+//                .clickOn("#destinationApDropdown")
+//                .clickOn("AUS")
+//                .clickOn("#airplaneModelDropdown")
+//                .clickOn("Boeing 747")
+//                .clickOn("#basePriceField")
+//                .write("100")
+//                .clickOn("#storeFlightsButton");
 //
-//        verify(customerManager).add(customerCaptor.capture());
+//        verify(flightManager).add(flightArgumentCaptor.capture());
 //
-//        assertSoftly( softly -> {
-//            softly.assertThat(customerCaptor.getValue().getName()).isEqualTo("Elon Musk");
-//            softly.assertThat(customerCaptor.getValue().getDateOfBirth()).isEqualTo(LocalDate.of(1971, Month.JUNE, 28));
+//        assertSoftly(softly -> {
+//            softly.assertThat(flightArgumentCaptor.getValue().getFlightID()).isEqualTo("1");
+//            softly.assertThat(flightArgumentCaptor.getValue().getOriginAirport()).isEqualTo("DUS");
+//            softly.assertThat(flightArgumentCaptor.getValue().getDestinationAirport()).isEqualTo("AUS");
+//            softly.assertThat(flightArgumentCaptor.getValue().getDepartureTime().toString()).isEqualTo("2022-01-01T10:10:00");
+//            softly.assertThat(flightArgumentCaptor.getValue().getArrivalTime().toString()).isEqualTo("2022-01-01T13:10:00");
+//            softly.assertThat(flightArgumentCaptor.getValue().getAirplaneModel()).isEqualTo("Boeing 747");
+//            softly.assertThat(flightArgumentCaptor.getValue().getBasePrice().toString()).isEqualTo("100");
 //        });
 //    }
 }
