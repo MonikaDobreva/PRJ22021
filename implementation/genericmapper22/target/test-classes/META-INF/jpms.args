@@ -1,4 +1,0 @@
---patch-module
-genericmapper_module=_
---add-reads
-genericmapper_module=ALL-UNNAMED
