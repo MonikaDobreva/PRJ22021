@@ -236,3 +236,31 @@ create trigger delete_flight
     on flightsView
     for each row
 execute procedure flight_delete();
+
+-- Function that returns a trigger. It allows to update flights in the Flights table through
+-- the Flights view (flightsTable)
+create or replace function flight_update()
+    returns trigger as $$
+declare
+    flightRouteID flight_routes.id%type;
+    airplaneID    airplanes.id%type;
+begin
+
+    select *
+    into flightRouteID
+    from getFlightRouteID(new.originAirport, new.destinationAirport);
+
+    select *
+    into airplaneID
+    from getAirplaneID(new.airplaneCode);
+
+    UPDATE flights SET departure_time = new.departureTime, 
+   						arrival_time = new.arrivalTime,
+   						airplane_id = airplaneID,
+   						flight_route_id = flightRouteID,
+   						base_price = new.basePrice
+   						
+   			 WHERE flights.id = old.flightid; 
+    return new;
+end;
+$$ language plpgsql;
