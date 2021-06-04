@@ -6,6 +6,7 @@ import businessentitiesapi.Airport;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import businessentitiesapi.FlightRouteManager;
 import businesslogic.EditDetailsLogic;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -57,14 +58,16 @@ public class editDetailsFlightController {
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
     private final EditDetailsLogic eLogic;
+    private final FlightRouteManager flightRouteManager;
     private Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, EditDetailsLogic editDLogic) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, EditDetailsLogic editDLogic,FlightRouteManager flightRouteManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
         this.eLogic = editDLogic;
+        this.flightRouteManager = flightRouteManager;
     }
 
     public void setFlight(Flight f) {
@@ -224,8 +227,9 @@ public class editDetailsFlightController {
         }
 
         try {
-            Flight f = flightManager.createFlight(1, //placeholder, id should be same as old is done in database
+            Flight f = flightManager.createFlight(editFlight.getFlightID(), //placeholder, id should be same as old is done in database
                     originAirport, destinationAirport, depTime, arrTime, airplane, basePrice);
+            flightRouteManager.checkExistence(originAirport, destinationAirport);
             boolean update = flightManager.update(f);
             if (update == true) {
                 Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();

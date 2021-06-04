@@ -130,9 +130,7 @@ public class Flight implements Serializable {
         return basePrice;
     }
 
-    public String getAirplaneModel() {
-        return airplaneModel;
-    }
+    
 
     // Airplane ... on flight ...
     // departing from ... on DAY.MONTH at HH:mm
