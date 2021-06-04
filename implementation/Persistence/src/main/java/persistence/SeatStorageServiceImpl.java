@@ -1,6 +1,9 @@
 package persistence;
 
+import businessentitiesapi.Airplane;
+import businessentitiesapi.Booking;
 import businessentitiesapi.Seat;
+import businessentitiesapi.SeatManager;
 import genericdao.dao.DAO;
 import genericdao.dao.TransactionToken;
 import genericdao.pgdao.PGDAOFactory;
@@ -14,12 +17,14 @@ import java.util.Optional;
 
 public class SeatStorageServiceImpl implements SeatStorageService {
 
+    private final SeatManager seatManager;
     private final DAO<Seat, Integer> seatDao;
 
-    public SeatStorageServiceImpl() {
+    public SeatStorageServiceImpl(SeatManager seatManager) {
         DataSource ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
         seatDao = daof.createDao(Seat.class);
+        this.seatManager = seatManager;
     }
 
     @Override
@@ -33,6 +38,22 @@ public class SeatStorageServiceImpl implements SeatStorageService {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    @Override
+    public List<Seat> getSeatsOfAirplane(Airplane ap) {
+        try{
+            TransactionToken tok = seatDao.startTransaction();
+            Collection<Seat> result = seatDao.anyQuery(
+                    "select * from seatsView " +
+                            "where seatsView.airplaneID = ? ",
+                    ap.getAirplaneID());
+            seatDao.close();
+            return new ArrayList<>(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

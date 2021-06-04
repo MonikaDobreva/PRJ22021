@@ -10,11 +10,10 @@ public class FlightSeat implements Serializable {
 
     @ID
     private final int flightSeatId;
-
-    private final String seatId, flightId;
+    private final int seatId, flightId;
     private final boolean available;
 
-    public FlightSeat(int flightSeatId, String seatId, String flightId, boolean available) {
+    public FlightSeat(int flightSeatId, int seatId, int flightId, boolean available) {
         this.flightSeatId = flightSeatId;
         this.seatId = seatId;
         this.flightId = flightId;
@@ -25,15 +24,25 @@ public class FlightSeat implements Serializable {
         return flightSeatId;
     }
 
-    public String getSeatId() {
+    public int getSeatId() {
         return seatId;
     }
 
-    public String getFlightId() {
+    public int getFlightId() {
         return flightId;
     }
 
     public boolean isAvailable() {
         return available;
+    }
+
+    @Override
+    public String toString() {
+        return "FlightSeat{" +
+                "flightSeatId=" + flightSeatId +
+                ", seatId=" + seatId +
+                ", flightId=" + flightId +
+                ", available=" + available +
+                '}';
     }
 }

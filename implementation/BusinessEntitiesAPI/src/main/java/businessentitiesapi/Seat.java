@@ -10,10 +10,11 @@ public class Seat implements Serializable {
 
     @ID
     private final int seatId;
+    private final int seatTypeId;
+    private final String seatNumber;
+    private int airplaneId;
 
-    private final String seatTypeId, seatNumber, airplaneId;
-
-    public Seat(int seatId, String seatTypeId, String seatNumber, String airplaneId) {
+    public Seat(int seatId, int seatTypeId, String seatNumber, int airplaneId) {
         this.seatId = seatId;
         this.seatTypeId = seatTypeId;
         this.seatNumber = seatNumber;
@@ -24,7 +25,7 @@ public class Seat implements Serializable {
         return seatId;
     }
 
-    public String getSeatTypeId() {
+    public int getSeatTypeId() {
         return seatTypeId;
     }
 
@@ -32,7 +33,17 @@ public class Seat implements Serializable {
         return seatNumber;
     }
 
-    public String getAirplaneId() {
+    public int getAirplaneId() {
         return airplaneId;
+    }
+
+    @Override
+    public String toString() {
+        return "Seat{" +
+                "seatId=" + seatId +
+                ", seatTypeId=" + seatTypeId +
+                ", seatNumber='" + seatNumber + '\'' +
+                ", airplaneId=" + airplaneId +
+                '}';
     }
 }

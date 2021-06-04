@@ -37,6 +37,12 @@ public interface PersistenceAPI {
         return null;
     };
 
+    default TicketStorageService getTicketStorageService(TicketManager ticketManager){ return null;};
+
+    default FlightSeatStorageService getFlightSeatStorageService(FlightSeatManager flightSeatManager){ return null;};
+
+    default SeatStorageService getSeatStorageService(SeatManager seatManager){ return null;};
+
     // This interface can be extended with all services that need to be made
     // available to the business logic
 

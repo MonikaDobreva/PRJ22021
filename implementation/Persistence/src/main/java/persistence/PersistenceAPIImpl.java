@@ -33,6 +33,18 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
         return new BookingStorageServiceImpl(bookingManager);
     }
 
+    @Override
+    public TicketStorageService getTicketStorageService(TicketManager ticketManager){
+        return new TicketStorageServiceImpl(ticketManager);
+    }
 
+    @Override
+    public FlightSeatStorageService getFlightSeatStorageService(FlightSeatManager flightSeatManager) {
+        return new FlightSeatStorageServiceImpl(flightSeatManager);
+    }
 
+    @Override
+    public SeatStorageService getSeatStorageService(SeatManager seatManager) {
+        return new SeatStorageServiceImpl(seatManager);
+    }
 }

@@ -13,6 +13,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -26,7 +27,7 @@ public class FlightController {
 
 
     @FXML
-    Label airplaneModelLabel = new Label(), flightIDLabel, originAirportLabel = new Label(), destinationAirportLabel = new Label();
+    Label flightIDLabel;
 
     @FXML
     VBox createFlightWindow;
@@ -38,7 +39,8 @@ public class FlightController {
     DatePicker depDatePicker, arrDatePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn;
+    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn, originAirportInfoBtn,
+            destinationAirportInfoBtn, airplaneInfoBtn;
 
     @FXML
     ComboBox<String> originApDropdown, destinationApDropdown, airplaneModelDropdown;
@@ -66,14 +68,19 @@ public class FlightController {
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
     private final FlightRouteManager flightRouteManager;
+    private final SeatManager seatManager;
+    private final FlightSeatManager flightSeatManager;
 
     public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager,
-                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager) {
+                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager,
+                            SeatManager seatManager, FlightSeatManager flightSeatManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
         this.airplaneManager = airplaneManager;
         this.flightRouteManager = flightRouteManager;
+        this.seatManager = seatManager;
+        this.flightSeatManager = flightSeatManager;
     }
 
     @FXML
@@ -170,7 +177,12 @@ public class FlightController {
         flightRouteManager.checkExistence(originAirport.get(), destinationAirport.get());
 
         flightManager.add(f.get());
+
+        List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
+        flightSeatManager.addAll(seatsId, f.get().getFlightID());
+
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
+        clearCreateFlightFields();
     }
 
     public void showAlert(String title, String message, AlertType type){
@@ -252,4 +264,35 @@ public class FlightController {
         flightsTable.getItems().clear();
     }
 
+    /**
+     * Clears the fields of the Create Flights window
+     */
+    public void clearCreateFlightFields() {
+        flightIDLabelText();
+        depTimeHourSpinner.getValueFactory().setValue(0);
+        depTimeMinSpinner.getValueFactory().setValue(0);
+        arrTimeHourSpinner.getValueFactory().setValue(0);
+        arrTimeMinSpinner.getValueFactory().setValue(0);
+        depDatePicker.getEditor().clear();
+        arrDatePicker.getEditor().clear();
+        originApDropdown.getSelectionModel().clearSelection();
+        destinationApDropdown.getSelectionModel().clearSelection();
+        airplaneModelDropdown.getSelectionModel().clearSelection();
+        basePriceField.setText("00.00");
+        originAirportInfoBtn.setVisible(false);
+        destinationAirportInfoBtn.setVisible(false);
+        airplaneInfoBtn.setVisible(false);
+    }
+
+    public void displayOriginAirportInfo(){
+
+    }
+
+    public void displayDestinationAirportInfo(){
+
+    }
+
+    public void displayAirplaneInfo(){
+
+    }
 }

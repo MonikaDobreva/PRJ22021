@@ -10,13 +10,13 @@ public class Ticket implements Serializable {
     @ID
     private final int ticketId;
 
-    private String flightSeatId, mealId, bookingId, passengerId;
+    private final int flightSeatId, mealId, bookingId, passengerId;
     private final int cabinBaggage, checkedBaggage;
     private final boolean canceled;
     private final double pricePaid;
 
 
-    public Ticket(int ticketId, String flightSeatId, String mealId, String bookingId, String passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, double pricePaid) {
+    public Ticket(int ticketId, int flightSeatId, int mealId, int bookingId, int passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, double pricePaid) {
         this.ticketId = ticketId;
         this.flightSeatId = flightSeatId;
         this.mealId = mealId;
@@ -32,19 +32,19 @@ public class Ticket implements Serializable {
         return ticketId;
     }
 
-    public String getFlightSeatId() {
+    public int getFlightSeatId() {
         return flightSeatId;
     }
 
-    public String getMealId() {
+    public int getMealId() {
         return mealId;
     }
 
-    public String getBookingId() {
+    public int getBookingId() {
         return bookingId;
     }
 
-    public String getPassengerId() {
+    public int getPassengerId() {
         return passengerId;
     }
 

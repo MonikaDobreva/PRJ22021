@@ -37,7 +37,7 @@ public class FlightMapper extends Mapper<Flight, Integer> {
 
     @Override
     public Function<Flight, Integer> keyExtractor() {
-        return (Flight f) -> f.getFlightID();
+        return Flight::getFlightID;
     }
 
     @Override
