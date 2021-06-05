@@ -1,35 +1,22 @@
 package frontend;
 
-import businessentitiesapi.*;
+//import businessentitiesapi.*;
+import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.AirportManager;
+import businessentitiesapi.BookingManager;
+import businessentitiesapi.FlightManager;
+import businessentitiesapi.FlightRouteManager;
 import businesslogic.BusinessLogicImplementationProvider;
 import businesslogic.EditDetailsLogic;
-import frontend.FlightController;
 import businesslogic.BusinessLogicAPI;
 
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-
-import frontend.GUIApp;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-import static org.assertj.core.api.SoftAssertions.assertSoftly;
-
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
@@ -38,26 +25,28 @@ import persistence.PersistenceAPI;
 import persistence.PersistenceImplementationProvider;
 
 import java.io.IOException;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import static org.mockito.Mockito.mock;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
-
-@ExtendWith(ApplicationExtension.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ExtendWith( ApplicationExtension.class )
+@TestMethodOrder( MethodOrderer.OrderAnnotation.class )
 public class CreateFlightGUITest {
 
     static {
-        if (Boolean.getBoolean("SERVER")) {
-            System.setProperty("java.awt.headless", "true");
-            System.setProperty("testfx.robot", "glass");
-            System.setProperty("testfx.headless", "true");
-            System.setProperty("prism.order", "sw");
-            System.setProperty("prism.text", "t2k");
-            System.setProperty("glass.platform", "Monocle");
-            System.setProperty("monocle.platform", "Headless");
+        if ( Boolean.getBoolean( "SERVER" ) ) {
+            System.setProperty( "java.awt.headless", "true" );
+            System.setProperty( "testfx.robot", "glass" );
+            System.setProperty( "testfx.headless", "true" );
+            System.setProperty( "prism.order", "sw" );
+            System.setProperty( "prism.text", "t2k" );
+            System.setProperty( "glass.platform", "Monocle" );
+            System.setProperty( "monocle.platform", "Headless" );
         }
     }
 
@@ -67,46 +56,63 @@ public class CreateFlightGUITest {
     FlightRouteManager flightRouteManager;
     BookingManager bookingManager;
     EditDetailsLogic editDetailsLogic;
+    Stage stage;
 
     @Start
-    void start(Stage stage) throws IOException {
-
-        flightManager = mock(FlightManager.class);
-        airportManager = mock(AirportManager.class);
-        airplaneManager = mock(AirplaneManager.class);
-        bookingManager = mock(BookingManager.class);
-        editDetailsLogic = mock(EditDetailsLogic.class);
-        flightRouteManager = mock(FlightRouteManager.class);
+    void start( Stage stage ) throws IOException {
+        this.stage = stage;
+        flightManager = mock( FlightManager.class );
+        airportManager = mock( AirportManager.class );
+        airplaneManager = mock( AirplaneManager.class );
+        bookingManager = mock( BookingManager.class );
+        editDetailsLogic = mock( EditDetailsLogic.class );
+        flightRouteManager = mock( FlightRouteManager.class );
 
         PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
-        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
+        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation( persistenceAPI );
 
-        new GUIApp(businessLogicAPI).init(false).start(stage);
+        new GUIApp( businessLogicAPI ).init( false ).start( stage );
     }
 
     @Test
-    public void createFlightTest(FxRobot robot){
-        robot
-                .clickOn("#userChoice")
-                .type(KeyCode.DOWN)
-                .type(KeyCode.ENTER)
-                .clickOn("#startBtn")
-                .clickOn("#createFlightBtn")
-                .clickOn("#depTimeHourSpinner")
-                .write("10")
-                .clickOn("#depTimeMinSpinner")
-                .write("30")
-                .clickOn("#depDatePicker")
-                .write("12/07/2021")
-                .clickOn("#arrTimeHourSpinner")
-                .write("14")
-                .clickOn("#arrTimeMinSpinner")
-                .write("45")
-                .clickOn("#arrDatePicker")
-                .write("12/07/2021");
+    public void createFlightTest( FxRobot robot ) {
+        System.out.println( "stage = " + stage );
+        Scene scene = stage.getScene();
+        System.out.println( "scene = " + scene );
+        Parent root = scene.getRoot();
+        System.out.println( "root = " + root );
+        printChildren( root );
+        robot.clickOn( "#userChoice" )
+                .type( KeyCode.DOWN )
+                .type( KeyCode.ENTER )
+                .clickOn( "#startBtn" )
+                .clickOn( "#createFlightBtn" )
+                .clickOn( "#depTimeHourSpinner" )
+                .write( "10" )
+                .clickOn( "#depTimeMinSpinner" )
+                .write( "30" )
+                .clickOn( "#depDatePicker" )
+                .write( "12/07/2021" )
+                .clickOn( "#arrTimeHourSpinner" )
+                .write( "14" )
+                .clickOn( "#arrTimeMinSpinner" )
+                .write( "45" )
+                .clickOn( "#arrDatePicker" )
+                .write( "12/07/2021" );
 //        assertSoftly( softly ->{
 //            softly.assertThat()
 //        });
+    }
+
+    static void printChildren( Parent root ) {
+        for ( Node node : root.getChildrenUnmodifiable() ) {
+            if ( null != node.getId() ) {
+                System.out.println( "node = " + node.getId() );
+            }
+            if ( node instanceof Parent ) {
+                printChildren( (Parent) node );
+            }
+        }
     }
 
 //    @Test
@@ -161,4 +167,3 @@ public class CreateFlightGUITest {
 //        });
 //    }
 }
-

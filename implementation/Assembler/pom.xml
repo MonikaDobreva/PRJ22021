@@ -5,10 +5,11 @@
         <groupId>fontys</groupId>
         <artifactId>AirlineInformationSystem</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
     <artifactId>Assembler</artifactId>
     <packaging>jar</packaging>
-    <name>Assembler</name>
+    <name>Assembler :: G03</name>
     <properties>
         <exec.mainClass>assembler.Main</exec.mainClass>
     </properties>

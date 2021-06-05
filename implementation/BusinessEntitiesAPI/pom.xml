@@ -9,6 +9,11 @@
     <artifactId>BusinessEntitiesAPI</artifactId>
     <packaging>jar</packaging>
     <name>BusinessEntitiesAPI</name>
+    <properties>
+        <surefire.opens>
+            --add-opens businessentities_api_module/fontys.businessentities=ALL-UNNAMED
+        </surefire.opens>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>nl.fontys.sebivenlo</groupId>
@@ -28,22 +33,4 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-     <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <!-- add add-opens lines for **ALL** packages in your module that are tested.
-                        For testing it is fine to open your packages for the whole world, which includes
-                        e.g. junit, assertj, mockito, and jacoco, to name a few.
-                        Also leave ${argLine} because it is set/used by the coverage plugin.
-                    -->
-                    <argLine>
-                        ${argLine}
-                        --add-opens businessentities_api_module/fontys.businessentities=ALL-UNNAMED
-                    </argLine>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

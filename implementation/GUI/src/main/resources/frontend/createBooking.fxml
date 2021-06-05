@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="576.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBookingController">
+<AnchorPane prefHeight="576.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/11.0.1" 
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.CreateBookingController"
+            fx:id="createBooking">
     <children>
         <VBox prefHeight="584.0" prefWidth="600.0">
 

@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.PassengerInfoController">
+<GridPane vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+          fx:controller="frontend.PassengerInfoController"
+          fx:ix="passengerInfo">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.6" minWidth="10.0" prefWidth="132.8" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.59999999999997" minWidth="0.0" prefWidth="333.59999999999997" />
@@ -92,15 +94,15 @@
         <Label text="Seat:" GridPane.rowIndex="8" />
         <Label text="Seat Type:" GridPane.rowIndex="7" />
         <ComboBox fx:id="seatType" disable="true" prefWidth="150.0" promptText="select" GridPane.columnIndex="1" GridPane.rowIndex="7">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Economy" />
-                <String fx:value="Premium Economy" />
-                <String fx:value="Business" />
-                <String fx:value="First Class" />
-                <String fx:value="Emergency Exit" />
-            </FXCollections>
-        </items>
-    </ComboBox>
-</children>
-        </GridPane>
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Economy" />
+                    <String fx:value="Premium Economy" />
+                    <String fx:value="Business" />
+                    <String fx:value="First Class" />
+                    <String fx:value="Emergency Exit" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </children>
+</GridPane>
