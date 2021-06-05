@@ -1,5 +1,6 @@
 package businesslogic;
 
+import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightRouteManager;
 import persistence.FlightRouteStorageService;
@@ -44,4 +45,9 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
             this.add(this.createFlightRoute(0, originAirport, destinationAirport));
         }
     }
+
+//    @Override
+//    public List<Flight> getFlightsByRouteId(int routeID) {
+//        return flightRouteStorageService.getFlightsByRouteId(routeID);
+//    }
 }

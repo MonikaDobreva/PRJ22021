@@ -1,8 +1,13 @@
 package businessentitiesapi;
 
+import genericmapper.Mapper;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -65,4 +70,6 @@ public interface FlightManager {
      * @return the ID
      */
     int getLastID();
+
+    List<Flight> getFlightsByRouteId(int selectedRouteId);
 }

@@ -10,4 +10,5 @@ public interface FlightRouteStorageService {
     FlightRoute add(FlightRoute fr);
     List<FlightRoute> getAll();
 
+    //List<Flight> getFlightsByRouteId(int routeID);
 }

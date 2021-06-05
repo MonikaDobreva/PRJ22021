@@ -43,4 +43,6 @@ public interface FlightRouteManager {
      * @return
      */
     void checkExistence(String originAirport, String destinationAirport);
+
+    //List<Flight> getFlightsByRouteId(int routeID);
 }

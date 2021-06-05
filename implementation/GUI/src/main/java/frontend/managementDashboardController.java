@@ -10,6 +10,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.temporal.Temporal;
 import java.util.stream.Collectors;
 
 /**
@@ -22,18 +25,20 @@ public class managementDashboardController {
     private final BookingManager bookingManager;
     private final FlightRouteManager flightRouteManager;
     private final TicketManager ticketManager;
+    private final MealTypeManager mealTypeManager;
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
 
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
-            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, mDashGoingToLabel;
+            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, mDashGoingToLabel,
+            routesTabTotalRoutesLabel, routesTabTotalPlanesLabel, routesTabTotalFlightsLabel, popularMealLabel;
 
     @FXML
     Button updateStatisticsButton;
 
     @FXML
-    ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown;
+    ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown, mDashRoutesDropdown;
 
     public managementDashboardController(
             FlightManager flightManager,
@@ -41,7 +46,8 @@ public class managementDashboardController {
             AirplaneManager airplaneManager,
             BookingManager bookingManager,
             FlightRouteManager flightRouteManager,
-            TicketManager ticketManager
+            TicketManager ticketManager,
+            MealTypeManager mealTypeManager
     ) {
         this.airplaneManager = airplaneManager;
         this.airportManager = airportManager;
@@ -49,7 +55,10 @@ public class managementDashboardController {
         this.bookingManager = bookingManager;
         this.flightRouteManager = flightRouteManager;
         this.ticketManager = ticketManager;
+        this.mealTypeManager = mealTypeManager;
     }
+
+    //////////////////////////////////// General Tab ////////////////////////////////////////////////////////////////
 
     /**
      * Helper method to use as an action which ensures that all the necessary KPI's computed from values from
@@ -62,9 +71,14 @@ public class managementDashboardController {
         totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
         totalTicketsLabel.setText(String.valueOf(ticketManager.getTickets().size()));
         totalRevenueLabel.setText(String.valueOf(sumOfTicketPrices()));
+        popularMealLabel.setText(getMostBookedMeal());
 
     }
 
+    /**
+     * Helper method to calculate the sum of all the tickets currently sold
+     * @return  the value of the sum as a BigDecimal
+     */
     public BigDecimal sumOfTicketPrices() {
         var allTickets = ticketManager.getTickets();
         BigDecimal sum = BigDecimal.ZERO;
@@ -73,6 +87,13 @@ public class managementDashboardController {
         }
         return sum;
     }
+
+    public String getMostBookedMeal(){
+        return mealTypeManager.getMostBookedMeal().stream()
+                .map(MealType::getMealName).findFirst().get();
+    }
+
+    //////////////////////////// Bookings Tab /////////////////////////////////////////////////////////////////////////
 
     /**
      * Method used as an action to set the values of the dropdown menu for the currently
@@ -89,6 +110,11 @@ public class managementDashboardController {
     }
 
 
+    /**
+     * Helper method to list all the bookings connected to the previous selected flight
+     * inside of this dropdown menu. If there is no booking for the flight available a respective alert
+     * dialog will appear
+     */
     @FXML
     private void listFlightsDependingOnSelectedFlight() {
         var currentFlight = mDashFlightDropdown.getValue();
@@ -106,31 +132,47 @@ public class managementDashboardController {
         }
     }
 
+    /**
+     * Helper method to update the flight data for the booking tab in the tab pane
+     */
     @FXML
     private void updateFlightData() {
-        var currentFlight = mDashFlightDropdown.getValue();
-        var currentBooking = bookingManager.getBookingsOfFlight(currentFlight).stream()
-                .filter(b -> b.getBookingId() == mDashBookingDropdown.getValue()).findFirst().get();
-        if (currentFlight == null && currentBooking == null) {
+        var selectedFlightID = mDashFlightDropdown.getValue();
+        var selectedFlightAsObject = flightManager.getFlights().stream()
+                .filter(f -> f.getFlightID() == selectedFlightID).findFirst().get();
+        var selectedBookingID = mDashBookingDropdown.getValue();
+        var selectedBookingAsObject = bookingManager.getBookingsOfFlight(selectedFlightID).stream()
+                .filter(b -> b.getBookingId() == selectedBookingID).findFirst().get();
+
+        if (mDashFlightDropdown.getValue() == null && mDashBookingDropdown.getValue() == null) {
             showAlert("Information", "Please select at least a flight first!", AlertType.INFORMATION);
-        } else if (currentBooking == null) {
+        }
+        if (mDashBookingDropdown.getValue() == null) {
             mDashDepLabel.setText("1");
             mDashArrLabel.setText("2");
             mDashEstFDLabel.setText("3");
             mDashBookingsLabel.setText("4");
             mDashMealsLabel.setText("5");
         } else {
-            mDashDepLabel.setText("1");
-            mDashArrLabel.setText("2");
-            mDashEstFDLabel.setText("3");
-            mDashBookingsLabel.setText("4");
+            mDashDepLabel.setText(selectedFlightAsObject.getOriginAirport());
+            mDashArrLabel.setText(selectedFlightAsObject.getDestinationAirport());
+            mDashEstFDLabel.setText(calcEST(selectedFlightAsObject.getDepartureTime(), selectedFlightAsObject.getArrivalTime()) + " minutes");
+            mDashBookingsLabel.setText(String.valueOf(bookingManager.getBookingsOfFlight(selectedFlightID).size()));
             mDashMealsLabel.setText("5");
 
             mDashGoingToLabel.setText("only booking");
-            mDashBookedByLabel.setText("only booking");
+            mDashBookedByLabel.setText("");
         }
     }
 
+    public long calcEST(LocalDateTime start, LocalDateTime end){
+        Duration d = Duration.between(start, end);
+        return d.toMinutes();
+    }
+
+    /**
+     * Clears the view of the statistics by setting the text of the labels to an empty string
+     */
     public void clearStatistics(){
         mDashDepLabel.setText("");
         mDashArrLabel.setText("");
@@ -142,6 +184,12 @@ public class managementDashboardController {
         mDashBookedByLabel.setText("");
     }
 
+    /**
+     * Helper method to create an Alert with all the necessary information with an one-liner
+     * @param title     The title of the message
+     * @param message   The message itself
+     * @param type      The type of the alert, determines the icon
+     */
     public void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -149,6 +197,32 @@ public class managementDashboardController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    ////////////////////////////////// routes tab methods //////////////////////////////////////////////////////////
+
+    @FXML
+    public void listRoutes(){
+        mDashRoutesDropdown.setItems(FXCollections.observableArrayList(
+                flightRouteManager.getFlightRoutes().stream()
+                .map(FlightRoute::getFlightRouteID).collect(Collectors.toList())
+        ));
+    }
+
+    @FXML
+    public void routesTabApply(){
+        var selectedRouteId = mDashRoutesDropdown.getValue();
+        var selectedRouteAsObject = flightRouteManager.getFlightRoutes().stream()
+                .filter(r -> r.getFlightRouteID() == selectedRouteId).findFirst().get();
+        if(mDashRoutesDropdown.getValue() == null){
+            routesTabTotalRoutesLabel.setText(String.valueOf(flightRouteManager.getFlightRoutes().size()));
+        } else if (mDashRoutesDropdown.getValue() != null){
+            routesTabTotalRoutesLabel.setText("0");
+            routesTabTotalFlightsLabel.setText(String.valueOf(flightManager.getFlightsByRouteId(selectedRouteId).size()));
+            routesTabTotalPlanesLabel.setText("0");
+
+        }
+    }
+
 
 
 }

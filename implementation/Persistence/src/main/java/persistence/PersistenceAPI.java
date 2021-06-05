@@ -43,6 +43,8 @@ public interface PersistenceAPI {
 
     default SeatStorageService getSeatStorageService(SeatManager seatManager){ return null;};
 
+    default MealTypeStorageService getMealTypeStorageService(MealTypeManager mealTypeManager) {return null;};
+
     // This interface can be extended with all services that need to be made
     // available to the business logic
 

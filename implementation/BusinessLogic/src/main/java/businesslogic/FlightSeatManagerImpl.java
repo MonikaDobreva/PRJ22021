@@ -25,6 +25,21 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     public FlightSeat add(FlightSeat f) {return flightSeatStorageService.add(f); }
 
     @Override
+    public void delete(FlightSeat flightSeat) {
+
+    }
+
+    @Override
+    public List<FlightSeat> get() {
+        return null;
+    }
+
+    @Override
+    public List<FlightSeat> getFlightSeats() {
+        return flightSeatStorageService.getAll();
+    }
+
+    @Override
     public List<FlightSeat> addAll(List<Integer> seatsId, int flightId) {
         List<FlightSeat> flightSeats = new ArrayList<>();
 
@@ -34,9 +49,5 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
 
         return flightSeatStorageService.addAll(flightSeats);
     }
-
-    @Override
-    public List<FlightSeat> getFlightSeats() { return flightSeatStorageService.getAll(); }
-
 
 }

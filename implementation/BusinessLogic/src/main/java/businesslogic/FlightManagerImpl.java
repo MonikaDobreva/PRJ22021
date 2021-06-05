@@ -74,7 +74,10 @@ public class FlightManagerImpl implements FlightManager {
         return flightStorageService.getLastID();
     }
 
-
+    @Override
+    public List<Flight> getFlightsByRouteId(int selectedRouteId) {
+        return flightStorageService.getFlightsByRouteId(selectedRouteId);
+    }
 
 
 }

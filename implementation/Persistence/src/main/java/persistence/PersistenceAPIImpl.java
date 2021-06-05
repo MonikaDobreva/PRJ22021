@@ -47,4 +47,10 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
     public SeatStorageService getSeatStorageService(SeatManager seatManager) {
         return new SeatStorageServiceImpl(seatManager);
     }
+
+    @Override
+    public MealTypeStorageService getMealTypeStorageService(MealTypeManager mealTypeManager) {
+        return new MealTypeStorageServiceImpl(mealTypeManager);
+    }
+
 }

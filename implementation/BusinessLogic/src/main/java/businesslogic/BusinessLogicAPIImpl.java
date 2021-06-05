@@ -75,4 +75,11 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         return seatManager;
     }
 
+    @Override
+    public MealTypeManager getMealTypeManager() {
+        MealTypeManagerImpl mealTypeManager = new MealTypeManagerImpl();
+        mealTypeManager.setMealTypeStorageService(persistenceAPI.getMealTypeStorageService(mealTypeManager));
+        return mealTypeManager;
+    }
+
 }

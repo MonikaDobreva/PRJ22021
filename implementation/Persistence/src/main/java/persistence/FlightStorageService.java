@@ -19,6 +19,8 @@ public interface FlightStorageService {
 
     int getLastID();
 
+    List<Flight> getFlightsByRouteId(int selectedRouteId);
+
     // List<FlightSeat> getSeats();
 
 

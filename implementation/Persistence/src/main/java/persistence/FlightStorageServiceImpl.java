@@ -110,6 +110,26 @@ public class FlightStorageServiceImpl implements FlightStorageService {
         return id;
     }
 
+    @Override
+    public List<Flight> getFlightsByRouteId(int routeID) {
+        List<Flight> all = null;
+        try {
+            TransactionToken tok = flightDao.startTransaction();
+            all = flightDao.anyQuery(
+                    "select f.*" +
+                            "from flight_routes fr" +
+                            "join flights f on fr.id = f.flight_route_id" +
+                            "where fr.id = ?;", routeID);
+            tok.commit();
+            flightDao.close();
+            return new ArrayList<>(all);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong with that query");
+        }
+        return all;
+    }
+
 //    @Override
     //  public List<FlightSeat> getSeats() {
     //      return List.of(new FlightSeat(), new FlightSeat());
