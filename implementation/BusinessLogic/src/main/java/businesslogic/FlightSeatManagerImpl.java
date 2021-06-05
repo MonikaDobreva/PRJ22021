@@ -1,6 +1,5 @@
 package businesslogic;
 
-import businessentitiesapi.Flight;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
 import persistence.FlightSeatStorageService;
