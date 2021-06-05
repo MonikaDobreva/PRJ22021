@@ -19,6 +19,7 @@
             <groupId>nl.fontys.sebivenlo</groupId>
             <artifactId>sebiannotations</artifactId>
             <type>jar</type>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>nl.fontys.sebivenlo</groupId>

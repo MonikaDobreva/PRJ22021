@@ -5,6 +5,6 @@ module persistence_module {
     requires java.sql;
     requires org.postgresql.jdbc;
     requires nl.fontys.sebivenlo.genericdao;
-    requires nl.fontys.sebivenlo.genericranges;
+    requires transitive nl.fontys.sebivenlo.genericranges;
 
 }
