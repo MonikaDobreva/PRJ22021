@@ -9,6 +9,7 @@ import businessentitiesapi.FlightRouteManager;
 import businesslogic.BusinessLogicImplementationProvider;
 import businesslogic.EditDetailsLogic;
 import businesslogic.BusinessLogicAPI;
+import static frontend.UIHelpers.printChildren;
 
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
@@ -104,16 +105,7 @@ public class CreateFlightGUITest {
 //        });
     }
 
-    static void printChildren( Parent root ) {
-        for ( Node node : root.getChildrenUnmodifiable() ) {
-            if ( null != node.getId() ) {
-                System.out.println( "node = " + node.getId() );
-            }
-            if ( node instanceof Parent ) {
-                printChildren( (Parent) node );
-            }
-        }
-    }
+   
 
 //    @Test
 //    void testAddCustomer(FxRobot robot) {

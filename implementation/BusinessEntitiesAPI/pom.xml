@@ -5,6 +5,7 @@
         <groupId>fontys</groupId>
         <artifactId>AirlineInformationSystem</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
     <artifactId>BusinessEntitiesAPI</artifactId>
     <packaging>jar</packaging>
