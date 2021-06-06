@@ -94,17 +94,17 @@ public class EditFlightGuiTest {
 
     @Test
     public void tinit() {
-        SoftAssertions softly = new SoftAssertions();
-        FxRobot robot = new FxRobot();
-        System.out.println("stage = " + stage);
-        Scene scene = stage.getScene();
-        System.out.println("scene = " + scene);
-        Parent root = scene.getRoot();
-        System.out.println("root = " + root);
-        printChildren(root);
+//        SoftAssertions softly = new SoftAssertions();
+//        FxRobot robot = new FxRobot();
+//        System.out.println("stage = " + stage);
+//        Scene scene = stage.getScene();
+//        System.out.println("scene = " + scene);
+//        Parent root = scene.getRoot();
+//        System.out.println("root = " + root);
+//        printChildren(root);
 
      
-        
+//        
 //        final ComboBox b = (ComboBox) robot.lookup("#userChoice").query();
 //        robot.interact(() -> {
 //            b.getSelectionModel().select("Sales Officer");

@@ -64,10 +64,8 @@ public class FlightManagerImpl implements FlightManager {
     @Override
     public boolean delete(Flight f) {
 //        return flightStorageService.delete(f);
-        var flightDao = daof.createDao(Flight.class);
         try {
-            flightDao.deleteEntity(f);
-            flightDao.close();
+            daof.createDao(Flight.class).deleteEntity(f);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,10 +76,8 @@ public class FlightManagerImpl implements FlightManager {
     @Override
     public boolean update(Flight f) {
 //       return flightStorageService.update(f);
-    var flightDao = daof.createDao(Flight.class);
          try {
-            flightDao.update(f);
-            flightDao.close();
+            daof.createDao(Flight.class).update(f);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

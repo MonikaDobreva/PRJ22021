@@ -85,8 +85,8 @@ public class GUIAppTest {
 
     @Test
     public void init(FxRobot robot){
-        robot
-                .clickOn("#userChoice");
+//        robot
+//                .clickOn("#userChoice");
 //        assertSoftly( softly ->{
 //            softly.assertThat()
 //        });

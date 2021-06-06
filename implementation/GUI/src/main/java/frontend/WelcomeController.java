@@ -45,13 +45,8 @@ public class WelcomeController {
     @FXML
     public void goToStart(ActionEvent event) throws IOException {
         System.out.println("Is invoked");
-        Button bx = (Button) event.getSource();
-//        String selectedItem = (String) bx.getSelectionModel().getSelecte;
        
         try {
-//            if (selectedItem.toLowerCase().contains("officer")) {
-//                 sceneManagerSupplier.get().changeScene("salesOfficerOptions");
-////            }
             if (userChoice.getSelectionModel().getSelectedItem().toLowerCase().contains("officer")) {
                 sceneManagerSupplier.get().changeScene("salesOfficerOptions");
             } else if(userChoice.getValue().toLowerCase().contains("manager")){
