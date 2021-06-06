@@ -1,33 +1,34 @@
 package businesslogic;
 
-import businessentitiesapi.Airplane;
-import businessentitiesapi.Airport;
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import genericdao.pgdao.PGDAOFactory;
+
 import persistence.FlightStorageService;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.Predicate;
+
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
+ * @author Rachel
  */
 
 public class FlightManagerImpl implements FlightManager {
 
     private FlightStorageService flightStorageService;
+   private PGDAOFactory daof;
 
-    public void setFlightStorageService(FlightStorageService flightStorageService) {
+    public void setFlightStorageService(FlightStorageService flightStorageService,PGDAOFactory pgdFactory) {
         this.flightStorageService = flightStorageService;
+             daof = pgdFactory;
     }
-
+    
+//     public void setFlightStorageService(PGDAOFactory pgdFactory) {
+//      daof = pgdFactory;
+//    }
 
     @Override
     public Flight createFlight (
@@ -62,12 +63,26 @@ public class FlightManagerImpl implements FlightManager {
 
     @Override
     public boolean delete(Flight f) {
-        return flightStorageService.delete(f);
+//        return flightStorageService.delete(f);
+        try {
+            daof.createDao(Flight.class).deleteEntity(f);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean update(Flight f) {
-       return flightStorageService.update(f);
+//       return flightStorageService.update(f);
+         try {
+            daof.createDao(Flight.class).update(f);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public int getLastID() {

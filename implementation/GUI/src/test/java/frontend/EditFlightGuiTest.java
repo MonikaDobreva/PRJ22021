@@ -15,8 +15,8 @@ import java.time.Month;
 import frontend.GUIApp;
 import javafx.stage.Stage;
 
-import static org.assertj.core.api.SoftAssertions.assertSoftly;
-
+import org.assertj.core.api.SoftAssertions;
+import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -35,15 +35,23 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import persistence.PersistenceAPI;
 import persistence.PersistenceImplementationProvider;
-
+import javafx.stage.Stage;
 import java.io.IOException;
+import java.io.IOException;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import static frontend.UIHelpers.printChildren;
+import java.lang.ref.SoftReference;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyCode;
 
 import static org.mockito.Mockito.mock;
 
 /**
  * @author Rachel
  */
-
 @ExtendWith(ApplicationExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EditFlightGuiTest {
@@ -66,10 +74,11 @@ public class EditFlightGuiTest {
     FlightRouteManager flightRouteManager;
     BookingManager bookingManager;
     EditDetailsLogic editDetailsLogic;
+    Stage stage;
 
     @Start
     void start(Stage stage) throws IOException {
-
+        this.stage = stage;
         flightManager = mock(FlightManager.class);
         airportManager = mock(AirportManager.class);
         airplaneManager = mock(AirplaneManager.class);
@@ -84,15 +93,49 @@ public class EditFlightGuiTest {
     }
 
     @Test
-    public void init(FxRobot robot){
-        robot
-                .clickOn("#userChoice");
+    public void tinit() {
+//        SoftAssertions softly = new SoftAssertions();
+//        FxRobot robot = new FxRobot();
+//        System.out.println("stage = " + stage);
+//        Scene scene = stage.getScene();
+//        System.out.println("scene = " + scene);
+//        Parent root = scene.getRoot();
+//        System.out.println("root = " + root);
+//        printChildren(root);
 
+     
+//        
+//        final ComboBox b = (ComboBox) robot.lookup("#userChoice").query();
+//        robot.interact(() -> {
+//            b.getSelectionModel().select("Sales Officer");
+//        });
+////        String selectedItem = (String) b.getSelectionModel().getSelectedItem();
+////        System.out.println("selected Items " + selectedItem);
+////        Button button = (Button) robot.lookup( "#startBtn" ).query(); //<2>
+////            robot.clickOn( button ); //<3> 
+//        robot.clickOn("#startBtn");
+////         selectedItem = (String) b.getSelectionModel().getSelectedItem();
+////        System.out.println("selected Items " + selectedItem);
+//        assertThat(stage.getScene().getRoot().getId()).isEqualTo("salesOfficerOptions");
+
+//        ComboBox cb = (ComboBox) robot.lookup( "#userChoice" ).query();
+////        cb.setValue("salesOfficerOptions");
+//        robot.interact(()->{cb.setValue("salesOfficerOptions");});
+//        robot.interact(()->{});
+//       
+//        System.out.println();
+//        assertThat(stage.getScene().getRoot().getId()).isEqualTo("salesOfficerOptions");
+//        robot.clickOn("#userChoice")
+//                .type(KeyCode.DOWN)
+//                .type(KeyCode.ENTER)
+//                .clickOn("#startBtn");
+//        System.out.println("change scene");
+//        printChildren(stage.getScene().getRoot());
+//        robot.clickOn("#editFlightBtn");
 //        assertSoftly( softly ->{
 //            softly.assertThat()
 //        });
     }
-    
 
 //    @Test
 //    void testAddCustomer(FxRobot robot) {

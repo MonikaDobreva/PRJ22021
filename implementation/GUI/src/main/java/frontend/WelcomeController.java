@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.function.Supplier;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
@@ -34,10 +36,18 @@ public class WelcomeController {
     public WelcomeController(Supplier<SceneManager> sceneManagerSupplier) {
         this.sceneManagerSupplier = sceneManagerSupplier;
     }
+    
+    public void initialize( URL arg0, ResourceBundle arg1 ){
+       String[] userRoles = {"Sales Employee", "Sales Officer", "Sales Manager"};
+       userChoice.setItems(FXCollections.observableArrayList(userRoles)); 
+    }
+    
     @FXML
-    public void goToStart() throws IOException {
+    public void goToStart(ActionEvent event) throws IOException {
+        System.out.println("Is invoked");
+       
         try {
-            if (userChoice.getValue().toLowerCase().contains("officer")) {
+            if (userChoice.getSelectionModel().getSelectedItem().toLowerCase().contains("officer")) {
                 sceneManagerSupplier.get().changeScene("salesOfficerOptions");
             } else if(userChoice.getValue().toLowerCase().contains("manager")){
                 sceneManagerSupplier.get().changeScene("managementDashboardView");
