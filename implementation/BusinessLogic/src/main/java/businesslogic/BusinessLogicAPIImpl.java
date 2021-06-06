@@ -1,6 +1,8 @@
 package businesslogic;
 
 import businessentitiesapi.*;
+import genericdao.pgdao.PGDAOFactory;
+import genericdao.pgdao.PGJDBCUtils;
 import persistence.PersistenceAPI;
 
 /**
@@ -12,15 +14,30 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         this.persistenceAPI = persistenceAPI;
+         var ds = PGJDBCUtils.getDataSource("postgres");
+        daof = new PGDAOFactory(ds);
     }
 
-
-    @Override
+     private PGDAOFactory daof;
+     
+//    BusinessLogicAPIImpl() {
+//        var ds = PGJDBCUtils.getDataSource("postgres");
+//        daof = new PGDAOFactory(ds);
+//    }
+    
+     @Override
     public FlightManager getFlightManager() {
         FlightManagerImpl flightManager = new FlightManagerImpl();
-        flightManager.setFlightStorageService(persistenceAPI.getFlightStorageService(flightManager));
+        flightManager.setFlightStorageService(persistenceAPI.getFlightStorageService(flightManager),daof);
         return flightManager;
     }
+
+//    @Override
+//    public FlightManager getFlightManager() {
+//        FlightManagerImpl flightManager = new FlightManagerImpl();
+//        flightManager.setFlightStorageService(persistenceAPI.getFlightStorageService(flightManager));
+//        return flightManager;
+//    }
 
     public AirportManager getAirportManager() {
         AirportManagerImpl airportManager = new AirportManagerImpl();

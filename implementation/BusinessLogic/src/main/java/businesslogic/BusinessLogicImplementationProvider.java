@@ -11,5 +11,9 @@ public interface BusinessLogicImplementationProvider extends BusinessLogicAPI{
     static BusinessLogicAPI getImplementation(PersistenceAPI persistenceAPI){
         return new BusinessLogicAPIImpl(persistenceAPI);
     };
+    
+//     static BusinessLogicAPI getImplementation(){
+//        return new BusinessLogicAPIImpl();
+//    };
 
 }
