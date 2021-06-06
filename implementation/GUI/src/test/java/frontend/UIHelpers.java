@@ -1,6 +1,7 @@
 package frontend;
 
-import javafx.scene.Node;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Parent;
 
 /**
@@ -18,15 +19,23 @@ public class UIHelpers {
      */
     static void printChildren( Parent root ) {
         if ( null != root.getId() ) {
-            System.out.println( "parent node = #" + root.getId()  + " class "+root.getClass().getSimpleName());
+            System.out.println( "parent node = #" + root.getId() + " class " + root.getClass().getSimpleName() );
         }
         root.getChildrenUnmodifiable().stream().map( node -> {
             if ( null != node.getId() ) {
-                System.out.println( "node = #" + node.getId() + " class "+node.getClass().getSimpleName() );
+                System.out.println( "node = #" + node.getId() + " class " + node.getClass().getSimpleName() );
             }
             return node;
         } ).filter( node -> ( node instanceof Parent ) ).forEachOrdered( node -> {
             printChildren( (Parent) node ); // recuurse into parent nodes.
         } );
+    }
+
+    static void pause( long milis ) {
+        try {
+            Thread.currentThread().sleep( milis );
+        } catch ( InterruptedException ignored ) {
+            Logger.getLogger( UIHelpers.class.getName() ).log( Level.SEVERE, ignored.getMessage() );
+        }
     }
 }
