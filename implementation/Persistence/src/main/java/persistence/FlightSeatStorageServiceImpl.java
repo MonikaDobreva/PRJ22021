@@ -1,5 +1,6 @@
 package persistence;
 
+import businessentitiesapi.Flight;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
 import genericdao.dao.DAO;
@@ -66,6 +67,18 @@ public class FlightSeatStorageServiceImpl implements FlightSeatStorageService {
         }
 
         return storedFlightSeat.get();
+    }
+
+    @Override
+    public List<FlightSeat> findAvailableSeatsForFlight(Flight flight, String seatType) {
+        var query = "SELECT *\n" +
+                "FROM flightSeatsView\n" +
+                "         JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
+                "         JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
+                "WHERE flightId = ?\n" +
+                "  AND available = true\n" +
+                "  AND s2.name = ?;";
+        return flightSeatDao.anyQuery(query, flight.getFlightID(), seatType);
     }
 
 }

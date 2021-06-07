@@ -1,14 +1,20 @@
 package frontend;
 
-import businessentitiesapi.Flight;
+import businessentitiesapi.*;
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.util.stream.Collectors;
+
 public class PassengerInfoController {
 
     private Flight flight;
+    private final FlightSeatManager flightSeatManager;
+    private final SeatManager seatManager;
 
     @FXML
     public TextField firstName;
@@ -32,7 +38,7 @@ public class PassengerInfoController {
     public ComboBox<String> seatType;
 
     @FXML
-    public ComboBox<String> seatNumber;
+    public ComboBox<Seat> seatNumber;
 
     @FXML
     public ComboBox<String> cabinLuggage;
@@ -43,6 +49,11 @@ public class PassengerInfoController {
     @FXML
     public ComboBox<String> meal;
 
+    public PassengerInfoController(FlightSeatManager flightSeatManager, SeatManager seatManager) {
+        this.flightSeatManager = flightSeatManager;
+        this.seatManager = seatManager;
+    }
+
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
@@ -52,12 +63,33 @@ public class PassengerInfoController {
         if (flight == null && isEnabled) {
             return;
         }
-
+        System.out.println("hiiiizu");
         passportNumber.setDisable(actualState);
         seatType.setDisable(actualState);
-        seatNumber.setDisable(actualState);
         cabinLuggage.setDisable(actualState);
         handLuggage.setDisable(actualState);
         meal.setDisable(actualState);
+    }
+
+    @FXML
+    void initialize() {
+        System.out.println("hio");
+        seatType.setOnAction(this::onSeatTypeSelected);
+    }
+
+    @FXML
+    public void onSeatTypeSelected(ActionEvent actionEvent) {
+        var selectedType = seatType.getSelectionModel().getSelectedItem();
+        if ("select".equals(selectedType)) {
+            return;
+        }
+
+        seatNumber.setDisable(false);
+        var flightSeats = flightSeatManager.getAvailableFlightSeats(flight, selectedType);
+        var seats = flightSeats.stream().map(seatManager::getSeatForFlightSeat)
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        seatNumber.setItems(seats);
+        System.out.println(seats);
     }
 }

@@ -1,5 +1,6 @@
 package businesslogic;
 
+import businessentitiesapi.Flight;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
 import persistence.FlightSeatStorageService;
@@ -48,6 +49,11 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
         }
 
         return flightSeatStorageService.addAll(flightSeats);
+    }
+
+    @Override
+    public List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType) {
+        return flightSeatStorageService.findAvailableSeatsForFlight(flight, seatType);
     }
 
 }

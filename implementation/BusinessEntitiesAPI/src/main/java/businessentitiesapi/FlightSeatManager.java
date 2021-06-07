@@ -16,4 +16,6 @@ public interface FlightSeatManager {
 
     List<FlightSeat> addAll(List<Integer> seatsId, int flightId);
 
+    List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType);
+
 }

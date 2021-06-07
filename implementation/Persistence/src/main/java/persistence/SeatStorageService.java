@@ -1,6 +1,7 @@
 package persistence;
 
 import businessentitiesapi.Airplane;
+import businessentitiesapi.FlightSeat;
 import businessentitiesapi.Seat;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface SeatStorageService {
     List<Seat> getAll();
 
    List<Seat> getSeatsOfAirplane(Airplane ap);
+
+   Seat getSeatForFlightSeat(FlightSeat flightSeat);
 }

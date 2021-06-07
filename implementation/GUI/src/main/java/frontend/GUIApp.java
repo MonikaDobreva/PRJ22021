@@ -41,7 +41,8 @@ public class GUIApp extends Application {
                         businessLogicAPI.getTicketManager(),
                         businessLogicAPI.getMealTypeManager());
             case "frontend.editFlightController":
-                return new editFlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
+                return new editFlightController(this::getSceneManager,
+                        businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
                         businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
                 return new editDetailsFlightController(this::getSceneManager,businessLogicAPI);
@@ -52,7 +53,9 @@ public class GUIApp extends Application {
             case "frontend.CreateBookingController":
                 return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.PassengerInfoController":
-                return new PassengerInfoController();
+                return new PassengerInfoController(
+                        businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getSeatManager()
+                );
 
             default:
                 return null;
