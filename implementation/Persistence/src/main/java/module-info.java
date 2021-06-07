@@ -4,7 +4,7 @@ module persistence_module {
     exports persistence;
     requires java.sql;
     requires org.postgresql.jdbc;
-    requires nl.fontys.sebivenlo.genericdao;
-    requires transitive ranges;
+    requires nl.fontys.sebivenlo.genericdao_module;
+    requires transitive nl.fontys.sebivenlo.genericranges;
 
 }

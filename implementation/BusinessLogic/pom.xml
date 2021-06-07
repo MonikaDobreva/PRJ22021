@@ -17,6 +17,8 @@
                 Also leave ${argLine} because it is set/used by the coverage plugin.
             -->
             --add-opens businesslogic_module/fontys.businesslogic=ALL-UNNAMED
+            --add-opens businesslogic_module/fontys.businesslogic.bulkvalidator=ALL-UNNAMED
+            --add-opens businesslogic_module/fontys.businesslogic.validators=ALL-UNNAMED
         </surefire.opens>
     </properties>
     <dependencies>
