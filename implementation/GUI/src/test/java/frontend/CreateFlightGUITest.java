@@ -69,8 +69,10 @@
 //        editDetailsLogic = mock( EditDetailsLogic.class );
 //        flightRouteManager = mock( FlightRouteManager.class );
 //
-//        PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
-//        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation( persistenceAPI );
+//       PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
+//        var ds = genericdao.pgdao.PGJDBCUtils.getDataSource("postgres");
+//        BusinessLogicAPI businessLogicAPI = 
+//                BusinessLogicImplementationProvider.getImplementation(persistenceAPI,new genericdao.pgdao.PGDAOFactory(ds));
 //
 //        new GUIApp( businessLogicAPI ).init( false ).start( stage );
 //    }

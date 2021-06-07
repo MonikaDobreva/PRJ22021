@@ -1,5 +1,6 @@
 package businesslogic;
 
+import genericdao.dao.DAOFactory;
 import persistence.PersistenceAPI;
 
 /**
@@ -8,12 +9,8 @@ import persistence.PersistenceAPI;
 
 public interface BusinessLogicImplementationProvider extends BusinessLogicAPI{
 
-    static BusinessLogicAPI getImplementation(PersistenceAPI persistenceAPI){
-        return new BusinessLogicAPIImpl(persistenceAPI);
+    static BusinessLogicAPI getImplementation(PersistenceAPI persistenceAPI,DAOFactory pgdFactory){
+        return new BusinessLogicAPIImpl(persistenceAPI,pgdFactory);
     };
-    
-//     static BusinessLogicAPI getImplementation(){
-//        return new BusinessLogicAPIImpl();
-//    };
 
 }

@@ -16,7 +16,9 @@ public class Main {
     public static void main(String[] args) {
 
         PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
-        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation(persistenceAPI);
+        var ds = genericdao.pgdao.PGJDBCUtils.getDataSource("postgres");
+        BusinessLogicAPI businessLogicAPI = 
+                BusinessLogicImplementationProvider.getImplementation(persistenceAPI,new genericdao.pgdao.PGDAOFactory(ds));
 
 //        PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
 //        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation();
