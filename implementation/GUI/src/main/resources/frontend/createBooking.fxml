@@ -80,7 +80,7 @@
                 </HBox>
                 <HBox prefHeight="100.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="submitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Submit">
+                        <Button fx:id="submitButton" onAction="#onSubmit" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Submit">
                             <font>
                                 <Font size="16.0" />
                             </font>

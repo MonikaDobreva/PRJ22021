@@ -4,6 +4,7 @@ module GUI_module {
     requires businessentities_api_module;
     requires transitive businesslogic_module;
     requires java.logging;
+    requires nl.homberghp.fxuiscraper;
     opens frontend to javafx.fxml;
     exports frontend;
 }

@@ -4,5 +4,8 @@ module businesslogic_module {
     requires nl.fontys.sebivenlo.sebiannotations;
     requires ranges;
     requires nl.fontys.sebivenlo.genericdao;
+    requires java.logging;
     exports businesslogic;
+    exports businesslogic.validators;
+    exports businesslogic.bulkvalidator;
 }

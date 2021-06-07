@@ -75,4 +75,9 @@ public class CreateBookingController {
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
         selectFlight.setItems(flightNames);
     }
+
+    @FXML
+    void onSubmit() {
+        passengerInfoController.validate();
+    }
 }
