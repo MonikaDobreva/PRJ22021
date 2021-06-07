@@ -44,4 +44,9 @@ public class SeatManagerImpl implements SeatManager {
 
         return seatIds;
     }
+
+    @Override
+    public Seat getSeatForFlightSeat(FlightSeat flightSeat) {
+        return seatStorageService.getSeatForFlightSeat(flightSeat);
+    }
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -59,6 +60,9 @@ public class CreateBookingController {
             passengerInfoController.setPassengerFields(true);
         }
 
+        passengerInfoController.seatNumber.setDisable(true);
+        passengerInfoController.seatType.getSelectionModel().clearSelection();
+        passengerInfoController.seatNumber.getSelectionModel().clearSelection();
     }
 
     @FXML

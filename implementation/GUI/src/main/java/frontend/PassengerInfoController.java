@@ -1,17 +1,20 @@
 package frontend;
 
-import businessentitiesapi.Flight;
-import businessentitiesapi.FlightSeatManager;
+import businessentitiesapi.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.util.stream.Collectors;
+
 public class PassengerInfoController {
 
     private Flight flight;
     private final FlightSeatManager flightSeatManager;
+    private final SeatManager seatManager;
 
     @FXML
     public TextField firstName;
@@ -35,7 +38,7 @@ public class PassengerInfoController {
     public ComboBox<String> seatType;
 
     @FXML
-    public ComboBox<String> seatNumber;
+    public ComboBox<Seat> seatNumber;
 
     @FXML
     public ComboBox<String> cabinLuggage;
@@ -46,8 +49,9 @@ public class PassengerInfoController {
     @FXML
     public ComboBox<String> meal;
 
-    public PassengerInfoController(FlightSeatManager flightSeatManager) {
+    public PassengerInfoController(FlightSeatManager flightSeatManager, SeatManager seatManager) {
         this.flightSeatManager = flightSeatManager;
+        this.seatManager = seatManager;
     }
 
     public void setFlight(Flight flight) {
@@ -81,7 +85,11 @@ public class PassengerInfoController {
         }
 
         seatNumber.setDisable(false);
-        var seats = flightSeatManager.getAvailableFlightSeats(flight, selectedType);
+        var flightSeats = flightSeatManager.getAvailableFlightSeats(flight, selectedType);
+        var seats = flightSeats.stream().map(seatManager::getSeatForFlightSeat)
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        seatNumber.setItems(seats);
         System.out.println(seats);
     }
 }

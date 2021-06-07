@@ -39,11 +39,6 @@ public class Seat implements Serializable {
 
     @Override
     public String toString() {
-        return "Seat{" +
-                "seatId=" + seatId +
-                ", seatTypeId=" + seatTypeId +
-                ", seatNumber='" + seatNumber + '\'' +
-                ", airplaneId=" + airplaneId +
-                '}';
+        return seatNumber;
     }
 }

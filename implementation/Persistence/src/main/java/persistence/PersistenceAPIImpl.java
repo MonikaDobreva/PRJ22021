@@ -2,8 +2,6 @@ package persistence;
 
 import businessentitiesapi.*;
 
-import java.util.List;
-
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
@@ -45,7 +43,7 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
 
     @Override
     public SeatStorageService getSeatStorageService(SeatManager seatManager) {
-        return new SeatStorageServiceImpl(seatManager);
+        return new SeatStorageServiceImpl();
     }
 
     @Override
