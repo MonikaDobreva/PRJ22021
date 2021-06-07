@@ -10,28 +10,52 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  * @author Rachel
  */
-
 public class FlightManagerImpl implements FlightManager {
 
     private FlightStorageService flightStorageService;
-   private PGDAOFactory daof;
+    private PGDAOFactory daof;
 
-    public void setFlightStorageService(FlightStorageService flightStorageService,PGDAOFactory pgdFactory) {
+    /**
+     * This is temporary method to keep the old versions still working. Should
+     * be removed if change is complete.
+     *
+     * @param flightStorageService
+     * @param pgdFactory
+     */
+    public void setFlightStorageService(FlightStorageService flightStorageService, PGDAOFactory pgdFactory) {
         this.flightStorageService = flightStorageService;
-             daof = pgdFactory;
-    }
-    
-     public void setDaoFactory(PGDAOFactory pgdFactory) {
-      daof = pgdFactory;
+        daof = pgdFactory;
     }
 
+    /**
+     * This is the new method that passes only the factory, also used in the
+     * test.
+     *
+     * @param pgdFactory
+     */
+    public void setDaoFactory(PGDAOFactory pgdFactory) {
+        daof = pgdFactory;
+    }
+
+    /**
+     * Method calls the constructor from the flight class and passes all param
+     * along. Flight class can throw exception if wrong data is passed.
+     *
+     * @param flightID
+     * @param originAirport
+     * @param destinationAirport
+     * @param depTime
+     * @param arrTime
+     * @param airplane
+     * @param basePrice
+     * @return newly created Flight
+     */
     @Override
-    public Flight createFlight (
+    public Flight createFlight(
             int flightID,
             String originAirport,
             String destinationAirport,
@@ -39,7 +63,7 @@ public class FlightManagerImpl implements FlightManager {
             LocalDateTime arrTime,
             String airplane,
             BigDecimal basePrice
-    ){
+    ) {
         return new Flight(
                 flightID,
                 originAirport,
@@ -50,6 +74,13 @@ public class FlightManagerImpl implements FlightManager {
                 basePrice);
     }
 
+    /**
+     * Method creates a fresh dao and calls the safe method from the dao. This
+     * saves given flight f in the database.
+     *
+     * @param f Flight to be saved
+     * @return true if sucessfull,false otherwise
+     */
     @Override
     public Flight add(Flight f) {
 //        flightStorageService.add(f);
@@ -66,6 +97,13 @@ public class FlightManagerImpl implements FlightManager {
         return flightStorageService.getAll();
     }
 
+    /**
+     * Method creates a fresh dao and calls the deleteEntity method from the
+     * dao. This deletes given flight f in the database.
+     *
+     * @param f Flight to be deleted
+     * @return true if sucessfull,false otherwise
+     */
     @Override
     public boolean delete(Flight f) {
 //        return flightStorageService.delete(f);
@@ -78,10 +116,17 @@ public class FlightManagerImpl implements FlightManager {
         }
     }
 
+    /**
+     * Method creates a fresh dao and calls the update method from the dao. This
+     * updates given flight f in the database.
+     *
+     * @param f Flight to be updated
+     * @return true if sucesfull,false otherwise
+     */
     @Override
     public boolean update(Flight f) {
 //       return flightStorageService.update(f);
-         try {
+        try {
             daof.createDao(Flight.class).update(f);
             return true;
         } catch (Exception e) {
@@ -98,6 +143,5 @@ public class FlightManagerImpl implements FlightManager {
     public List<Flight> getFlightsByRouteId(int selectedRouteId) {
         return flightStorageService.getFlightsByRouteId(selectedRouteId);
     }
-
 
 }
