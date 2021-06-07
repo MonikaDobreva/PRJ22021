@@ -80,6 +80,7 @@ public class PassengerInfoController {
             return;
         }
 
+        seatNumber.setDisable(false);
         var seats = flightSeatManager.getAvailableFlightSeats(flight, selectedType);
         System.out.println(seats);
     }
