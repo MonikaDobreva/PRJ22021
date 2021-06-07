@@ -2,7 +2,7 @@ package businesslogic;
 
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
-import genericdao.pgdao.PGDAOFactory;
+import genericdao.dao.DAOFactory;
 
 import persistence.FlightStorageService;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class FlightManagerImpl implements FlightManager {
 
     private FlightStorageService flightStorageService;
-    private PGDAOFactory daof;
+    private DAOFactory daof;
 
     /**
      * This is temporary method to keep the old versions still working. Should
@@ -26,7 +26,7 @@ public class FlightManagerImpl implements FlightManager {
      * @param flightStorageService
      * @param pgdFactory
      */
-    public void setFlightStorageService(FlightStorageService flightStorageService, PGDAOFactory pgdFactory) {
+    public void setFlightStorageService(FlightStorageService flightStorageService, DAOFactory pgdFactory) {
         this.flightStorageService = flightStorageService;
         daof = pgdFactory;
     }
@@ -37,7 +37,7 @@ public class FlightManagerImpl implements FlightManager {
      *
      * @param pgdFactory
      */
-    public void setDaoFactory(PGDAOFactory pgdFactory) {
+    public void setDaoFactory(DAOFactory pgdFactory) {
         daof = pgdFactory;
     }
 

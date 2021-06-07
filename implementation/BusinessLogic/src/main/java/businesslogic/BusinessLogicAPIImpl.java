@@ -1,25 +1,25 @@
 package businesslogic;
 
 import businessentitiesapi.*;
+import genericdao.dao.DAOFactory;
 import genericdao.pgdao.PGDAOFactory;
 import genericdao.pgdao.PGJDBCUtils;
 import persistence.PersistenceAPI;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
+ * @author Rachel
  */
 public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider, BusinessLogicAPI {
 
     final PersistenceAPI persistenceAPI;
+    final DAOFactory daof;
 
-    BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
+    BusinessLogicAPIImpl(PersistenceAPI persistenceAPI,DAOFactory pgdFactory) {
         this.persistenceAPI = persistenceAPI;
-        //wrong place should be in the assembler......
-         var ds = PGJDBCUtils.getDataSource("postgres");
-        daof = new PGDAOFactory(ds);
+        this.daof = pgdFactory;
     }
 
-     private PGDAOFactory daof;
      
 //    BusinessLogicAPIImpl() {
 //        var ds = PGJDBCUtils.getDataSource("postgres");

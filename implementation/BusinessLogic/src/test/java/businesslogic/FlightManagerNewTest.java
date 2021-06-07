@@ -1,7 +1,9 @@
 package businesslogic;
 
 import businessentitiesapi.Flight;
-import genericdao.pgdao.PGDAOFactory;
+import genericdao.dao.DAOFactory;
+import genericdao.dao.DAO;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +31,10 @@ import static org.mockito.Mockito.mock;
 public class FlightManagerNewTest {
 
     @Mock
-    PGDAOFactory daoM;
+    DAOFactory daoF;
+
+    @Mock
+    DAO<Flight, Serializable> dao;
 
     FlightManagerImpl flm;
     Flight f;
@@ -37,8 +42,12 @@ public class FlightManagerNewTest {
     @BeforeEach
     public void setupTest() {
         flm = new FlightManagerImpl();
-        daoM = mock(PGDAOFactory.class);
-        flm.setDaoFactory(daoM);
+        daoF = mock(DAOFactory.class);
+        dao = mock(DAO.class);
+        flm.setDaoFactory(daoF);
+        Mockito.when(daoF
+                .createDao(Flight.class))
+                .thenReturn(dao);
 
         f = new Flight(5,
                 "DUS", "YVY",
@@ -48,21 +57,21 @@ public class FlightManagerNewTest {
                 new BigDecimal("100.50"));
     }
 
-    @Disabled
+//    @Disabled
     @Test
     public void updateTest() {
-//        Mockito.when(daoM.createDao(forClass)).thenReturn(daoM);
         flm.update(f);
-        verify(daoM).createDao(Flight.class).update(f);
+        verify(daoF).createDao(Flight.class);
+        verify(dao).update(f);
 
     }
-    
-    @Disabled
+
+//    @Disabled
     @Test
     public void deleteTest() {
-//        Mockito.when(daoM.createDao(forClass)).thenReturn(daoM);
         flm.delete(f);
-        verify(daoM).createDao(Flight.class).deleteEntity(f);
+        verify(daoF).createDao(Flight.class);
+        verify(dao).deleteEntity(f);
 
     }
 }

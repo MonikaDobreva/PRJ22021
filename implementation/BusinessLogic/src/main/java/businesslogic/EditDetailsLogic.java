@@ -83,7 +83,7 @@ public class EditDetailsLogic {
      * @param date
      * @return
      */
-    private LocalDateTime makeDateTime(String hour, String min, String date) {
+    LocalDateTime makeDateTime(String hour, String min, String date) {
         return LocalDateTime.parse(
                 makeTimeValid(hour)
                 + ":"
