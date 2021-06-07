@@ -52,7 +52,7 @@ public class GUIApp extends Application {
             case "frontend.CreateBookingController":
                 return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.PassengerInfoController":
-                return new PassengerInfoController();
+                return new PassengerInfoController(businessLogicAPI.getFlightSeatManager());
 
             default:
                 return null;
