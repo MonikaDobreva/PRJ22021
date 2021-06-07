@@ -4,11 +4,12 @@ import businesslogic.bulkvalidator.BulkException;
 import businesslogic.bulkvalidator.BulkValidator;
 import businesslogic.bulkvalidator.Validator;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class PassengerInfoValidator {
 
@@ -31,6 +32,11 @@ public class PassengerInfoValidator {
     }
 
     private String validateName(String name) {
+        var first = name.substring(0, 1).toUpperCase(Locale.ROOT);
+        var second = name.substring(1).toLowerCase(Locale.ROOT);
+        name = first + second;
+        System.out.println(name);
+
         if (name.equals("null")) {
             throw new PassengerInfoException("Name should not be null");
         }
@@ -48,16 +54,40 @@ public class PassengerInfoValidator {
         if (s.equals("null")) {
             throw new PassengerInfoException("Value should not be null");
         }
-
         return s;
     }
 
     private String validateEmail(String s) {
-        return null;
+        s = s.toLowerCase(Locale.ROOT);
+        if (s.contains(" ")) {
+            throw new PassengerInfoException("Email address may not contain spaces");
+        }
+        if (!s.contains("@")) {
+            throw new PassengerInfoException("Email address needs to contain the @-symbol");
+        }
+        if (!s.contains(".")) {
+            throw new PassengerInfoException("Email address needs to contain a dot");
+        }
+        return s;
     }
 
-    private String validateBirthday(String s) {
-        return null;
+    private LocalDate validateBirthday(String s) {
+        LocalDate date;
+        try {
+            date = LocalDate.parse(s);
+        } catch (DateTimeParseException e) {
+            throw new PassengerInfoException(s + " is not a valid date / should not be empty");
+        }
+        if (date.isAfter(LocalDate.now())) {
+            throw new PassengerInfoException("Birthday may not be now nor in the future");
+        }
+        if (date.isBefore(LocalDate.ofYearDay(1900, 1))) {
+            throw new PassengerInfoException("Birthday may not be before the 21th century");
+        }
+
+
+        return date;
+
     }
 
     private String validatePassportNumber(String s) {
