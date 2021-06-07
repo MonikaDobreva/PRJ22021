@@ -5,14 +5,11 @@ import businessentitiesapi.AirplaneManager;
 import businessentitiesapi.Airport;
 import businessentitiesapi.AirportManager;
 import businessentitiesapi.Flight;
-import businessentitiesapi.FlightManager;
-import businessentitiesapi.FlightRouteManager;
+import businesslogic.BusinessLogicAPI;
 import businesslogic.EditDetailsLogic;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -25,7 +22,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -54,20 +50,17 @@ public class editDetailsFlightController {
     private Button deleteFlightButton, cancelEditButton, safeEditButton;
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    private final FlightManager flightManager;
     private final AirportManager airportManager;
     private final AirplaneManager airplaneManager;
     private final EditDetailsLogic eLogic;
-    private final FlightRouteManager flightRouteManager;
+   
     private Flight editFlight;
 
-    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager, AirportManager airportManager, AirplaneManager airplaneManager, EditDetailsLogic editDLogic,FlightRouteManager flightRouteManager) {
+    public editDetailsFlightController(Supplier<SceneManager> sceneManagerSupplier, BusinessLogicAPI bl) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-        this.flightManager = flightManager;
-        this.airportManager = airportManager;
-        this.airplaneManager = airplaneManager;
-        this.eLogic = editDLogic;
-        this.flightRouteManager = flightRouteManager;
+        this.airportManager = bl.getAirportManager();
+        this.airplaneManager = bl.getAirplaneManager();
+        this.eLogic = bl.getEditDetailsLogic();
     }
 
     public void setFlight(Flight f) {
@@ -182,64 +175,49 @@ public class editDetailsFlightController {
     /**
      * This method is called when the user clicks on the safe button.
      *
-     * It updates the flight entry with the changed data in the database.
+     * It updates the flight entry with the changed data in the database.Using
+     * the methods from the EditDetailsLogic.
      */
     @FXML
     private void safeEditFlight(ActionEvent event) {
-        //helper var for easier reading
-        boolean changed = false;
-        String originAirport = editFlight.getOriginAirport();
-        String destinationAirport = editFlight.getDestinationAirport();
-        LocalDateTime depTime = editFlight.getDepartureTime();
-        LocalDateTime arrTime = editFlight.getArrivalTime();
-        String airplane = editFlight.getAirplane();
-        BigDecimal basePrice = editFlight.getBasePrice();
+        Map<String, String> safedValues = new HashMap<>();
 
-        //this checks if the boxes are ticked and uses then the new data for the flight other wise it will be the old flight
+        //this checks if the boxes are ticked and then puts the data in the map.
         if (chBoxDepTime.isSelected()) {
-            changed = true;
-            depTime = eLogic.makeDateTime(cVDepHour.getValue(), cVDepMin.getValue(), cVDepDate.getValue());
+            safedValues.put("cVDepHour", cVDepHour.getValue().toString());
+            safedValues.put("cVDepMin", cVDepMin.getValue().toString());
+            safedValues.put("cVDepDate", cVDepDate.getValue().toString());
         }
         if (chBoxArrTime.isSelected()) {
-            changed = true;
-            arrTime = eLogic.makeDateTime(cVArrHour.getValue(), cVArrMin.getValue(), cVArrDate.getValue());
+            safedValues.put("cVArrHour", cVArrHour.getValue().toString());
+            safedValues.put("cVArrMin", cVArrMin.getValue().toString());
+            safedValues.put("cVArrDate", cVArrDate.getValue().toString());
         }
         if (chBoxOrigin.isSelected()) {
-            changed = true;
-            originAirport = cVOrigin.getValue();
+            safedValues.put("cVOrigin", cVOrigin.getValue().toString());
         }
         if (chBoxDest.isSelected()) {
-            changed = true;
-            destinationAirport = cVDestination.getValue();
+            safedValues.put("cVDestination", cVDestination.getValue().toString());
         }
         if (chBoxAirpl.isSelected()) {
-            changed = true;
-            airplane = cVAirplane.getValue();
+            safedValues.put("cVAirplane", cVAirplane.getValue().toString());
         }
         if (chBoxPrice.isSelected()) {
-            changed = true;
-            basePrice = new BigDecimal(cVPrice.getText());
+            safedValues.put("cVPrice", cVPrice.getText());
         }
-        //if nothing is changed let the user know
-        if (changed == false) {
+
+        Map<String, String> returnData = eLogic.passData(safedValues, editFlight);
+
+        if (returnData.containsKey("same")) {
             errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("nothingChangedLabel"));
             return;
-        }
-
-        try {
-            Flight f = flightManager.createFlight(editFlight.getFlightID(), //placeholder, id should be same as old is done in database
-                    originAirport, destinationAirport, depTime, arrTime, airplane, basePrice);
-            flightRouteManager.checkExistence(originAirport, destinationAirport);
-            boolean update = flightManager.update(f);
-            if (update == true) {
-                Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
-                sceneManagerSupplier.get().changeScene("editFlights", cons);
-            } else {
-                errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("somethingWrong"));
-            }
-
-        } catch (Exception e) {
-            errorLabel.setText(e.getLocalizedMessage());
+        } else if (returnData.containsKey("flightError")) {
+            errorLabel.setText(returnData.get("flightError"));
+        } else if (returnData.containsKey("updateError")) {
+            errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("somethingWrong"));
+        } else if (returnData.containsKey("worked")) {
+            Consumer<editFlightController> cons = (editFlightController c) -> c.initWindow();
+            sceneManagerSupplier.get().changeScene("editFlights", cons);
         }
     }
 

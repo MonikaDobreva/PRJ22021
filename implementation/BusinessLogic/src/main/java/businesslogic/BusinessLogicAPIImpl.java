@@ -14,6 +14,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     BusinessLogicAPIImpl(PersistenceAPI persistenceAPI) {
         this.persistenceAPI = persistenceAPI;
+        //wrong place should be in the assembler......
          var ds = PGJDBCUtils.getDataSource("postgres");
         daof = new PGDAOFactory(ds);
     }
@@ -25,6 +26,8 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 //        daof = new PGDAOFactory(ds);
 //    }
     
+     
+     
      @Override
     public FlightManager getFlightManager() {
         FlightManagerImpl flightManager = new FlightManagerImpl();
@@ -53,7 +56,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     @Override
     public EditDetailsLogic getEditDetailsLogic() {
-        EditDetailsLogic edl = new EditDetailsLogic();
+        EditDetailsLogic edl = new EditDetailsLogic(getFlightManager(),getFlightRouteManager());
         return edl;
     }
 
