@@ -16,18 +16,10 @@ To read Use Case click [**here**]( ../../UseCasesSalesOfficer.md )
 8. The Sales Officer searches for the previously edited flight by the changed information
 9. The system displays the correct flight.
 
-**Test Scenario 2: Necessary information was deleted during the edit**
+**Test Scenario 2: Invalid information was added during the edit**
 
 5. The Sales Officer edits the needed information
 6. The Sales Officer submits the process
-7. The system complains about insufficient information
-8. The Sales Officer searches for the previously edited flight
-9. The system still displays the same flight.
-
-**Test Scenario 3: Invalid information was added during the edit**
-
-5. The Sales Officer edits the needed information
-6. The Sales Officer submits the process
-7. The system complains about insufficient information
+7. The system complains about invalid information
 8. The Sales Officer searches for the previously edited flight by the changed information
 9. The system does not display the flight.
