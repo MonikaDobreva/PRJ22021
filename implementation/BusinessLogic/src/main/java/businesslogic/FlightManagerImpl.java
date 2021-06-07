@@ -26,9 +26,9 @@ public class FlightManagerImpl implements FlightManager {
              daof = pgdFactory;
     }
     
-//     public void setFlightStorageService(PGDAOFactory pgdFactory) {
-//      daof = pgdFactory;
-//    }
+     public void setDaoFactory(PGDAOFactory pgdFactory) {
+      daof = pgdFactory;
+    }
 
     @Override
     public Flight createFlight (
@@ -52,8 +52,13 @@ public class FlightManagerImpl implements FlightManager {
 
     @Override
     public Flight add(Flight f) {
-        flightStorageService.add(f);
-        return f;
+//        flightStorageService.add(f);
+        try {
+            return daof.createDao(Flight.class).save(f).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
