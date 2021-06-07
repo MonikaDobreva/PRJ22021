@@ -74,7 +74,7 @@ public class CreateFlightGUITest {
 //        BusinessLogicAPI businessLogicAPI = 
 //                BusinessLogicImplementationProvider.getImplementation(persistenceAPI,new genericdao.pgdao.PGDAOFactory(ds));
 
-        new GUIApp( businessLogicAPI ).init( false ).start( stage );
+  //      new GUIApp( businessLogicAPI ).init( false ).start( stage );
     }
 
     @Test
