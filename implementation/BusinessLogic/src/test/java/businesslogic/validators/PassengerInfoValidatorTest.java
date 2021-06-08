@@ -31,7 +31,7 @@ class PassengerInfoValidatorTest {
 
     @ParameterizedTest
     @CsvSource({
-    //        "firstName,Null,Name should not be null",
+            "firstName,null,Name should not be null",
             "firstName,Carl0s,Name should not contain digits",
             "firstName,X,Name should be at least two letters long",
             "gender,null,Value should not be null",

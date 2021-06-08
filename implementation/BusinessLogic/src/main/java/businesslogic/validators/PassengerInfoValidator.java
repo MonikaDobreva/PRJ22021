@@ -37,7 +37,7 @@ public class PassengerInfoValidator {
         name = first + second;
         System.out.println(name);
 
-        if (name.equals("null")) {
+        if (name.equals("Null")) {
             throw new PassengerInfoException("Name should not be null");
         }
         if (name.chars().anyMatch(Character::isDigit)) {
