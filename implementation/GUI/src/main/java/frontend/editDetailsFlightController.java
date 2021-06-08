@@ -210,7 +210,6 @@ public class editDetailsFlightController {
 
         if (returnData.containsKey("same")) {
             errorLabel.setText(ResourceBundle.getBundle("frontend.editAisStrings", Locale.getDefault()).getString("nothingChangedLabel"));
-            return;
         } else if (returnData.containsKey("flightError")) {
             errorLabel.setText(returnData.get("flightError"));
         } else if (returnData.containsKey("updateError")) {
