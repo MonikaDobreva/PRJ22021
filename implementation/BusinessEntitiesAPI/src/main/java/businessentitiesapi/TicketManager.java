@@ -18,6 +18,7 @@ public interface TicketManager {
      * @return                  A new ticket object
      */
     Ticket createTicket(
+            int ticketId,
             int flightSeatId,
             int cabinBaggage,
             int checkedBaggage,
@@ -42,4 +43,8 @@ public interface TicketManager {
      */
     List<Ticket> getTickets();
 
+    BigDecimal getSumOfTicketPrices();
+
+
+    boolean delete(Ticket t);
 }

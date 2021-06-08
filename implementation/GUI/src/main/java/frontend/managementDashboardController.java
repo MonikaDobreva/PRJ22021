@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.temporal.Temporal;
 import java.util.stream.Collectors;
 
 /**
@@ -80,12 +79,7 @@ public class managementDashboardController {
      * @return  the value of the sum as a BigDecimal
      */
     public BigDecimal sumOfTicketPrices() {
-        var allTickets = ticketManager.getTickets();
-        BigDecimal sum = BigDecimal.ZERO;
-        for (Ticket t : allTickets) {
-            sum = sum.add(t.getPricePaid());
-        }
-        return sum;
+        return ticketManager.getSumOfTicketPrices();
     }
 
     public String getMostBookedMeal(){

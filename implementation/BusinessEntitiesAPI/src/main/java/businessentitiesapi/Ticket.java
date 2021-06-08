@@ -17,15 +17,15 @@ public class Ticket implements Serializable {
     private final BigDecimal pricePaid;
 
 
-    public Ticket(int ticketId, int flightSeatId, int mealId, int bookingId, int passengerId, int cabinBaggage, int checkedBaggage, boolean canceled, BigDecimal pricePaid) {
+    public Ticket(int ticketId, int flightSeatId, int cabinBaggage, int checkedBaggage, int mealId, int bookingId, boolean canceled, int passengerId, BigDecimal pricePaid) {
         this.ticketId = ticketId;
         this.flightSeatId = flightSeatId;
-        this.mealId = mealId;
-        this.bookingId = bookingId;
-        this.passengerId = passengerId;
         this.cabinBaggage = cabinBaggage;
         this.checkedBaggage = checkedBaggage;
+        this.mealId = mealId;
+        this.bookingId = bookingId;
         this.canceled = canceled;
+        this.passengerId = passengerId;
         this.pricePaid = pricePaid;
     }
 
@@ -63,5 +63,20 @@ public class Ticket implements Serializable {
 
     public BigDecimal getPricePaid() {
         return pricePaid;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "ticketId=" + ticketId +
+                ", flightSeatId=" + flightSeatId +
+                ", mealId=" + mealId +
+                ", bookingId=" + bookingId +
+                ", passengerId=" + passengerId +
+                ", cabinBaggage=" + cabinBaggage +
+                ", checkedBaggage=" + checkedBaggage +
+                ", canceled=" + canceled +
+                ", pricePaid=" + pricePaid +
+                '}';
     }
 }
