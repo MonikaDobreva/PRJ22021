@@ -23,7 +23,7 @@ public class Main {
 //        PersistenceAPI persistenceAPI = PersistenceImplementationProvider.getImplementation();
 //        BusinessLogicAPI businessLogicAPI = BusinessLogicImplementationProvider.getImplementation();
         
-        GUIApp gui = new GUIApp(businessLogicAPI).show();
+        GUIApp gui = new GUIApp(businessLogicAPI).start( );
 
     }
 

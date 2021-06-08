@@ -12,25 +12,24 @@ import javafx.application.Platform;
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
-
 public class GUIApp extends Application {
 
     private BusinessLogicAPI businessLogicAPI;
     private SceneManager sceneManager;
     private static final String INITIAL_VIEW = "welcome";
 
-    private final Callback<Class<?>, Object> controllerFactory = (Class<?> c)
+    private final Callback<Class<?>, Object> controllerFactory = ( Class<?> c )
             -> {
 
-        switch (c.getName()) {
+        switch ( c.getName() ) {
             case "frontend.FlightController":
-                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager() ,
-                        businessLogicAPI.getFlightSeatManager());
+                return new FlightController( this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
+                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager(),
+                        businessLogicAPI.getFlightSeatManager() );
             case "frontend.TopMenuController":
-                return new TopMenuController(this::getSceneManager);
+                return new TopMenuController( this::getSceneManager );
             case "frontend.WelcomeController":
-                return new WelcomeController(this::getSceneManager);
+                return new WelcomeController( this::getSceneManager );
             case "frontend.managementDashboardController":
                 return new managementDashboardController(
                         businessLogicAPI.getFlightManager(),
@@ -39,19 +38,19 @@ public class GUIApp extends Application {
                         businessLogicAPI.getBookingsManager(),
                         businessLogicAPI.getFlightRouteManager(),
                         businessLogicAPI.getTicketManager(),
-                        businessLogicAPI.getMealTypeManager());
+                        businessLogicAPI.getMealTypeManager() );
             case "frontend.editFlightController":
-                return new editFlightController(this::getSceneManager,
+                return new editFlightController( this::getSceneManager,
                         businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager());
+                        businessLogicAPI.getAirplaneManager() );
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager,businessLogicAPI);
+                return new editDetailsFlightController( this::getSceneManager, businessLogicAPI );
             case "frontend.SalesOfficerController":
-                return new SalesOfficerController(this::getSceneManager);
+                return new SalesOfficerController( this::getSceneManager );
             case "frontend.DeleteFlightController":
-                return new DeleteFlightController(this::getSceneManager, businessLogicAPI.getFlightManager());
+                return new DeleteFlightController( this::getSceneManager, businessLogicAPI.getFlightManager() );
             case "frontend.CreateBookingController":
-                return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
+                return new CreateBookingController( this::getSceneManager, businessLogicAPI.getFlightManager() );
             case "frontend.PassengerInfoController":
                 return new PassengerInfoController(
                         businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getSeatManager()
@@ -72,50 +71,74 @@ public class GUIApp extends Application {
 //        return null;
     };
 
-    public GUIApp(BusinessLogicAPI businessLogicAPI) {
+    public GUIApp( BusinessLogicAPI businessLogicAPI ) {
         this.businessLogicAPI = businessLogicAPI;
     }
 
     public GUIApp show() {
-        return init(true);
+        return init( true );
     }
 
-    public GUIApp init(boolean startJavaFXToolkit) {
+    public GUIApp init( boolean startJavaFXToolkit ) {
 
-        if (startJavaFXToolkit) {
-
-            Platform.startup(() -> {
-            });
-
-            initializeSceneManager();
-
-            Platform.runLater(() -> {
-                Stage stage = new Stage();
-                try {
-                    start(stage);
-                } catch (IOException ex) {
-                    throw new IllegalStateException(ex);
-                }
-            });
-
-        } else {
-            initializeSceneManager();
-        }
+//        if ( startJavaFXToolkit ) {
+//
+//            Platform.startup( () -> {
+//            } );
+//
+//            initializeSceneManager();
+//
+//            Platform.runLater( () -> {
+//                Stage stage = new Stage();
+//                try {
+//                    start( stage );
+//                    stage.toFront();
+//                } catch ( IOException ex ) {
+//                    throw new IllegalStateException( ex );
+//                }
+//            } );
+//
+//        } else {
+        initializeSceneManager();
+//        }
 
         return this;
     }
 
     private void initializeSceneManager() {
-        sceneManager = new SceneManager(controllerFactory, INITIAL_VIEW);
+        sceneManager = new SceneManager( controllerFactory, INITIAL_VIEW );
 
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start( Stage stage ) throws IOException {
         //sceneManager.displayOn(stage, 480, 550);
-        sceneManager.displayOn(stage);
+        sceneManager.displayOn( stage );
         stage.toFront();
 
+    }
+
+    /**
+     * To start this instance without having to supply a stage.
+     * Use case: Assembler.Main.
+     * @return this GUIApp.
+     */
+    public GUIApp start() {
+        Platform.startup( () -> {
+        } );
+
+        initializeSceneManager();
+
+        Platform.runLater( () -> {
+            Stage stage = new Stage();
+            try {
+                start( stage );
+                stage.toFront();
+            } catch ( IOException ex ) {
+                throw new IllegalStateException( ex );
+            }
+        } );
+        return this;
     }
 
     public SceneManager getSceneManager() {
@@ -133,7 +156,6 @@ public class GUIApp extends Application {
 //        stage.setScene(scene);
 //        stage.show();
 //    }
-
 //    static void setRoot(String fxml) throws IOException {
 //        scene.setRoot(loadFXML(fxml));
 //    }
@@ -158,5 +180,4 @@ public class GUIApp extends Application {
 //        businessLogicAPI = api;
 //        launch();
 //    }
-
 }

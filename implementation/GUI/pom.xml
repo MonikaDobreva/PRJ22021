@@ -25,6 +25,7 @@
                 --add-opens GUI_module/frontend=ALL-UNNAMED
                 --add-opens javafx.graphics/com.sun.javafx.application.ParametersImpl=ALL-UNNAMED
                 --add-exports javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
+                --add-reads GUI_module=nl.fontys.sebivenlo.genericdao
         </surefire.opens>
     </properties>
     <dependencies>
@@ -72,6 +73,24 @@
             <groupId>nl.homberghp</groupId>
             <artifactId>fxuiscraper</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.fontys.sebivenlo</groupId>
+            <artifactId>genericdao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.5.13</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.18.1</version>
+            <scope>test</scope>
+            <type>jar</type>
         </dependency>
     </dependencies>
 </project>
