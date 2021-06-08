@@ -47,6 +47,11 @@
         </dependency>
         <dependency>
             <groupId>nl.fontys.sebivenlo</groupId>
+            <artifactId>genericdao</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>nl.fontys.sebivenlo</groupId>
             <artifactId>genericranges</artifactId>
             <type>jar</type>
         </dependency>

@@ -6,11 +6,9 @@ import businessentitiesapi.AirplaneManager;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
 import persistence.AirplaneStorageService;
 

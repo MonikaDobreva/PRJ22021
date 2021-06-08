@@ -3,7 +3,7 @@ module businesslogic_module {
     requires transitive persistence_module;
     requires nl.fontys.sebivenlo.sebiannotations;
     requires nl.fontys.sebivenlo.genericranges;
-    requires nl.fontys.sebivenlo.genericdao_module;
+    requires nl.fontys.sebivenlo.genericdao;
     requires java.logging;
     exports businesslogic;
     exports businesslogic.validators;
