@@ -176,6 +176,7 @@ public class EditDetailsLogicTest {
                 Mockito.anyString(),
                 Mockito.any());
         verify(fManagerM).update(f);
+        verify(fRouteManagerM).checkExistence(Mockito.anyString(), Mockito.anyString());
     
         assertThat(returnValues).containsKey("worked");
     }
