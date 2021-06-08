@@ -59,14 +59,18 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     }
 
     @Override
+    public FlightSeat getFromSeatId(int id) {
+        var dao =  daof.createDao(FlightSeat.class);
+        return dao.getByColumnValues("seatId", id).get(0);
+    }
+
+    @Override
     public List<FlightSeat> addAll(List<Integer> seatsId, int flightId) {
         List<FlightSeat> flightSeats = new ArrayList<>();
 
         for (int seatId : seatsId){
             flightSeats.add(this.createFlightSeat(seatId, flightId, true));
         }
-
-//        return flightSeatStorageService.addAll(flightSeats);
 
         try {
             DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);

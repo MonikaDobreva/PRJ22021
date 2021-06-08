@@ -19,7 +19,8 @@ public class PersonStorageServiceImpl implements PersonStorageService {
     public PersonStorageServiceImpl() {
         DataSource ds = PGJDBCUtils.getDataSource("postgres");
         PGDAOFactory daof = new PGDAOFactory(ds);
-        personDao = daof.createDao(Person.class);
+        DAO<Person, Integer> x = daof.createDao(Person.class);
+        personDao = x;
     }
 
     @Override
@@ -37,17 +38,7 @@ public class PersonStorageServiceImpl implements PersonStorageService {
 
     @Override
     public Person add(Person f) {
-        Optional<Person> storedPerson = Optional.empty();
-        try {
-            TransactionToken tok = personDao.startTransaction();
-            storedPerson = personDao.save(f);
-            tok.commit();
-            personDao.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return storedPerson.get();
+       return personDao.save(f).get();
     }
 
 }

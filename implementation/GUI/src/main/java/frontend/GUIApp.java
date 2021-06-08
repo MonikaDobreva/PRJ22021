@@ -1,13 +1,12 @@
 package frontend;
 
+import businesslogic.BusinessLogicAPI;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
-
-import javafx.util.Callback;
-import businesslogic.BusinessLogicAPI;
-import javafx.application.Platform;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -25,7 +24,7 @@ public class GUIApp extends Application {
         switch (c.getName()) {
             case "frontend.FlightController":
                 return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager() ,
+                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager(),
                         businessLogicAPI.getFlightSeatManager());
             case "frontend.TopMenuController":
                 return new TopMenuController(this::getSceneManager);
@@ -45,7 +44,7 @@ public class GUIApp extends Application {
                         businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
                         businessLogicAPI.getAirplaneManager());
             case "frontend.editDetailsFlightController":
-                return new editDetailsFlightController(this::getSceneManager,businessLogicAPI);
+                return new editDetailsFlightController(this::getSceneManager, businessLogicAPI);
             case "frontend.SalesOfficerController":
                 return new SalesOfficerController(this::getSceneManager);
             case "frontend.DeleteFlightController":
@@ -54,7 +53,8 @@ public class GUIApp extends Application {
                 return new CreateBookingController(this::getSceneManager, businessLogicAPI.getFlightManager());
             case "frontend.PassengerInfoController":
                 return new PassengerInfoController(
-                        businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getSeatManager()
+                        businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getPersonManager(), businessLogicAPI.getPassengerManager(),
+                        businessLogicAPI.getBookingsManager(), businessLogicAPI.getTicketManager(), businessLogicAPI.getSeatManager()
                 );
 
             default:

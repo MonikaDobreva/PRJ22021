@@ -1,7 +1,6 @@
 package frontend;
 
-import businessentitiesapi.Flight;
-import businessentitiesapi.FlightManager;
+import businessentitiesapi.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -79,6 +78,6 @@ public class CreateBookingController {
 
     @FXML
     void onSubmit() {
-        passengerInfoController.validate();
+        passengerInfoController.submitInput();
     }
 }

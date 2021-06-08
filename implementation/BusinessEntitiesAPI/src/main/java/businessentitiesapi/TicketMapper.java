@@ -7,6 +7,7 @@ import java.util.function.Function;
 
 /**
  * @author Rachel
+ * @author Davis
  */
 public class TicketMapper extends Mapper<Ticket, Integer> {
 

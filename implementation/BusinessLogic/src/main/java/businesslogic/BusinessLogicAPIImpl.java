@@ -100,4 +100,18 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         return mealTypeManager;
     }
 
+    @Override
+    public PersonManager getPersonManager() {
+        PersonManagerImpl personManager = new PersonManagerImpl();
+        personManager.setPersonStorageService(persistenceAPI.getPersonManagerStorageService(personManager));
+        return personManager;
+    }
+
+    @Override
+    public PassengerManager getPassengerManager() {
+        PassengerManagerImpl passengerManager = new PassengerManagerImpl();
+        passengerManager.setPassengerStorageService(persistenceAPI.getPassengerManagerStorageService(passengerManager));
+        return passengerManager;
+    }
+
 }

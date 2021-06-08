@@ -17,7 +17,7 @@ public class PersonManagerImpl implements PersonManager {
     }
 
     @Override
-    public Person createBooking(String firstName, String lastName, String email, String gender, LocalDate birthDate) {
+    public Person createPerson(String firstName, String lastName, String email, String gender, LocalDate birthDate) {
         //The 0 is just a placeholder
         return new Person(0, firstName, lastName, email, gender, birthDate);
     }

@@ -52,4 +52,13 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
         return new MealTypeStorageServiceImpl(mealTypeManager);
     }
 
+    @Override
+    public PersonStorageService getPersonManagerStorageService(PersonManager personManager) {
+        return new PersonStorageServiceImpl();
+    }
+
+    @Override
+    public PassengerStorageService getPassengerManagerStorageService(PassengerManager passengerManager) {
+        return new PassengerStorageServiceImpl();
+    }
 }

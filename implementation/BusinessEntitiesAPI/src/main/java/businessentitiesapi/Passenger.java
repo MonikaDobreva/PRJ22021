@@ -10,9 +10,11 @@ public class Passenger implements Serializable {
     @ID
     private final int passengerId;
 
-    private final String passportNumber, personId;
+    private final String passportNumber;
 
-    public Passenger(int passengerId, String passportNumber, String personId) {
+    private final int personId;
+
+    public Passenger(int passengerId, String passportNumber, int personId) {
         this.passengerId = passengerId;
         this.passportNumber = passportNumber;
         this.personId = personId;
@@ -26,7 +28,7 @@ public class Passenger implements Serializable {
         return passportNumber;
     }
 
-    public String getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 }

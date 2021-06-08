@@ -17,7 +17,7 @@ public class PassengerManagerImpl implements PassengerManager {
 
 
     @Override
-    public Passenger createPassenger(String passportNumber, String personId) {
+    public Passenger createPassenger(String passportNumber, int personId) {
         //The 0 is just a placeholder
         return new Passenger(0, passportNumber, personId);
     }

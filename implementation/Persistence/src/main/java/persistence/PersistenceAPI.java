@@ -18,33 +18,55 @@ public interface PersistenceAPI {
      * @param flightManager -
      * @return FlightStorageService object that knows how to store and retrieve flights.
      */
-    default FlightStorageService getFlightStorageService(FlightManager flightManager){
+    default FlightStorageService getFlightStorageService(FlightManager flightManager) {
         return null;
     }
 
-    default AirportStorageService getAirportStorageService(AirportManager airportManager){
+    default AirportStorageService getAirportStorageService(AirportManager airportManager) {
         return null;
     }
 
-    default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager, DAOFactory daof){
+    default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager, DAOFactory daof) {
         return null;
     }
 
-    default FlightRouteStorageService getFlightRouteStorageService(FlightRouteManager flightRouteManager){
+    default FlightRouteStorageService getFlightRouteStorageService(FlightRouteManager flightRouteManager) {
         return null;
     }
 
-    default BookingStorageService getBookingStorageService(BookingManager bookingManager){
+    default BookingStorageService getBookingStorageService(BookingManager bookingManager) {
         return null;
-    };
+    }
 
-    default TicketStorageService getTicketStorageService(TicketManager ticketManager){ return null;};
+    ;
 
-    default FlightSeatStorageService getFlightSeatStorageService(FlightSeatManager flightSeatManager){ return null;};
+    default TicketStorageService getTicketStorageService(TicketManager ticketManager) {
+        return null;
+    }
 
-    default SeatStorageService getSeatStorageService(SeatManager seatManager){ return null;};
+    ;
 
-    default MealTypeStorageService getMealTypeStorageService(MealTypeManager mealTypeManager) {return null;};
+    default FlightSeatStorageService getFlightSeatStorageService(FlightSeatManager flightSeatManager) {
+        return null;
+    }
+
+    ;
+
+    default SeatStorageService getSeatStorageService(SeatManager seatManager) {
+        return null;
+    }
+
+    default MealTypeStorageService getMealTypeStorageService(MealTypeManager mealTypeManager) {
+        return null;
+    }
+
+    default PersonStorageService getPersonManagerStorageService(PersonManager personManager) {
+        return null;
+    }
+
+    default PassengerStorageService getPassengerManagerStorageService(PassengerManager passengerManager) {
+        return null;
+    }
 
     // This interface can be extended with all services that need to be made
     // available to the business logic

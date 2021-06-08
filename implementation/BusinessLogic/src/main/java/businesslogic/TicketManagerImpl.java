@@ -38,18 +38,13 @@ public class TicketManagerImpl implements TicketManager {
             int passengerId,
             BigDecimal pricePaid
     ) {
-        return new Ticket(ticketId, flightSeatId, cabinBaggage, checkedBaggage, mealId, bookingId, canceled, passengerId, pricePaid);
+        return new Ticket(ticketId, flightSeatId, cabinBaggage, checkedBaggage, mealId, bookingId, passengerId, canceled, pricePaid);
     }
 
     @Override
     public Ticket add(Ticket t) {
         //return ticketStorageService.add(t);
-        try {
-            return daoF.createDao(Ticket.class).save(t).get();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return daoF.createDao(Ticket.class).save(t).get();
     }
 
     @Override

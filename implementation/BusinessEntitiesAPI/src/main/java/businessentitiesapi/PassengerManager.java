@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface PassengerManager {
 
-    Passenger createPassenger(String passportNumber, String personId);
+    Passenger createPassenger(String passportNumber, int personId);
 
     Passenger add(Passenger p);
 

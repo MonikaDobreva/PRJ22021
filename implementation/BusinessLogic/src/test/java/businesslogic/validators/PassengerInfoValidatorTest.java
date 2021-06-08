@@ -39,6 +39,7 @@ class PassengerInfoValidatorTest {
             "email,email address@abc.de,Email address may not contain spaces",
             "email,email.abc.de,Email address needs to contain the @-symbol",
             "email,email@abcde,Email address needs to contain a dot",
+            "birthday,Carsten,Carsten is not a valid date / should not be empty",
             "birthday,2099-12-12,Birthday may not be today or in the future",
             "birthday,1888-12-12,Birthday may not be before the 21th century",
             "passportNumber,PPN45678910,Passport number needs to be 9 digits long",

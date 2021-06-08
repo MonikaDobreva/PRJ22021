@@ -17,7 +17,7 @@ public class Ticket implements Serializable {
     private final BigDecimal pricePaid;
 
 
-    public Ticket(int ticketId, int flightSeatId, int cabinBaggage, int checkedBaggage, int mealId, int bookingId, boolean canceled, int passengerId, BigDecimal pricePaid) {
+    public Ticket(int ticketId, int flightSeatId, int cabinBaggage, int checkedBaggage, int mealId, int bookingId, int passengerId, boolean canceled, BigDecimal pricePaid) {
         this.ticketId = ticketId;
         this.flightSeatId = flightSeatId;
         this.cabinBaggage = cabinBaggage;

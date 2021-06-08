@@ -43,9 +43,9 @@ public class TicketManagerTest {
 //        TicketManager ticketManager = mock(TicketManager.class);
 //        when(ticketManager.getTickets()).thenReturn(tickets);
 
-        t1 = new Ticket(1, 1, 3, 3, 5, 2, false,2,  BigDecimal.valueOf(150));
-        t2 = new Ticket(2, 2, 1, 2, 7, 1, false,2,  BigDecimal.valueOf(100));
-        t3 = new Ticket(3, 3, 1, 5, 9, 2, false,1,  BigDecimal.valueOf(50));
+        t1 = new Ticket(1, 1, 3, 3, 5, 2, 2, false,  BigDecimal.valueOf(150));
+        t2 = new Ticket(2, 2, 1, 2, 7, 1, 2, false, BigDecimal.valueOf(100));
+        t3 = new Ticket(3, 3, 1, 5, 9, 2, 1, false, BigDecimal.valueOf(50));
         tickets = Arrays.asList(t1, t2, t3);
     }
 

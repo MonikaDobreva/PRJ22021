@@ -27,4 +27,8 @@ public interface BusinessLogicAPI {
     SeatManager getSeatManager();
 
     MealTypeManager getMealTypeManager();
+
+    PersonManager getPersonManager();
+
+    PassengerManager getPassengerManager();
 }
