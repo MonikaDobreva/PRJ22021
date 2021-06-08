@@ -59,6 +59,9 @@ public class PassengerInfoValidator {
 
     private String validateEmail(String s) {
         s = s.toLowerCase(Locale.ROOT);
+        if (s.equals("null")) {
+            throw new PassengerInfoException("Email address should not be null");
+        }
         if (s.contains(" ")) {
             throw new PassengerInfoException("Email address may not contain spaces");
         }
@@ -79,7 +82,7 @@ public class PassengerInfoValidator {
             throw new PassengerInfoException(s + " is not a valid date / should not be empty");
         }
         if (date.isAfter(LocalDate.now())) {
-            throw new PassengerInfoException("Birthday may not be now nor in the future");
+            throw new PassengerInfoException("Birthday may not be today or in the future");
         }
         if (date.isBefore(LocalDate.ofYearDay(1900, 1))) {
             throw new PassengerInfoException("Birthday may not be before the 21th century");

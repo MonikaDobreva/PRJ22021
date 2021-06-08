@@ -44,6 +44,7 @@ public class CreateBookingController {
     void onPassengerOrNotBoxClicked() {
         var boxState = passengerOrNot.isSelected();
         passengerInfoController.setPassengerFields(boxState);
+        passengerInfoController.seatNumber.setDisable(!boxState);
     }
 
     @FXML

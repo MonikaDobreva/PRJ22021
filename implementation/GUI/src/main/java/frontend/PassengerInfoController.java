@@ -74,7 +74,6 @@ public class PassengerInfoController {
         if (flight == null && isEnabled) {
             return;
         }
-        System.out.println("hiiiizu");
         passportNumber.setDisable(actualState);
         seatType.setDisable(actualState);
         cabinLuggage.setDisable(actualState);
@@ -96,7 +95,6 @@ public class PassengerInfoController {
 
     @FXML
     void initialize() {
-        System.out.println("hio");
         seatType.setOnAction(this::onSeatTypeSelected);
     }
 
