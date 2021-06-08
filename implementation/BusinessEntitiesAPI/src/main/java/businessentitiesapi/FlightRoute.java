@@ -33,6 +33,6 @@ public class FlightRoute implements Serializable {
 
     @Override
     public String toString() {
-        return "FlightRoute " + flightRouteID + "from airport: " + originAirportCode + " to airport: " + destinationAirportCode;
+        return "FlightRoute " + flightRouteID + " from airport: " + originAirportCode + " to airport: " + destinationAirportCode;
     }
 }

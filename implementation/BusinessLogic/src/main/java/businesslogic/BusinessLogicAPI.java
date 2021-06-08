@@ -31,4 +31,6 @@ public interface BusinessLogicAPI {
     PersonManager getPersonManager();
 
     PassengerManager getPassengerManager();
+
+    AirplaneScheduleManager getAirplaneScheduleManager();
 }

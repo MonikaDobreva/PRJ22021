@@ -1,12 +1,13 @@
 package frontend;
 
-import businesslogic.BusinessLogicAPI;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
+
+import javafx.util.Callback;
+import businesslogic.BusinessLogicAPI;
+import javafx.application.Platform;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -24,8 +25,8 @@ public class GUIApp extends Application {
         switch (c.getName()) {
             case "frontend.FlightController":
                 return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager(),
-                        businessLogicAPI.getFlightSeatManager());
+                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager() ,
+                        businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getAirplaneScheduleManager());
             case "frontend.TopMenuController":
                 return new TopMenuController(this::getSceneManager);
             case "frontend.WelcomeController":

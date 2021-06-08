@@ -70,10 +70,11 @@ public class FlightController {
     private final FlightRouteManager flightRouteManager;
     private final SeatManager seatManager;
     private final FlightSeatManager flightSeatManager;
+    private final AirplaneScheduleManager airplaneScheduleManager;
 
     public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager,
                             AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager,
-                            SeatManager seatManager, FlightSeatManager flightSeatManager) {
+                            SeatManager seatManager, FlightSeatManager flightSeatManager, AirplaneScheduleManager airplaneScheduleManager) {
         this.sceneManagerSupplier = sceneManagerSupplier;
         this.flightManager = flightManager;
         this.airportManager = airportManager;
@@ -81,6 +82,7 @@ public class FlightController {
         this.flightRouteManager = flightRouteManager;
         this.seatManager = seatManager;
         this.flightSeatManager = flightSeatManager;
+        this.airplaneScheduleManager = airplaneScheduleManager;
     }
 
     @FXML
@@ -151,7 +153,7 @@ public class FlightController {
         Airplane airplane = airplaneManager.getAirplane(airplaneInfo.get().split(" ")[0]);
 
         try{
-            airplaneManager.checkAvailability(airplane, departureTime.get(), arrivalTime.get());
+            airplaneScheduleManager.checkAvailability(airplane.getAirplaneCode(), departureTime.get(), arrivalTime.get());
         } catch (IllegalArgumentException ex){
             showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
             return;
@@ -179,7 +181,9 @@ public class FlightController {
         flightManager.add(f.get());
 
         List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
-        flightSeatManager.addAll(seatsId, f.get().getFlightID());
+        for (int seatId : seatsId){
+            flightSeatManager.add(flightSeatManager.createFlightSeat(seatId, f.get().getFlightID(), true));
+        }
 
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
         clearCreateFlightFields();

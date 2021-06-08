@@ -23,6 +23,10 @@ public class AirportManagerImpl implements AirportManager {
         this.daof = daof;
     }
 
+    public void setDaoFactory(DAOFactory pgdFactory) {
+        this.daof = pgdFactory;
+    }
+
     @Override
     public Airport createAirport(int airportID, String iataCode, String fullName, String country, String city) {
         return new Airport(airportID, iataCode, fullName, country, city);

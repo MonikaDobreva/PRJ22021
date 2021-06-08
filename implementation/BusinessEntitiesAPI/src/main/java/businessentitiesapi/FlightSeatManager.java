@@ -12,7 +12,7 @@ public interface FlightSeatManager {
 
     FlightSeat getFromSeatId(int id);
 
-    List<FlightSeat> addAll(List<Integer> seatsId, int flightId);
+    //List<FlightSeat> addAll(List<Integer> seatsId, int flightId);
 
     List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType);
 
