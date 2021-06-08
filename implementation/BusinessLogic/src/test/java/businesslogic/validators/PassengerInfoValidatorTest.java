@@ -55,4 +55,31 @@ class PassengerInfoValidatorTest {
                 .first().asString()
                 .contains(errorMessage);
     }
+
+//    @ParameterizedTest
+//    @CsvSource({
+//            "firstName,null,Name should not be null",
+//            "firstName,Carl0s,Name should not contain digits",
+//            "firstName,X,Name should be at least two letters long",
+//            "gender,null,Value should not be null",
+//            "email,null,Email address should not be null",
+//            "email,email address@abc.de,Email address may not contain spaces",
+//            "email,email.abc.de,Email address needs to contain the @-symbol",
+//            "email,email@abcde,Email address needs to contain a dot",
+//            "birthday,Carsten,Carsten is not a valid date / should not be empty",
+//            "birthday,2099-12-12,Birthday may not be today or in the future",
+//            "birthday,1888-12-12,Birthday may not be before the 21th century",
+//            "passportNumber,PPN45678910,Passport number needs to be 9 digits long",
+//            "passportNumber,PX1Z3EJ?E,Passport number may only contain A-Z and 0-9"
+//    })
+//    void testValidateInputWithIncorrectInformation(String field, String input, String errorMessage) {
+//        ThrowableAssert.ThrowingCallable throwingCallable = () -> passengerInfoValidator.
+//                validateInput(Map.of(field, input));
+//        var exceptions = catchThrowableOfType(throwingCallable, BulkException.class);
+//        assertThat(exceptions
+//                .getCauses()
+//                .values())
+//                .first().asString()
+//                .contains(errorMessage);
+//    }
 }

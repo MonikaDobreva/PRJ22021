@@ -77,7 +77,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     @Override
     public TicketManager getTicketManager() {
         TicketManagerImpl ticketManager = new TicketManagerImpl();
-        ticketManager.setTicketStorageService(persistenceAPI.getTicketStorageService(ticketManager));
+        ticketManager.setTicketStorageService(persistenceAPI.getTicketStorageService(ticketManager), daof);
         return ticketManager;
     }
 

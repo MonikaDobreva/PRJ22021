@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <properties>
         <surefire.opens>
-            --add-opens persistence_module/fontys.persistence=ALL-UNNAMED            
+            --add-opens persistence_module/fontys.persistence=ALL-UNNAMED
         </surefire.opens>
     </properties>
     <dependencies>

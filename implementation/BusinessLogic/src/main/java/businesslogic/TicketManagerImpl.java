@@ -11,9 +11,6 @@ import java.util.List;
 
 public class TicketManagerImpl implements TicketManager {
 
-
-
-
     private TicketStorageService ticketStorageService;
     private DAOFactory daoF;
 
