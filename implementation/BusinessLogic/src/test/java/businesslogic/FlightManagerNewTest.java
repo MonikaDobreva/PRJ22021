@@ -60,18 +60,19 @@ public class FlightManagerNewTest {
 //    @Disabled
     @Test
     public void updateTest() {
-        flm.update(f);
+        boolean update = flm.update(f);
         verify(daoF).createDao(Flight.class);
         verify(dao).update(f);
+        assertThat(update).isTrue();
 
     }
 
 //    @Disabled
     @Test
     public void deleteTest() {
-        flm.delete(f);
+        boolean delete = flm.delete(f);
         verify(daoF).createDao(Flight.class);
         verify(dao).deleteEntity(f);
-
+        assertThat(delete).isTrue();
     }
 }
