@@ -2,8 +2,6 @@ package businesslogic;
 
 import businessentitiesapi.*;
 import genericdao.dao.DAOFactory;
-import genericdao.pgdao.PGDAOFactory;
-import genericdao.pgdao.PGJDBCUtils;
 import persistence.PersistenceAPI;
 
 /**
@@ -15,7 +13,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     final PersistenceAPI persistenceAPI;
     final DAOFactory daof;
 
-    BusinessLogicAPIImpl(PersistenceAPI persistenceAPI,DAOFactory pgdFactory) {
+    BusinessLogicAPIImpl(PersistenceAPI persistenceAPI, DAOFactory pgdFactory) {
         this.persistenceAPI = persistenceAPI;
         this.daof = pgdFactory;
     }
@@ -50,7 +48,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     public AirplaneManager getAirplaneManager() {
         AirplaneManagerImpl airplaneManager = new AirplaneManagerImpl();
-        airplaneManager.setAirplaneStorageService(persistenceAPI.getAirplaneStorageService(airplaneManager, daof));
+        airplaneManager.setAirplaneStorageService(persistenceAPI.getAirplaneStorageService(airplaneManager), daof);
         return airplaneManager;
     }
 
@@ -100,6 +98,13 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
         MealTypeManagerImpl mealTypeManager = new MealTypeManagerImpl();
         mealTypeManager.setMealTypeStorageService(persistenceAPI.getMealTypeStorageService(mealTypeManager));
         return mealTypeManager;
+    }
+
+    @Override
+    public AirplaneScheduleManager getAirplaneScheduleManager(){
+        AirplaneScheduleManagerImpl airplaneScheduleManager = new AirplaneScheduleManagerImpl();
+        airplaneScheduleManager.setAirplaneScheduleStorageService(null, daof);
+        return airplaneScheduleManager;
     }
 
 }

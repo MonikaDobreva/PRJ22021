@@ -1,9 +1,7 @@
 package businesslogic;
 
-import businessentitiesapi.Airplane;
-import businessentitiesapi.FlightSeat;
-import businessentitiesapi.Seat;
-import businessentitiesapi.SeatManager;
+import businessentitiesapi.*;
+import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
 import genericdao.dao.TransactionToken;
 import persistence.SeatStorageService;
@@ -11,6 +9,7 @@ import persistence.SeatStorageService;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SeatManagerImpl implements SeatManager {
@@ -23,6 +22,10 @@ public class SeatManagerImpl implements SeatManager {
         this.daof = daof;
     }
 
+    public void setDaoFactory(DAOFactory pgdFactory) {
+        daof = pgdFactory;
+    }
+
     @Override
     public Seat createSeat(int seatTypeId, String seatNumber, int airplaneId) {
         //The 0 is just a placeholder
@@ -31,39 +34,51 @@ public class SeatManagerImpl implements SeatManager {
 
     @Override
     public Seat add(Seat s) {
-        return seatStorageService.add(s);
+        try {
+            DAO<Seat, Integer> seatDao = daof.createDao(Seat.class);
+            TransactionToken tok = seatDao.startTransaction();
+            Optional<Seat> storedSeat = seatDao.save(s);
+            tok.commit();
+            seatDao.close();
+            return storedSeat.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public List<Seat> getSeats() {
-        return seatStorageService.getAll();
+        try {
+            return daof.createDao(Seat.class).getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public List<Integer> getSeatIdsOfAirplane(Airplane ap) {
 
         try {
-            return daof.createDao(Seat.class).anyQuery("select * from seatsView " +
-                            "where seatsView.airplaneID = ? ",
-                    ap.getAirplaneID()).stream().map(Seat::getSeatId).collect(Collectors.toList());
+            return daof.createDao(Seat.class).anyQuery(
+                    "select * from seatsView where seatsView.airplaneID = ? ",
+                    ap.getAirplaneID()
+                    ).stream().map(Seat::getSeatId).collect(Collectors.toList());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
 
-//        List<Integer> seatIds = new ArrayList<>();
-//        List<Seat> seats = seatStorageService.getSeatsOfAirplane(a);
-//
-//        for(Seat seat : seats){
-//            seatIds.add(seat.getSeatId());
-//        }
-//
-//        return seatIds;
-
     }
 
     @Override
     public Seat getSeatForFlightSeat(FlightSeat flightSeat) {
-        return seatStorageService.getSeatForFlightSeat(flightSeat);
+        try{
+            return daof.createDao(Seat.class).get(flightSeat.getSeatId()).get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

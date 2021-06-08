@@ -51,39 +51,46 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     @Override
     public List<FlightSeat> getFlightSeats() {
         try {
-            return new ArrayList<>(daof.createDao(FlightSeat.class).getAll());
+            return daof.createDao(FlightSeat.class).getAll();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @Override
-    public List<FlightSeat> addAll(List<Integer> seatsId, int flightId) {
-        List<FlightSeat> flightSeats = new ArrayList<>();
-
-        for (int seatId : seatsId){
-            flightSeats.add(this.createFlightSeat(seatId, flightId, true));
-        }
-
-//        return flightSeatStorageService.addAll(flightSeats);
-
-        try {
-            DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);
-            TransactionToken token = flightSeatDao.startTransaction();
-            var storedFlightSeats = flightSeatDao.saveAll(flightSeats);
-            token.commit();
-            flightSeatDao.close();
-            return new ArrayList<>(storedFlightSeats);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    @Override
+//    public List<FlightSeat> addAll(List<Integer> seatsId, int flightId) {
+//        List<FlightSeat> flightSeats = new ArrayList<>();
+//
+//        for (int seatId : seatsId){
+//            flightSeats.add(this.createFlightSeat(seatId, flightId, true));
+//        }
+//
+////        return flightSeatStorageService.addAll(flightSeats);
+//
+//        try {
+//            DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);
+//            TransactionToken token = flightSeatDao.startTransaction();
+//            var storedFlightSeats = flightSeatDao.saveAll(flightSeats);
+//            token.commit();
+//            flightSeatDao.close();
+//            return new ArrayList<>(storedFlightSeats);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
     @Override
     public List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType) {
-        return flightSeatStorageService.findAvailableSeatsForFlight(flight, seatType);
+        var query = "SELECT *\n" +
+                "FROM flightSeatsView\n" +
+                "         JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
+                "         JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
+                "WHERE flightId = ?\n" +
+                "  AND available = true\n" +
+                "  AND s2.name = ?;";
+        return daof.createDao(FlightSeat.class).anyQuery(query, flight.getFlightID(), seatType);
     }
 
 }

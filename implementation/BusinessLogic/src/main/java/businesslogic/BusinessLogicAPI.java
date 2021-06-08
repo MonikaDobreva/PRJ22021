@@ -27,4 +27,6 @@ public interface BusinessLogicAPI {
     SeatManager getSeatManager();
 
     MealTypeManager getMealTypeManager();
+
+    AirplaneScheduleManager getAirplaneScheduleManager();
 }

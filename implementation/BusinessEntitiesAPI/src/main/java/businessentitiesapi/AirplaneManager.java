@@ -37,22 +37,4 @@ public interface AirplaneManager {
      */
     List<Airplane> getAirplanes();
 
-    /**
-     * Check if Airplane is available for the given departure and arrival time
-     *
-     * @param a The airplane that we want to check availability
-     * @param departure Departure time
-     * @param arrival Arrival time
-     */
-    boolean checkAvailability(Airplane a, LocalDateTime departure, LocalDateTime arrival) throws IllegalArgumentException;
-
-    /**
-     * Get all the dates as a LocalDateTimeRange where an airplane has been scheduled
-     *
-     * @param a Airplane to obtain schedule
-     *
-     * @return a List of the date ranges when the airplane is not available
-     */
-    List<LocalDateTimeRange> airplaneSchedule (Airplane a);
-
 }
