@@ -10,4 +10,5 @@ module businesslogic_module {
     exports businesslogic.bulkvalidator;
     opens businesslogic.bulkvalidator;
     opens businesslogic.validators;
+    opens businesslogic;
 }

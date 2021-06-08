@@ -45,6 +45,7 @@ public class FlightSeatStorageServiceImpl implements FlightSeatStorageService {
         try {
             TransactionToken tok = flightSeatDao.startTransaction();
             var all = flightSeatDao.saveAll(flightSeats);
+            tok.commit();
             flightSeatDao.close();
             return new ArrayList<>(all);
         } catch (Exception e) {

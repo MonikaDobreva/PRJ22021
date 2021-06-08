@@ -4,17 +4,23 @@ import businessentitiesapi.Airplane;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.Seat;
 import businessentitiesapi.SeatManager;
+import genericdao.dao.DAOFactory;
+import genericdao.dao.TransactionToken;
 import persistence.SeatStorageService;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SeatManagerImpl implements SeatManager {
 
     private SeatStorageService seatStorageService;
+    private DAOFactory daof;
 
-    public void setSeatStorageService(SeatStorageService seatStorageService) {
+    public void setSeatStorageService(SeatStorageService seatStorageService, DAOFactory daof) {
         this.seatStorageService = seatStorageService;
+        this.daof = daof;
     }
 
     @Override
@@ -34,15 +40,26 @@ public class SeatManagerImpl implements SeatManager {
     }
 
     @Override
-    public List<Integer> getSeatIdsOfAirplane(Airplane a) {
-        List<Integer> seatIds = new ArrayList<>();
-        List<Seat> seats = seatStorageService.getSeatsOfAirplane(a);
+    public List<Integer> getSeatIdsOfAirplane(Airplane ap) {
 
-        for(Seat seat : seats){
-            seatIds.add(seat.getSeatId());
+        try {
+            return daof.createDao(Seat.class).anyQuery("select * from seatsView " +
+                            "where seatsView.airplaneID = ? ",
+                    ap.getAirplaneID()).stream().map(Seat::getSeatId).collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
 
-        return seatIds;
+//        List<Integer> seatIds = new ArrayList<>();
+//        List<Seat> seats = seatStorageService.getSeatsOfAirplane(a);
+//
+//        for(Seat seat : seats){
+//            seatIds.add(seat.getSeatId());
+//        }
+//
+//        return seatIds;
+
     }
 
     @Override

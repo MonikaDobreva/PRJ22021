@@ -24,13 +24,6 @@ public interface AirplaneManager {
     Airplane createAirplane(int airplaneID, String name, String code, int amountSeats);
 
     /**
-     * Adds a new airplane to the airplaneManager, which stores all the airplane objects in a list
-     *
-     * @param a The airplane to be added
-     */
-    void add(Airplane a);
-
-    /**
      * Return Airplane object matching the given Airplane Code
      *
      * @param airplaneCode The airplane Code from the Airplane to be returned
@@ -43,13 +36,6 @@ public interface AirplaneManager {
      * @return a List of airplane objects
      */
     List<Airplane> getAirplanes();
-
-    /**
-     * Deletes the given airplane from the AirplaneManager
-     *
-     * @param a Airplane to be deleted
-     */
-    void delete(Airplane a);
 
     /**
      * Check if Airplane is available for the given departure and arrival time

@@ -1,6 +1,7 @@
 package persistence;
 
 import businessentitiesapi.*;
+import genericdao.dao.DAOFactory;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -14,7 +15,7 @@ public class PersistenceAPIImpl implements PersistenceAPI, PersistenceImplementa
     }
 
     @Override
-    public AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager){
+    public AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager, DAOFactory daof){
         return new AirplaneStorageServiceImpl(airplaneManager);
     }
 

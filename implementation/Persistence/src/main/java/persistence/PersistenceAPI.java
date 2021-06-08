@@ -1,6 +1,7 @@
 package persistence;
 
 import businessentitiesapi.*;
+import genericdao.dao.DAOFactory;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -25,7 +26,7 @@ public interface PersistenceAPI {
         return null;
     }
 
-    default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager){
+    default AirplaneStorageService getAirplaneStorageService(AirplaneManager airplaneManager, DAOFactory daof){
         return null;
     }
 

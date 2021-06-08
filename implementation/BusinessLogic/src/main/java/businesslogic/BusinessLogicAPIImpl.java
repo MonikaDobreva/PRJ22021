@@ -44,13 +44,13 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     public AirportManager getAirportManager() {
         AirportManagerImpl airportManager = new AirportManagerImpl();
-        airportManager.setAirportStorageService(persistenceAPI.getAirportStorageService(airportManager));
+        airportManager.setAirportStorageService(persistenceAPI.getAirportStorageService(airportManager), daof);
         return airportManager;
     }
 
     public AirplaneManager getAirplaneManager() {
         AirplaneManagerImpl airplaneManager = new AirplaneManagerImpl();
-        airplaneManager.setAirplaneStorageService(persistenceAPI.getAirplaneStorageService(airplaneManager));
+        airplaneManager.setAirplaneStorageService(persistenceAPI.getAirplaneStorageService(airplaneManager, daof));
         return airplaneManager;
     }
 
@@ -63,7 +63,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     @Override
     public FlightRouteManager getFlightRouteManager() {
         FlightRouteManagerImpl flightRouteManager = new FlightRouteManagerImpl();
-        flightRouteManager.setFlightRouteStorageService(persistenceAPI.getFlightRouteStorageService(flightRouteManager));
+        flightRouteManager.setFlightRouteStorageService(persistenceAPI.getFlightRouteStorageService(flightRouteManager), daof);
         return flightRouteManager;
     }
 
@@ -84,14 +84,14 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     @Override
     public FlightSeatManager getFlightSeatManager() {
         FlightSeatManagerImpl flightSeatManager = new FlightSeatManagerImpl();
-        flightSeatManager.setFlightSeatStorageService(persistenceAPI.getFlightSeatStorageService(flightSeatManager));
+        flightSeatManager.setFlightSeatStorageService(persistenceAPI.getFlightSeatStorageService(flightSeatManager), daof);
         return flightSeatManager;
     }
 
     @Override
     public SeatManager getSeatManager() {
         SeatManagerImpl seatManager = new SeatManagerImpl();
-        seatManager.setSeatStorageService(persistenceAPI.getSeatStorageService(seatManager));
+        seatManager.setSeatStorageService(persistenceAPI.getSeatStorageService(seatManager), daof);
         return seatManager;
     }
 

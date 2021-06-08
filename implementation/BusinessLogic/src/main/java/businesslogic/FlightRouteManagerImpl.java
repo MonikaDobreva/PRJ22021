@@ -1,20 +1,29 @@
 package businesslogic;
 
-import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightRouteManager;
+import genericdao.dao.DAO;
+import genericdao.dao.DAOFactory;
+import genericdao.dao.TransactionToken;
 import persistence.FlightRouteStorageService;
-import persistence.FlightStorageService;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 public class FlightRouteManagerImpl implements FlightRouteManager {
 
     private FlightRouteStorageService flightRouteStorageService;
+    private DAOFactory daof;
 
-    public void setFlightRouteStorageService(FlightRouteStorageService lightRouteStorageService) {
-        this.flightRouteStorageService = lightRouteStorageService;
+    public void setFlightRouteStorageService(FlightRouteStorageService flightRouteStorageService, DAOFactory daof) {
+        this.flightRouteStorageService = flightRouteStorageService;
+        this.daof = daof;
+    }
+
+    public void setDaoFactory(DAOFactory pgdFactory) {
+        daof = pgdFactory;
     }
 
     @Override
@@ -24,13 +33,27 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
 
     @Override
     public FlightRoute add(FlightRoute fr) {
-        flightRouteStorageService.add(fr);
-        return fr;
+        try {
+            DAO<FlightRoute, Integer> flightRouteDao = daof.createDao(FlightRoute.class);
+            TransactionToken token = flightRouteDao.startTransaction();
+            Optional<FlightRoute> storedFlightRoute = flightRouteDao.save(fr);
+            token.commit();
+            flightRouteDao.close();
+            return storedFlightRoute.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public List<FlightRoute> getFlightRoutes() {
-        return flightRouteStorageService.getAll();
+        try {
+            return new ArrayList<>(daof.createDao(FlightRoute.class).getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
@@ -46,8 +69,4 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
         }
     }
 
-//    @Override
-//    public List<Flight> getFlightsByRouteId(int routeID) {
-//        return flightRouteStorageService.getFlightsByRouteId(routeID);
-//    }
 }

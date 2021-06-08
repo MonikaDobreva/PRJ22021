@@ -5,8 +5,12 @@ import businessentitiesapi.Airplane;
 import businessentitiesapi.AirplaneManager;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import genericdao.dao.DAOFactory;
+import genericdao.dao.TransactionToken;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
 import persistence.AirplaneStorageService;
 
@@ -16,20 +20,21 @@ import persistence.AirplaneStorageService;
  */
 public class AirplaneManagerImpl implements AirplaneManager{
     
-private AirplaneStorageService airplaneStorageService;
+    private AirplaneStorageService airplaneStorageService;
+    private DAOFactory daof;
 
     public void setAirplaneStorageService(AirplaneStorageService airplaneStorageService){
         this.airplaneStorageService = airplaneStorageService;
+        this.daof = daof;
+    }
+
+    public void setDaoFactory(DAOFactory pgdFactory) {
+        this.daof = pgdFactory;
     }
 
     @Override
     public Airplane createAirplane(int ID ,String name, String code, int amountSeats) {
         return new Airplane(ID, name, code, amountSeats);
-    }
-
-    @Override
-    public void add(Airplane a) {
-        airplaneStorageService.add(a);
     }
 
     @Override
@@ -39,12 +44,12 @@ private AirplaneStorageService airplaneStorageService;
 
     @Override
     public List<Airplane> getAirplanes() {
-        return airplaneStorageService.getAll();
-    }
-
-    @Override
-    public void delete(Airplane a) {
-        airplaneStorageService.delete(a);
+        try {
+            return new ArrayList<>(daof.createDao(Airplane.class).getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

@@ -17,13 +17,6 @@ public interface AirportManager {
     Airport createAirport(int airportID, String iataCode, String fullName, String country, String city);
 
     /**
-     * Adds a new airport to the airportManager, which stores all the airport objects in a list
-     *
-     * @param f The airport to be added
-     */
-    void add(Airport f);
-
-    /**
      * Get all airport which were previously added to the airportStorage
      *
      * @return a List of airport objects
@@ -31,10 +24,5 @@ public interface AirportManager {
     List<Airport> getAirports();
 
     List<Airport> getAirportsWithoutOrigin(String a);
-
-    /**
-     * Deletes the given airport from the AirportManager
-     */
-    void delete(Airport a);
 
 }

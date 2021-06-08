@@ -2,9 +2,13 @@ package businesslogic;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import businessentitiesapi.Airplane;
 import businessentitiesapi.AirplaneManager;
+import businessentitiesapi.Flight;
+import genericdao.dao.DAO;
+import genericdao.dao.DAOFactory;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
 import org.assertj.core.api.ThrowableAssert.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +21,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import persistence.AirplaneStorageService;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +32,16 @@ import java.util.List;
  */
 //@ExtendWith( MockitoExtension.class )
 public class AirplaneManagerTest {
-
+    @Mock
     AirplaneStorageService apStorage;
+
+    @Mock
+    DAOFactory daof;
+
+    @Mock
+    DAO<Airplane, Serializable> dao;
+
+    AirplaneManagerImpl apm;
 
     Airplane ap1 = new Airplane(0, "Boeing 377","V-BBBB",367);
     Airplane ap2 = new Airplane(1, "Boeing 350","V-AAAA",250);
@@ -53,12 +66,25 @@ public class AirplaneManagerTest {
     @BeforeEach
     public void setupMock(){
         airplanes = new ArrayList<>();
+
         ap1Schedule = new ArrayList<LocalDateTimeRange>(){
             {add(r1); add(r3);}
         };
         ap2Schedule = new ArrayList<LocalDateTimeRange>(){
             {add(r2); add(r3);}
         };
+
+        apm = new AirplaneManagerImpl();
+
+        daof = mock(DAOFactory.class);
+        dao = mock(DAO.class);
+
+        apm.setDaoFactory(daof);
+
+        Mockito.when(daof
+                .createDao(Airplane.class))
+                .thenReturn(dao);
+
         apStorage = mock(AirplaneStorageService.class);
         airplaneManager.setAirplaneStorageService(apStorage);
     }
@@ -88,12 +114,16 @@ public class AirplaneManagerTest {
     
     @Test
     public void getTest(){
-        Mockito.when(apStorage.getAll()).thenReturn(airplanes);
-        airplanes.add(ap1);
-        airplanes.add(ap2);
+//        Mockito.when(apStorage.getAll()).thenReturn(airplanes);
+//        airplanes.add(ap1);
+//        airplanes.add(ap2);
+//
+//        assertThat(airplaneManager.getAirplanes())
+//                .containsExactly(ap1, ap2);
 
-        assertThat(airplaneManager.getAirplanes())
-                .containsExactly(ap1, ap2);
+        apm.getAirplanes();
+        verify(daof).createDao(Airplane.class);
+        verify(dao).getAll();
     }
 
     @Test
@@ -152,8 +182,13 @@ public class AirplaneManagerTest {
         airplanes.add(ap2);
         airplanes.add(ap3);
 
-        Mockito.when(apStorage.getAll()).thenReturn(airplanes);
+        Mockito.when(dao.getAll()).thenReturn(airplanes);
 
-        assertThat(airplaneManager.getAirplane("V-AAAA")).isEqualTo(ap2);
+        Airplane result = apm.getAirplane("V-AAAA");
+
+        verify(daof).createDao(Airplane.class);
+        verify(dao).getAll();
+
+        assertThat(result).isEqualTo(ap2);
     }
 }

@@ -2,22 +2,29 @@ package businesslogic;
 
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
+import genericdao.dao.DAO;
+import genericdao.dao.DAOFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import persistence.FlightRouteStorageService;
-import persistence.FlightStorageService;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class FlightRouteManagerTest {
+
+    @Mock
+    DAOFactory daof;
+
+    @Mock
+    DAO<FlightRoute, Serializable> dao;
 
     @Mock
     FlightRouteStorageService frStorage;
@@ -27,13 +34,19 @@ public class FlightRouteManagerTest {
     FlightRoute fr3 = new FlightRoute(3, "BER", "DXB");
 
     List<FlightRoute> flightRoutes;
-    FlightRouteManagerImpl flightRouteManager = new FlightRouteManagerImpl();
+    FlightRouteManagerImpl flightRouteManager;
 
     @BeforeEach
     public void setupMock(){
+        flightRouteManager = new FlightRouteManagerImpl();;
         flightRoutes = new ArrayList<>();
-        frStorage = mock(FlightRouteStorageService.class);
-        flightRouteManager.setFlightRouteStorageService(frStorage);
+//        frStorage = mock(FlightRouteStorageService.class);
+        daof = mock(DAOFactory.class);
+        dao = mock(DAO.class);
+        flightRouteManager.setDaoFactory(daof);
+        Mockito.when(daof
+                .createDao(FlightRoute.class))
+                .thenReturn(dao);
     }
 
     @Test
@@ -44,11 +57,18 @@ public class FlightRouteManagerTest {
 
     @Test
     public void getAllTest(){
-        Mockito.when(frStorage.getAll()).thenReturn(flightRoutes);
-        flightRoutes.add(fr1);
-        flightRoutes.add(fr3);
 
-        assertThat(flightRouteManager.getFlightRoutes())
-                .containsExactly(fr1, fr3);
+        flightRouteManager.getFlightRoutes();
+
+        verify(daof).createDao(FlightRoute.class);
+        verify(dao).getAll();
+
+//        Mockito.when(dao.getAll()).thenReturn(flightRoutes);
+//        flightRoutes.add(fr1);
+//        flightRoutes.add(fr3);
+//
+//        assertThat(flightRouteManager.getFlightRoutes())
+//                .containsExactly(fr1, fr3);
     }
+
 }

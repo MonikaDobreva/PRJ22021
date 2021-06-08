@@ -166,7 +166,7 @@ public class FlightController {
                     destinationAirport.get(),
                     departureTime.get(),
                     arrivalTime.get(),
-                    airplane.getModel(),
+                    airplane.getAirplaneCode(),
                     price.get()
             ));
         } catch (IllegalArgumentException ex) {

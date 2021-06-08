@@ -8,10 +8,6 @@ public interface FlightSeatManager {
 
     FlightSeat add(FlightSeat f);
 
-    void delete(FlightSeat flightSeat);
-
-    List<FlightSeat> get();
-
     List<FlightSeat> getFlightSeats();
 
     List<FlightSeat> addAll(List<Integer> seatsId, int flightId);

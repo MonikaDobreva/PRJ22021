@@ -254,13 +254,13 @@ begin
     into airplaneID
     from getAirplaneID(new.airplaneCode);
 
-    UPDATE flights SET departure_time = new.departureTime, 
+    UPDATE flights SET departure_time = new.departureTime,
    						arrival_time = new.arrivalTime,
    						airplane_id = airplaneID,
    						flight_route_id = flightRouteID,
    						base_price = new.basePrice
-   						
-   			 WHERE flights.id = old.flightid; 
+
+   			 WHERE flights.id = old.flightid;
     return new;
 end;
 $$ language plpgsql;

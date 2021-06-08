@@ -2,12 +2,16 @@ package businesslogic;
 
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
+import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
 
+import genericdao.dao.TransactionToken;
 import persistence.FlightStorageService;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,25 +80,44 @@ public class FlightManagerImpl implements FlightManager {
 
     /**
      * Method creates a fresh dao and calls the safe method from the dao. This
-     * saves given flight f in the database.
+     * saves the given flight f in the database.
      *
      * @param f Flight to be saved
-     * @return true if sucessfull,false otherwise
+     * @return true if successfull,false otherwise
      */
     @Override
     public Flight add(Flight f) {
-//        flightStorageService.add(f);
+//        return flightStorageService.add(f);
+
         try {
-            return daof.createDao(Flight.class).save(f).get();
+            DAO<Flight, Integer> flightDao = daof.createDao(Flight.class);
+            TransactionToken token = flightDao.startTransaction();
+            var storedFlight = flightDao.save(f);
+            token.commit();
+            flightDao.close();
+            return storedFlight.get();
+//            return daof.createDao(Flight.class).save(f).get();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-
+    
+    /**
+     * Method creates a fresh dao and calls the getAll method from the
+     * dao. This returns all flights in the database.
+     *
+     * @return list of Flights if successfull,null otherwise
+     */
     @Override
     public List<Flight> getFlights() {
-        return flightStorageService.getAll();
+//        return flightStorageService.getAll();
+        try {
+            return new ArrayList<>(daof.createDao(Flight.class).getAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
@@ -135,13 +158,30 @@ public class FlightManagerImpl implements FlightManager {
         }
     }
 
+    @Override
     public int getLastID() {
-        return flightStorageService.getLastID();
+        try {
+            return daof.createDao(Flight.class).lastId();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public List<Flight> getFlightsByRouteId(int selectedRouteId) {
-        return flightStorageService.getFlightsByRouteId(selectedRouteId);
+    public List<Flight> getFlightsByRouteId(int routeId) {
+//        return flightStorageService.getFlightsByRouteId(selectedRouteId);
+        try {
+            return new ArrayList<>(daof.createDao(Flight.class).anyQuery(
+                    "select f.*" +
+                            "from flight_routes fr" +
+                            "join flights f on fr.id = f.flight_route_id" +
+                            "where fr.id = ?;", routeId));
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Something went wrong with that query");
+            return null;
+        }
     }
 
 }
