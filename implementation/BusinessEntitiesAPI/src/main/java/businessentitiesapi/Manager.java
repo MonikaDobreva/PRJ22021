@@ -12,6 +12,6 @@ public interface Manager<T> {
 
     void delete(T t);
 
-    List<T> get();
+    List<T> getMeals();
 
 }

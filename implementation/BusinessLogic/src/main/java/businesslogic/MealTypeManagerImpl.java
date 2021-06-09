@@ -36,7 +36,7 @@ public class MealTypeManagerImpl implements MealTypeManager {
     }
 
     @Override
-    public List<MealType> get() {
+    public List<MealType> getMeals() {
         try {
             return new ArrayList<>(daoF.createDao(MealType.class).getAll());
         } catch (Exception e) {
