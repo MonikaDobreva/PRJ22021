@@ -24,9 +24,7 @@ public class GUIApp extends Application {
 
         switch (c.getName()) {
             case "frontend.FlightController":
-                return new FlightController(this::getSceneManager, businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager(), businessLogicAPI.getFlightRouteManager(), businessLogicAPI.getSeatManager() ,
-                        businessLogicAPI.getFlightSeatManager(), businessLogicAPI.getAirplaneScheduleManager());
+                return new FlightController(this::getSceneManager, businessLogicAPI.getCreateFlightLogic());
             case "frontend.TopMenuController":
                 return new TopMenuController(this::getSceneManager);
             case "frontend.WelcomeController":

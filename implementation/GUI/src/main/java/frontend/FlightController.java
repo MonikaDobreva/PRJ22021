@@ -1,6 +1,7 @@
 package frontend;
 
 import businessentitiesapi.*;
+import businesslogic.CreateFlightLogic;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -13,9 +14,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -64,25 +63,11 @@ public class FlightController {
             arrivalTimeColumn = new TableColumn<>();
 
     private final Supplier<SceneManager> sceneManagerSupplier;
-    private final FlightManager flightManager;
-    private final AirportManager airportManager;
-    private final AirplaneManager airplaneManager;
-    private final FlightRouteManager flightRouteManager;
-    private final SeatManager seatManager;
-    private final FlightSeatManager flightSeatManager;
-    private final AirplaneScheduleManager airplaneScheduleManager;
+    private final CreateFlightLogic createFlightLogic;
 
-    public FlightController(Supplier<SceneManager> sceneManagerSupplier, FlightManager flightManager,
-                            AirportManager airportManager, AirplaneManager airplaneManager, FlightRouteManager flightRouteManager,
-                            SeatManager seatManager, FlightSeatManager flightSeatManager, AirplaneScheduleManager airplaneScheduleManager) {
+    public FlightController(Supplier<SceneManager> sceneManagerSupplier, CreateFlightLogic createFlightLogic) {
         this.sceneManagerSupplier = sceneManagerSupplier;
-        this.flightManager = flightManager;
-        this.airportManager = airportManager;
-        this.airplaneManager = airplaneManager;
-        this.flightRouteManager = flightRouteManager;
-        this.seatManager = seatManager;
-        this.flightSeatManager = flightSeatManager;
-        this.airplaneScheduleManager = airplaneScheduleManager;
+        this.createFlightLogic = createFlightLogic;
     }
 
     @FXML
@@ -92,7 +77,7 @@ public class FlightController {
 
     @FXML
     public void flightIDLabelText(){
-        flightIDLabel.setText(String.valueOf(flightManager.getLastID() + 1));
+        flightIDLabel.setText(createFlightLogic.getNextID());
     }
 
     /**
@@ -119,70 +104,20 @@ public class FlightController {
      */
     @FXML
     private void storeFlight() {
-        //TODO: Separate code in smaller pieces - Look cleaner
-        Optional<Flight>f = Optional.empty();
-        Optional<Integer> flightID = Optional.empty();
-        Optional<String> originAirport = Optional.empty();
-        Optional<String> destinationAirport = Optional.empty();
-        Optional<LocalDateTime> departureTime = Optional.empty();
-        Optional<LocalDateTime> arrivalTime = Optional.empty();;
-        Optional<String> airplaneInfo = Optional.empty();
-        Optional<BigDecimal> price = Optional.empty();
-
-        //Obtain values from all the fields -
-        //Catch exceptions and show message in case some of the fields are empty
         try{
-            flightID = Optional.of(Integer.parseInt(flightIDLabel.getText()));
-            originAirport = Optional.of(originApDropdown.getValue());
-            destinationAirport = Optional.of(destinationApDropdown.getValue());
-            departureTime = Optional.of(LocalDateTime.parse(makeTimeValid(depTimeHourSpinner.getValue().toString())
-                    + ":" + makeTimeValid(depTimeMinSpinner.getValue().toString()) + " "
-                    + depDatePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
-            arrivalTime = Optional.of(LocalDateTime.parse(makeTimeValid(arrTimeHourSpinner.getValue().toString())
-                    + ":" + makeTimeValid(arrTimeMinSpinner.getValue().toString()) + " "
-                    + arrDatePicker.getValue(), DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd")));
-            airplaneInfo = Optional.of(airplaneModelDropdown.getValue());
-            price = Optional.of(new BigDecimal(basePriceField.getText()));
+            Map<String,String> values = obtainData();
+            createFlightLogic.dataValidation(values);
+            createFlightLogic.setData(values);
+
+            createFlightLogic.storeFlight();
+
+
         } catch (DateTimeParseException | NoSuchElementException | NullPointerException ex){
             showAlert("Warning!", "Some of the fields might be empty! Please have a look :)", AlertType.ERROR);
             return;
-        }
-
-        //Check availability for select airplane on desired dates
-        //Catch exception and show message in case of not available
-        Airplane airplane = airplaneManager.getAirplane(airplaneInfo.get().split(" ")[0]);
-
-        try{
-            airplaneScheduleManager.checkAvailability(airplane.getAirplaneCode(), departureTime.get(), arrivalTime.get());
         } catch (IllegalArgumentException ex){
             showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
             return;
-        }
-
-        //With the data collected try to create the Flight object
-        //Catch exception and show message in case of violation of flight constraints
-        try {
-            f = Optional.of(flightManager.createFlight(
-                    flightID.get(),
-                    originAirport.get(),
-                    destinationAirport.get(),
-                    departureTime.get(),
-                    arrivalTime.get(),
-                    airplane.getAirplaneCode(),
-                    price.get()
-            ));
-        } catch (IllegalArgumentException ex) {
-            showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
-            return;
-        }
-
-        flightRouteManager.checkExistence(originAirport.get(), destinationAirport.get());
-
-        flightManager.add(f.get());
-
-        List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
-        for (int seatId : seatsId){
-            flightSeatManager.add(flightSeatManager.createFlightSeat(seatId, f.get().getFlightID(), true));
         }
 
         showAlert("Success", "Successfully added flight!", AlertType.INFORMATION);
@@ -197,14 +132,23 @@ public class FlightController {
         alert.showAndWait();
     }
 
-    /**
-     * Small helper method, which adds an additional 0 to the time if it is only one digit.
-     * Otherwise the selected time cannot be properly parsed.
-     * @param t time value
-     * @return formatted time value
-     */
-    private String makeTimeValid(String t){
-        return t.length() == 1 ? "0" + t : t;
+    @FXML
+    private Map<String, String> obtainData() {
+        Map<String,String> values = new HashMap<>();
+
+        values.put("flightID", flightIDLabel.getText().toString());
+        values.put("originAirport", originApDropdown.getValue().toString());
+        values.put("destinationAirport", destinationApDropdown.getValue().toString());
+        values.put("dTHour", depTimeHourSpinner.getValue().toString());
+        values.put("dTMin", depTimeMinSpinner.getValue().toString());
+        values.put("dTDate", depDatePicker.getValue().toString());
+        values.put("aTHour", arrTimeHourSpinner.getValue().toString());
+        values.put("aTMin", arrTimeMinSpinner.getValue().toString());
+        values.put("aTDate", arrDatePicker.getValue().toString());
+        values.put("airplaneInfo", airplaneModelDropdown.getValue().toString());
+        values.put("price", basePriceField.getText().toString());
+
+        return values;
     }
 
     /**
@@ -214,7 +158,9 @@ public class FlightController {
     @FXML
     private void showFlights() {
         clearFlightsView();
-        var flights = flightManager.getFlights();
+
+        var flights = createFlightLogic.obtainFlights();
+
         flightsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         flightsTable.getItems().addAll(flights);
         flightIdColumn.setCellValueFactory(new PropertyValueFactory<>("flightID"));
@@ -232,10 +178,7 @@ public class FlightController {
      * and sets a respective combo box to the resulting collection
      */
     public void listOriginAirports() {
-        originApDropdown.setItems(FXCollections.observableArrayList(
-                airportManager.getAirports().stream()
-                        .map(Airport::getIataCode)
-                        .collect(Collectors.toList())));
+        originApDropdown.setItems(FXCollections.observableArrayList(createFlightLogic.listOriginAirport()));
     }
 
     /**
@@ -244,9 +187,7 @@ public class FlightController {
      */
     public void listDestinationAirports() {
         destinationApDropdown.setItems(FXCollections.observableArrayList(
-                airportManager.getAirportsWithoutOrigin(originApDropdown.getValue()).stream()
-                        .map(Airport::getIataCode)
-                        .collect(Collectors.toList())));
+                createFlightLogic.listDestinationAirport(originApDropdown.getValue())));
     }
 
     /**
@@ -254,10 +195,7 @@ public class FlightController {
      * and sets a respective combo box to the resulting collection
      */
     public void listAirplaneModels(){
-        airplaneModelDropdown.setItems((FXCollections.observableArrayList(
-                airplaneManager.getAirplanes().stream()
-                        .map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")")
-                        .collect(Collectors.toList()))));
+        airplaneModelDropdown.setItems(FXCollections.observableArrayList(createFlightLogic.listAirplanes()));
     }
 
     /**

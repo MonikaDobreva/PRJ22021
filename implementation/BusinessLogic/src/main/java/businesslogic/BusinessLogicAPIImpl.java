@@ -55,6 +55,12 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     }
 
     @Override
+    public CreateFlightLogic getCreateFlightLogic() {
+        return new CreateFlightLogic(getAirplaneManager(), getAirportManager(), getFlightManager(),
+                getFlightRouteManager(), getSeatManager(), getFlightSeatManager(), getAirplaneScheduleManager());
+    }
+
+    @Override
     public EditDetailsLogic getEditDetailsLogic() {
         EditDetailsLogic edl = new EditDetailsLogic(getFlightManager(),getFlightRouteManager());
         return edl;
