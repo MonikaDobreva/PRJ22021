@@ -69,9 +69,10 @@ public class TicketManagerTest {
     @Test
     public void tRightSumOfTickets() {
         when(dao.getAll()).thenReturn(tickets);
-        assertThat(tmi.getSumOfTicketPrices()).isEqualTo(BigDecimal.valueOf(300));
+        var sum = tmi.getSumOfTicketPrices();
         verify(daoF).createDao(Ticket.class);
         verify(dao).getAll();
+        assertThat(sum).isEqualTo(BigDecimal.valueOf(300));
     }
 
     @Test
@@ -89,7 +90,22 @@ public class TicketManagerTest {
         verify(daoF).createDao(Ticket.class);
         verify(dao).getAll();
         assertThat(size).isEqualTo(3);
-
     }
+
+    @Test
+    public void tDelete() {
+        var tof = tmi.delete(t1);
+        verify(daoF).createDao(Ticket.class);
+        verify(dao).deleteEntity(t1);
+        assertThat(tof).isTrue();
+    }
+
+//    @Test
+//    public void tUpdate() {
+//        var tof = tmi.update(t1);
+//        verify(daoF).createDao(Ticket.class);
+//        verify(dao).update(t1);
+//        assertThat(tof).isTrue();
+//    }
 
 }

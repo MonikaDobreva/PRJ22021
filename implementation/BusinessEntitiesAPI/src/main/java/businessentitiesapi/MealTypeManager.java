@@ -1,13 +1,12 @@
 package businessentitiesapi;
 
-import java.util.List;
-
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
 
 public interface MealTypeManager extends Manager<MealType> {
 
+    MealType getMostBookedMeal();
 
-    List<MealType> getMostBookedMeal();
+    int getAmountOfPopularMeal(int popMeal);
 }

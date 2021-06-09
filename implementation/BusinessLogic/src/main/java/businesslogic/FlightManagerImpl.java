@@ -4,11 +4,9 @@ import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-
 import genericdao.dao.TransactionToken;
 import persistence.FlightStorageService;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -107,7 +105,7 @@ public class FlightManagerImpl implements FlightManager {
      * Method creates a fresh dao and calls the getAll method from the
      * dao. This returns all flights in the database.
      *
-     * @return list of Flights if successfull,null otherwise
+     * @return list of Flights if successful, null otherwise
      */
     @Override
     public List<Flight> getFlights() {
@@ -125,7 +123,7 @@ public class FlightManagerImpl implements FlightManager {
      * dao. This deletes given flight f in the database.
      *
      * @param f Flight to be deleted
-     * @return true if sucessfull,false otherwise
+     * @return true if successful,false otherwise
      */
     @Override
     public boolean delete(Flight f) {

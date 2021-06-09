@@ -16,17 +16,35 @@ public class MealType implements Serializable {
     private final int mealId;
     private final String mealName;
 
+    /**
+     * @param id        Id of the Meal type
+     * @param mealName  Name of the meal type
+     */
     public MealType(int id, String mealName) {
         this.mealId = id;
         this.mealName = mealName;
     }
+
+
+//    public enum MEALS {
+//        NONE,
+//        STANDARD,
+//        VEGAN,
+//        VEGETARIAN,
+//        MUSLIM,
+//        KOSHER,
+//        CHILD_MEAL,
+//        DIABETIC,
+//        GLUTEN_FREE,
+//        LACTOSE_FREE
+//    }
 
     public int getId() {
         return mealId;
     }
 
     public String getMealName() {
-        return mealName;
+        return mealName.toString();
     }
 
     @Override

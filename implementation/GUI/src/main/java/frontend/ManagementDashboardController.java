@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
  */
 
-public class managementDashboardController {
+public class ManagementDashboardController {
 
     private final FlightManager flightManager;
     private final BookingManager bookingManager;
@@ -31,7 +31,8 @@ public class managementDashboardController {
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
             mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, mDashGoingToLabel,
-            routesTabTotalRoutesLabel, routesTabTotalPlanesLabel, routesTabTotalFlightsLabel, popularMealLabel;
+            routesTabTotalRoutesLabel, routesTabTotalPlanesLabel, routesTabTotalFlightsLabel, popularMealLabel,
+            amountPopMeal;
 
     @FXML
     Button updateStatisticsButton;
@@ -39,7 +40,7 @@ public class managementDashboardController {
     @FXML
     ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown, mDashRoutesDropdown;
 
-    public managementDashboardController(
+    public ManagementDashboardController(
             FlightManager flightManager,
             AirportManager airportManager,
             AirplaneManager airplaneManager,
@@ -70,21 +71,26 @@ public class managementDashboardController {
         totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
         totalTicketsLabel.setText(String.valueOf(ticketManager.getTickets().size()));
         totalRevenueLabel.setText(String.valueOf(sumOfTicketPrices()));
-        popularMealLabel.setText(getMostBookedMeal());
+        popularMealLabel.setText(getMostBookedMeal().getMealName());
+        amountPopMeal.setText(getAmountOfPopularMeal() + " times ordered");
 
     }
 
     /**
      * Helper method to calculate the sum of all the tickets currently sold
-     * @return  the value of the sum as a BigDecimal
+     *
+     * @return the value of the sum as a BigDecimal
      */
     public BigDecimal sumOfTicketPrices() {
         return ticketManager.getSumOfTicketPrices();
     }
 
-    public String getMostBookedMeal(){
-        return mealTypeManager.getMostBookedMeal().stream()
-                .map(MealType::getMealName).findFirst().get();
+    public MealType getMostBookedMeal() {
+        return mealTypeManager.getMostBookedMeal();
+    }
+
+    public int getAmountOfPopularMeal() {
+        return mealTypeManager.getAmountOfPopularMeal(getMostBookedMeal().getId());
     }
 
     //////////////////////////// Bookings Tab /////////////////////////////////////////////////////////////////////////
@@ -159,7 +165,7 @@ public class managementDashboardController {
         }
     }
 
-    public long calcEST(LocalDateTime start, LocalDateTime end){
+    public long calcEST(LocalDateTime start, LocalDateTime end) {
         Duration d = Duration.between(start, end);
         return d.toMinutes();
     }
@@ -167,7 +173,7 @@ public class managementDashboardController {
     /**
      * Clears the view of the statistics by setting the text of the labels to an empty string
      */
-    public void clearStatistics(){
+    public void clearStatistics() {
         mDashDepLabel.setText("");
         mDashArrLabel.setText("");
         mDashEstFDLabel.setText("");
@@ -180,9 +186,10 @@ public class managementDashboardController {
 
     /**
      * Helper method to create an Alert with all the necessary information with an one-liner
-     * @param title     The title of the message
-     * @param message   The message itself
-     * @param type      The type of the alert, determines the icon
+     *
+     * @param title   The title of the message
+     * @param message The message itself
+     * @param type    The type of the alert, determines the icon
      */
     public void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type);
@@ -195,28 +202,27 @@ public class managementDashboardController {
     ////////////////////////////////// routes tab methods //////////////////////////////////////////////////////////
 
     @FXML
-    public void listRoutes(){
+    public void listRoutes() {
         mDashRoutesDropdown.setItems(FXCollections.observableArrayList(
                 flightRouteManager.getFlightRoutes().stream()
-                .map(FlightRoute::getFlightRouteID).collect(Collectors.toList())
+                        .map(FlightRoute::getFlightRouteID).collect(Collectors.toList())
         ));
     }
 
     @FXML
-    public void routesTabApply(){
+    public void routesTabApply() {
         var selectedRouteId = mDashRoutesDropdown.getValue();
         var selectedRouteAsObject = flightRouteManager.getFlightRoutes().stream()
                 .filter(r -> r.getFlightRouteID() == selectedRouteId).findFirst().get();
-        if(mDashRoutesDropdown.getValue() == null){
+        if (mDashRoutesDropdown.getValue() == null) {
             routesTabTotalRoutesLabel.setText(String.valueOf(flightRouteManager.getFlightRoutes().size()));
-        } else if (mDashRoutesDropdown.getValue() != null){
+        } else if (mDashRoutesDropdown.getValue() != null) {
             routesTabTotalRoutesLabel.setText("0");
             routesTabTotalFlightsLabel.setText(String.valueOf(flightManager.getFlightsByRouteId(selectedRouteId).size()));
             routesTabTotalPlanesLabel.setText("0");
 
         }
     }
-
 
 
 }

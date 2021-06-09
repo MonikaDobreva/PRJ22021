@@ -1,13 +1,12 @@
 package frontend;
 
+import businesslogic.BusinessLogicAPI;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
-
-import javafx.util.Callback;
-import businesslogic.BusinessLogicAPI;
-import javafx.application.Platform;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}
@@ -29,8 +28,8 @@ public class GUIApp extends Application {
                 return new TopMenuController(this::getSceneManager);
             case "frontend.WelcomeController":
                 return new WelcomeController(this::getSceneManager);
-            case "frontend.managementDashboardController":
-                return new managementDashboardController(
+            case "frontend.ManagementDashboardController":
+                return new ManagementDashboardController(
                         businessLogicAPI.getFlightManager(),
                         businessLogicAPI.getAirportManager(),
                         businessLogicAPI.getAirplaneManager(),
@@ -112,8 +111,8 @@ public class GUIApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //sceneManager.displayOn(stage, 480, 550);
+        stage.toFront();
         sceneManager.displayOn(stage);
-
     }
 
     public SceneManager getSceneManager() {

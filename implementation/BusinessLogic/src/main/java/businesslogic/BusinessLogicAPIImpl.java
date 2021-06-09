@@ -2,8 +2,6 @@ package businesslogic;
 
 import businessentitiesapi.*;
 import genericdao.dao.DAOFactory;
-import genericdao.pgdao.PGDAOFactory;
-import genericdao.pgdao.PGJDBCUtils;
 import persistence.PersistenceAPI;
 
 /**
@@ -104,7 +102,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     @Override
     public MealTypeManager getMealTypeManager() {
         MealTypeManagerImpl mealTypeManager = new MealTypeManagerImpl();
-        mealTypeManager.setMealTypeStorageService(persistenceAPI.getMealTypeStorageService(mealTypeManager));
+        mealTypeManager.setMealTypeStorageService(persistenceAPI.getMealTypeStorageService(mealTypeManager), daof);
         return mealTypeManager;
     }
 
