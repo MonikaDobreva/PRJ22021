@@ -23,7 +23,7 @@ public class AirplaneManagerImpl implements AirplaneManager{
 
     public void setAirplaneStorageService(AirplaneStorageService airplaneStorageService, DAOFactory pgdFactory){
         this.airplaneStorageService = airplaneStorageService;
-        this.daof = daof;
+        this.daof = pgdFactory;
     }
 
     public void setDaoFactory(DAOFactory pgdFactory) {
