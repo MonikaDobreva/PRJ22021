@@ -36,7 +36,7 @@ public class MealTypeManagerImpl implements MealTypeManager {
     }
 
     @Override
-    public List<MealType> getMeals() {
+    public List<MealType> get() {
         try {
             return new ArrayList<>(daoF.createDao(MealType.class).getAll());
         } catch (Exception e) {
@@ -44,6 +44,16 @@ public class MealTypeManagerImpl implements MealTypeManager {
             return null;
         }
     }
+
+//    @Override
+//    public List<MealType> getMeals() {
+//        try {
+//            return new ArrayList<>(daoF.createDao(MealType.class).getAll());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
     @Override
     public MealType getMostBookedMeal() {
