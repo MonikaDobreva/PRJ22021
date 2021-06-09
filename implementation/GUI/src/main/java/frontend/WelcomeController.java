@@ -1,20 +1,17 @@
 package frontend;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.MenuButton;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
-import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.MenuButton;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}

@@ -25,7 +25,7 @@ public class MealType implements Serializable {
         this.mealName = mealName;
     }
 
-
+// not that easy to implement with the dao, leave meal name as string though
 //    public enum MEALS {
 //        NONE,
 //        STANDARD,
@@ -44,7 +44,7 @@ public class MealType implements Serializable {
     }
 
     public String getMealName() {
-        return mealName.toString();
+        return mealName;
     }
 
     @Override

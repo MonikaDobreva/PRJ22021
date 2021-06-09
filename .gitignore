@@ -149,3 +149,4 @@ implementation/genericranges/
 **/target
 .idea
 implementation/genericdao/src/main/resources/application.properties
+/implementation/genericmapper221/genericmapper22/nbproject/
