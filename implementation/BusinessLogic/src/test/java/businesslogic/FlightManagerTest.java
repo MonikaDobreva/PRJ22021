@@ -82,8 +82,8 @@ public class FlightManagerTest {
     }
 
     @Test
-    public void createFlightTest(){
-        assertThat(flm.createFlight(0 ,
+    public void createFlightTest() {
+        assertThat(flm.createFlight(0,
                 "DUS", "BCN",
                 LocalDateTime.of(2021, 10, 5, 9, 45),
                 LocalDateTime.of(2021, 10, 6, 6, 0),
@@ -93,14 +93,14 @@ public class FlightManagerTest {
     }
 
     @Test
-    public void addTest(){
+    public void addTest() {
         flm.add(f2);
         verify(daoF).createDao(Flight.class);
         verify(dao).save(f2);
     }
 
     @Test
-    public void getAllTest(){
+    public void getAllTest() {
         flm.getFlights();
 
         verify(daoF).createDao(Flight.class);
@@ -117,14 +117,32 @@ public class FlightManagerTest {
 
     //    @Disabled
     @Test
+    public void updateBrokenTest() {
+        Mockito.when(dao.update(f1)).thenThrow(RuntimeException.class);
+        assertThat(flm.update(f1)).isFalse();
+        verify(daoF).createDao(Flight.class);
+        verify(dao).update(f1);
+    }
+
+    //    @Disabled
+    @Test
     public void deleteTest() {
         assertThat(flm.delete(f1)).isTrue();
         verify(daoF).createDao(Flight.class);
         verify(dao).deleteEntity(f1);
     }
+    
+     //    @Disabled
+    @Test
+    public void deleteBrokenTest() {
+        Mockito.doThrow(new RuntimeException()).when(dao).deleteEntity(f1);//because void type it is done like this
+        assertThat(flm.delete(f1)).isFalse();
+        verify(daoF).createDao(Flight.class);
+        verify(dao).deleteEntity(f1);
+    }
 
     @Test
-    public void getLastIDTest(){
+    public void getLastIDTest() {
         flm.getLastID();
 
         verify(daoF).createDao(Flight.class);
@@ -132,15 +150,15 @@ public class FlightManagerTest {
     }
 
     @Test
-    public void getFlightsByRouteIdTest(){
+    public void getFlightsByRouteIdTest() {
         flm.getFlightsByRouteId(1);
 
         verify(daoF).createDao(Flight.class);
         verify(dao).anyQuery(
-                "select f.*" +
-                        "from flight_routes fr" +
-                        "join flights f on fr.id = f.flight_route_id" +
-                        "where fr.id = ?;", 1);
+                "select f.*"
+                + "from flight_routes fr"
+                + "join flights f on fr.id = f.flight_route_id"
+                + "where fr.id = ?;", 1);
     }
 
 }
