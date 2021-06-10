@@ -155,10 +155,10 @@ public class FlightManagerTest {
 
         verify(daoF).createDao(Flight.class);
         verify(dao).anyQuery(
-                "select f.*"
-                + "from flight_routes fr"
-                + "join flights f on fr.id = f.flight_route_id"
-                + "where fr.id = ?;", 1);
+                "select f.* "
+                + "from flight_routes fr "
+                + "join flights f on fr.id = f.flight_route_id "
+                + "where fr.id = (?);", 1);
     }
 
 }
