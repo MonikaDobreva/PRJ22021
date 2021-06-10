@@ -30,7 +30,7 @@ public class EditDetailsLogicTest {
     FlightRouteManager fRouteManagerM;
 
     EditDetailsLogic el;
-    Flight f;
+    Flight f,fSame,fDiffrent;
 
     @BeforeEach
     public void setupT() {
@@ -42,6 +42,18 @@ public class EditDetailsLogicTest {
                 LocalDateTime.of(2021, 12, 3, 10, 30),
                 LocalDateTime.of(2021, 12, 3, 15, 30),
                 "V-BBBB",
+                new BigDecimal("100.50"));
+        fSame = new Flight(5,
+                "DUS", "YVY",
+                LocalDateTime.of(2021, 12, 3, 10, 30),
+                LocalDateTime.of(2021, 12, 3, 15, 30),
+                "V-BBBB",
+                new BigDecimal("100.50"));
+         fDiffrent = new Flight(5,
+                "KLE", "YVY",
+                LocalDateTime.of(2021, 12, 3, 10, 30),
+                LocalDateTime.of(2021, 12, 3, 15, 30),
+                "V-BAAA",
                 new BigDecimal("100.50"));
 
     }
@@ -85,11 +97,6 @@ public class EditDetailsLogicTest {
                 Mockito.any())).thenThrow(RuntimeException.class);
 
         Map<String, String> savedValues = new HashMap<>();
-
-        savedValues.put("cVArrHour", "12");
-        savedValues.put("cVArrMin", "40");
-        savedValues.put("cVArrDate", "1999-04-12");
-
         Map<String, String> returnValues = el.passData(savedValues, f);
 
         verify(fManagerM).createFlight(
@@ -105,7 +112,7 @@ public class EditDetailsLogicTest {
     }
     
     /**
-     * Flight is right, update method returns false, map that
+     * Flight is right and different, update method returns false, map that
      * is returned should contain updateError
      */
     @Test
@@ -117,16 +124,11 @@ public class EditDetailsLogicTest {
                 Mockito.any(),
                 Mockito.any(),
                 Mockito.anyString(),
-                Mockito.any())).thenReturn(f);
+                Mockito.any())).thenReturn(fDiffrent);
         
-        Mockito.when(fManagerM.update(f)).thenReturn(false);
+        Mockito.when(fManagerM.update(fDiffrent)).thenReturn(false);
 
         Map<String, String> savedValues = new HashMap<>();
-
-        savedValues.put("cVArrHour", "12");
-        savedValues.put("cVArrMin", "40");
-        savedValues.put("cVArrDate", "2025-04-12");
-
         Map<String, String> returnValues = el.passData(savedValues, f);
 
         verify(fManagerM).createFlight(
@@ -137,13 +139,13 @@ public class EditDetailsLogicTest {
                 Mockito.any(),
                 Mockito.anyString(),
                 Mockito.any());
-        verify(fManagerM).update(f);
+        verify(fManagerM).update(fDiffrent);
     
         assertThat(returnValues).containsKey("updateError");
     }
     
     /**
-     * Flight is right, update method returns true, map that
+     * Flight is right and different, update method returns true, map that
      * is returned should contain worked
      */
     @Test
@@ -155,16 +157,11 @@ public class EditDetailsLogicTest {
                 Mockito.any(),
                 Mockito.any(),
                 Mockito.anyString(),
-                Mockito.any())).thenReturn(f);
+                Mockito.any())).thenReturn(fDiffrent);
         
-        Mockito.when(fManagerM.update(f)).thenReturn(true);
+        Mockito.when(fManagerM.update(fDiffrent)).thenReturn(true);
 
         Map<String, String> savedValues = new HashMap<>();
-
-        savedValues.put("cVArrHour", "12");
-        savedValues.put("cVArrMin", "40");
-        savedValues.put("cVArrDate", "2025-04-12");
-
         Map<String, String> returnValues = el.passData(savedValues, f);
 
         verify(fManagerM).createFlight(
@@ -175,10 +172,42 @@ public class EditDetailsLogicTest {
                 Mockito.any(),
                 Mockito.anyString(),
                 Mockito.any());
-        verify(fManagerM).update(f);
+        verify(fManagerM).update(fDiffrent);
         verify(fRouteManagerM).checkExistence(Mockito.anyString(), Mockito.anyString());
     
         assertThat(returnValues).containsKey("worked");
+    }
+    
+     /**
+     * Flight is right but same, if statement should return, map that
+     * is returned should contain same
+     */
+    @Test
+    public void passDataTest4() {
+        Mockito.when(fManagerM.createFlight(
+                Mockito.anyInt(),
+                Mockito.anyString(),
+                Mockito.anyString(),
+                Mockito.any(),
+                Mockito.any(),
+                Mockito.anyString(),
+                Mockito.any())).thenReturn(fSame);
+        
+        Mockito.when(fManagerM.update(fSame)).thenReturn(true);
+
+        Map<String, String> savedValues = new HashMap<>();//only for passing map
+        Map<String, String> returnValues = el.passData(savedValues, f);
+
+        verify(fManagerM).createFlight(
+                Mockito.anyInt(),
+                Mockito.anyString(),
+                Mockito.anyString(),
+                Mockito.any(),
+                Mockito.any(),
+                Mockito.anyString(),
+                Mockito.any());
+      
+        assertThat(returnValues).containsKey("same");
     }
 
    
