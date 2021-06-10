@@ -1,11 +1,13 @@
 package businesslogic;
 
 import businessentitiesapi.*;
+import businessentitiesapi.exceptions.FlightStorageException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -55,11 +57,12 @@ public class CreateFlightLogic {
     }
 
     public void setData(Map<String, String> dataCollected){
-        this.values = values;
+        this.values = dataCollected;
     }
 
-    public void dataValidation(Map<String, String> values)
-            throws DateTimeParseException, NoSuchElementException, NullPointerException{
+//    public void dataValidation(Map<String, String> values)
+//            throws DateTimeParseException, NoSuchElementException, NullPointerException{
+    public void dataValidation(Map<String, String> values) {
         Integer.parseInt(values.get("flightID"));
         makeDateTime(values.get("dTHour"), values.get("dTMin"), values.get("dTDate"));
         makeDateTime(values.get("aTHour"), values.get("aTMin"), values.get("aTDate"));
@@ -71,7 +74,8 @@ public class CreateFlightLogic {
         return airplaneManager.getAirplane(values.get("airplaneInfo").split(" ")[0]);
     }
 
-    public void storeFlight() throws IllegalArgumentException{
+//    public void storeFlight() throws IllegalArgumentException{
+    public void storeFlight() throws FlightStorageException {
         Airplane airplane = this.obtainAirplane();
 
         LocalDateTime depTime = makeDateTime(values.get("dTHour"), values.get("dTMin"), values.get("dTDate"));
@@ -125,5 +129,9 @@ public class CreateFlightLogic {
 
     public String getNextID() {
         return String.valueOf(flightManager.getLastID() + 1);
+    }
+
+    public void clearData(){
+        this.values = new HashMap<>();
     }
 }

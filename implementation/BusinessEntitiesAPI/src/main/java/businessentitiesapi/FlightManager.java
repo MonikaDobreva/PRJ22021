@@ -1,6 +1,8 @@
 package businessentitiesapi;
 
 
+import businessentitiesapi.exceptions.FlightStorageException;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -40,7 +42,7 @@ public interface FlightManager {
      * @param f The flight to be added
      * @return the added flight
      */
-    Flight add(Flight f);
+    Flight add(Flight f) throws FlightStorageException;
 
     /**
      * Get all flights which were previously added to the flightStorage

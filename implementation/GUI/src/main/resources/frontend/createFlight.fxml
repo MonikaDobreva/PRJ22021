@@ -16,9 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="481.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="frontend.FlightController"
-            fx:id="createFlight">
+<AnchorPane fx:id="createFlight" prefHeight="481.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.FlightController">
    <children>
       <VBox fx:id="createFlightWindow" prefHeight="481.0" prefWidth="700.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -126,27 +124,18 @@
                     </GridPane>
                     <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="25.0" prefWidth="525.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="View flights">
+                            <Button fx:id="ShowFlights" onAction="#clearFieldsWithConfirmation" prefHeight="25.0" prefWidth="115.0" text="Clear Fields">
                            <HBox.margin>
-                              <Insets right="20.0" top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                            <Button fx:id="ShowFlights" onAction="#clearCreateFlightFields" prefHeight="25.0" prefWidth="115.0" text="Clear Fields">
-                           <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets bottom="30.0" right="60.0" />
                            </HBox.margin>
                         </Button>
                      </children>
                     </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="286.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="36.0" prefWidth="288.0">
                      <children>
-                            <Button fx:id="StoreFlight" prefHeight="25.0" prefWidth="115.0" text="Add More Flights">
-                           <HBox.margin>
-                              <Insets left="275.0" right="20.0" top="10.0" />
-                           </HBox.margin></Button>
                         <Button fx:id="storeFlightsButton" mnemonicParsing="false" onAction="#storeFlight" prefHeight="25.0" prefWidth="115.0" text="Create flight(s)">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets left="350.0" />
                            </HBox.margin>
                         </Button>
                      </children></HBox>

@@ -2,6 +2,7 @@ package businesslogic;
 
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightRouteManager;
+import businessentitiesapi.exceptions.FlightStorageException;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
 import genericdao.dao.TransactionToken;
@@ -32,17 +33,21 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     }
 
     @Override
-    public FlightRoute add(FlightRoute fr) {
+    public FlightRoute add(FlightRoute fr) throws FlightStorageException {
         try {
             DAO<FlightRoute, Integer> flightRouteDao = daof.createDao(FlightRoute.class);
             TransactionToken token = flightRouteDao.startTransaction();
             Optional<FlightRoute> storedFlightRoute = flightRouteDao.save(fr);
-            token.commit();
+            if (fr.equals(storedFlightRoute.get())) {
+                token.commit();
+            } else {
+                token.rollback();
+                throw new Exception();
+            }
             flightRouteDao.close();
             return storedFlightRoute.get();
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new FlightStorageException("Flight Route could not be added :(");
         }
     }
 
@@ -57,7 +62,7 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     }
 
     @Override
-    public void checkExistence(String originAirport, String destinationAirport) {
+    public void checkExistence(String originAirport, String destinationAirport) throws FlightStorageException {
         var flightRoutes = this.getFlightRoutes();
 
         Optional<FlightRoute> flightRoute = this.getFlightRoutes().stream()

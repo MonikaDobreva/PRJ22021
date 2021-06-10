@@ -1,5 +1,7 @@
 package businessentitiesapi;
 
+import businessentitiesapi.exceptions.FlightStorageException;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,7 +29,7 @@ public interface FlightRouteManager {
      * @param fr The flight route to be added
      * @return the added flight route
      */
-    FlightRoute add(FlightRoute fr);
+    FlightRoute add(FlightRoute fr) throws FlightStorageException;
 
     /**
      * Get all flight routes
@@ -42,7 +44,7 @@ public interface FlightRouteManager {
      * @param destinationAirport  The airport where the flight lands
      * @return
      */
-    void checkExistence(String originAirport, String destinationAirport);
+    void checkExistence(String originAirport, String destinationAirport) throws FlightStorageException;
 
     //List<Flight> getFlightsByRouteId(int routeID);
 }

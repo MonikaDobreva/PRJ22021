@@ -4,6 +4,7 @@ import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @TableName("FlightRoutesView")
 public class FlightRoute implements Serializable {
@@ -34,5 +35,19 @@ public class FlightRoute implements Serializable {
     @Override
     public String toString() {
         return "FlightRoute " + flightRouteID + " from airport: " + originAirportCode + " to airport: " + destinationAirportCode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FlightRoute)) return false;
+        FlightRoute that = (FlightRoute) o;
+        return getFlightRouteID() == that.getFlightRouteID() && getOriginAirportCode().equals(that.getOriginAirportCode())
+                && getDestinationAirportCode().equals(that.getDestinationAirportCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFlightRouteID(), getOriginAirportCode(), getDestinationAirportCode());
     }
 }

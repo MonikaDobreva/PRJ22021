@@ -4,6 +4,7 @@ import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
+import businessentitiesapi.exceptions.FlightStorageException;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
 import genericdao.dao.TransactionToken;
@@ -34,17 +35,21 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     }
 
     @Override
-    public FlightSeat add(FlightSeat fs) {
+    public FlightSeat add(FlightSeat fs) throws FlightStorageException {
         try {
             DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);
             TransactionToken token = flightSeatDao.startTransaction();
             Optional<FlightSeat> storedFlightSeat = flightSeatDao.save(fs);
-            token.commit();
+            if (fs.equals(storedFlightSeat.get())) {
+                token.commit();
+            } else {
+                token.rollback();
+                throw new Exception();
+            }
             flightSeatDao.close();
             return storedFlightSeat.get();
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new FlightStorageException("Flight Seat could not be added :(");
         }
     }
 

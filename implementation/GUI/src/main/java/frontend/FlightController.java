@@ -1,6 +1,7 @@
 package frontend;
 
 import businessentitiesapi.*;
+import businessentitiesapi.exceptions.FlightStorageException;
 import businesslogic.CreateFlightLogic;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -111,12 +112,13 @@ public class FlightController {
 
             createFlightLogic.storeFlight();
 
-
         } catch (DateTimeParseException | NoSuchElementException | NullPointerException ex){
-            showAlert("Warning!", "Some of the fields might be empty! Please have a look :)", AlertType.ERROR);
+           showAlert("Warning!", "Some of the fields might be empty! Please have a look :)", AlertType.ERROR);
+           createFlightLogic.clearData();
             return;
-        } catch (IllegalArgumentException ex){
+        } catch (FlightStorageException | IllegalArgumentException ex) {
             showAlert("Warning!", ex.getMessage(), AlertType.ERROR);
+            createFlightLogic.clearData();
             return;
         }
 
@@ -147,6 +149,10 @@ public class FlightController {
         values.put("aTDate", arrDatePicker.getValue().toString());
         values.put("airplaneInfo", airplaneModelDropdown.getValue().toString());
         values.put("price", basePriceField.getText().toString());
+
+        for (Map.Entry<String, String> value : values.entrySet()){
+            System.out.println(value.getKey() + ": " + value.getValue());
+        }
 
         return values;
     }
@@ -236,5 +242,15 @@ public class FlightController {
 
     public void displayAirplaneInfo(){
 
+    }
+
+    public void clearFieldsWithConfirmation(){
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Clear the window fields ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            clearCreateFlightFields();
+        }
     }
 }

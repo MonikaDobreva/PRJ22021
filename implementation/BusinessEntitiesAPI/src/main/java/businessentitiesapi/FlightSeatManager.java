@@ -1,12 +1,14 @@
 package businessentitiesapi;
 
+import businessentitiesapi.exceptions.FlightStorageException;
+
 import java.util.List;
 
 public interface FlightSeatManager {
 
     FlightSeat createFlightSeat(int seatId, int flightId, boolean available);
 
-    FlightSeat add(FlightSeat f);
+    FlightSeat add(FlightSeat f) throws FlightStorageException;
 
     List<FlightSeat> getFlightSeats();
 

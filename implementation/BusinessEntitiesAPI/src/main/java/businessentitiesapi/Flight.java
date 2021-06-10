@@ -137,7 +137,7 @@ public class Flight implements Serializable {
     // arriving at ... on DAY.MONTH at HH:mm
     @Override
     public String toString() {
-        return "Airplane " + airplaneCode + " on flight " + flightID + "\n"
+        return "Flight " + flightID + " with airplane " + airplaneCode + "\n"
                 + "departing from " + originAirport + " on " + departureTime.getDayOfMonth() + "." + departureTime.getMonth()
                 + " at " + departureTime.getHour() + ":" + departureTime.getMinute() + "\n"
                 + "arriving at " + destinationAirport + " on " + arrivalTime.getDayOfMonth() + "." + arrivalTime.getMonth()

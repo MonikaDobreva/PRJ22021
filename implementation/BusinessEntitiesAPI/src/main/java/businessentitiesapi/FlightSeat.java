@@ -4,6 +4,7 @@ import nl.fontys.sebivenlo.sebiannotations.ID;
 import nl.fontys.sebivenlo.sebiannotations.TableName;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @TableName(value = "flightSeatsView")
 public class FlightSeat implements Serializable {
@@ -38,11 +39,22 @@ public class FlightSeat implements Serializable {
 
     @Override
     public String toString() {
-        return "FlightSeat{" +
-                "flightSeatId=" + flightSeatId +
-                ", seatId=" + seatId +
-                ", flightId=" + flightId +
-                ", available=" + available +
-                '}';
+        return "FlightSeat " + flightSeatId +
+                " with seatID " + seatId +
+                " and flightID " + flightId ;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FlightSeat)) return false;
+        FlightSeat that = (FlightSeat) o;
+        return getFlightSeatId() == that.getFlightSeatId() && getSeatId() == that.getSeatId()
+                && getFlightId() == that.getFlightId() && isAvailable() == that.isAvailable();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFlightSeatId(), getSeatId(), getFlightId(), isAvailable());
     }
 }
