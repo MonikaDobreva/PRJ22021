@@ -56,6 +56,11 @@ public class EditDetailsLogic {
                                     flightE.getArrivalTime().toLocalDate().toString())),
                     savedValues.getOrDefault("cVAirplane", flightE.getAirplane()),
                     new BigDecimal(savedValues.getOrDefault("cVPrice", flightE.getBasePrice().toPlainString())));
+            
+             if (f.equals(flightE)) {
+                returnData.put("same", "");
+                return returnData;
+            }
 
             flightRouteManager.checkExistence(savedValues.getOrDefault("cVOrigin", flightE.getOriginAirport()),
                     savedValues.getOrDefault("cVDestination", flightE.getDestinationAirport()));
