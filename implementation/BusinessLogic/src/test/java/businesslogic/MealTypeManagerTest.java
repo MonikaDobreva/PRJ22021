@@ -48,6 +48,7 @@ public class MealTypeManagerTest {
         m8 = new MealType(8, "None");
         m9 = new MealType(9, "Vegetarian");
         m10 = new MealType(10, "Vegetarian");
+
         meals = Arrays.asList(m1, m2, m3, m4, m5, m6, m7, m8, m9, m10);
 
         popularMeals = Arrays.asList(m4, m9, m10);
@@ -79,6 +80,15 @@ public class MealTypeManagerTest {
         verify(daoF).createDao(MealType.class);
         verify(dao).anyQuery(anyString(), any());
         assertThat(popMeal).isEqualTo(3);
+    }
+
+    @Test
+    public void tGetBookedMealsForSpecificFlight(){
+        when(dao.anyQuery(anyString(), any())).thenReturn(meals);
+        var bookedMeals = mtmi.getBookedMealsForSpecificFlight(1);
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString(), any());
+        assertThat(bookedMeals).isEqualTo(8);
     }
 
 

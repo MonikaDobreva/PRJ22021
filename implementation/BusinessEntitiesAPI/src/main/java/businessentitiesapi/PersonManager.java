@@ -11,4 +11,7 @@ public interface PersonManager {
 
     List<Person> getPersons();
 
+    Person getPersonBooked(int value);
+
+    Person getPersonByID(int personID);
 }

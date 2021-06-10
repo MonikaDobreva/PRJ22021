@@ -69,9 +69,9 @@ public class TicketManagerTest {
     @Test
     public void tRightSumOfTickets() {
         when(dao.getAll()).thenReturn(tickets);
-        var sum = tmi.getSumOfTicketPrices();
-        verify(daoF).createDao(Ticket.class);
-        verify(dao).getAll();
+        var sum = tmi.getSumOfTicketPrices(tickets);
+        verify(daoF, times(0)).createDao(Ticket.class);
+        verify(dao, times(0)).getAll();
         assertThat(sum).isEqualTo(BigDecimal.valueOf(300));
     }
 

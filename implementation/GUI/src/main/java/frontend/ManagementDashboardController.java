@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 
 /**
@@ -25,14 +26,13 @@ public class ManagementDashboardController {
     private final FlightRouteManager flightRouteManager;
     private final TicketManager ticketManager;
     private final MealTypeManager mealTypeManager;
-    private final AirportManager airportManager;
-    private final AirplaneManager airplaneManager;
+    private final PersonManager personManager;
 
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
-            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, mDashGoingToLabel,
+            mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, bookingTabBookedOnLabel,
             routesTabTotalRoutesLabel, routesTabTotalPlanesLabel, routesTabTotalFlightsLabel, popularMealLabel,
-            amountPopMeal;
+            bookingsTabPricePaidLabel, bookingsTabCheckedBaggageLabel, bookingsTabCabinBaggageLabel;
 
     @FXML
     Button updateStatisticsButton;
@@ -42,20 +42,18 @@ public class ManagementDashboardController {
 
     public ManagementDashboardController(
             FlightManager flightManager,
-            AirportManager airportManager,
-            AirplaneManager airplaneManager,
             BookingManager bookingManager,
             FlightRouteManager flightRouteManager,
             TicketManager ticketManager,
-            MealTypeManager mealTypeManager
+            MealTypeManager mealTypeManager,
+            PersonManager personManager
     ) {
-        this.airplaneManager = airplaneManager;
-        this.airportManager = airportManager;
         this.flightManager = flightManager;
         this.bookingManager = bookingManager;
         this.flightRouteManager = flightRouteManager;
         this.ticketManager = ticketManager;
         this.mealTypeManager = mealTypeManager;
+        this.personManager = personManager;
     }
 
     //////////////////////////////////// General Tab ////////////////////////////////////////////////////////////////
@@ -70,9 +68,8 @@ public class ManagementDashboardController {
         totalRoutesLabel.setText(String.valueOf(flightRouteManager.getFlightRoutes().size()));
         totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
         totalTicketsLabel.setText(String.valueOf(ticketManager.getTickets().size()));
-        totalRevenueLabel.setText(String.valueOf(sumOfTicketPrices()));
-        popularMealLabel.setText(getMostBookedMeal().getMealName());
-        amountPopMeal.setText(getAmountOfPopularMeal() + " times ordered");
+        totalRevenueLabel.setText(sumOfTicketPrices() + " €");
+        popularMealLabel.setText(getMostBookedMeal().getMealName() + ", ordered " + getAmountOfPopularMeal() + " times");
 
     }
 
@@ -82,7 +79,7 @@ public class ManagementDashboardController {
      * @return the value of the sum as a BigDecimal
      */
     public BigDecimal sumOfTicketPrices() {
-        return ticketManager.getSumOfTicketPrices();
+        return ticketManager.getSumOfTicketPrices(ticketManager.getTickets());
     }
 
     public MealType getMostBookedMeal() {
@@ -137,32 +134,50 @@ public class ManagementDashboardController {
      */
     @FXML
     private void updateFlightData() {
-        var selectedFlightID = mDashFlightDropdown.getValue();
-        var selectedFlightAsObject = flightManager.getFlights().stream()
-                .filter(f -> f.getFlightID() == selectedFlightID).findFirst().get();
-        var selectedBookingID = mDashBookingDropdown.getValue();
-        var selectedBookingAsObject = bookingManager.getBookingsOfFlight(selectedFlightID).stream()
-                .filter(b -> b.getBookingId() == selectedBookingID).findFirst().get();
-
         if (mDashFlightDropdown.getValue() == null && mDashBookingDropdown.getValue() == null) {
             showAlert("Information", "Please select at least a flight first!", AlertType.INFORMATION);
         }
-        if (mDashBookingDropdown.getValue() == null) {
-            mDashDepLabel.setText("1");
-            mDashArrLabel.setText("2");
-            mDashEstFDLabel.setText("3");
-            mDashBookingsLabel.setText("4");
-            mDashMealsLabel.setText("5");
-        } else {
+        else if (mDashBookingDropdown.getValue() == null) {
+            var selectedFlightID = mDashFlightDropdown.getValue();
+            var selectedFlightAsObject = flightManager.getFlights().stream()
+                    .filter(f -> f.getFlightID() == selectedFlightID).findFirst().get();
             mDashDepLabel.setText(selectedFlightAsObject.getOriginAirport());
             mDashArrLabel.setText(selectedFlightAsObject.getDestinationAirport());
             mDashEstFDLabel.setText(calcEST(selectedFlightAsObject.getDepartureTime(), selectedFlightAsObject.getArrivalTime()) + " minutes");
             mDashBookingsLabel.setText(String.valueOf(bookingManager.getBookingsOfFlight(selectedFlightID).size()));
-            mDashMealsLabel.setText("5");
-
-            mDashGoingToLabel.setText("only booking");
-            mDashBookedByLabel.setText("");
+            mDashMealsLabel.setText(String.valueOf(mealTypeManager.getBookedMealsForSpecificFlight(mDashFlightDropdown.getValue())));
         }
+        else {
+            var selectedFlightID = mDashFlightDropdown.getValue();
+            var selectedFlightAsObject = flightManager.getFlights().stream()
+                    .filter(f -> f.getFlightID() == selectedFlightID).findFirst().get();
+            var selectedBookingID = mDashBookingDropdown.getValue();
+            var selectedBookingAsObject = bookingManager.getBookingsOfFlight(selectedFlightID).stream()
+                    .filter(b -> b.getBookingId() == selectedBookingID).findFirst().get();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            var currentTickets = ticketManager.getTicketsOfBooking(selectedBookingID);
+
+            mDashDepLabel.setText(selectedFlightAsObject.getOriginAirport());
+            mDashArrLabel.setText(selectedFlightAsObject.getDestinationAirport());
+            mDashEstFDLabel.setText(calcEST(selectedFlightAsObject.getDepartureTime(), selectedFlightAsObject.getArrivalTime()) + " minutes");
+            mDashBookingsLabel.setText(String.valueOf(bookingManager.getBookingsOfFlight(selectedFlightID).size()));
+            mDashMealsLabel.setText(String.valueOf(mealTypeManager.getBookedMealsForSpecificFlight(mDashFlightDropdown.getValue())));
+
+            mDashBookedByLabel.setText(personManager.getPersonBooked(selectedBookingID).getLastName() +
+                    ", " + personManager.getPersonBooked(selectedBookingID).getFirstName());
+
+            bookingTabBookedOnLabel.setText(dtf.format(selectedBookingAsObject.getTimeOfBooking()));
+
+            bookingsTabPricePaidLabel.setText(
+                    String.valueOf(ticketManager.getSumOfTicketPrices(ticketManager.getTicketsOfBooking(selectedBookingID))));
+
+            bookingsTabCheckedBaggageLabel.setText(String.valueOf(ticketManager.getCabinBaggageAmount(currentTickets)));
+
+            bookingsTabCabinBaggageLabel.setText(String.valueOf(ticketManager.getCabinBaggageAmount(currentTickets)));
+
+        }
+
+
     }
 
     public long calcEST(LocalDateTime start, LocalDateTime end) {
@@ -180,7 +195,6 @@ public class ManagementDashboardController {
         mDashBookingsLabel.setText("");
         mDashMealsLabel.setText("");
 
-        mDashGoingToLabel.setText("");
         mDashBookedByLabel.setText("");
     }
 
@@ -214,14 +228,12 @@ public class ManagementDashboardController {
         var selectedRouteId = mDashRoutesDropdown.getValue();
         var selectedRouteAsObject = flightRouteManager.getFlightRoutes().stream()
                 .filter(r -> r.getFlightRouteID() == selectedRouteId).findFirst().get();
-        if (mDashRoutesDropdown.getValue() == null) {
-            routesTabTotalRoutesLabel.setText(String.valueOf(flightRouteManager.getFlightRoutes().size()));
-        } else if (mDashRoutesDropdown.getValue() != null) {
-            routesTabTotalRoutesLabel.setText("0");
-            routesTabTotalFlightsLabel.setText(String.valueOf(flightManager.getFlightsByRouteId(selectedRouteId).size()));
-            routesTabTotalPlanesLabel.setText("0");
 
-        }
+        //routesTabTotalRoutesLabel.setText("");
+        routesTabTotalFlightsLabel.setText(String.valueOf(flightManager.getFlightsByRouteId(selectedRouteId).size()));
+        routesTabTotalPlanesLabel.setText("0");
+
+
     }
 
 

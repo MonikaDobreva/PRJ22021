@@ -14,6 +14,8 @@ public interface MealTypeManager {
 
     List<MealType> getMeals();
 
+    int getBookedMealsForSpecificFlight(int flightID);
+
     MealType getMostBookedMeal();
 
     int getAmountOfPopularMeal(int popMeal);

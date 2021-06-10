@@ -1,6 +1,5 @@
 package businesslogic;
 
-import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
@@ -10,15 +9,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import persistence.FlightRouteStorageService;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class FlightRouteManagerTest {
 

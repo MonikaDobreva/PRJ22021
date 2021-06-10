@@ -43,8 +43,16 @@ public interface TicketManager {
      */
     List<Ticket> getTickets();
 
-    BigDecimal getSumOfTicketPrices();
+//    BigDecimal getSumOfTicketPrices();
 
 
     boolean delete(Ticket t);
+
+    BigDecimal getSumOfTicketPrices(List<Ticket> tickets);
+
+    int getCheckedBaggageAmount(List<Ticket> tickets);
+
+    int getCabinBaggageAmount(List<Ticket> tickets);
+
+    List<Ticket> getTicketsOfBooking(int bookingID);
 }

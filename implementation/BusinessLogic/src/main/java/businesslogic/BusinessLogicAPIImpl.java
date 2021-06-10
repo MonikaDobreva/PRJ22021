@@ -116,7 +116,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
     @Override
     public PersonManager getPersonManager() {
         PersonManagerImpl personManager = new PersonManagerImpl();
-        personManager.setPersonStorageService(persistenceAPI.getPersonManagerStorageService(personManager));
+        personManager.setPersonStorageService(persistenceAPI.getPersonManagerStorageService(personManager), daof);
         return personManager;
     }
 

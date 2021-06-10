@@ -81,7 +81,7 @@ public class FlightManagerImpl implements FlightManager {
      * saves the given flight f in the database.
      *
      * @param f Flight to be saved
-     * @return true if successfull,false otherwise
+     * @return true if successful ,false otherwise
      */
     @Override
     public Flight add(Flight f) {
@@ -170,11 +170,12 @@ public class FlightManagerImpl implements FlightManager {
     public List<Flight> getFlightsByRouteId(int routeId) {
 //        return flightStorageService.getFlightsByRouteId(selectedRouteId);
         try {
-            return new ArrayList<>(daof.createDao(Flight.class).anyQuery(
-                    "select f.*" +
-                            "from flight_routes fr" +
-                            "join flights f on fr.id = f.flight_route_id" +
-                            "where fr.id = ?;", routeId));
+            String query =
+                    "select f.* " +
+                    "from flight_routes fr " +
+                    "join flights f on fr.id = f.flight_route_id " +
+                    "where fr.id = (?);";
+            return new ArrayList<>(daof.createDao(Flight.class).anyQuery(query, routeId));
         } catch (Exception e){
             e.printStackTrace();
             System.out.println("Something went wrong with that query");

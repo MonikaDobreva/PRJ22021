@@ -31,12 +31,11 @@ public class GUIApp extends Application {
             case "frontend.ManagementDashboardController":
                 return new ManagementDashboardController(
                         businessLogicAPI.getFlightManager(),
-                        businessLogicAPI.getAirportManager(),
-                        businessLogicAPI.getAirplaneManager(),
                         businessLogicAPI.getBookingsManager(),
                         businessLogicAPI.getFlightRouteManager(),
                         businessLogicAPI.getTicketManager(),
-                        businessLogicAPI.getMealTypeManager());
+                        businessLogicAPI.getMealTypeManager(),
+                        businessLogicAPI.getPersonManager());
             case "frontend.editFlightController":
                 return new editFlightController(this::getSceneManager,
                         businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),

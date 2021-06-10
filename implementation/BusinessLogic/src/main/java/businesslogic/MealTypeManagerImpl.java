@@ -45,15 +45,22 @@ public class MealTypeManagerImpl implements MealTypeManager {
         }
     }
 
-//    @Override
-//    public List<MealType> getMeals() {
-//        try {
-//            return new ArrayList<>(daoF.createDao(MealType.class).getAll());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
+    @Override
+    public int getBookedMealsForSpecificFlight(int flightID){
+        try {
+            var query = "select mt.* " +
+                    "from meal_types mt " +
+                    "join tickets t on mt.id = t.meal_id " +
+                    "join flight_seats fs on fs.id = t.flight_seat_id " +
+                    "join flights f on f.id = fs.flight_id " +
+                    "where f.id = (?);";
+            return (int) new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query, flightID)).stream()
+                    .filter(mt -> !mt.getMealName().equals("None")).count();
+        } catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     @Override
     public MealType getMostBookedMeal() {

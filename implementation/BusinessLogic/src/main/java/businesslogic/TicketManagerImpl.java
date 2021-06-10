@@ -6,7 +6,6 @@ import genericdao.dao.DAOFactory;
 import persistence.TicketStorageService;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TicketManagerImpl implements TicketManager {
@@ -46,23 +45,18 @@ public class TicketManagerImpl implements TicketManager {
 
     @Override
     public List<Ticket> getTickets() {
-        try {
-            return new ArrayList<>(daoF.createDao(Ticket.class).getAll());
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+        return daoF.createDao(Ticket.class).getAll();
     }
 
-    @Override
-    public BigDecimal getSumOfTicketPrices() {
-        var allTickets = getTickets();
-        BigDecimal sum = BigDecimal.ZERO;
-        for (Ticket t : allTickets) {
-            sum = sum.add(t.getPricePaid());
-        }
-        return sum;
-    }
+//    @Override
+//    public BigDecimal getSumOfTicketPrices() {
+//        var allTickets = getTickets();
+//        BigDecimal sum = BigDecimal.ZERO;
+//        for (Ticket t : allTickets) {
+//            sum = sum.add(t.getPricePaid());
+//        }
+//        return sum;
+//    }
 
     @Override
     public boolean delete(Ticket t) {
@@ -75,4 +69,35 @@ public class TicketManagerImpl implements TicketManager {
         }
     }
 
+    @Override
+    public BigDecimal getSumOfTicketPrices(List<Ticket> tickets) {
+        BigDecimal sum = BigDecimal.ZERO;
+        for (Ticket t : tickets) {
+            sum = sum.add(t.getPricePaid());
+        }
+        return sum;
+    }
+
+    @Override
+    public int getCheckedBaggageAmount(List<Ticket> tickets) {
+        int sum = 0;
+        for (Ticket t : tickets) {
+            sum = sum + t.getCheckedBaggage();
+        }
+        return sum;
+    }
+
+    @Override
+    public int getCabinBaggageAmount(List<Ticket> tickets) {
+        int sum = 0;
+        for (Ticket t : tickets) {
+            sum = sum + t.getCabinBaggage();
+        }
+        return sum;
+    }
+
+    @Override
+    public List<Ticket> getTicketsOfBooking(int bookingID) {
+        return daoF.createDao(Ticket.class).getByColumnValues("bookingId", bookingID);
+    }
 }
