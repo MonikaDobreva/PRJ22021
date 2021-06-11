@@ -134,4 +134,12 @@ public class CreateFlightLogic {
     public void clearData(){
         this.values = new HashMap<>();
     }
+
+    public String getAirplaneInfo(String airplane) {
+        return airplaneManager.getAirplane(airplane).toString();
+    }
+
+    public String getAirportInfo(String airport) {
+        return airportManager.getAirport(airport).toString();
+    }
 }

@@ -69,7 +69,7 @@ public class Airplane implements Serializable {
 
     @Override
     public String toString() {
-        return "Airplane with " + "code " + airplaneCode + " and name " + model + ", has a seat amount of " + capacity + '.';
+        return "Airplane model '" + model + "' with code '" + airplaneCode + "' which has a seat amount of " + capacity + '.';
     }
 
 }

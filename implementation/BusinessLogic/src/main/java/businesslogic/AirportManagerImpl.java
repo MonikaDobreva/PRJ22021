@@ -28,8 +28,8 @@ public class AirportManagerImpl implements AirportManager {
     }
 
     @Override
-    public Airport createAirport(int airportID, String iataCode, String fullName, String country, String city) {
-        return new Airport(airportID, iataCode, fullName, country, city);
+    public Airport createAirport(int airportID, String iataCode, String fullName, String city, String country) {
+        return new Airport(airportID, iataCode, fullName, city, country);
     }
 
     @Override
@@ -46,6 +46,11 @@ public class AirportManagerImpl implements AirportManager {
     @Override
     public List<Airport> getAirportsWithoutOrigin(String iataCode) {
         return getAirports().stream().filter(a -> !a.getIataCode().equals(iataCode)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Airport getAirport(String airportIataCode) {
+        return this.getAirports().stream().filter(a -> a.getIataCode().equals(airportIataCode)).findFirst().get();
     }
 
 }

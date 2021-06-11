@@ -14,7 +14,7 @@ public interface AirportManager {
      * @param city      name of the city
      * @return          a new airport object
      */
-    Airport createAirport(int airportID, String iataCode, String fullName, String country, String city);
+    Airport createAirport(int airportID, String iataCode, String fullName, String city, String country);
 
     /**
      * Get all airport which were previously added to the airportStorage
@@ -25,4 +25,5 @@ public interface AirportManager {
 
     List<Airport> getAirportsWithoutOrigin(String a);
 
+    Airport getAirport(String airportIataCode);
 }

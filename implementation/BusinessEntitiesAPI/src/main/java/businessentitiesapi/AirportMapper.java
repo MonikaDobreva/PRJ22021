@@ -25,12 +25,11 @@ public class AirportMapper extends Mapper<Airport, Integer> {
     @Override
     public Object[] deconstruct(Airport a) {
         return new Object[]{
-                a.getIataCode(),
                 a.getAirportID(),
+                a.getIataCode(),
+                a.getFullName(),
                 a.getCity(),
                 a.getCountry(),
-                a.getFullName()
-
         };
     }
 

@@ -22,7 +22,7 @@ public class Airport implements Serializable {
     private final String city; //Make Locale later?
     private final String country;
 
-    public Airport(int airportID, String iataCode, String fullName, String country, String city) {
+    public Airport(int airportID, String iataCode, String fullName, String city, String country) {
         this.airportID = airportID;
         this.iataCode = iataCode;
         this.fullName = fullName;
@@ -72,6 +72,7 @@ public class Airport implements Serializable {
     
     @Override
     public String toString() {
-        return fullName + " (" + iataCode + ") " + city + ", " + country;
+        return "Airport with IATA code '" + iataCode + "' corresponding to '" + fullName +
+                "' located in " + city + ", " + country;
     }
 }

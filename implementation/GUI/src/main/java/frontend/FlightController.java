@@ -39,7 +39,7 @@ public class FlightController {
     DatePicker depDatePicker, arrDatePicker;
 
     @FXML
-    Button StoreFlight, primaryButton, ShowFlights, DisplayFlights, storeFlightsButton, backBtn, originAirportInfoBtn,
+    Button clearFieldsBtn, storeFlightsButton, backBtn, originAirportInfoBtn,
             destinationAirportInfoBtn, airplaneInfoBtn;
 
     @FXML
@@ -184,6 +184,10 @@ public class FlightController {
      * and sets a respective combo box to the resulting collection
      */
     public void listOriginAirports() {
+        originApDropdown.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                    originAirportInfoBtn.setVisible(true);
+                }
+        );
         originApDropdown.setItems(FXCollections.observableArrayList(createFlightLogic.listOriginAirport()));
     }
 
@@ -192,6 +196,10 @@ public class FlightController {
      * and sets a respective combo box to the resulting collection
      */
     public void listDestinationAirports() {
+        destinationApDropdown.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                    destinationAirportInfoBtn.setVisible(true);
+                }
+        );
         destinationApDropdown.setItems(FXCollections.observableArrayList(
                 createFlightLogic.listDestinationAirport(originApDropdown.getValue())));
     }
@@ -201,6 +209,10 @@ public class FlightController {
      * and sets a respective combo box to the resulting collection
      */
     public void listAirplaneModels(){
+        airplaneModelDropdown.getSelectionModel().selectedItemProperty().addListener( (options, oldValue, newValue) -> {
+                    airplaneInfoBtn.setVisible(true);
+                }
+        );
         airplaneModelDropdown.setItems(FXCollections.observableArrayList(createFlightLogic.listAirplanes()));
     }
 
@@ -233,15 +245,18 @@ public class FlightController {
     }
 
     public void displayOriginAirportInfo(){
-
+        String msg = createFlightLogic.getAirportInfo(originApDropdown.getValue().toString());
+        showAlert("Airport information", msg, AlertType.INFORMATION);
     }
 
     public void displayDestinationAirportInfo(){
-
+        String msg = createFlightLogic.getAirportInfo(destinationApDropdown.getValue().toString());
+        showAlert("Airport information", msg, AlertType.INFORMATION);
     }
 
     public void displayAirplaneInfo(){
-
+        String msg = createFlightLogic.getAirplaneInfo(airplaneModelDropdown.getValue().toString().split(" ")[0]);
+        showAlert("Airport information", msg, AlertType.INFORMATION);
     }
 
     public void clearFieldsWithConfirmation(){
