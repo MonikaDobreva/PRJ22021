@@ -28,8 +28,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>nl.fontys.sebivenlo</groupId>
+            <groupId>genericdao</groupId>
             <artifactId>genericdao</artifactId>
+            <version>1.0.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

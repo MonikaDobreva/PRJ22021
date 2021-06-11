@@ -50,5 +50,19 @@
             <artifactId>genericranges</artifactId>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>genericdao</groupId>
+            <artifactId>genericdao</artifactId>
+            <version>1.0.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M2</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
