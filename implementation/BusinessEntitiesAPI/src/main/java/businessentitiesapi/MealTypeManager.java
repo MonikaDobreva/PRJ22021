@@ -18,5 +18,7 @@ public interface MealTypeManager {
 
     MealType getMostBookedMeal();
 
-    int getAmountOfPopularMeal(int popMeal);
+    MealType getLeastBookedMeal();
+
+    int getAmountOfMeals(int popMeal);
 }

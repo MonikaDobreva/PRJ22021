@@ -6,6 +6,7 @@ import genericdao.dao.DAOFactory;
 import persistence.TicketStorageService;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class TicketManagerImpl implements TicketManager {
@@ -99,5 +100,22 @@ public class TicketManagerImpl implements TicketManager {
     @Override
     public List<Ticket> getTicketsOfBooking(int bookingID) {
         return daoF.createDao(Ticket.class).getByColumnValues("bookingId", bookingID);
+    }
+
+    @Override
+    public BigDecimal getSumOfTicketsOfLastSixMonth() {
+        var today = LocalDateTime.now();
+        var sixMAgo = today.minusMonths(6);
+        String query =
+                "select t.* " +
+                "from tickets t " +
+                "join bookings b on b.id = t.booking_id " +
+                "where time_of_booking between ? and ?;";
+        var tickets = daoF.createDao(Ticket.class).anyQuery(query, today, sixMAgo);
+        BigDecimal sum = BigDecimal.ZERO;
+        for (Ticket t : tickets) {
+            sum = sum.add(t.getPricePaid());
+        }
+        return sum;
     }
 }

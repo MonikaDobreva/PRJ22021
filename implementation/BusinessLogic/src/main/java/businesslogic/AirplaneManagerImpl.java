@@ -3,25 +3,20 @@ package businesslogic;
 
 import businessentitiesapi.Airplane;
 import businessentitiesapi.AirplaneManager;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import genericdao.dao.DAOFactory;
 import persistence.AirplaneStorageService;
 
-import static java.lang.String.format;
+import java.util.List;
 
 /**
- *
  * @author Rachel
  */
-public class AirplaneManagerImpl implements AirplaneManager{
-    
+public class AirplaneManagerImpl implements AirplaneManager {
+
     private AirplaneStorageService airplaneStorageService;
     private DAOFactory daof;
 
-    public void setAirplaneStorageService(AirplaneStorageService airplaneStorageService, DAOFactory pgdFactory){
+    public void setAirplaneStorageService(AirplaneStorageService airplaneStorageService, DAOFactory pgdFactory) {
         this.airplaneStorageService = airplaneStorageService;
         this.daof = pgdFactory;
     }
@@ -31,7 +26,7 @@ public class AirplaneManagerImpl implements AirplaneManager{
     }
 
     @Override
-    public Airplane createAirplane(int ID ,String name, String code, int amountSeats) {
+    public Airplane createAirplane(int ID, String name, String code, int amountSeats) {
         return new Airplane(ID, name, code, amountSeats);
     }
 
@@ -42,12 +37,17 @@ public class AirplaneManagerImpl implements AirplaneManager{
 
     @Override
     public List<Airplane> getAirplanes() {
-        try {
-            return daof.createDao(Airplane.class).getAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return daof.createDao(Airplane.class).getAll();
+    }
+
+    @Override
+    public Airplane getBiggestPlane() {
+        String query =
+                "select * " +
+                "from airplanes " +
+                "order by capacity desc " +
+                "LIMIT 1;";
+        return daof.createDao(Airplane.class).anyQuery(query).get(0);
     }
 
 }

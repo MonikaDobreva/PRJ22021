@@ -65,7 +65,8 @@ public class MealTypeManagerImpl implements MealTypeManager {
     @Override
     public MealType getMostBookedMeal() {
         try {
-            var query = "select id, name " +
+            var query =
+                    "select id, name " +
                     "from (select m.*, count(m.name) as occurrences" +
                     " from meal_types m " +
                     "join tickets t on m.id = t.meal_id " +
@@ -80,16 +81,28 @@ public class MealTypeManagerImpl implements MealTypeManager {
     }
 
     @Override
-    public int getAmountOfPopularMeal(int popMeal) {
+    public MealType getLeastBookedMeal() {
+            var query =
+                    "select id, name " +
+                    "from (select m.*, count(m.name) as occurrences" +
+                    " from meal_types m " +
+                    "join tickets t on m.id = t.meal_id " +
+                    "group by m.id " +
+                    "order by occurrences LIMIT 1) as pmto;";
+            return new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query)).stream().findFirst().get();
+    }
+
+    @Override
+    public int getAmountOfMeals(int mealID) {
         try {
             var query = "select mt.* " +
                     "from meal_types mt " +
                     "join tickets t on mt.id = t.meal_id " +
                     "where mt.id = (?);";
-            return new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query, popMeal)).size();
+            return new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query, mealID)).size();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Something went wrong in the method: \"getAmountOfPopularMeal\" ");
+            System.out.println("Something went wrong in the method: \"getAmountOfMeals\" ");
             return 0;
         }
     }

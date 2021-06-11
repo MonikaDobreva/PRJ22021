@@ -10,7 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
@@ -27,18 +26,21 @@ public class ManagementDashboardController {
     private final TicketManager ticketManager;
     private final MealTypeManager mealTypeManager;
     private final PersonManager personManager;
+    private final AirportManager airportManager;
+    private final AirplaneManager airplaneManager;
 
     @FXML
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
             mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, bookingTabBookedOnLabel,
-            routesTabTotalRoutesLabel, routesTabTotalPlanesLabel, routesTabTotalFlightsLabel, popularMealLabel,
-            bookingsTabPricePaidLabel, bookingsTabCheckedBaggageLabel, bookingsTabCabinBaggageLabel;
+            popularMealLabel, generalTabTotalAirports, generalTabPopularAirport, generalTabMostCapacity, generalTabLongestFlight,
+            generalTabRevenueSixMonth, generalTabLeastPopularMeal, bookingsTabPricePaidLabel, bookingsTabCheckedBaggageLabel,
+            bookingsTabCabinBaggageLabel;
 
     @FXML
     Button updateStatisticsButton;
 
     @FXML
-    ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown, mDashRoutesDropdown;
+    ComboBox<Integer> mDashFlightDropdown, mDashBookingDropdown;
 
     public ManagementDashboardController(
             FlightManager flightManager,
@@ -46,7 +48,9 @@ public class ManagementDashboardController {
             FlightRouteManager flightRouteManager,
             TicketManager ticketManager,
             MealTypeManager mealTypeManager,
-            PersonManager personManager
+            PersonManager personManager,
+            AirportManager airportManager,
+            AirplaneManager airplaneManager
     ) {
         this.flightManager = flightManager;
         this.bookingManager = bookingManager;
@@ -54,6 +58,8 @@ public class ManagementDashboardController {
         this.ticketManager = ticketManager;
         this.mealTypeManager = mealTypeManager;
         this.personManager = personManager;
+        this.airportManager = airportManager;
+        this.airplaneManager = airplaneManager;
     }
 
     //////////////////////////////////// General Tab ////////////////////////////////////////////////////////////////
@@ -64,6 +70,9 @@ public class ManagementDashboardController {
      */
     @FXML
     private void updateFlightStatistics() {
+        var lFlight = flightManager.getLongestFlight();
+        var lDur = calcEST(lFlight.getDepartureTime(), lFlight.getArrivalTime());
+
         totalFlightsLabel.setText(String.valueOf(flightManager.getFlights().size()));
         totalRoutesLabel.setText(String.valueOf(flightRouteManager.getFlightRoutes().size()));
         totalBookingsLabel.setText(String.valueOf(bookingManager.getBookings().size()));
@@ -71,11 +80,20 @@ public class ManagementDashboardController {
         totalRevenueLabel.setText(sumOfTicketPrices() + " €");
         popularMealLabel.setText(getMostBookedMeal().getMealName() + ", ordered " + getAmountOfPopularMeal() + " times");
 
+        generalTabTotalAirports.setText(String.valueOf(airportManager.getAirports().size()));
+        generalTabPopularAirport.setText(airportManager.mostPopularAirport().getFullName());
+        generalTabMostCapacity.setText(airplaneManager.getBiggestPlane().getModel() +
+                " with " + airplaneManager.getBiggestPlane().getCapacity() + " seats");
+        generalTabLongestFlight.setText("Flight " + lFlight.getFlightID() + " going from " +
+                lFlight.getOriginAirport() + " to " + lFlight.getDestinationAirport() +
+                " for " + lDur +" minutes/" + lDur/60 + " hours");
+        generalTabRevenueSixMonth.setText(String.valueOf(ticketManager.getSumOfTicketsOfLastSixMonth()));
+        generalTabLeastPopularMeal.setText(getLeastBookedMeal().getMealName() + ", ordered " + getAmountOfLeastPopularMeal() + " times");
+
     }
 
     /**
      * Helper method to calculate the sum of all the tickets currently sold
-     *
      * @return the value of the sum as a BigDecimal
      */
     public BigDecimal sumOfTicketPrices() {
@@ -86,8 +104,16 @@ public class ManagementDashboardController {
         return mealTypeManager.getMostBookedMeal();
     }
 
+    public MealType getLeastBookedMeal() {
+        return mealTypeManager.getLeastBookedMeal();
+    }
+
     public int getAmountOfPopularMeal() {
-        return mealTypeManager.getAmountOfPopularMeal(getMostBookedMeal().getId());
+        return mealTypeManager.getAmountOfMeals(getMostBookedMeal().getId());
+    }
+
+    public int getAmountOfLeastPopularMeal() {
+        return mealTypeManager.getAmountOfMeals(getLeastBookedMeal().getId());
     }
 
     //////////////////////////// Bookings Tab /////////////////////////////////////////////////////////////////////////
@@ -145,7 +171,8 @@ public class ManagementDashboardController {
             mDashArrLabel.setText(selectedFlightAsObject.getDestinationAirport());
             mDashEstFDLabel.setText(calcEST(selectedFlightAsObject.getDepartureTime(), selectedFlightAsObject.getArrivalTime()) + " minutes");
             mDashBookingsLabel.setText(String.valueOf(bookingManager.getBookingsOfFlight(selectedFlightID).size()));
-            mDashMealsLabel.setText(String.valueOf(mealTypeManager.getBookedMealsForSpecificFlight(mDashFlightDropdown.getValue())));
+            mDashMealsLabel.setText(String.valueOf(mealTypeManager.getBookedMealsForSpecificFlight(selectedFlightID)));
+            //bookingsTabRevenueLabel.setText(ticketManager.getRevenueOfFlight(selectedFlightID) + " €");
         }
         else {
             var selectedFlightID = mDashFlightDropdown.getValue();
@@ -181,8 +208,7 @@ public class ManagementDashboardController {
     }
 
     public long calcEST(LocalDateTime start, LocalDateTime end) {
-        Duration d = Duration.between(start, end);
-        return d.toMinutes();
+        return flightManager.calcEST(start, end);
     }
 
     /**
@@ -196,6 +222,10 @@ public class ManagementDashboardController {
         mDashMealsLabel.setText("");
 
         mDashBookedByLabel.setText("");
+        bookingsTabCheckedBaggageLabel.setText("");
+        bookingsTabCabinBaggageLabel.setText("");
+        bookingsTabPricePaidLabel.setText("");
+        bookingTabBookedOnLabel.setText("");
     }
 
     /**
@@ -212,29 +242,4 @@ public class ManagementDashboardController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    ////////////////////////////////// routes tab methods //////////////////////////////////////////////////////////
-
-    @FXML
-    public void listRoutes() {
-        mDashRoutesDropdown.setItems(FXCollections.observableArrayList(
-                flightRouteManager.getFlightRoutes().stream()
-                        .map(FlightRoute::getFlightRouteID).collect(Collectors.toList())
-        ));
-    }
-
-    @FXML
-    public void routesTabApply() {
-        var selectedRouteId = mDashRoutesDropdown.getValue();
-        var selectedRouteAsObject = flightRouteManager.getFlightRoutes().stream()
-                .filter(r -> r.getFlightRouteID() == selectedRouteId).findFirst().get();
-
-        //routesTabTotalRoutesLabel.setText("");
-        routesTabTotalFlightsLabel.setText(String.valueOf(flightManager.getFlightsByRouteId(selectedRouteId).size()));
-        routesTabTotalPlanesLabel.setText("0");
-
-
-    }
-
-
 }

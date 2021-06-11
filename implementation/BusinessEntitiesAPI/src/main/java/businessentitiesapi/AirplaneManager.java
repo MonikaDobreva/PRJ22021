@@ -1,9 +1,6 @@
 
 package businessentitiesapi;
 
-import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
-
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -37,4 +34,5 @@ public interface AirplaneManager {
      */
     List<Airplane> getAirplanes();
 
+    Airplane getBiggestPlane();
 }

@@ -1,10 +1,15 @@
 package businesslogic;
 
-import businessentitiesapi.Airplane;
 import businessentitiesapi.Flight;
 import businessentitiesapi.exceptions.FlightStorageException;
-import genericdao.dao.DAOFactory;
 import genericdao.dao.DAO;
+import genericdao.dao.DAOFactory;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,20 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
-import org.mockito.Mockito;
-import persistence.AirplaneStorageService;
-import persistence.FlightStorageService;
-import persistence.FlightStorageServiceImpl;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 /**
  * This tests that in the flight manager the dao is called with the belonging
@@ -164,6 +158,13 @@ public class FlightManagerTest {
                 + "from flight_routes fr "
                 + "join flights f on fr.id = f.flight_route_id "
                 + "where fr.id = (?);", 1);
+    }
+
+    @Test
+    public void tCalcEST(){
+        LocalDateTime d1 = LocalDateTime.parse("2022-12-12T10:00:00");
+        LocalDateTime d2 = LocalDateTime.parse("2022-12-12T13:00:00");
+        assertThat(flm.calcEST(d1, d2)).isEqualTo(180L);
     }
 
 }

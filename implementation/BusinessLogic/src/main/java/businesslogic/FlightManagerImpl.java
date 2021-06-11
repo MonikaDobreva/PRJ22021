@@ -9,6 +9,7 @@ import genericdao.dao.TransactionToken;
 import persistence.FlightStorageService;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,15 +177,33 @@ public class FlightManagerImpl implements FlightManager {
         try {
             String query =
                     "select f.* " +
-                    "from flight_routes fr " +
-                    "join flights f on fr.id = f.flight_route_id " +
-                    "where fr.id = (?);";
+                            "from flight_routes fr " +
+                            "join flights f on fr.id = f.flight_route_id " +
+                            "where fr.id = (?);";
             return new ArrayList<>(daof.createDao(Flight.class).anyQuery(query, routeId));
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Something went wrong with that query");
             return null;
         }
+    }
+
+    @Override
+    public long calcEST(LocalDateTime start, LocalDateTime end) {
+        Duration d = Duration.between(start, end);
+        return d.toMinutes();
+    }
+
+    @Override
+    public Flight getLongestFlight() {
+        var flights = getFlights();
+        Flight lF = flights.get(0);
+        for (Flight f : flights) {
+            if (calcEST(f.getDepartureTime(), f.getArrivalTime()) > calcEST(lF.getDepartureTime(), lF.getArrivalTime())) {
+                lF = f;
+            }
+        }
+        return lF;
     }
 
 }

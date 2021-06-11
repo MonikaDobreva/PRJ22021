@@ -76,7 +76,7 @@ public class MealTypeManagerTest {
     @Test
     public void tGetAmountOfPopularMeal(){
         when(dao.anyQuery(anyString(), any())).thenReturn(popularMeals);
-        var popMeal = mtmi.getAmountOfPopularMeal(1);
+        var popMeal = mtmi.getAmountOfMeals(1);
         verify(daoF).createDao(MealType.class);
         verify(dao).anyQuery(anyString(), any());
         assertThat(popMeal).isEqualTo(3);

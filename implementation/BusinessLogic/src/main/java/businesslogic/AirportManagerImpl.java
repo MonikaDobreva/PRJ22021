@@ -3,13 +3,8 @@ package businesslogic;
 import businessentitiesapi.Airport;
 import businessentitiesapi.AirportManager;
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
-import persistence.AirplaneStorageService;
 import persistence.AirportStorageService;
-import persistence.FlightStorageService;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,13 +29,7 @@ public class AirportManagerImpl implements AirportManager {
 
     @Override
     public List<Airport> getAirports() {
-//        return airportStorageService.getAll();
-        try {
-            return new ArrayList<>(daof.createDao(Airport.class).getAll());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+            return daof.createDao(Airport.class).getAll();
     }
 
     @Override
@@ -51,6 +40,22 @@ public class AirportManagerImpl implements AirportManager {
     @Override
     public Airport getAirport(String airportIataCode) {
         return this.getAirports().stream().filter(a -> a.getIataCode().equals(airportIataCode)).findFirst().get();
+    }
+
+    @Override
+    public Airport mostPopularAirport() {
+        String query =
+                "select a.id, a.iata_code, a.full_name, a.city, a.country " +
+                "from airports a " +
+                "join flight_routes fr on a.id = fr.destination_airport_id " +
+                "join flights f on fr.id = f.flight_route_id " +
+                "join flight_seats fs on f.id = fs.flight_id " +
+                "join tickets t on fs.id = t.flight_seat_id " +
+                "join bookings b on b.id = t.booking_id " +
+                "group by a.id " +
+                "order by count(a.iata_code) desc " +
+                "LIMIT 1;";
+        return daof.createDao(Airport.class).anyQuery(query).get(0);
     }
 
 }

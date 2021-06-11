@@ -35,7 +35,9 @@ public class GUIApp extends Application {
                         businessLogicAPI.getFlightRouteManager(),
                         businessLogicAPI.getTicketManager(),
                         businessLogicAPI.getMealTypeManager(),
-                        businessLogicAPI.getPersonManager());
+                        businessLogicAPI.getPersonManager(),
+                        businessLogicAPI.getAirportManager(),
+                        businessLogicAPI.getAirplaneManager());
             case "frontend.editFlightController":
                 return new editFlightController(this::getSceneManager,
                         businessLogicAPI.getFlightManager(), businessLogicAPI.getAirportManager(),

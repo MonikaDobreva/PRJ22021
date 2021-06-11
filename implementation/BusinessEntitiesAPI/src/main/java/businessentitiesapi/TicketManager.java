@@ -55,4 +55,8 @@ public interface TicketManager {
     int getCabinBaggageAmount(List<Ticket> tickets);
 
     List<Ticket> getTicketsOfBooking(int bookingID);
+
+    BigDecimal getSumOfTicketsOfLastSixMonth();
+
+    //BigDecimal getRevenueOfFlight(int selectedFlightID);
 }

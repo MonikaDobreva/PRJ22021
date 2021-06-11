@@ -69,4 +69,8 @@ public interface FlightManager {
     int getLastID();
 
     List<Flight> getFlightsByRouteId(int selectedRouteId);
+
+    long calcEST(LocalDateTime start, LocalDateTime end);
+
+    Flight getLongestFlight();
 }
