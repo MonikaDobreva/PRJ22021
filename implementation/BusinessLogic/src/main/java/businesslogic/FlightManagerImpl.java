@@ -100,7 +100,6 @@ public class FlightManagerImpl implements FlightManager {
             }
             flightDao.close();
             return storedFlight.get();
-//            return daof.createDao(Flight.class).save(f).get();
         } catch (Exception e) {
             throw new FlightStorageException("Flight could not be added :(");
         }
