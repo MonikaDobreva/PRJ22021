@@ -196,5 +196,101 @@ public class CreateFlightLogicTest {
         Mockito.verify(apm).getAirplane("V-AAAA");
     }
 
+    @Test
+    public void storeFlightOKTest(){
+        values = CreateLogicHelper.getValues();
+        cfl.setData(values);
+
+        LocalDateTime depTime = cfl.makeDateTime("10", "30", "2022-10-10");
+        LocalDateTime arrTime = cfl.makeDateTime("12", "45", "2022-10-11");
+
+        Mockito.when(apm.getAirplane("X-WXYZ")).thenReturn(CreateLogicHelper.a4);
+        Mockito.when(apsm.checkAvailability("X-WXYZ", depTime, arrTime)).thenReturn(true);
+        Mockito.when(fm.createFlight(0,
+                "AMS", "DUS",
+                LocalDateTime.of(2022, 10, 10, 10, 30),
+                LocalDateTime.of(2022, 10, 11, 12, 45),
+                "X-WXYZ",
+                new BigDecimal("120.00"))).thenReturn(CreateLogicHelper.f);
+        Mockito.when(fm.add(CreateLogicHelper.f)).thenReturn(CreateLogicHelper.f);
+        Mockito.when(sm.getSeatIdsOfAirplane(CreateLogicHelper.a4)).thenReturn(CreateLogicHelper.getSeatsId());
+        Mockito.when(fsm.createFlightSeat(0, 0, true)).thenReturn(CreateLogicHelper.fs1);
+        Mockito.when(fsm.createFlightSeat(1, 0, true)).thenReturn(CreateLogicHelper.fs2);
+        Mockito.when(fsm.createFlightSeat(2, 0, true)).thenReturn(CreateLogicHelper.fs3);
+        Mockito.when(fsm.add(CreateLogicHelper.fs1)).thenReturn(CreateLogicHelper.fs1);
+        Mockito.when(fsm.add(CreateLogicHelper.fs2)).thenReturn(CreateLogicHelper.fs2);
+        Mockito.when(fsm.add(CreateLogicHelper.fs3)).thenReturn(CreateLogicHelper.fs3);
+
+        ThrowableAssert.ThrowingCallable code = () -> {
+            cfl.storeFlight();
+        };
+
+        assertThatCode(code).doesNotThrowAnyException();
+
+        Mockito.verify(apm).getAirplane(Mockito.anyString());
+        Mockito.verify(apsm).checkAvailability(Mockito.anyString(), Mockito.any(LocalDateTime.class), Mockito.any(LocalDateTime.class));
+        Mockito.verify(fm).createFlight(
+                Mockito.anyInt(),
+                Mockito.anyString(),
+                Mockito.anyString(),
+                Mockito.any(LocalDateTime.class),
+                Mockito.any(LocalDateTime.class),
+                Mockito.anyString(),
+                Mockito.any(BigDecimal.class));
+        Mockito.verify(fm).add(Mockito.any(Flight.class));
+        Mockito.verify(sm).getSeatIdsOfAirplane(Mockito.any(Airplane.class));
+        Mockito.verify(fsm, Mockito.times(3)).createFlightSeat(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyBoolean());
+        Mockito.verify(fsm, Mockito.times(3)).add(Mockito.any(FlightSeat.class));
+
+    }
+
+    @Test
+    public void storeFlightExceptionTest(){
+        values = CreateLogicHelper.getValues();
+        cfl.setData(values);
+
+        LocalDateTime depTime = cfl.makeDateTime("10", "30", "2022-10-10");
+        LocalDateTime arrTime = cfl.makeDateTime("12", "45", "2022-10-11");
+
+        Mockito.when(apm.getAirplane("X-WXYZ")).thenReturn(CreateLogicHelper.a4);
+        Mockito.when(apsm.checkAvailability("X-WXYZ", depTime, arrTime)).thenReturn(true);
+        Mockito.when(fm.createFlight(0,
+                "AMS", "DUS",
+                LocalDateTime.of(2022, 10, 10, 10, 30),
+                LocalDateTime.of(2022, 10, 11, 12, 45),
+                "X-WXYZ",
+                new BigDecimal("120.00"))).thenReturn(CreateLogicHelper.f);
+        Mockito.when(fm.add(CreateLogicHelper.f)).thenReturn(CreateLogicHelper.f);
+        Mockito.when(sm.getSeatIdsOfAirplane(CreateLogicHelper.a4)).thenReturn(CreateLogicHelper.getSeatsId());
+        Mockito.when(fsm.createFlightSeat(0, 0, true)).thenReturn(CreateLogicHelper.fs1);
+        Mockito.when(fsm.createFlightSeat(1, 0, true)).thenReturn(CreateLogicHelper.fs2);
+        Mockito.when(fsm.createFlightSeat(2, 0, true)).thenReturn(CreateLogicHelper.fs3);
+        Mockito.when(fsm.add(CreateLogicHelper.fs1)).thenReturn(CreateLogicHelper.fs1);
+        Mockito.when(fsm.add(CreateLogicHelper.fs2)).thenReturn(CreateLogicHelper.fs2);
+        Mockito.when(fsm.add(CreateLogicHelper.fs3)).thenReturn(CreateLogicHelper.fs3);
+
+        ThrowableAssert.ThrowingCallable code = () -> {
+            cfl.storeFlight();
+        };
+
+        assertThatCode(code).doesNotThrowAnyException();
+
+        Mockito.verify(apm).getAirplane(Mockito.anyString());
+        Mockito.verify(apsm).checkAvailability(Mockito.anyString(), Mockito.any(LocalDateTime.class), Mockito.any(LocalDateTime.class));
+        Mockito.verify(fm).createFlight(
+                Mockito.anyInt(),
+                Mockito.anyString(),
+                Mockito.anyString(),
+                Mockito.any(LocalDateTime.class),
+                Mockito.any(LocalDateTime.class),
+                Mockito.anyString(),
+                Mockito.any(BigDecimal.class));
+        Mockito.verify(fm).add(Mockito.any(Flight.class));
+        Mockito.verify(sm).getSeatIdsOfAirplane(Mockito.any(Airplane.class));
+        Mockito.verify(fsm, Mockito.times(3)).createFlightSeat(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyBoolean());
+        Mockito.verify(fsm, Mockito.times(3)).add(Mockito.any(FlightSeat.class));
+
+    }
+
 
 }

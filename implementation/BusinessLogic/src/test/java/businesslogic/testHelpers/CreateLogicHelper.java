@@ -1,8 +1,6 @@
 package businesslogic.testHelpers;
 
-import businessentitiesapi.Airplane;
-import businessentitiesapi.Airport;
-import businessentitiesapi.Flight;
+import businessentitiesapi.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -34,6 +32,13 @@ public class CreateLogicHelper {
             "E-EEEE",
             new BigDecimal("300.00"));
 
+    public static Flight f = new Flight(0,
+            "AMS", "DUS",
+            LocalDateTime.of(2022, 10, 10, 10, 30),
+            LocalDateTime.of(2022, 10, 11, 12, 45),
+            "X-WXYZ",
+            new BigDecimal("120.00"));
+
     public static Airport ap1 = new Airport(0, "AMS", "Amsterdam", "Netherlands", "Amsterdam");
     public static Airport ap2 = new Airport(0, "BCN", "Barcelona", "Spain", "Barcelona");
     public static Airport ap3 = new Airport(0, "DUS", "Düsseldorf", "Germany", "Düsseldorf");
@@ -41,6 +46,18 @@ public class CreateLogicHelper {
     public static Airplane a1 = new Airplane(0, "Boeing 377","V-BBBB",367);
     public static Airplane a2 = new Airplane(1, "Boeing 350","V-AAAA",250);
     public static Airplane a3 = new Airplane(2, "Boeing 250","V-CCCC",20);
+    public static Airplane a4 = new Airplane(0, "Mini 26-Seater","X-WXYZ",20);
+
+    public static Seat s1 = new Seat(0, 4, "1A", 1);
+    public static Seat s2 = new Seat(1, 4, "1B", 1);
+    public static Seat s3 = new Seat(2, 3, "1C", 1);
+    public static Seat s4 = new Seat(3, 3, "1D", 1);
+    public static Seat s5 = new Seat(4, 2, "1F", 1);
+    public static Seat s6 = new Seat(5, 1, "1G", 1);
+
+    public static FlightSeat fs1 = new FlightSeat(0, 0, 1, true);
+    public static FlightSeat fs2 = new FlightSeat(0, 1, 1, true);
+    public static FlightSeat fs3 = new FlightSeat(0, 2, 1, true);
 
     public static Map<String, String> getValues(){
         Map<String, String> values = new HashMap<>();
@@ -50,10 +67,10 @@ public class CreateLogicHelper {
         values.put("destinationAirport", "DUS");
         values.put("dTHour", "10");
         values.put("dTMin", "30");
-        values.put("dTDate", "10/10/2022");
+        values.put("dTDate", "2022-10-10");
         values.put("aTHour", "12");
         values.put("aTMin", "45");
-        values.put("aTDate", "10/10/2022");
+        values.put("aTDate", "2022-10-11");
         values.put("airplaneInfo", "X-WXYZ (Mini 26-Seater)");
         values.put("price", "120.00");
 
@@ -106,5 +123,25 @@ public class CreateLogicHelper {
         airplanes.add(a3);
 
         return airplanes;
+    }
+
+    public static List<Seat> getSeats(){
+        List<Seat> seats = new ArrayList<>();
+
+        seats.add(s1);
+        seats.add(s2);
+        seats.add(s3);
+
+        return seats;
+    }
+
+    public static List<Integer> getSeatsId(){
+        List<Integer> list = new ArrayList<>();
+
+        list.add(0);
+        list.add(1);
+        list.add(2);
+
+        return list;
     }
 }
