@@ -2,7 +2,7 @@ package frontend;
 
 import businessentitiesapi.*;
 import businessentitiesapi.exceptions.FlightStorageException;
-import businesslogic.CreateFlightLogic;
+import businesslogic.CreateFlightLogicImpl;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,13 +11,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 /**
  * @author Benjamin Swiezy {@code b.swiezy@student.fontys.nl}

@@ -54,7 +54,7 @@ public class BusinessLogicAPIImpl implements BusinessLogicImplementationProvider
 
     @Override
     public CreateFlightLogic getCreateFlightLogic() {
-        return new CreateFlightLogic(getAirplaneManager(), getAirportManager(), getFlightManager(),
+        return new CreateFlightLogicImpl(getAirplaneManager(), getAirportManager(), getFlightManager(),
                 getFlightRouteManager(), getSeatManager(), getFlightSeatManager(), getAirplaneScheduleManager());
     }
 

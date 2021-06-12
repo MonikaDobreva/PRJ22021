@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class CreateFlightLogic {
+public class CreateFlightLogicImpl implements CreateFlightLogic{
     AirplaneManager airplaneManager;
     AirportManager airportManager;
     FlightManager flightManager;
@@ -23,9 +23,9 @@ public class CreateFlightLogic {
     AirplaneScheduleManager airplaneScheduleManager;
     Map<String, String> values;
 
-    public CreateFlightLogic(AirplaneManager airplaneManager, AirportManager airportManager, FlightManager flightManager,
-                             FlightRouteManager flightRouteManager, SeatManager seatManager, FlightSeatManager flightSeatManager,
-                             AirplaneScheduleManager airplaneScheduleManager) {
+    public CreateFlightLogicImpl(AirplaneManager airplaneManager, AirportManager airportManager, FlightManager flightManager,
+                                 FlightRouteManager flightRouteManager, SeatManager seatManager, FlightSeatManager flightSeatManager,
+                                 AirplaneScheduleManager airplaneScheduleManager) {
         this.airplaneManager = airplaneManager;
         this.airportManager = airportManager;
         this.flightManager = flightManager;
@@ -35,10 +35,12 @@ public class CreateFlightLogic {
         this.airplaneScheduleManager = airplaneScheduleManager;
     }
 
+    @Override
     public void setData(Map<String, String> dataCollected){
         this.values = dataCollected;
     }
 
+    @Override
     public void clearData(){
         this.values = new HashMap<>();
     }
@@ -64,8 +66,7 @@ public class CreateFlightLogic {
                 DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
     }
 
-//    public void dataValidation(Map<String, String> values)
-//            throws DateTimeParseException, NoSuchElementException, NullPointerException{
+    @Override
     public void dataValidation(Map<String, String> values) {
         Integer.parseInt(values.get("flightID"));
         makeDateTime(values.get("dTHour"), values.get("dTMin"), values.get("dTDate"));
@@ -74,11 +75,12 @@ public class CreateFlightLogic {
 
     }
 
+    @Override
     public Airplane obtainAirplane() {
         return airplaneManager.getAirplane(values.get("airplaneInfo").split(" ")[0]);
     }
 
-//    public void storeFlight() throws IllegalArgumentException{
+    @Override
     public void storeFlight() throws FlightStorageException {
         Airplane airplane = this.obtainAirplane();
 
@@ -115,36 +117,43 @@ public class CreateFlightLogic {
 
     }
 
+    @Override
     public List<Flight> obtainFlights() {
         return flightManager.getFlights();
     }
 
+    @Override
     public List<String> listOriginAirport(){
         return airportManager.getAirports().stream()
                 .map(Airport::getIataCode)
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<String> listDestinationAirport(String originAirport){
         return airportManager.getAirportsWithoutOrigin(originAirport).stream()
                 .map(Airport::getIataCode)
                 .collect(Collectors.toList());
     }
 
+    @Override
     public List<String> listAirplanes(){
         return airplaneManager.getAirplanes().stream()
                 .map(a -> a.getAirplaneCode() + " (" + a.getModel() + ")")
                 .collect(Collectors.toList());
     }
 
+    @Override
     public String getNextID() {
         return String.valueOf(flightManager.getLastID() + 1);
     }
 
+    @Override
     public String getAirplaneInfo(String airplane) {
         return airplaneManager.getAirplane(airplane).toString();
     }
 
+    @Override
     public String getAirportInfo(String airport) {
         return airportManager.getAirport(airport).toString();
     }
