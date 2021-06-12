@@ -29,7 +29,7 @@ public interface FlightRouteManager {
      * @param fr The flight route to be added
      * @return the added flight route
      */
-    FlightRoute add(FlightRoute fr) throws FlightStorageException;
+    FlightRoute add(FlightRoute fr);
 
     /**
      * Get all flight routes
@@ -44,7 +44,7 @@ public interface FlightRouteManager {
      * @param destinationAirport  The airport where the flight lands
      * @return
      */
-    void checkExistence(String originAirport, String destinationAirport) throws FlightStorageException;
+    void checkExistence(String originAirport, String destinationAirport);
 
     //List<Flight> getFlightsByRouteId(int routeID);
 }

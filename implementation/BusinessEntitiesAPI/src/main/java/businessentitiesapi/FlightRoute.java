@@ -36,18 +36,4 @@ public class FlightRoute implements Serializable {
     public String toString() {
         return "FlightRoute " + flightRouteID + " from airport: " + originAirportCode + " to airport: " + destinationAirportCode;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FlightRoute)) return false;
-        FlightRoute that = (FlightRoute) o;
-        return getFlightRouteID() == that.getFlightRouteID() && getOriginAirportCode().equals(that.getOriginAirportCode())
-                && getDestinationAirportCode().equals(that.getDestinationAirportCode());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFlightRouteID(), getOriginAirportCode(), getDestinationAirportCode());
-    }
 }

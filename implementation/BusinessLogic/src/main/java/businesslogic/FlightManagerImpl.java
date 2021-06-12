@@ -2,10 +2,8 @@ package businesslogic;
 
 import businessentitiesapi.Flight;
 import businessentitiesapi.FlightManager;
-import businessentitiesapi.exceptions.FlightStorageException;
-import genericdao.dao.DAO;
+
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import persistence.FlightStorageService;
 
 import java.math.BigDecimal;
@@ -86,23 +84,12 @@ public class FlightManagerImpl implements FlightManager {
      * @return true if successful ,false otherwise
      */
     @Override
-    public Flight add(Flight f) throws FlightStorageException {
-//        return flightStorageService.add(f);
-
+    public Flight add(Flight f) {
         try {
-            DAO<Flight, Integer> flightDao = daof.createDao(Flight.class);
-            TransactionToken token = flightDao.startTransaction();
-            var storedFlight = flightDao.save(f);
-            if (f.equals(storedFlight.get())) {
-                token.commit();
-            } else {
-                token.rollback();
-                throw new Exception();
-            }
-            flightDao.close();
-            return storedFlight.get();
+            return daof.createDao(Flight.class).save(f).get();
         } catch (Exception e) {
-            throw new FlightStorageException("Flight could not be added :(");
+            e.printStackTrace();
+            return null;
         }
     }
     

@@ -44,17 +44,4 @@ public class FlightSeat implements Serializable {
                 " and flightID " + flightId ;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof FlightSeat)) return false;
-        FlightSeat that = (FlightSeat) o;
-        return getFlightSeatId() == that.getFlightSeatId() && getSeatId() == that.getSeatId()
-                && getFlightId() == that.getFlightId() && isAvailable() == that.isAvailable();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getFlightSeatId(), getSeatId(), getFlightId(), isAvailable());
-    }
 }

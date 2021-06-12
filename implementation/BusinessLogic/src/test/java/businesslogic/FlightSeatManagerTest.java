@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -79,9 +80,9 @@ public class FlightSeatManagerTest {
         verify(dao).getAll();
     }
 
-    @Disabled
     @Test
     public void addTest() throws FlightStorageException {
+        Mockito.when(dao.save(fs1)).thenReturn(Optional.of(fs1));
         flightSeatManager.add(fs1);
 
         verify(daof).createDao(FlightSeat.class);

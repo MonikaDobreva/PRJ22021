@@ -88,7 +88,6 @@ public class FlightManagerTest {
                 .isEqualTo(f2.toString());
     }
 
-    @Disabled
     @Test
     public void addTest() throws FlightStorageException {
        Mockito.when(dao.save(f2)).thenReturn(Optional.of(f2));
@@ -135,6 +134,7 @@ public class FlightManagerTest {
     @Test
     public void deleteBrokenTest() {
         Mockito.doThrow(new RuntimeException()).when(dao).deleteEntity(f1);//because void type it is done like this
+
         assertThat(flm.delete(f1)).isFalse();
         verify(daoF).createDao(Flight.class);
         verify(dao).deleteEntity(f1);

@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -65,12 +66,13 @@ public class FlightRouteManagerTest {
         verify(dao).getAll();
     }
 
-    @Disabled
     @Test
     public void addTest() throws FlightStorageException {
-        flightRouteManager.add(fr2);
+        Mockito.when(dao.save(fr2)).thenReturn(Optional.of(fr2));
+        assertThat(flightRouteManager.add(fr2)).isEqualTo(fr2);
         verify(daof).createDao(FlightRoute.class);
         verify(dao).save(fr2);
+
     }
 
     @ParameterizedTest

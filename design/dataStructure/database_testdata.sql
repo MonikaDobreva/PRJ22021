@@ -166,7 +166,7 @@ alter sequence public.seats_id_seq restart with 89;
 --flights
 insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (1, '2021-12-22 18:00:00.000000', '2021-12-22 23:00:00.000000', 1, 3, 210.00);
 insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (2, '2021-12-25 16:00:00.000000', '2021-12-25 21:00:00.000000', 1, 4, 210.00);
-insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (3, '2021-06-11 09:50:00.000000', '2021-06-11 21:20:00.000000', 2, 1, 550.00);
+insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (3, '2022-06-11 09:50:00.000000', '2022-06-11 21:20:00.000000', 2, 1, 550.00);
 insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (4, '2021-08-20 17:00:00.000000', '2021-08-21 04:00:00.000000', 2, 2, 550.00);
 insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (5, '2022-01-01 12:45:00.000000', '2022-01-01 15:35:00.000000', 1, 5, 85.00);
 insert into public.flights (id, departure_time, arrival_time, airplane_id, flight_route_id, base_price) overriding system value values (6, '2022-01-02 17:00:00.000000', '2022-01-02 19:50:00.000000', 1, 6, 85.00);

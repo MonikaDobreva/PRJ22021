@@ -4,15 +4,11 @@ import businessentitiesapi.Flight;
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
-import businessentitiesapi.exceptions.FlightStorageException;
-import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import persistence.FlightSeatStorageService;
 
-import java.util.ArrayList;
+
 import java.util.List;
-import java.util.Optional;
 
 public class FlightSeatManagerImpl implements FlightSeatManager {
 
@@ -35,21 +31,12 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     }
 
     @Override
-    public FlightSeat add(FlightSeat fs) throws FlightStorageException {
+    public FlightSeat add(FlightSeat fs){
         try {
-            DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);
-            TransactionToken token = flightSeatDao.startTransaction();
-            Optional<FlightSeat> storedFlightSeat = flightSeatDao.save(fs);
-            if (fs.equals(storedFlightSeat.get())) {
-                token.commit();
-            } else {
-                token.rollback();
-                throw new Exception();
-            }
-            flightSeatDao.close();
-            return storedFlightSeat.get();
+            return daof.createDao(FlightSeat.class).save(fs).get();
         } catch (Exception e) {
-            throw new FlightStorageException("Flight Seat could not be added :(");
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -62,29 +49,6 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
             return null;
         }
     }
-
-//    @Override
-//    public List<FlightSeat> addAll(List<Integer> seatsId, int flightId) {
-//        List<FlightSeat> flightSeats = new ArrayList<>();
-//
-//        for (int seatId : seatsId){
-//            flightSeats.add(this.createFlightSeat(seatId, flightId, true));
-//        }
-//
-////        return flightSeatStorageService.addAll(flightSeats);
-//
-//        try {
-//            DAO<FlightSeat, Integer> flightSeatDao = daof.createDao(FlightSeat.class);
-//            TransactionToken token = flightSeatDao.startTransaction();
-//            var storedFlightSeats = flightSeatDao.saveAll(flightSeats);
-//            token.commit();
-//            flightSeatDao.close();
-//            return new ArrayList<>(storedFlightSeats);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 
     @Override
     public List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType) {

@@ -93,15 +93,21 @@ public class CreateFlightLogic {
                 new BigDecimal(values.get("price"))
         );
 
-        flightRouteManager.checkExistence(values.get("originAirport"), values.get("destinationAirport"));
+        try {
 
-        flightManager.add(f);
+            flightRouteManager.checkExistence(values.get("originAirport"), values.get("destinationAirport"));
+            Flight sf = flightManager.add(f);
 
-        List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
-        for (int seatId : seatsId){
-            flightSeatManager.add(flightSeatManager.createFlightSeat(seatId, f.getFlightID(), true));
+
+            List<Integer> seatsId = seatManager.getSeatIdsOfAirplane(airplane);
+            for (int seatId : seatsId){
+                FlightSeat fs = flightSeatManager.createFlightSeat(seatId, f.getFlightID(), true);
+                FlightSeat sfs = flightSeatManager.add(fs);
+            }
+
+        } catch (Exception ex) {
+            throw new FlightStorageException("Flight could not be stored :(");
         }
-
 
     }
 

@@ -2,10 +2,7 @@ package businesslogic;
 
 import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightRouteManager;
-import businessentitiesapi.exceptions.FlightStorageException;
-import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import persistence.FlightRouteStorageService;
 
 import java.util.ArrayList;
@@ -33,21 +30,12 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     }
 
     @Override
-    public FlightRoute add(FlightRoute fr) throws FlightStorageException {
+    public FlightRoute add(FlightRoute fr){
         try {
-            DAO<FlightRoute, Integer> flightRouteDao = daof.createDao(FlightRoute.class);
-            TransactionToken token = flightRouteDao.startTransaction();
-            Optional<FlightRoute> storedFlightRoute = flightRouteDao.save(fr);
-            if (fr.equals(storedFlightRoute.get())) {
-                token.commit();
-            } else {
-                token.rollback();
-                throw new Exception();
-            }
-            flightRouteDao.close();
-            return storedFlightRoute.get();
+            return daof.createDao(FlightRoute.class).save(fr).get();
         } catch (Exception e) {
-            throw new FlightStorageException("Flight Route could not be added :(");
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -62,7 +50,7 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     }
 
     @Override
-    public void checkExistence(String originAirport, String destinationAirport) throws FlightStorageException {
+    public void checkExistence(String originAirport, String destinationAirport) {
         var flightRoutes = this.getFlightRoutes();
 
         Optional<FlightRoute> flightRoute = this.getFlightRoutes().stream()

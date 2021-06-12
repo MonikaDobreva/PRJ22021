@@ -42,7 +42,7 @@ public interface FlightManager {
      * @param f The flight to be added
      * @return the added flight
      */
-    Flight add(Flight f) throws FlightStorageException;
+    Flight add(Flight f);
 
     /**
      * Get all flights which were previously added to the flightStorage
