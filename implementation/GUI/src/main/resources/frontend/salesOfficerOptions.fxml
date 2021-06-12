@@ -61,7 +61,7 @@
                         <Insets left="400.0" right="70.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="viewFlightRoutesBtn" mnemonicParsing="false" onMouseClicked="#goToViewFlightRoutes" prefHeight="40.0" prefWidth="125.0" text="View FlightRoutes" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="viewFlightRoutesBtn" mnemonicParsing="false" onMouseClicked="#goToViewFlightRoutes" prefHeight="40.0" prefWidth="125.0" text="Manage Discounts" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="70.0" right="70.0" />
                      </GridPane.margin>

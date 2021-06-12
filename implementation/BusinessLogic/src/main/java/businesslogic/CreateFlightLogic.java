@@ -35,6 +35,14 @@ public class CreateFlightLogic {
         this.airplaneScheduleManager = airplaneScheduleManager;
     }
 
+    public void setData(Map<String, String> dataCollected){
+        this.values = dataCollected;
+    }
+
+    public void clearData(){
+        this.values = new HashMap<>();
+    }
+
     /**
      * Small helper method, which adds an additional 0 to the time if it is only
      * one digit. Otherwise the selected time cannot be properly parsed.
@@ -54,10 +62,6 @@ public class CreateFlightLogic {
                         + " "
                         + date,
                 DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd"));
-    }
-
-    public void setData(Map<String, String> dataCollected){
-        this.values = dataCollected;
     }
 
 //    public void dataValidation(Map<String, String> values)
@@ -135,10 +139,6 @@ public class CreateFlightLogic {
 
     public String getNextID() {
         return String.valueOf(flightManager.getLastID() + 1);
-    }
-
-    public void clearData(){
-        this.values = new HashMap<>();
     }
 
     public String getAirplaneInfo(String airplane) {

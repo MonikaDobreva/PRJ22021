@@ -1,6 +1,5 @@
 package persistence;
 
-import businessentitiesapi.Manager;
 import businessentitiesapi.MealType;
 
 import java.util.List;
