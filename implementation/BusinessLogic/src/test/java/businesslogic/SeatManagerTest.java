@@ -13,6 +13,7 @@ import persistence.SeatStorageService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -75,6 +76,7 @@ public class SeatManagerTest {
 
     @Test
     public void addTest(){
+        Mockito.when(dao.save(s1)).thenReturn(Optional.of(s1));
         seatManager.add(s1);
 
         verify(daof).createDao(Seat.class);
@@ -102,9 +104,11 @@ public class SeatManagerTest {
 
     @Test
     public void getSeatForFlightSeat(){
+        Mockito.when(dao.get(fs1.getSeatId())).thenReturn(Optional.of(s6));
         seatManager.getSeatForFlightSeat(fs1);
 
         verify(daof).createDao(Seat.class);
         verify(dao).get(fs1.getSeatId());
+
     }
 }

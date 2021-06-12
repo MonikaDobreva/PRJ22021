@@ -81,7 +81,7 @@ public class FlightSeatManagerTest {
     }
 
     @Test
-    public void addTest() throws FlightStorageException {
+    public void addTest() {
         Mockito.when(dao.save(fs1)).thenReturn(Optional.of(fs1));
         flightSeatManager.add(fs1);
 
@@ -103,6 +103,16 @@ public class FlightSeatManagerTest {
 
         verify(daof).createDao(FlightSeat.class);
         verify(dao).anyQuery(query, 1, "4");
+    }
+
+    @Test
+    public void getFromSeatIdTest(){
+        flightSeats.add(fs3);
+        Mockito.when(dao.getByColumnValues("seatId", 13)).thenReturn(flightSeats);
+        assertThat(flightSeatManager.getFromSeatId(13)).isEqualTo(fs3);
+
+        verify(daof).createDao(FlightSeat.class);
+        verify(dao).getByColumnValues("seatId", 13);
     }
 
 }

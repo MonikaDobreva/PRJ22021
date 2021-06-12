@@ -53,7 +53,7 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
     public void checkExistence(String originAirport, String destinationAirport) {
         var flightRoutes = this.getFlightRoutes();
 
-        Optional<FlightRoute> flightRoute = this.getFlightRoutes().stream()
+        Optional<FlightRoute> flightRoute = flightRoutes.stream()
                 .filter(fr -> fr.getOriginAirportCode().equals(originAirport) && fr.getDestinationAirportCode().equals(destinationAirport))
                 .findAny();
 

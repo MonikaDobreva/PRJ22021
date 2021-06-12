@@ -151,9 +151,8 @@ public class EditDetailsLogicTest {
      * Flight is right and different, update method returns true, map that
      * is returned should contain worked
      */
-    @Disabled
     @Test
-    public void passDataTest3() throws FlightStorageException {
+    public void passDataTest3(){
         Mockito.when(fManagerM.createFlight(
                 Mockito.anyInt(),
                 Mockito.anyString(),

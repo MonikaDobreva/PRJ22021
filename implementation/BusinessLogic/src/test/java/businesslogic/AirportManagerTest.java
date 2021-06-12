@@ -75,4 +75,15 @@ public class AirportManagerTest {
 
     }
 
+    @Test
+    public void getAirportTest(){
+        airports.add(ap1);
+        airports.add(ap2);
+        airports.add(ap3);
+
+        Mockito.when(dao.getAll()).thenReturn(airports);
+
+        assertThat(apm.getAirport("BCN")).isEqualTo(ap2);
+    }
+
 }

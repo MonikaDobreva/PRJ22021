@@ -4,6 +4,7 @@ import businessentitiesapi.FlightRoute;
 import businessentitiesapi.exceptions.FlightStorageException;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.assertj.core.api.Assertions.assertThatCode;
+import static org.mockito.Mockito.*;
 
 public class FlightRouteManagerTest {
 
@@ -75,26 +76,43 @@ public class FlightRouteManagerTest {
 
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "'DUS', 'ATL', true",
-            "'EIN', 'BRU', false",
-    })
-    public void checkExistenceTest(String origin, String destination, boolean exists){
-//        flightRoutes.add(fr1);
-//        flightRoutes.add(fr2);
-//        flightRoutes.add(fr3);
-//
-//        FlightRoute fr = new FlightRoute(0, origin, destination );
-//
-//        Mockito.when(dao.getAll()).thenReturn(flightRoutes);
-//        flightRouteManager.checkExistence(origin, destination);
-//
-//        if (exists){
-//            verify(dao, times(0)).save(fr);
-//        } else {
-//            verify(dao).save(fr);
-//        }
+    @Test
+    public void checkExistenceOKTest(){
+        flightRoutes.add(fr1);
+        flightRoutes.add(fr2);
+        flightRoutes.add(fr3);
+
+        FlightRoute fr = new FlightRoute(0, "DUS", "ATL" );
+
+        Mockito.when(dao.getAll()).thenReturn(flightRoutes);
+        flightRouteManager.checkExistence("DUS", "ATL");
+
+        verify(dao).getAll();
+        verify(dao, times(0)).save(fr);
+    }
+
+    @Test
+    public void checkExistenceNotExistsTest(){
+        flightRoutes.add(fr1);
+        flightRoutes.add(fr2);
+        flightRoutes.add(fr3);
+
+        FlightRoute fr = flightRouteManager.createFlightRoute(0, "EIN", "BRU");
+
+        Mockito.when(dao.getAll()).thenReturn(flightRoutes);
+        Mockito.when(dao.save(fr)).thenReturn(Optional.of(fr));
+
+        flightRouteManager.checkExistence("EIN", "BRU");
+
+        verify(dao).getAll();
+    }
+
+    @Test
+    public void setFlightRouteStorageServiceTest(){
+        ThrowableAssert.ThrowingCallable code = () -> {
+            flightRouteManager.setFlightRouteStorageService(null, daof);
+        };
+        assertThatCode(code).doesNotThrowAnyException();
     }
 
 }

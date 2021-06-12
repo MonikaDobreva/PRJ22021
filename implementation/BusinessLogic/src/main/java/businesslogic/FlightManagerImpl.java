@@ -170,7 +170,6 @@ public class FlightManagerImpl implements FlightManager {
             return new ArrayList<>(daof.createDao(Flight.class).anyQuery(query, routeId));
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Something went wrong with that query");
             return null;
         }
     }

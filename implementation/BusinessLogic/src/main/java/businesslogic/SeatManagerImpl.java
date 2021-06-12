@@ -35,12 +35,7 @@ public class SeatManagerImpl implements SeatManager {
     @Override
     public Seat add(Seat s) {
         try {
-            DAO<Seat, Integer> seatDao = daof.createDao(Seat.class);
-            TransactionToken tok = seatDao.startTransaction();
-            Optional<Seat> storedSeat = seatDao.save(s);
-            tok.commit();
-            seatDao.close();
-            return storedSeat.get();
+            return daof.createDao(Seat.class).save(s).get();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
