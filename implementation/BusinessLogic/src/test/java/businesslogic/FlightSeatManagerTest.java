@@ -1,19 +1,16 @@
 package businesslogic;
 
 import businessentitiesapi.Flight;
-import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightSeat;
-import businessentitiesapi.exceptions.FlightStorageException;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-import java.io.Serializable;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import persistence.FlightSeatStorageService;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -64,6 +61,9 @@ public class FlightSeatManagerTest {
         Mockito.when(daof
                 .createDao(FlightSeat.class))
                 .thenReturn(dao);
+
+        flightSeatManager.setFlightSeatStorageService(null, daof);
+
     }
 
     @Test
@@ -91,13 +91,14 @@ public class FlightSeatManagerTest {
 
     @Test
     public void getAvailableFlightSeatsTest(){
-        String query = "SELECT *\n" +
+        String query =
+                "SELECT *\n" +
                 "FROM flightSeatsView\n" +
-                "         JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
-                "         JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
+                "JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
+                "JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
                 "WHERE flightId = ?\n" +
-                "  AND available = true\n" +
-                "  AND s2.name = ?;";
+                "AND available = true\n" +
+                "AND s2.name = ?;";
 
         flightSeatManager.getAvailableFlightSeats(f1, "4");
 

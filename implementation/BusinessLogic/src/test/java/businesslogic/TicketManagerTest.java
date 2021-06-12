@@ -10,7 +10,9 @@ import org.mockito.Mock;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -47,6 +49,8 @@ public class TicketManagerTest {
         t2 = new Ticket(2, 2, 1, 2, 7, 1, 2, false, BigDecimal.valueOf(100));
         t3 = new Ticket(3, 3, 1, 5, 9, 2, 1, false, BigDecimal.valueOf(50));
         tickets = Arrays.asList(t1, t2, t3);
+
+        tmi.setTicketStorageService(null, daoF);
     }
 
 
@@ -76,6 +80,15 @@ public class TicketManagerTest {
     }
 
     @Test
+    public void tDeleteFailed(){
+        doThrow(new RuntimeException()).when(dao).deleteEntity(any());
+
+        assertThat(tmi.delete(any())).isFalse();
+        verify(daoF).createDao(Ticket.class);
+        verify(dao).deleteEntity(any());
+    }
+
+    @Test
     public void tGetAll(){
         when(dao.getAll()).thenReturn(tickets);
         var tList = tmi.getTickets();
@@ -100,12 +113,33 @@ public class TicketManagerTest {
         assertThat(tof).isTrue();
     }
 
-//    @Test
-//    public void tUpdate() {
-//        var tof = tmi.update(t1);
-//        verify(daoF).createDao(Ticket.class);
-//        verify(dao).update(t1);
-//        assertThat(tof).isTrue();
-//    }
+    @Test
+    public void tAddTicket(){
+        when(dao.save(t1)).thenReturn(Optional.of(t1));
+        tmi.add(t1);
+        verify(daoF).createDao(Ticket.class);
+        verify(dao).save(t1);
+    }
+
+    @Test
+    public void tGetCheckedBaggageAmount(){
+        assertThat(tmi.getCheckedBaggageAmount(tickets)).isEqualTo(10);
+    }
+
+    @Test
+    public void tGetCabinBaggageAmount(){
+        assertThat(tmi.getCabinBaggageAmount(tickets)).isEqualTo(5);
+    }
+
+     @Test
+    public void tGetTicketsOfBooking(){
+        when(dao.getByColumnValues(anyString(), any())).thenReturn(Collections.singletonList(t2));
+        var bookings = tmi.getTicketsOfBooking(1);
+        verify(daoF).createDao(Ticket.class);
+        verify(dao).getByColumnValues(anyString(), any());
+        assertThat(bookings).containsSequence(t2);
+     }
+
+
 
 }

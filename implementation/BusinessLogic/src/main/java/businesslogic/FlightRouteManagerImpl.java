@@ -6,7 +6,6 @@ import genericdao.dao.DAOFactory;
 import persistence.FlightRouteStorageService;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,12 +40,7 @@ public class FlightRouteManagerImpl implements FlightRouteManager {
 
     @Override
     public List<FlightRoute> getFlightRoutes() {
-        try {
             return new ArrayList<>(daof.createDao(FlightRoute.class).getAll());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override

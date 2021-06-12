@@ -1,12 +1,10 @@
 package businesslogic;
 
 import businessentitiesapi.Flight;
-import businessentitiesapi.FlightRoute;
 import businessentitiesapi.FlightSeat;
 import businessentitiesapi.FlightSeatManager;
 import genericdao.dao.DAOFactory;
 import persistence.FlightSeatStorageService;
-
 
 import java.util.List;
 
@@ -42,23 +40,19 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
 
     @Override
     public List<FlightSeat> getFlightSeats() {
-        try {
             return daof.createDao(FlightSeat.class).getAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override
     public List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType) {
-        var query = "SELECT *\n" +
+        var query =
+                "SELECT *\n" +
                 "FROM flightSeatsView\n" +
-                "         JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
-                "         JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
+                "JOIN seatsview s on flightseatsview.seatid = s.seatid\n" +
+                "JOIN seattypesview s2 on s.seattypeid = s2.seattypeid\n" +
                 "WHERE flightId = ?\n" +
-                "  AND available = true\n" +
-                "  AND s2.name = ?;";
+                "AND available = true\n" +
+                "AND s2.name = ?;";
         return daof.createDao(FlightSeat.class).anyQuery(query, flight.getFlightID(), seatType);
     }
 

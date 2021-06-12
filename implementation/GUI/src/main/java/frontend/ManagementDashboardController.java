@@ -33,7 +33,7 @@ public class ManagementDashboardController {
     Label totalFlightsLabel, totalRoutesLabel, totalBookingsLabel, mDashDepLabel, mDashArrLabel, mDashEstFDLabel,
             mDashBookingsLabel, mDashMealsLabel, totalTicketsLabel, totalRevenueLabel, mDashBookedByLabel, bookingTabBookedOnLabel,
             popularMealLabel, generalTabTotalAirports, generalTabPopularAirport, generalTabMostCapacity, generalTabLongestFlight,
-            generalTabRevenueSixMonth, generalTabLeastPopularMeal, bookingsTabPricePaidLabel, bookingsTabCheckedBaggageLabel,
+            generalTabLeastPopularMeal, bookingsTabPricePaidLabel, bookingsTabCheckedBaggageLabel,
             bookingsTabCabinBaggageLabel;
 
     @FXML
@@ -87,7 +87,6 @@ public class ManagementDashboardController {
         generalTabLongestFlight.setText("Flight " + lFlight.getFlightID() + " going from " +
                 lFlight.getOriginAirport() + " to " + lFlight.getDestinationAirport() +
                 " for " + lDur +" minutes/" + lDur/60 + " hours");
-        generalTabRevenueSixMonth.setText(String.valueOf(ticketManager.getSumOfTicketsOfLastSixMonth()));
         generalTabLeastPopularMeal.setText(getLeastBookedMeal().getMealName() + ", ordered " + getAmountOfLeastPopularMeal() + " times");
 
     }

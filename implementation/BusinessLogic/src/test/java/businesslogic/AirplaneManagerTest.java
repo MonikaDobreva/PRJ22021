@@ -1,30 +1,23 @@
 package businesslogic;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-
 import businessentitiesapi.Airplane;
-import businessentitiesapi.AirplaneManager;
-import businessentitiesapi.Flight;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
 import nl.fontys.sebivenlo.ranges.LocalDateTimeRange;
-import org.assertj.core.api.ThrowableAssert.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
 import persistence.AirplaneStorageService;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 /**
  *
@@ -121,4 +114,13 @@ public class AirplaneManagerTest {
 
         assertThat(result).isEqualTo(ap2);
     }
+
+    @Test
+    public void tGetBiggestPlane(){
+        when(dao.anyQuery(any())).thenReturn(Collections.singletonList(ap1));
+        assertThat(apm.getBiggestPlane()).isEqualTo(ap1);
+        verify(daof).createDao(Airplane.class);
+        verify(dao).anyQuery("select * from airplanes order by capacity desc LIMIT 1;");
+    }
+
 }

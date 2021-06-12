@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ManagementDashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ManagementDashboardController">
    <children>
       <VBox layoutX="139.0" layoutY="66.0" prefHeight="400.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -94,12 +104,12 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label text="Total revenue:" GridPane.rowIndex="4">
+                                                <Label text="Total revenue:" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="totalRevenueLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <Label fx:id="totalRevenueLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -107,12 +117,12 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label text="Most popular meal:" GridPane.rowIndex="5">
+                                                <Label text="Most popular meal:" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="popularMealLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <Label fx:id="popularMealLabel" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -172,7 +182,7 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Revenue last 6 month:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Least popular meal:" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                                    <padding>
                                                       <Insets left="5.0" />
                                                    </padding>
@@ -180,20 +190,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="generalTabRevenueSixMonth" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="3" GridPane.rowIndex="4">
-                                                   <padding>
-                                                      <Insets left="5.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Least popular meal:" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                                                   <padding>
-                                                      <Insets left="5.0" />
-                                                   </padding>
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="generalTabLeastPopularMeal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                                <Label fx:id="generalTabLeastPopularMeal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #ced6e0;" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                                    <padding>
                                                       <Insets left="5.0" />
                                                    </padding>

@@ -56,7 +56,7 @@ public interface TicketManager {
 
     List<Ticket> getTicketsOfBooking(int bookingID);
 
-    BigDecimal getSumOfTicketsOfLastSixMonth();
+    // BigDecimal getSumOfTicketsOfLastSixMonth();
 
     //BigDecimal getRevenueOfFlight(int selectedFlightID);
 }

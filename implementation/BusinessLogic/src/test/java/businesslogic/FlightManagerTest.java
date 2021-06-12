@@ -4,9 +4,7 @@ import businessentitiesapi.Flight;
 import businessentitiesapi.exceptions.FlightStorageException;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -15,13 +13,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * This tests that in the flight manager the dao is called with the belonging
@@ -77,6 +74,8 @@ public class FlightManagerTest {
                 .thenReturn(dao);
 
         flights = new ArrayList<>();
+
+        flm.setFlightStorageService(null, daoF);
     }
 
     @Test
@@ -209,6 +208,13 @@ public class FlightManagerTest {
         LocalDateTime d1 = LocalDateTime.parse("2022-12-12T10:00:00");
         LocalDateTime d2 = LocalDateTime.parse("2022-12-12T13:00:00");
         assertThat(flm.calcEST(d1, d2)).isEqualTo(180L);
+    }
+
+    @Test
+    public void tLongestFlight(){
+        flights = Arrays.asList(f1, f2, f3);
+        when(dao.getAll()).thenReturn(flights);
+        assertThat(flm.getLongestFlight()).isEqualTo(f2);
     }
 
 }
