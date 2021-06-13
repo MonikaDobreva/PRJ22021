@@ -1,15 +1,13 @@
 package businesslogic;
 
-import businessentitiesapi.*;
-import genericdao.dao.DAO;
+import businessentitiesapi.Airplane;
+import businessentitiesapi.FlightSeat;
+import businessentitiesapi.Seat;
+import businessentitiesapi.SeatManager;
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import persistence.SeatStorageService;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SeatManagerImpl implements SeatManager {
@@ -44,12 +42,7 @@ public class SeatManagerImpl implements SeatManager {
 
     @Override
     public List<Seat> getSeats() {
-        try {
             return daof.createDao(Seat.class).getAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override

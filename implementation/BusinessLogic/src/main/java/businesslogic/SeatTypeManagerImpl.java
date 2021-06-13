@@ -2,6 +2,7 @@ package businesslogic;
 
 import businessentitiesapi.SeatType;
 import businessentitiesapi.SeatTypeManager;
+import genericdao.dao.DAOFactory;
 import persistence.SeatTypeStorageService;
 
 import java.util.List;
@@ -9,9 +10,11 @@ import java.util.List;
 public class SeatTypeManagerImpl implements SeatTypeManager {
 
     private SeatTypeStorageService seatTypeStorageService;
+    private DAOFactory daoF;
 
-    public void setSeatTypeStorageService(SeatTypeStorageService seatTypeStorageService) {
+    public void setSeatTypeStorageService(SeatTypeStorageService seatTypeStorageService, DAOFactory daof) {
         this.seatTypeStorageService = seatTypeStorageService;
+        this.daoF = daof;
     }
 
     @Override

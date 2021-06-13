@@ -27,26 +27,12 @@ public class MealTypeManagerImpl implements MealTypeManager {
     }
 
     @Override
-    public MealType add(MealType mealType) {
-        return null;
-    }
-
-    @Override
-    public void delete(MealType mealType) {
-    }
-
-    @Override
     public List<MealType> getMeals() {
-        try {
-            return new ArrayList<>(daoF.createDao(MealType.class).getAll());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return new ArrayList<>(daoF.createDao(MealType.class).getAll());
     }
 
     @Override
-    public int getBookedMealsForSpecificFlight(int flightID){
+    public int getBookedMealsForSpecificFlight(int flightID) {
         try {
             var query = "select mt.* " +
                     "from meal_types mt " +
@@ -56,7 +42,7 @@ public class MealTypeManagerImpl implements MealTypeManager {
                     "where f.id = (?);";
             return (int) new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query, flightID)).stream()
                     .filter(mt -> !mt.getMealName().equals("None")).count();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
@@ -67,11 +53,11 @@ public class MealTypeManagerImpl implements MealTypeManager {
         try {
             var query =
                     "select id, name " +
-                    "from (select m.*, count(m.name) as occurrences" +
-                    " from meal_types m " +
-                    "join tickets t on m.id = t.meal_id " +
-                    "group by m.id " +
-                    "order by occurrences desc LIMIT 1) as pmto;";
+                            "from (select m.*, count(m.name) as occurrences" +
+                            " from meal_types m " +
+                            "join tickets t on m.id = t.meal_id " +
+                            "group by m.id " +
+                            "order by occurrences desc LIMIT 1) as pmto;";
             return new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query)).stream().findFirst().get();
         } catch (Exception e) {
             e.printStackTrace();
@@ -82,14 +68,20 @@ public class MealTypeManagerImpl implements MealTypeManager {
 
     @Override
     public MealType getLeastBookedMeal() {
+        try {
             var query =
                     "select id, name " +
-                    "from (select m.*, count(m.name) as occurrences" +
-                    " from meal_types m " +
-                    "join tickets t on m.id = t.meal_id " +
-                    "group by m.id " +
-                    "order by occurrences LIMIT 1) as pmto;";
+                            "from (select m.*, count(m.name) as occurrences" +
+                            " from meal_types m " +
+                            "join tickets t on m.id = t.meal_id " +
+                            "group by m.id " +
+                            "order by occurrences LIMIT 1) as pmto;";
             return new ArrayList<>(daoF.createDao(MealType.class).anyQuery(query)).stream().findFirst().get();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong in the method: \"getMostBookedMeal\" ");
+            return null;
+        }
     }
 
     @Override

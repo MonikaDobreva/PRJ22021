@@ -8,10 +8,6 @@ import java.util.List;
 
 public interface MealTypeManager {
 
-    MealType add(MealType mealType);
-
-    void delete(MealType mealType);
-
     List<MealType> getMeals();
 
     int getBookedMealsForSpecificFlight(int flightID);

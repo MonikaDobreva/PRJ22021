@@ -1,9 +1,10 @@
 package businesslogic;
 
-import businessentitiesapi.*;
+import businessentitiesapi.Airplane;
+import businessentitiesapi.FlightSeat;
+import businessentitiesapi.Seat;
 import genericdao.dao.DAO;
 import genericdao.dao.DAOFactory;
-import genericdao.dao.TransactionToken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -16,8 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class SeatManagerTest {
 
@@ -55,9 +55,11 @@ public class SeatManagerTest {
 
         seatManager.setDaoFactory(daof);
 
-        Mockito.when(daof
+        when(daof
                 .createDao(Seat.class))
                 .thenReturn(dao);
+
+        seatManager.setSeatStorageService(null, daof);
     }
 
     @Test
@@ -76,7 +78,7 @@ public class SeatManagerTest {
 
     @Test
     public void addTest(){
-        Mockito.when(dao.save(s1)).thenReturn(Optional.of(s1));
+        when(dao.save(s1)).thenReturn(Optional.of(s1));
         seatManager.add(s1);
 
         verify(daof).createDao(Seat.class);
@@ -109,6 +111,29 @@ public class SeatManagerTest {
 
         verify(daof).createDao(Seat.class);
         verify(dao).get(fs1.getSeatId());
+    }
 
+    @Test
+    public void tBrokenAdd(){
+        when(dao.save(any())).thenThrow(RuntimeException.class);
+        assertThat(seatManager.add(s1)).isNull();
+        verify(daof).createDao(Seat.class);
+        verify(dao).save(s1);
+    }
+
+    @Test
+    public void tBrokenGetSeatIdsOfAirplane(){
+        when(dao.anyQuery(anyString(), any())).thenThrow(RuntimeException.class);
+        assertThat(seatManager.getSeatIdsOfAirplane(ap)).isNull();
+        verify(daof).createDao(Seat.class);
+        verify(dao).anyQuery(anyString(), any());
+    }
+
+    @Test
+    public void tBrokenGetSeatForFlightSeat(){
+        when(dao.get(any())).thenThrow(RuntimeException.class);
+        assertThat(seatManager.getSeatForFlightSeat(fs1)).isNull();
+        verify(daof).createDao(Seat.class);
+        verify(dao).get(any());
     }
 }

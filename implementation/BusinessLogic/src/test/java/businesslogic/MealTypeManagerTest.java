@@ -6,6 +6,7 @@ import genericdao.dao.DAOFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -54,6 +55,8 @@ public class MealTypeManagerTest {
         popularMeals = Arrays.asList(m4, m9, m10);
         singlePopularMeal = Arrays.asList(m4);
 
+        mtmi.setMealTypeStorageService(null, daoF);
+
     }
 
     @Test
@@ -91,5 +94,45 @@ public class MealTypeManagerTest {
         assertThat(bookedMeals).isEqualTo(8);
     }
 
+    @Test
+    public void tBrokenGetBookedMealsForSpecificFlight() {
+        Mockito.when(dao.anyQuery(anyString(), any())).thenThrow(RuntimeException.class);
+        assertThat(mtmi.getBookedMealsForSpecificFlight(1)).isEqualTo(0);
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString(), any());
+    }
+
+    @Test
+    public void tBrokenGetMostBookedMeal(){
+        Mockito.when(dao.anyQuery(anyString())).thenThrow(RuntimeException.class);
+        assertThat(mtmi.getMostBookedMeal()).isNull();
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString());
+    }
+
+    @Test
+    public void tGetLeastBookedMeal(){
+        when(dao.anyQuery(anyString())).thenReturn(singlePopularMeal);
+        var popMeal = mtmi.getLeastBookedMeal().getMealName();
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString());
+        assertThat(popMeal).isEqualTo("Vegetarian");
+    }
+
+    @Test
+    public void tBrokenGetLeastBookedMeal(){
+        Mockito.when(dao.anyQuery(anyString())).thenThrow(RuntimeException.class);
+        assertThat(mtmi.getLeastBookedMeal()).isNull();
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString());
+    }
+
+    @Test
+    public void tBrokenGetAmountOfMeals(){
+        when(dao.anyQuery(anyString(), any())).thenThrow(RuntimeException.class);
+        assertThat(mtmi.getAmountOfMeals(1)).isEqualTo(0);
+        verify(daoF).createDao(MealType.class);
+        verify(dao).anyQuery(anyString(), any());
+    }
 
 }

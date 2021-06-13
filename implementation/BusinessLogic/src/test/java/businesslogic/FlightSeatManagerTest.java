@@ -90,6 +90,14 @@ public class FlightSeatManagerTest {
     }
 
     @Test
+    public void tFailingAdd(){
+        Mockito.when(dao.save(fs1)).thenThrow(RuntimeException.class);
+        assertThat(flightSeatManager.add(fs1)).isNull();
+        verify(daof).createDao(FlightSeat.class);
+        verify(dao).save(fs1);
+    }
+
+    @Test
     public void getAvailableFlightSeatsTest(){
         String query =
                 "SELECT *\n" +

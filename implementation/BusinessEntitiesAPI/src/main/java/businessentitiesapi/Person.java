@@ -46,4 +46,16 @@ public class Person implements Serializable {
     public LocalDate getBirthDate() {
         return birthDate;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "personId=" + personId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
+    }
 }

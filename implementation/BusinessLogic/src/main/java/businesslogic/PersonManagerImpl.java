@@ -30,18 +30,18 @@ public class PersonManagerImpl implements PersonManager {
             String gender,
             LocalDate birthDate
     ) {
-        //The 0 is just a placeholder
+        //The 1 is just a placeholder
         return new Person(1, firstName, lastName, email, gender, birthDate);
     }
 
     @Override
     public Person add(Person p) {
-        return personStorageService.add(p);
+        return daoF.createDao(Person.class).save(p).get();
     }
 
     @Override
     public List<Person> getPersons() {
-        return personStorageService.getAll();
+        return daoF.createDao(Person.class).getAll();
     }
 
     @Override
@@ -62,7 +62,6 @@ public class PersonManagerImpl implements PersonManager {
     @Override
     public Person getPersonByID(int personID){
         try{
-            // String query = "select * from personsview where personid = (?);";
             return daoF.createDao(Person.class).get(personID).get();
         } catch (Exception e){
             e.printStackTrace();
