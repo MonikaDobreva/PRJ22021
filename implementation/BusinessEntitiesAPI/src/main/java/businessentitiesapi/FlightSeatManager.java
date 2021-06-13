@@ -16,4 +16,5 @@ public interface FlightSeatManager {
 
     List<FlightSeat> getAvailableFlightSeats(Flight flight, String seatType);
 
+    void updateFlightSeatAvailability(boolean availability, int id);
 }

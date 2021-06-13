@@ -15,4 +15,6 @@ public interface FlightSeatStorageService {
 
     List<FlightSeat> findAvailableSeatsForFlight(Flight flight, String seatType);
 
+    void updateFlightSeatAvailability(boolean availability, int id);
+
 }

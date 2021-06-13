@@ -151,6 +151,9 @@ public class PassengerInfoController {
                 flight.getBasePrice()
                 );
         var savedTicket = ticketManager.add(ticket);
+
+        flightSeatManager.updateFlightSeatAvailability(false, flightSeat.getFlightSeatId());
+
     }
 
 

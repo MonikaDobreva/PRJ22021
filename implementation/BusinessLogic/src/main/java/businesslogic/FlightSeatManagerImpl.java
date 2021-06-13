@@ -6,6 +6,7 @@ import businessentitiesapi.FlightSeatManager;
 import genericdao.dao.DAOFactory;
 import persistence.FlightSeatStorageService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FlightSeatManagerImpl implements FlightSeatManager {
@@ -60,6 +61,11 @@ public class FlightSeatManagerImpl implements FlightSeatManager {
     public FlightSeat getFromSeatId(int id) {
         var dao =  daof.createDao(FlightSeat.class);
         return dao.getByColumnValues("seatId", id).get(0);
+    }
+
+    @Override
+    public void updateFlightSeatAvailability(boolean availability, int id) {
+        flightSeatStorageService.updateFlightSeatAvailability(availability, id);
     }
 
 }

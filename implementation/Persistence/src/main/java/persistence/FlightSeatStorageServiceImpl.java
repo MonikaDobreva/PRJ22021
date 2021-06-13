@@ -82,4 +82,10 @@ public class FlightSeatStorageServiceImpl implements FlightSeatStorageService {
         return flightSeatDao.anyQuery(query, flight.getFlightID(), seatType);
     }
 
+    @Override
+    public void updateFlightSeatAvailability(boolean availability, int id) {
+        var query = "UPDATE flightSeatsView SET available = ? WHERE flightSeatId = ? RETURNING *";
+        flightSeatDao.anyQuery(query, availability, id);
+    }
+
 }
