@@ -1,6 +1,6 @@
 ### **Test Scenarios for Create booking**
 
-To read Use Case click [**here**]( ../../UseCasesSalesEmployee.md )
+To read Use Case click [**here**]( ../../useCase/UseCasesSalesEmployee.md )
 
 **General:**
 
