@@ -1,4 +1,4 @@
-|Use case Number|x|
+|Use case Number|1|
 |---|---|
 | **Name** | **Register flight** |
 | **Actor** | Sales Officer |
