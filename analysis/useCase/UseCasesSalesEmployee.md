@@ -34,7 +34,7 @@
 |**Result**|The Sales Employee has successfully created a booking for a customer, that includes either one or multiple tickets for a specific flight.|
 |**Extensions**|5a. Sales Employee chooses to also input options, such as additional baggage or a different meal<br>1. Sales Employee chooses at least one of the options.<br>2. System saves the information, and replaces the default values. Returns to step 6.|
 |**Exceptions**|6a. Sales Employee did not input all the required information. <br>6.1. System asks the Sales Employee to fill the remaining fields. Returns to step 5.|
-|**Test Scenarios**|Click [**here**](testScenarios/SalesEmployee/createBooking.md)|
+|**Test Scenarios**|Click [**here**](../testScenarios/SalesEmployee/createBooking.md)|
   
 |Use case Number|x|
 |---|---|
